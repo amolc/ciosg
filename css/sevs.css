@@ -1,0 +1,128 @@
+.nav_item {
+	float: left;
+}
+
+.tab_menu {
+	padding-top: 10px;
+}
+
+.inactive {
+	margin-top: 1%;
+}
+
+.heading {
+	color: #000;
+	margin: 0 auto;
+}
+
+.heading h1 {
+	padding: 0;
+}
+
+.tab_menu {
+	height:75px;
+}
+
+#contact_form {
+	width: auto;
+	margin: 0px;
+	height: auto;
+	background: #312f2f;
+	position: relative;
+}
+
+.contact_heading {
+	padding: 0;
+	margin: 0 auto;
+	text-align: center;
+	color: #FFF;
+	padding-top: 20px;
+}
+
+#contact_box {
+	border: 1px solid #FFF;
+	height: 420px;
+	color: #FFF;
+	padding: 20px 0;
+}
+
+#faq_box {
+	border: 1px solid #FFF;
+	height: auto;
+	color: #FFF;
+	padding: 20px 0;
+}
+
+.contact_box_container {
+	height: 530px !important;
+	width: 960px;
+	margin: 0 auto;
+}
+
+.faq_box_container{
+	height: auto !important;
+	width: 960px;
+	margin: 0 auto;
+}
+
+.clear {
+	clear: both;
+}
+
+input.text_field {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 428px;
+	height: 42px;
+	background-image: ;
+	font-family: 'Arial';
+	font-weight: 400;
+	font-style: normal;
+	font-size: 13px;
+	text-decoration: none;
+	color: #000000;
+	text-align: left;
+}
+
+select.dropdown_field {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 428px;
+	height: 50px;
+	background-image: ;
+	font-family: 'Arial';
+	font-weight: 400;
+	font-style: normal;
+	font-size: 13px;
+	text-decoration: none;
+	color: #000000;
+}
+
+.input {
+	height: 50px;
+}
+
+textarea.textarea_field {
+	margin: 0px;
+	width: 621px;
+	height: 100px;
+}
+
+.submit_btn {
+	margin-top: 60px;
+	margin-right: -30px;
+}
+
+.question {
+	border: 1px solid #FFF;
+	height: 40px;
+	padding: 1%;
+}
+
+.answer {
+	border: 1px solid #FFF;
+	padding: 10px;
+	margin-bottom: 20px;
+}

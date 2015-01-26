@@ -1,0 +1,46 @@
+/*
+*@discription		:s;ider
+*@auther			:developer
+*@date				:6 august 2012
+*@time				:5:00pm
+*/
+.main	{
+padding-top: 50px;
+width: 559px;
+height: 250px;
+padding-bottom: 80px;
+margin: auto;
+}
+.main li img {
+border-radius: 132px;
+width: 150px;
+height: 150px;
+}
+.anyclass	{
+	margin-top:22px;
+}
+.prev	{
+	float:left;
+	margin-top: 105px;
+	margin-left: 24px;
+	cursor: pointer;
+
+}
+
+.next	{
+cursor: pointer;
+	float:left;
+	margin-top: 105px;
+}
+p	{
+	
+}
+h6	{
+	text-decoration:underline;
+}
+h5	{
+	font-size:20px;
+}
+.clear	{
+	clear:both;
+}

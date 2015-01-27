@@ -242,146 +242,19 @@
         <?php
         include('sql_config/database/cio_db.php');
         include('top_header.php');
-        include('header.php');
+        include('contact_header.php');
         ?>
 
-        <div id="black_wrapper" >
-            <div class="black_container">
-                <?php include('navigation.php'); ?>
-			  <div class="video fl">
-               	 <!--carousel start-->
-                        <div id="container" > 
-                            <div id="carousel">
-							   <?php 
-								$video_query = mysql_query("SELECT * FROM videos order by ordernum ASC");
-								$list_count  = mysql_num_rows($video_query);	
-								
-								while ($video_res = mysql_fetch_array($video_query))
-								{
-
-                                    //$count ++;
-									$sql_tmp = mysql_query("SELECT * FROM videos_type WHERE video_id = '".$video_res['video_id']."'");
-									if(mysql_num_rows($sql_tmp) > 0){
-									
-									?>
-								
-									<div>
-										<video style="cursor: pointer;" id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="737" height="415"
-										poster="admin/upload/Intro_frame_01.jpg" onplay="$(this).videoPlay()" onpause="$(this).videoPause()"
-										> 
-											<?php 
-											while( $row_tmp =  mysql_fetch_array($sql_tmp)):
-
-											$video = $row_tmp['path'];
-											$ext = explode('.', $row_tmp['path']);
-											if($ext[1] =='ogv'){$type  = "video/ogv"; }
-											if($ext[1] =='mp4'){$type  = "video/mp4"; }
-											if($ext[1] =='webm'){$type  = "video/webm"; }
-											
-											?>
-										<source src="admin/<?php echo $video; ?>" type='<?php echo $type; ?>' />							
-											<?php   endwhile;    ?>
-										</video>
-										
-									</div>
-									<?php }?>	
-
-									<?php $sql_img_type = mysql_query("SELECT * FROM image_type WHERE video_id = '".$video_res['video_id']."'"); 
-									 if(mysql_num_rows($sql_img_type) > 0) {
-										 while($row_tmp =  mysql_fetch_array($sql_img_type)){?>
-                                            <?php  $path_page  = $video_res['path'] ? $video_res['path'] : 'registration.php' ?>
-										 		<div>
-												<a href="<?php echo $path_page ?>">
-													<img style="height: 415px;width: 737px;" src="admin/<?php  echo $row_tmp['path'] ?>" alt="" />
-												</a>
-												</div>
-									<?php   } 
-								    	 }
-								} ?>
-
-                            </div>
-                            <div id="pages"></div>
-                        </div>
-                        <!--carousel end-->
-				
-            </div>
-            </div>
-            <!-- VIDEO GALLERY -->
-        </div>
+    <div>
+        
+        
+        
     </div>
-    
-    <div style="padding-top:75px;height: 630px;" id="advisory_wrapper">
-        <div class="sixteen columns">
-            <div class="project">
-                <div class="sky-carousel sc-no-select" style="visibility: visible;">
-                    <div class="sky-carousel-wrapper" style="visibility: visible; opacity: 1;">
-                        <h1 style="text-align:center; margin-top:37px; color:#20201F; font-size: 30px;font-weight: bold;">Our Advisory Panel</h1>
-                        <ul class="sky-carousel-container" style=" left: -1405px;">
-                            <?php
-                            $advisory_query1 = mysql_query("select * from advisory_panel");
-                            $counter = 0;$imageSlider ='';
-                            while ($advisory_res = mysql_fetch_array($advisory_query1))
-                            {
-                                $advisory_image = $advisory_res['advisory_image'];
-                                $advisory_name = $advisory_res['advisory_name'];
-                                $advisory_desination = $advisory_res['advisory_desination'];
-                                $advisory_description = $advisory_res['advisory_description'];
 
-                                $advisory_description = str_replace("<div>", "", $advisory_description);
-                                $advisory_description = str_replace("</div>", "", $advisory_description);
-                                 $advisory_description = str_replace("<p>", "", $advisory_description);
-                                $advisory_description = str_replace("</p>", "", $advisory_description);    
-                                
-                                if (strlen($advisory_description) > 190)
-                                {
-
-                                    // truncate string
-                                    $stringCut = substr($advisory_description, 0, 300);
-                                    $advisory_description = substr($stringCut, 0, strrpos($stringCut, ' ')) . '<a style="font-weight:bold;" href="advisory_detail.php?id=' . $advisory_res['advisory_id'] . '"> Read more</a>';
-                                }
-                                
-                             // $imageSlider = explode("=", $advisory_image); 
-                                ?>
-
-                                <li style="-webkit-transform-origin: 50% 139px; -webkit-transform: translate(0px, 0px) scale(0.5) translateZ(0px); opacity: 0.6;">
-                                    <img style="" src="<?php echo $advisory_image; ?>&h=190&w=190&zc=1"  alt="" class="sc-image">
-
-                                   
-                                    <div class="sc-content">
-                                        <h2><a style="font-weight:bold; border:none; font-size:26px;" href="advisory_detail.php?id=<?php echo $advisory_res['advisory_id']; ?>"><?php echo $advisory_name; ?></a></h2>
-                                        <p><?php echo $advisory_description; ?></p>
-                                    </div>
-                                </li>
-
-
-                                <?php
-                                $counter++;
-                            }
-                            ?>
-
-                        </ul>
-                    </div>
-                    <div class="sc-preloader" style="display: none;"></div><div class="sc-content-wrapper">
-                        <div class="sc-content-container" style="visibility: visible; opacity: 1;">
-                            <div class="sc-content">
-                                <h2></h2><p></p></div></div></div> 
-                    <div class="sc-overlay sc-overlay-left" width="190" height="1" style="width: 370px;background: #FFF;"></div>
-                    <div class="sc-overlay sc-overlay-right" width="190" height="1" style="width: 370px;background: #FFF;"></div>
-                    <a href="#" class="sc-nav-button sc-prev sc-no-select"></a>
-                    <a href="#" class="sc-nav-button sc-next sc-no-select">
-                    </a>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<?php
-	//include('events_panel.php'); 
-	include('quick_contact.php');
-	include('footer.php');
+    <?php
+    //include('events_panel.php'); 
+    include('quick_contact.php');
+    include('footer.php');
 ?>                                
 </body>
 </html>

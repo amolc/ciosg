@@ -43,14 +43,18 @@
                                                   <div id="content_8" class="advisory_panel">
 												  <?php
 															$year ="2014";
-															$advisory_query = mysql_query("select * from advisory_panel  where advisory_years = '".$year."' ORDER BY advisory_name asc");
+															$advisory_query = mysql_query("select * from awards order by awardID desc");
+															
 															while($advisory_res = mysql_fetch_array($advisory_query))
 															{
-																$advisory_name= $advisory_res['advisory_name'];
-																$advisory_desination = $advisory_res['advisory_desination'];
-																$advisory_company = $advisory_res['advisory_company'];
-																 $advisory_image = $advisory_res['advisory_image'];
-																 $advisory_description = $advisory_res['advisory_description'];
+																
+
+
+																$advisory_name= $advisory_res['award_name'];
+																$advisory_desination = $advisory_res['award_industry'];
+																$advisory_company = $advisory_res['award_company'];
+																 $advisory_image = $advisory_res['award_image'];
+																 $advisory_description = $advisory_res['award_company_details'];
 																 $advisory_description = str_replace("<div>","",$advisory_description);
 																 $advisory_description = str_replace("</div>","",$advisory_description);
 															         $advisory_description1 = $advisory_description;
@@ -62,26 +66,29 @@
                                                                                                                                        $stringCut = substr($advisory_description, 0, 300);
                                                                                                                                        $advisory_description = substr($stringCut, 0, strrpos($stringCut, ' ')) ;
                                                                                                                                    }
-													
-													$image = explode("=", $advisory_image); 
+													//print_r($advisory_image);
+													//$image = explode("=", $advisory_image); 
+													/*echo "<br>llll ";
+													print_r($image)*/
 													?>
 															
 																 <div class="alice_abigail fl">
-                                                       	  		<div class="alice_abigail_pic"><img class="advisor_img" src="<?php echo $image[1]; ?>"></div>
+                                                       	  		<div class="alice_abigail_pic"><img class="advisor_img" src="admin/upload/<?php echo $advisory_image; ?>"></div>
                                                                         <div class="fl" style="width: 650px;">
                                                                 <h1 style=""><?php echo $advisory_name; ?></h1>
                                                               <h2><?php echo $advisory_desination; ?></h2>
                                                               <h3><?php echo $advisory_company; ?></h3>
-                                                              <div id="shortDetail<?php echo $advisory_res['advisory_id']; ?>">
+                                                              <div id="shortDetail<?php echo $advisory_res['awardID']; ?>">
                                                                 <p class="textContainer_Truncate "><?php echo $advisory_description; ?></p>                                                                
                                                                 <?php //echo  '<a style="font-weight:bold;" href="advisory_detail.php?id=' . $advisory_res['advisory_id'] . '" class="readmore-js-toggle" target="_blank" > Read more</a>';
-                                                               echo  '<a style="font-weight:bold;" href="javascript:void(0)" onclick="return readmore('.$advisory_res['advisory_id'].');" class="readmore-js-toggle" target="_blank" > Read more</a>';
+                                                               echo  '<a style="font-weight:bold;" href="javascript:void(0)" onclick="return readmore('.$advisory_res['awardID'].');" class="readmore-js-toggle" target="_blank" > Read more</a>';
                                                                ?>
+       
                                                               </div>
-                                                              <div id="longdetail<?php echo $advisory_res['advisory_id']; ?>" style="display: none;">
+                                                              <div id="longdetail<?php echo $advisory_res['awardID']; ?>" style="display: none;">
                                                                 <p class="textContainer_Truncate " ><?php echo $advisory_description1; ?></p>
                                                                <?php //echo  '<a style="font-weight:bold;" href="advisory_detail.php?id=' . $advisory_res['advisory_id'] . '" class="readmore-js-toggle" target="_blank" > Read more</a>';
-                                                               echo  '<a style="font-weight:bold;" href="javascript:void(0)" onclick="return hidemore('.$advisory_res['advisory_id'].');" class="readmore-js-toggle" target="_blank" > Hide</a>';
+                                                               echo  '<a style="font-weight:bold;" href="javascript:void(0)" onclick="return hidemore('.$advisory_res['awardID'].');" class="readmore-js-toggle" target="_blank" > Hide</a>';
                                                                ?>
                                                                 </div>
                                                               </div>

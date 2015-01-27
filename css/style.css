@@ -286,14 +286,14 @@ textarea:focus, input[type="text"]:focus, input[type="checkbox"]:focus, input[ty
     text-align: center;
     text-shadow: 1px 1px #5e521a;
     text-transform: uppercase;
-    width: 200px;
+    width: 202px;
 	letter-spacing:1px;
 
 	background:url(../images/btn_bg2.png) no-repeat;
 	
 }
 .ict_vendor a:hover {
-	background:url(../images/btn_bg_hover.png) no-repeat;
+	background:url(../images/btn_bg2_hover.png) no-repeat;
 }
 
 
@@ -1569,7 +1569,7 @@ height: 125px!important;
 }
 .contact_form label {
 	float:left;
-	width:120px;
+	width:122px;
 	line-height:45px;
 	display:block;
 	margin:0px 13px 0px 0px;
@@ -1589,6 +1589,7 @@ height: 125px!important;
 	margin:0px 0px 20px 0px;
 	background:white;
 	border:solid #8f0100 1px;
+	border-radius: 10px;
 }
 .contact_form input[type="text"]:focus {
 	box-shadow:0px 0px 3px #a01211;

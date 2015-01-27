@@ -1,3 +1,13 @@
+<?php
+
+ include('../sql_config/database/cio_db.php'); 
+ $id = $_REQUEST['id'];
+ $res = mysql_query("select * from awards where awardID = '$id'")or die (mysql_error());
+ $row = mysql_fetch_array($res);
+//echo "<pre>";
+ //print_r($row);exit;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +26,8 @@
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic"  id="style-resource-4">
 	<link rel="stylesheet" href="include/resource/css/neon.css"  id="style-resource-5">
 	<link rel="stylesheet" href="include/resource/css/custom.css"  id="style-resource-6">
-	<link rel="stylesheet" type="text/css" href="master/jquery.datetimepicker.css" />
-	
+
 	<script src="include/resource/js/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="master/jquery.js"></script>               
-	<script type="text/javascript" src="master/jquery.datetimepicker.js"></script>  
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -44,11 +51,11 @@
 				</li>
 				
 				<li class="active">
-					<strong>Awards</strong>
+					<strong>Edit Award</strong>
 				</li>
 			</ol>
 
-			<h2>Awards</h2>
+			<h2>Edit Award</h2>
 			<br />
 
 <div class="row">
@@ -58,7 +65,7 @@
 
 			<div class="panel-heading">
 				<div class="panel-title">
-					 Add Award
+					 Information
 				</div>
 
 				<div class="panel-options">
@@ -74,11 +81,9 @@
 
 				 include('../sql_config/database/cio_db.php'); 
 
-			if($_POST['upload_button'] == "Submit")
-			{
-			
-			if($_FILES["file"]["name"] != "")
-			{
+			 if($_POST['upload_button'] == "Submit"){
+			 
+			 if($_FILES["file"]["name"] != ""){
 				$allowedExts = array("gif", "jpeg", "jpg", "png");
 				$temp = explode(".", $_FILES["file"]["name"]);
 				$extension = end($temp);
@@ -88,97 +93,82 @@
 				|| ($_FILES["file"]["type"] == "image/pjpeg")
 				|| ($_FILES["file"]["type"] == "image/x-png")
 				|| ($_FILES["file"]["type"] == "image/png"))
-				&& ($_FILES["file"]["size"] < 990000000)
+				&& ($_FILES["file"]["size"] < 80000)
 				&& in_array($extension, $allowedExts))
-				{
+				  {
 				  if ($_FILES["file"]["error"] > 0)
 					{
-						echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+					echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
 					}
 				  else
 					{
-						echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-						echo "Type: " . $_FILES["file"]["type"] . "<br>";
-						echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-						echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
+					echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+					echo "Type: " . $_FILES["file"]["type"] . "<br>";
+					echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+					echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
 
-						if (file_exists("upload/" . $_FILES["file"]["name"]))
-						  {
-						  echo $_FILES["file"]["name"] . " already exists. ";
-						  }
-						else
-						  {
-						  move_uploaded_file($_FILES["file"]["tmp_name"],
-						  "upload/" . $_FILES["file"]["name"]);
-						  echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-						  }
+					if (file_exists("upload/" . $_FILES["file"]["name"]))
+					  {
+					  echo $_FILES["file"]["name"] . " already exists. ";
+					  }
+					else
+					  {
+					  move_uploaded_file($_FILES["file"]["tmp_name"],
+					  "upload/" . $_FILES["file"]["name"]);
+					  echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
+					  }
 					}
-					///
-			
-					$award_name = mysql_real_escape_string($_POST['award_name']);
-					$award_company = mysql_real_escape_string($_POST['award_company']);
-					$award_company_details = mysql_real_escape_string($_POST['award_company_details']);
-					$award_year = mysql_real_escape_string($_POST['award_year']);
-					$award_industry = mysql_real_escape_string($_POST['award_industry']);		
-					$award_image = $_FILES["file"]["name"];
 					
-					$today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
-					$current_date = date("m/d/Y", $today_date);
-				
-					$sql   = "insert into awards(award_name,award_company,award_industry,award_image,award_insert_date,award_year,award_company_details)
-					values
-					('$award_name','$award_company','$award_industry','$award_image','$current_date',$award_year,'$award_company_details')";
-					
-					$query = mysql_query($sql) or die (mysql_error());
-					$event_id = mysql_insert_id();
-					
-					if($query)
-					{
-						echo "Award Added Successful";
-					}
-					else 
-					{
-						echo "error";
-					}
-
-				}
+					 }
 				else
-				{
+				  {
 					echo "Invalid file";
-				}
-			}
-			else
-			{
-				  
-			    $award_name = mysql_real_escape_string($_POST['award_name']);
-				$award_company = mysql_real_escape_string($_POST['award_company']);
-				$award_company = mysql_real_escape_string($_POST['award_company_details']);
+				  }
+					}
+				$award_name = mysql_real_escape_string($_POST['award_name']);
 				$award_year = mysql_real_escape_string($_POST['award_year']);
-				$award_industry = mysql_real_escape_string($_POST['award_industry']);		
-				$award_image = $_FILES["file"]["name"];
+				$award_company_details = mysql_real_escape_string($_POST['award_company_details']);
+				$award_company = mysql_real_escape_string($_POST['award_company']);
+				$advisory_image = $row['award_image'];
+                                if(!empty($_FILES["file"]["name"]))
+                                {   
+                                    $advisory_image = $_FILES["file"]["name"];
+                                }
+				
+				$award_industry = addslashes($_POST['award_industry']);
+				$awardID = mysql_real_escape_string($_POST['awardID']);
+
 				$today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
 				$current_date = date("m/d/Y", $today_date);
 				
-					$sql   = "insert into awards(award_name,award_company,award_industry,award_image,award_insert_date,award_year,award_company_details)
-					values
-					('$award_name','$award_company','$award_industry','$award_image','$current_date',$award_year,'$award_company_details')";
-					
-					$query = mysql_query($sql) or die (mysql_error());
-					$event_id = mysql_insert_id();
-					
-					if($query)
+					if($advisory_image != ""){
+					$sql   = "update awards set
+					award_name = '$award_name', 
+					award_year = '$award_year', 
+					award_image = '$advisory_image',
+					award_company_details = '$award_company_details',
+					award_company = '$award_company',
+					award_industry = '$award_industry'
+					where awardID ='$awardID'";
+					mysql_query($sql) or die(mysql_error());
+					echo "<h1>Updated</h1>";
+					}else
 					{
-						echo "Award Added Successful";
+					$sql   = "update awards set
+					award_name = '$award_name', 
+					award_year = '$award_year', 
+					award_company_details = '$award_company_details',
+					award_company = '$award_company',
+					award_industry = '$award_industry'
+					where awardID ='$awardID'";
+					mysql_query($sql) or die(mysql_error());
+					echo "<h1>Updated</h1>";
 					}
-					else 
-					{
-						echo "error";
-					}
-			}
-				if(empty($error)){
-							echo "Success";
-						}  
-				      echo'<script>window.location.replace("admin_all_awards.php?add=ok");</script>';	
+//header('Location:admin_all_advisory_panel.php?edit=ok');
+
+				 
+			
+			   
 			}
 			
 			
@@ -189,39 +179,41 @@
 
 				<form role="form" action="<?php $_SERVER["PHP_SELF"];?>" method="post"  enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
 
+				<input type="hidden" class="form-control"  name="awardID"  value="<?php echo $row['awardID']; ?>">
+						
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Award Name</label>
 
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" name="award_name"  placeholder=" " required>
+							<input type="text" class="form-control" id="field-1" name="award_name"  value="<?php echo $row['award_name']; ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Company</label>
 
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" name="award_company"  placeholder=" " required>
+							<input type="text" class="form-control" id="field-1" name="award_company"  value="<?php echo $row['award_company']; ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Company Details</label>
 
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" name="award_company_details"  placeholder=" " required>
+							<input type="text" class="form-control" id="field-1" name="award_company_details" value="<?php echo $row['award_company_details']; ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Year</label>
 
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" name="award_year"  placeholder=" " required>
+							<input type="text" class="form-control" id="field-1" name="award_year" value="<?php echo $row['award_year']; ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Industry</label>
 
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" name="award_industry"  placeholder=" " required>
+							<input type="text" class="form-control" id="field-1" name="award_industry" value="<?php echo $row['award_industry']; ?>">
 						</div>
 					</div>
 					<div class="form-group">
@@ -231,7 +223,8 @@
 							
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 								<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" data-trigger="fileinput">
-									<img src="http://placehold.it/200x150" alt="...">
+									<!--<img src="http://placehold.it/200x150" alt="...">-->
+									<img src="timthumb.php?src=admin/upload/<?php echo $row['award_image']; ?>" alt="...">
 								</div>
 								<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px"></div>
 								<div>
@@ -246,6 +239,9 @@
 							
 						</div>
 					</div>
+					
+
+
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">
 							<!--<button type="submit" class="btn btn-default">Submit</button>-->

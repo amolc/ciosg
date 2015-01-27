@@ -191,7 +191,7 @@ $result = mysql_query("SELECT
 						</a>
 					</td>
 					<td>
-						<a href="admin_event_award.php?id='.$row['awardID'].'" style="padding-left: 10px;" class="delete btn btn-danger btn-sm btn-icon icon-left" onclick="return confirm(\'Are you sure?\');">
+						<a href="admin_award_delete.php?id='.$row['awardID'].'" style="padding-left: 10px;" class="delete btn btn-danger btn-sm btn-icon icon-left" onclick="return confirm(\'Are you sure?\');">
 							Delete
 						</a>
 					</td>

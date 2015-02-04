@@ -8,9 +8,9 @@
 		  
 		$mail->isSMTP();                                      // Set mailer to use SMTP
 		$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
-		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'gigster';                   // SMTP username
-		$mail->Password = '10gXWOqeaf';               // SMTP password
+		$mail->SMTPAuth = true;               // Enable SMTP authentication
+		$mail->Username = 'gigsterjames';                   // SMTP username
+		$mail->Password = 'Gigsteremail78';               // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
 		$mail->setFrom('registration@cxohonour.com', 'CIO CHOICE');     //Set who the message is to be sent from
@@ -19,7 +19,7 @@
 		$mail->addAddress($registration_email); 
 		$mail->WordWrap = 500;      
 		$mail->isHTML(true);                                  // Set email format to HTML
-		 $confirm_url="<a  href='http://cio.fountaintechies.com/accepted.php?id=".$str."'>click here to activate your account</a>";
+		$confirm_url="<a  href='http://cio.fountaintechies.com/accepted.php?id=".$str."'>click here to activate your account</a>";
 		$mail->Subject = 'Congratulations! Your Have Registered With CIO Choice';
 		$mail->Body    = '
 		<html>
@@ -79,8 +79,8 @@
 		$mail->isSMTP();                                      // Set mailer to use SMTP
 		$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'gigster';                   // SMTP username
-		$mail->Password = '10gXWOqeaf';               // SMTP password
+		$mail->Username = 'gigsterjames';                   // SMTP username
+		$mail->Password = 'Gigsteremail78';           // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
 		$mail->setFrom('registration@cxohonour.com', 'CIO CHOICE');     //Set who the message is to be sent from
@@ -151,8 +151,8 @@
 		$mail->isSMTP();                                      // Set mailer to use SMTP
 		$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'gigster';                   // SMTP username
-		$mail->Password = '10gXWOqeaf';               // SMTP password
+		$mail->Username = 'gigsterjames';                   // SMTP username
+		$mail->Password = 'Gigsteremail78';                // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
 		$mail->setFrom('registration@cxohonour.com', 'CIO CHOICE');     //Set who the message is to be sent from

@@ -66,7 +66,7 @@
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="col-md-12">
-						<div class="clsLogo" style="text-align:center;"><img src="images/logo.jpg"/></div>
+						<div class="clsLogo" style="text-align:center;"><img src="images/logo_cio.png" /></div>
 					</div>
 				</div>
 			</div>

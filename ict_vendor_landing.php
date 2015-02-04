@@ -226,7 +226,7 @@ function shopping_cart()
 	var total=0;
     var odd_even = false;
 	$("#div_4").html("<div align='center'  style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
-	  var tbl_body ="<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Check-Out</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h1><b>Category</b></h1></div><div class='clsC1_list_bx2'><h1><b>Item</b></h1></div><div class='clsC1_list_bx3'><h1><b>Delete</b></h1></div><div class='clsC1_list_bx3'><h1><b>Total</b></h1></div></div></div>";
+	  var tbl_body ="<div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Check-Out</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h1><b>Category</b></h1></div><div class='clsC1_list_bx2'><h1><b>Item</b></h1></div><div class='clsC1_list_bx3'><h1><b>Delete</b></h1></div><div class='clsC1_list_bx3'><h1><b>Total</b></h1></div></div></div>";
 	
 	$.getJSON('get_cart.php?callback=?',function(array){
 	
@@ -253,17 +253,21 @@ function shopping_cart()
 		          
     })
 	tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont'><h2><div align='right'><button style='height:33px;' type='button' class='btn btn-warning'>Do you have promotional code?</button>&nbsp;&nbsp;&nbsp;<input type='text' style='height:27px;'>&nbsp;&nbsp;&nbsp;<button style='height:33px;' type='button' class='btn btn-warning'>Apply</button></div></h2></div></div>";
-	 tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2>Estimated Tax : </h2></div><div class='clsC1_list_bx3'><h2>S$00</h2></div></div></div>";
-	 tbl_body +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2>Total : </h2></div><div class='clsC1_list_bx3'><h2>$"+total+".00</h2></div></div></div>";
+	 tbl_body +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2 style='width:100px;'>Estimated Tax : </h2></div><div class='clsC1_list_bx3'><h2>S$00.00</h2></div></div></div>";
+	 tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2>Total : </h2></div><div class='clsC1_list_bx3'><h2>$"+total+".00</h2></div></div></div>";
 	
 	/*tbl_body +="<div class='clsCo_frt_2'><div align='right'><div class='clsCo_frt_btn3' style='width:200px;'><p style='font-size:14px;' ><b>Estimated Tax : $0</b></p><br><p style='font-size:18px;'><b>Total : $"+total+".00<b></p></div></div></div>";
 	
 	 /*tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont'><h2><div align='right'><button style='height:33px;' type='button' class='btn btn-warning'>Do you have promotional code?</button>&nbsp;&nbsp;&nbsp;<input type='text' style='height:27px;'>&nbsp;&nbsp;&nbsp;<button type='submit' class='clsButton_checkout'>Apply</button></div></h2></div>	
-</div>";*/
-	 tbl_body +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:200px;'><h2><a href='javascript:void(0);' onClick=' generate_pdf();'>Proceed to Participation</a></h2></div><div style='width:200px;' class='clsCo_frt_btn'><h2><a href='javascript:void(0);' onClick='get_div(2);getCategory();'>Continue Shopping</a></h2></div></div>";
+</div>";generate_pdf();*/
+
+	 tbl_body +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:200px;'><h2><a href='javascript:void(0);' onClick='proceed_to_oarticipation();'>Proceed to Participation</a></h2></div><div style='width:200px;' class='clsCo_frt_btn'><h2><a href='javascript:void(0);' onClick='get_div(2);getCategory();'>Continue Shopping</a></h2></div></div>";
 	
-	 
-	  tbl_body +="</div></div>";
+	 tbl_body +="<br />";
+	// tbl_body +="<div class='clsCat_tlt'><h2>Enterprise Participation Form</h2></div><div class='clsCont_form_bx'><div class='clsC1_list_cont clearfix'><div class='clsLD_Bx_frm'><div class='clsCont_form'><h2>Company Name</h2><div><input type='text' class='clsInput' name='cname' id='cname' ></div><h2>Address 1</h2><div><input type='text' class='clsInput' name='add1' id='add1' ></div><h2>Address 2</h2><div><input type='text' class='clsInput' name='add2' id='add2' ></div><h2>City</h2><div><input type='text' class='clsInput' name='city' id='city'></div><h2>Country</h2><div><input type='text' class='clsInput' name='country' id='country'></div></div></div><div class='clsLD_Bx_frm'><div class='clsCont_form'><h2>Website</h2><div><input type='text' class='clsInput' name='website' id='website'></div><h2>Email</h2><div><input type='text' class='clsInput' name='email' id='email'></div><h2>Contact Name</h2><div><input type='text' class='clsInput' name='contact_name' id='contact_name'></div><h2>Designation</h2><div><input type='text' class='clsInput' id='desg' name='desg'></div><h2>Phone Number</h2><div><input type='text' class='clsInput' name=''></div></form></div></div><div style='width:200px;margin-left:17px;' class='clsCo_frt_btn'><h2>SUBMIT</h2></div></div></div></div>	</div>	";
+		
+		
+	  tbl_body +="</div>";
 	
 	 $("#div_4").html(tbl_body);
 	 $('#div_4').show();
@@ -272,13 +276,35 @@ function shopping_cart()
 /*alert(items);
 */
 }
-
-function generate_pdf()
+function proceed_to_oarticipation()
 {
-		tbl_body ="<div class='btn-box'><div class='msg_box fl' style='width:auto'>Thank you for your interest to participate in CIO HONOUR. Contract for participation has been created.<br /><br /><div align='right'><button onClick='get_div(6);getContract();'>OK</button></div></div></div>";
+	 get_div(7);
+	 $('#middle').show();
+
+}
+function save_contract()
+{
+				var cname=document.getElementById('cname').value;
+				var add1=document.getElementById('add1').value;
+				var add2=document.getElementById('add2').value;
+				var city=document.getElementById('city').value;
+				var country=document.getElementById('country').value;
+				var website=document.getElementById('website').value;
+				var email=document.getElementById('email').value;
+				var designation=document.getElementById('designation').value;
+				var contact_name=document.getElementById('contact_name').value;
+				var phone_number=document.getElementById('phone_number').value;
+				
+	$.post("generate_pdf.php" ,{'cname': cname,'add1':add1,'add2':add2,'city': city,'country':country,'website': website,'email':email,'designation': designation,'contact_name':contact_name,'phone_number': phone_number}).done(function( data ) {   
+	if(data=='OK')
+	{
+    	tbl_body ="<div class='btn-box'><div class='msg_box fl' style='width:auto'>Thank you for your interest to participate in CIO HONOUR. Contract for participation has been created.<br /><br /><div align='right'><button onClick='get_div(6);getContract();'>OK</button></div></div></div>";
 		$("#div_5").html(tbl_body);
 		get_div(5);
-		window.open('generate_pdf.php');
+		
+	}
+});
+		
 	
 }
 function remove_item(itemID)
@@ -560,7 +586,7 @@ function remove_item(itemID)
     }
 	function get_div(id)
 	{
-		for(i=1;i<=6;i++)
+		for(i=1;i<=7;i++)
 		{
 			$('#div_'+i).hide();
 		
@@ -640,8 +666,12 @@ include('header.php');
 	
 	
 </div>
- <div class="advisory_wrapper landing_head"  id="div_4" style="margin-bottom:30px;margin-top:20px"  style="display:none;">
+<div class="advisory_wrapper landing_head"  id="div_4" style="margin-bottom:30px;margin-top:20px"  style="display:none;">
  
+		
+		
+				
+				
 </div>
 <div class="advisory_wrapper landing_head"  id="div_5" style="margin-bottom:360px;margin-top:20px"  style="display:none;">
  
@@ -649,6 +679,60 @@ include('header.php');
 </div> 
 <div class="advisory_wrapper landing_head"  id="div_6" style="margin-bottom:30px;margin-top:20px"  style="display:none;">
  
+
+</div> 
+<div class="advisory_wrapper landing_head"  id="div_7" style="margin-bottom:30px;margin-top:20px"  style="display:none;">
+
+ 	
+			<div class="clsMid_cont_cio" id="middle">
+				<div class="clsCat_tlt"><h2>Enterprise Participation Form</h2></div>
+				
+				<div class="clsCont_form_bx">
+					<div class="clsC1_list_cont clearfix">
+						<div class="clsLD_Bx_frm">
+							<div class="clsCont_form">
+								<form method="post" action="generate_pdf.php">
+									<h2>Company Name</h2>
+									<div><input type="text" class="clsInput" value="" name="cname" id="cname"></div>
+									<h2>Address 1</h2>
+									<div><input type="text" class="clsInput" value="" name="add1" id="add1"></div>
+									<h2>Address 2</h2>
+									<div><input type="text" class="clsInput" value="" name="add2" id="add2"></div>
+									<h2>City</h2>
+									<div><input type="text" class="clsInput" value="" name="city" id="city"></div>
+									<h2>Country</h2>
+									<div><input type="text" class="clsInput" value="" name="country" id="country"></div>
+								
+							</div>
+						</div>	<!--clsLD_Bx_frm-->
+						
+						<div class="clsLD_Bx_frm">
+							<div class="clsCont_form">
+								
+									<h2>Website</h2>
+									<div><input type="text" class="clsInput" value="" name="website" id="website"></div>
+									<h2>Email</h2>
+									<div><input type="text" class="clsInput" value="" name="email" id="email"></div>
+									<h2>Contact Name</h2>
+									<div><input type="text" class="clsInput" value="" name="contact_name" id="contact_name"></div>
+									<h2>Designation</h2>
+									<div><input type="text" class="clsInput" value="" name="designation" id="designation"></div>
+									<h2>Phone Number</h2>
+									<div><input type="text" class="clsInput" value="" name="phone_number" id="phone_number"></div>
+								
+							</div>
+						</div>	<!--clsLD_Bx_frm-->
+						
+						
+							<!--<h2><a href="javascript:void(0);" onClick="save_contract();">Submit</a></h2>-->
+							<button type="submit" style="width:200px; height:35px;margin-right:35px;color:#FFFFFF;" class="clsCo_frt_btn">Submit</button>
+						
+						
+					</div>	<!--clsC1_list_cont-->
+				</form>
+				</div>
+			
+		</div>	
 
 </div> 
 <?php

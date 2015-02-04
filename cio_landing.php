@@ -154,6 +154,8 @@ function getCategory()
 
 
 }
+
+
 function get_item(catID,name)
 {
 
@@ -185,7 +187,7 @@ function get_item(catID,name)
     })
 	  tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";
 	   tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";
-	 tbl_body += "<td><div align='center'><button class='clsButton_checkout' style='width:200px;background-color: #e73535;font-size: 17px;' onClick='get_div(1);insrt_into_cart("+catID+");'>Submit Survey</button></div><br /></td>";
+	 tbl_body += "<td><div align='center'><button class='clsButton_checkout' style='width:200px;background-color: #e73535;font-size: 17px;border-color: #e73535;' onClick='get_div(1);insrt_into_cart("+catID+");'>Submit Survey</button></div><br /></td>";
 	
 	
 	 tbl_body +="</table>"
@@ -193,6 +195,64 @@ function get_item(catID,name)
 	 $('#div_3').show();
 });
 }
+
+function listCategory()
+{
+	
+	
+	$("#category_div").html("<div align='center' style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
+	$.getJSON('http://www.globalprompt.org/sg/cio/category/list_category/?callback=?' , function(array) {
+
+	var tbl_body = "<div class='clsCat_tlt'><h2>Dashboard</h2></div>";
+	var tbl_row ="";
+	var id='';
+	var i=0;
+	name='';
+    var odd_even = false;
+    $.each(array, function(key,val) {
+        var tbl_row = "";
+        $.each(this, function(k , v) {
+
+      
+        })
+		id=array[i].catID;
+		name=array[i].cat_name;
+		
+		tbl_row +="<div class='clsLD_Cont clearfix'>";
+		if(i%2==0)
+		{
+			
+			tbl_row +="<div class='clsLD_Bx'>";
+		}
+		else
+		{
+			tbl_row +="<div class='clsLD_Bx2'>";
+		}
+		
+		tbl_row +="<div class='clsCo_frt_top_LD'><div class='clsC1_list_cont'>";
+		
+		tbl_row += "<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>"+array[i].cat_name+"</a></h1></div>";
+		
+		tbl_row +="<div class='clsLD_cont2 clearfix'><div class='clsChart_bx' style='text-align:center;'><img src='images/chart_img.jpg' width='200px;'/></div><div class='clsChart_cont'  id='item_div'><h1>Item1</h1><h1>Item2</h1><h1>Item3</h1></div></div>";
+		
+		tbl_body +="</div></div><br /></div>";
+		
+		tbl_body += ""+tbl_row+"";
+
+        odd_even = !odd_even; 
+		 i++;            
+		          
+    })
+	
+	 $("#category_div").html(tbl_body);
+	 $("#category_div").show();
+ 	   
+});
+
+
+
+}
+
 function get_div(id)
 	{
 		for(i=1;i<=4;i++)
@@ -261,8 +321,10 @@ function get_div(id)
 
         });
     </script>
-
-
+	
+<script>
+listCategory();
+</script>
 </head>
 
 <body>
@@ -278,7 +340,7 @@ include('header.php');
     <div class="inner_nav">
 		<div class="nav fl">
         	<ul>
-			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(1);">HOME</a></li>
+			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(1);listCategory();">HOME</a></li>
 			  <li><a class="menu_ancher" href="javascript:void(0);">PROFILE</a></li>
 			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(2);getCategory();">SURVEY</a></li>
 			  <li><a class="menu_ancher">FAQ</a></li>
@@ -287,88 +349,17 @@ include('header.php');
 		</div>
     </div>
 </div>
-<div class="landing_head advisory_wrapper" id="div_1">
+<div class="landing_head advisory_wrapper" style="margin-top:0px;" id="div_1">
       <div class="clsMiddle">
-			<div class="clsMid_cont_cio">
-				<div class="clsCat_tlt"><h2>CIO Landing Page</h2></div>
-				
-				<div class="clsLD_Cont clearfix">
-					<div class="clsLD_Bx">
-						<div class="clsCo_frt_top_LD">
-							<div class="clsC1_list_cont">
-								<div class="clsLD_cont1">
-									<h1><a onclick="get_div(3);get_item(1,/Enterprise Business Management/);" href="javascript:void(0);" style="color: black">Enterprise Business Management</a></h1>
-								</div>	<!--clsLD_cont1-->
-								<div class="clsLD_cont2 clearfix">
-									<div class="clsChart_bx" style="text-align:center;"><img src="images/chart_img.jpg" width="200px;"/></div>
-									<div class="clsChart_cont">
-										<h1>Item1</h1>
-										<h1>Item2</h1>
-										<h1>Item3</h1>
-									</div>
-								</div>	<!--clsLD_cont2-->
-							</div>
-						</div>
-					</div>	<!--clsLD_Bx-->
-					
-					<div class="clsLD_Bx2">
-						<div class="clsCo_frt_top_LD">
-							<div class="clsC1_list_cont">
-								<div class="clsLD_cont1">
-									<h1><a style="color: black" onclick="get_div(3);get_item(3,/Enterprise Security & Risk Management/);" href="javascript:void(0);">Enterprise Security & Risk Management</a></h1>
-								</div>	<!--clsLD_cont1-->
-								<div class="clsLD_cont2 clearfix">
-									<div class="clsChart_bx" style="text-align:center;"><img src="images/chart_img.jpg"  width="200px;"/></div>
-									<div class="clsChart_cont">
-										<h1>Item1</h1>
-										<h1>Item2</h1>
-										<h1>Item3</h1>
-									</div>
-								</div>	<!--clsLD_cont2-->
-							</div>
-						</div>
-					</div>	<!--clsLD_Bx-->
-				</div>	<!--clsLD_Cont-->
+			<div class="clsMid_cont_cio" id="category_div">
 				
 				
-				<div class="clsLD_Cont clearfix">
-					<div class="clsLD_Bx">
-						<div class="clsCo_frt_top_LD">
-							<div class="clsC1_list_cont">
-								<div class="clsLD_cont1">
-									<h1><a style="color: black" onclick="get_div(3);get_item(4,/Enterprise Mobility/);" href="javascript:void(0);">Enterprise Mobility</a></h1>
-								</div>	<!--clsLD_cont1-->
-								<div class="clsLD_cont2 clearfix">
-									<div class="clsChart_bx" style="text-align:center;"><img src="images/chart_img.jpg" width="200px;"/></div>
-									<div class="clsChart_cont">
-										<h1>Item1</h1>
-										<h1>Item2</h1>
-										<h1>Item3</h1>
-									</div>
-								</div>	<!--clsLD_cont2-->
-							</div>
-						</div>
-					</div>	<!--clsLD_Bx-->
-					
-					<div class="clsLD_Bx2">
-						<div class="clsCo_frt_top_LD">
-							<div class="clsC1_list_cont">
-								<div class="clsLD_cont1">
-									<h1><a style="color: black" onclick="get_div(3);get_item(5,/Business Intelligence /);" href="javascript:void(0);">Business Intelligence </a></h1>
-								</div>	<!--clsLD_cont1-->
-								<div class="clsLD_cont2 clearfix">
-									<div class="clsChart_bx" style="text-align:center;"><img src="images/chart_img.jpg"  width="200px;"/></div>
-									<div class="clsChart_cont">
-										<h1>Item1</h1>
-										<h1>Item2</h1>
-										<h1>Item3</h1>
-									</div>
-								</div>	<!--clsLD_cont2-->
-							</div>
-						</div>
-					</div>	<!--clsLD_Bx-->
-				</div>	<!--clsLD_Cont-->
+				
+				
+				
+				
 			</div>	<!--clsMid_cont_cio-->
+			
 		</div>	
 </div>
 

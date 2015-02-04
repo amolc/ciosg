@@ -27,9 +27,9 @@
                                             <div id="advisory_wrapper">
                                                 <div class="get_in_touch" style="margin-top:15px;">
                                                   <div class="login_main fl">
-                                                  	<div class="login_header fl">
+                                                  	<!--<div class="login_header fl">
                                                	    	<img width="961" height="219" alt="" src="images/register/login-logo.jpg">
-                                                    </div>
+                                                    </div>-->
                                                     <?php
 
 

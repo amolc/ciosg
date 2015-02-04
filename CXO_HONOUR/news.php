@@ -261,11 +261,11 @@ if ($page <= 0)
 																	<div class="social_media fr" style="width:145px;">
 																		<span class='st_sharethis'></span>
 																		<span class='st_facebook'></span>
-																		<span style="margin-top: -99px;" class='st_twitter'></span>
+																		<span class='st_twitter'></span>
 																		<span class='st_linkedin'></span>
 																		<span class='st_pinterest'></span>
 																		<span class='st_email'></span>
-																		>
+																		
 																	</div>
                                                                     
                                                                 </div>

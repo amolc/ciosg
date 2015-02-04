@@ -22,10 +22,12 @@
 ?>
 							     <?php
 													include('sql_config/database/cio_db.php'); 
-														// include('top_header.php');
+													//include('top_header.php');
+													//include('header.php');
 														
 									?>
-                                        <div id="top_wrapper">
+                         
+<div id="top_wrapper">
 	<div class="top_container">
 	<div class="top_login fl">
 					<?php
@@ -66,6 +68,15 @@
 	</div>
 </div>
 <div style="width:100%; height:49px;"></div>
+<?php 
+
+if(!isset($_SESSION['user_name']))
+{ 
+
+	include('header.php');
+	
+}	
+?>
 
 
                                         <div id="black_wrapper">
@@ -221,7 +232,7 @@ include('activation_link2.php');
 										email_to_signup($fname, $email, $web_url,$reg_type,$pass,$str); //email function for cio
                                 	?>
 									<div class="login_box fl" style="width:auto"> 
-									<h1>Your application is under review. We will get back to you in a shortly</h1>
+									<h1>Your application is under review. We will get back to you shortly</h1>
                                      </div>
 									 </form>
                                      <?php		 

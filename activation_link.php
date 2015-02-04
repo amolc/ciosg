@@ -9,8 +9,8 @@
 		$mail->isSMTP();                                      // Set mailer to use SMTP
 		$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'dayseven';                   // SMTP username
-		$mail->Password = '7sendgrid';               // SMTP password
+		$mail->Username = 'gigsterjames';                   // SMTP username
+		$mail->Password = 'Gigsteremail78';           // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
 		$mail->setFrom('registration@cio-choice.sg', 'CIO CHOICE');     //Set who the message is to be sent from
@@ -141,8 +141,8 @@
 		$mail3->isSMTP();                                      // Set mailer to use SMTP
 		$mail3->Host = 'smtp.gmail.com';                       // Specify main and backup server
 		$mail3->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail3->Username = 'ciochoice.sg@gmail.com';                   // SMTP username
-		$mail3->Password = '9cXWOqeaf';               // SMTP password
+		$mail->Username = 'gigsterjames';                   // SMTP username
+		$mail->Password = 'Gigsteremail78';            // SMTP password
 		$mail3->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail3->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
 		$mail3->setFrom('registration@cio-choice.sg', 'CIO CHOICE');     //Set who the message is to be sent from 

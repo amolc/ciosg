@@ -18,7 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style_ie.css"/>
   <![endif]-->
    <script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
@@ -32,7 +32,9 @@
   <body>
 	<div class="clsWrapper">
 		<div class="clsHeader">
-			<?php include "header.php"?>	<!--clsTop_bar-->
+			<?php include "header.php";
+			include('sql_config/database/cio_db.php'); 
+			?>	<!--clsTop_bar-->
 			<div class="clsLogo_ban">
 				<div class="container">
 					<div class="clsPadding_cont">
@@ -42,64 +44,23 @@
 							</div>
 						</div>
 						
-						<div class="row">
-							<div class="col-md-12">
-								<div class="clsData_cont">
-									<div class="clsTlt"><h1>About Us</h1></div>
-									<div class="row">
-										<div class="col-md-4">
-											<div class="well" style="background:white">
-												<div class="clsCont_data">
-													<div class="cls_img" style="text-align:center;"><img src="images/abt_ico1.png"/></div>
-													<div class="clsLine"></div>
-													<h1 style="text-align:center;">LEARN</h1>
-													<p style="text-align:center;">
-														CIO HONOUR is designed to facilitate exchange of ideas, knowledge and best practices amongst industry leading CIOs in Singapore, helping them repeatedly drive successful outcomes
-													</p>
-												</div>	<!--clsCont_data-->
-											</div>
-										</div>
-										
-										<div class="col-md-4">
-											<div class="well" style="background:white">
-												<div class="clsCont_data">
-													<div class="cls_img" style="text-align:center;"><img src="images/abt_ico2.png"/></div>
-													<div class="clsLine"></div>
-													<h1 style="text-align:center;">NETWORK</h1>
-													<p style="text-align:center;">
-														CIO HONOUR provides opportunities for the CIOs and customer-centric Vendors to network in a relaxed environment, forge new relationships and build long-term partnerships
-													</p>
-												</div>	<!--clsCont_data-->
-											</div>
-										</div>
-										
-										<div class="col-md-4">
-											<div class="well" style="background:white">
-												<div class="clsCont_data">
-													<div class="cls_img" style="text-align:center;"><img src="images/abt_ico3.png"/></div>
-													<div class="clsLine"></div>
-													<h1 style="text-align:center;">ACHEIVE</h1>
-													<p style="text-align:center;">
-														CIO HONOUR is the first and only platform to enable Vendors to achieve recognition and accolades from their own Customers for their outstanding commitment to service quality and professionalism
-													</p>
-												</div>	<!--clsCont_data-->
-											</div>
-										</div>
-										
-										
-									</div>	<!--clsCxo_logo_cont-->
-									<div class="clsCont_data">
-										<h1>CIO HONOUR Overview</h1>
-										<p>
-											CIO HONOUR is a <b>B2B platform</b> that enables industry leading <b>CIOs</b> to share and exchange their success with <b>ICT vendors</b> in their peer networks and the community at large. The platform truly promotes the "Voice of the CIO" to select and honour Products, Services and Solutions; <b>recognising the ICT vendors</b> for their outstanding commitment to service quality and professionalism in the 'local' context.
-										</p>
-										<h1>CIO HONOUR repeatedly delivers successful outcomes by being the only platform for unbiased recognition of Industry Leaders</h1>
-									</div>	<!--clsCont_data-->
-									
-									
-								</div>	<!--clsData_cont-->
-							</div>
-						</div>
+						
+									<?php
+																$faq_result = mysql_query("SELECT
+																						*
+																						FROM
+																						about where abt_type='overview'
+																						");
+
+																//fetch tha data from the database
+																while ($faq_row = mysql_fetch_array($faq_result))
+																{      ?>
+                                               	 
+                                                       <?php echo $faq_row['abt_description']; ?>
+                                                   
+                                                    <?php
+                                                     } ?>
+							
 					</div>	<!--clsPadding_cont-->
 				</div>	<!--container-->
 			</div>	<!--clsLogo_ban-->

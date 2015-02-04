@@ -99,9 +99,11 @@ $logoutURL = $facebook->getLogoutUrl();
 	<link rel="stylesheet" type="text/css" href="master/jquery.datetimepicker.css" />
 	
 	<script src="include/resource/js/jquery-1.10.2.min.js"></script>
-	
+	<script src="include/resource/js/bootstrap.min.js" id="script-resource-3"></script>
+	<script src="include/resource/js/bootstrap.js" id="script-resource-3"></script>
 	<script type="text/javascript" src="master/jquery.js"></script>               
 	<script type="text/javascript" src="master/jquery.datetimepicker.js"></script>  
+	
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -118,6 +120,7 @@ $logoutURL = $facebook->getLogoutUrl();
 <?php include('include/admin_side_menu/admin_side_menu.php'); ?>
 	<div class="main-content">
 <?php include('include/admin_header/admin_header.php'); ?>
+
 
 			<ol class="breadcrumb bc-3">
 				<li>
@@ -212,7 +215,12 @@ $logoutURL = $facebook->getLogoutUrl();
 				$facebook = mysql_real_escape_string($_POST['fb']);
 				$twitter = mysql_real_escape_string($_POST['twitter']);
 				$youtube1 = mysql_real_escape_string($_POST['youtube1']);
+				
 				$youtube2 = mysql_real_escape_string($_POST['youtube2']);
+				$youtube3 = mysql_real_escape_string($_POST['youtube3']);
+				$youtube4 = mysql_real_escape_string($_POST['youtube4']);
+				$youtube5 = mysql_real_escape_string($_POST['youtube5']);
+				$youtube6 = mysql_real_escape_string($_POST['youtube6']);
 				$location = mysql_real_escape_string($_POST['event_location']);
 				$address1 = mysql_real_escape_string($_POST['event_address1']);
 				$address2 = mysql_real_escape_string($_POST['event_address2']);
@@ -242,11 +250,49 @@ $logoutURL = $facebook->getLogoutUrl();
 					event_facebook = '$facebook',
 					event_twitter_hashtag = '$twitter',
 					event_youtube_video = '$youtube' where event_id='$event_id'";
+					 mysql_query($sql) or die (mysql_error());
+					$errors= array();
+					 // include('BFI/BFI_Thumb.php'); 
+
+						foreach($_FILES['files']['tmp_name'] as $key => $tmp_name ){
+							$file_name = $key.$_FILES['files']['name'][$key];
+							$file_size =$_FILES['files']['size'][$key];
+							$file_tmp =$_FILES['files']['tmp_name'][$key];
+							$file_type=$_FILES['files']['type'][$key];	
+							//$params = array( 'width' => 400, 'height' => 300 );
+							//$file_name=bfi_thumb($image, $params );
+							if($file_size > 2097152){
+								$errors[]='File size must be less than 2 MB';
+							}		
+							$fb_query="INSERT into event_fb_images (event_id,event_fb_pic,event_fb_insert_date) VALUES('$event_id','$file_name','$event_fb_insert_date')";
+							$desired_dir="user_data";
+							if(empty($errors)==true){
+								if(is_dir($desired_dir)==false){
+									mkdir("$desired_dir", 0700);		// Create directory if it does not exist
+								}
+								if(is_dir("$desired_dir/".$file_name)==false){
+									move_uploaded_file($file_tmp,"$desired_dir/".$file_name);
+								}else{									// rename the file if another one exist
+									$new_dir="$desired_dir/".$file_name.time();
+									 rename($file_tmp,$new_dir) ;				
+								}
+							 mysql_query($fb_query);			
+							}else{
+									print_r($errors);
+							}
+						}
+						if(empty($error)){
+							echo "Success";
+						}
 				
-				  mysql_query($sql) or die (mysql_error());
+				 
 				  $sql2   = "update event_videos set
 					event_video_code1 = '$youtube1', 
-					event_video_code2 = '$youtube2' 
+					event_video_code2 = '$youtube2', 
+					event_video_code3 = '$youtube3',
+					event_video_code4 = '$youtube4',
+					event_video_code5 = '$youtube5',
+					event_video_code6 = '$youtube6'
 				 where event_id='$event_id'";
 				
 				  mysql_query($sql2) or die (mysql_error());
@@ -274,10 +320,48 @@ $logoutURL = $facebook->getLogoutUrl();
 					event_twitter_hashtag = '$twitter',
 					event_youtube_video = '$youtube' where event_id='$event_id'";
 				
+				$errors= array();
+					 // include('BFI/BFI_Thumb.php'); 
+
+						foreach($_FILES['files']['tmp_name'] as $key => $tmp_name ){
+							$file_name = $key.$_FILES['files']['name'][$key];
+							$file_size =$_FILES['files']['size'][$key];
+							$file_tmp =$_FILES['files']['tmp_name'][$key];
+							$file_type=$_FILES['files']['type'][$key];	
+							//$params = array( 'width' => 400, 'height' => 300 );
+							//$file_name=bfi_thumb($image, $params );
+							if($file_size > 2097152){
+								$errors[]='File size must be less than 2 MB';
+							}		
+							$fb_query="INSERT into event_fb_images (event_id,event_fb_pic,event_fb_insert_date) VALUES('$event_id','$file_name','$event_fb_insert_date')";
+							$desired_dir="user_data";
+							if(empty($errors)==true){
+								if(is_dir($desired_dir)==false){
+									mkdir("$desired_dir", 0700);		// Create directory if it does not exist
+								}
+								if(is_dir("$desired_dir/".$file_name)==false){
+									move_uploaded_file($file_tmp,"$desired_dir/".$file_name);
+								}else{									// rename the file if another one exist
+									$new_dir="$desired_dir/".$file_name.time();
+									 rename($file_tmp,$new_dir) ;				
+								}
+							 mysql_query($fb_query);			
+							}else{
+									print_r($errors);
+							}
+						}
+						if(empty($error)){
+							echo "Success";
+						}
+				
 				mysql_query($sql) or die (mysql_error());
 					$sql2   = "update event_videos set
 					event_video_code1 = '$youtube1', 
-					event_video_code2 = '$youtube2' 
+					event_video_code2 = '$youtube2',
+					event_video_code3 = '$youtube3', 
+					event_video_code4 = '$youtube4', 
+					event_video_code5 = '$youtube5', 
+					event_video_code6 = '$youtube6' 
 				 where event_id='$event_id'";
 				
 				  mysql_query($sql2) or die (mysql_error());
@@ -408,22 +492,90 @@ $logoutURL = $facebook->getLogoutUrl();
 							</div>
 		
 					</div>
+				<!--	<div class="form-group">
+							<label for="field-ta" class="col-sm-3 control-label">Your Uploaded Images</label>
+							
+							<?//php
+							$eid=$row['event_id']; 
+							
+							$q=mysql_query("select event_fb_id,event_fb_pic from event_fb_images where event_id='$eid'")or die(mysql_error());?>
+							
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<select name="" style="width: 362px;margin-left: 253px;" onFocus="display_image(this.value);">
+								<?//php while($rw=mysql_fetch_array($q)){?>
+									<option value=<?//php echo $rw['event_fb_id']; ?>><?//php echo $rw['event_fb_pic'];?></option>
+									<?//php }?>
+								</select>
+								
+							</div> 
+						
+					</div>-->
+					
 					<div class="form-group">
-					<!-- 		<label for="field-ta" class="col-sm-3 control-label">FaceBook Images</label>
+							<label for="field-ta" class="col-sm-3 control-label">Upload Multiple pictures</label>
 					
 							<div class="form-group" style="width: 362px;margin-left: 253px;">
 								<input type="file" name="files[]" multiple/>
-							</div> -->
-							<span for="" class="col-sm-3 control-label">Facebook Export to Page</span>
+							</div> 
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<button type="button" class="btn btn-primary btn-lg" onClick='show_images();'>
+  Your Uploaded Images
+</button>
+							</div> 
+					</div>
+						<div class="form-group" id="fb_pic" style="display:none;">
+							
+							
+							<?php
+							$eid=$row['event_id']; 
+							$i=1;
+							$q=mysql_query("select event_fb_id,event_fb_pic from event_fb_images where event_id='$eid'")or die(mysql_error());?>
+							
+							<table align="center"><tr>
+								
+								<?php while($rw=mysql_fetch_array($q)){
+								 $fb_img=$rw['event_fb_pic'];
+								 $i++;
+								 if($i%5==0){?>
+								 		</tr><tr>
+									<?php }?>
+								<div><td>
+									<img src="user_data/<?php echo $fb_img; ?>" alt="" width="131" height="auto"/><br><a onClick="delete_image(<?php echo $rw['event_fb_id'];?>)" href="javascript:void(0);" style="padding-left: 10px;" class="delete btn btn-danger btn-sm btn-icon icon-left" onclick="return confirm(\'Are you sure?\');"><!--<a href="delete_image.php?id=<?//php echo $rw['event_fb_id'];?>"onclick="return confirm(\'Are you sure?\');">Delete</a>--></td></div>
+									
+									<?php }?>
+								
+								</table>
+						
+						
+					</div>
+					<script>
+					function show_images()
+					{
+						$('#fb_pic').toggle();
+					}
+					function delete_image(image_id)
+					{
+						$.post('delete_image.php',{'image_id':image_id},function(res){
+						if(res=="OK")
+						{
+							alert("image deleted");
+							location.reload();
+						}
+		
+		
+						});
+					}
+					</script>
+						<!--	<span for="" class="col-sm-3 control-label">Facebook Export to Page</span>
 							<div class="col-sm-5">
-							<?php if($user_id) {?>
+							<?//php if($user_id) {?>
 							
 							<select name="" id="page_export">
                                                                     
-								<?php 
+								<?//php 
                                                                 echo '<option value="0">Select Page</option>';
 								if(!empty($list_page)){?>
-								<?php foreach ($list_page as $key => $value) {
+								<?//php foreach ($list_page as $key => $value) {
 									echo '<option value="'.$key.'">'.$value.'</option>';
 								}}
 								 ?>								
@@ -431,13 +583,30 @@ $logoutURL = $facebook->getLogoutUrl();
 							</select>
                                                             
                                                             <input type="hidden" name="export_href" id="export_href_hidden" value="admin_export_facebook.php?id=<?php echo $id; ?>">
-							<a href="admin_export_facebook.php?id=<?php echo $id; ?>" class="page-export-ref btn btn-default fancybox fancybox.iframe" >Export</a>
-                                                     <a href="<?php //echo $logoutURL; ?>" class="btn btn-default" >logout</a>
+							<a href="admin_export_facebook.php?id=<?//php echo $id; ?>" class="page-export-ref btn btn-default fancybox fancybox.iframe" >Export</a>
+                                                     <a href="<?//php //echo $logoutURL; ?>" class="btn btn-default" >logout</a>
                                                         
-							<?php }else{ ?>
-							<a href="<?php echo $login_url; ?>" class="btn btn-default" >Get Pages</a>
-							<?php }?>
-						   </div>
+							<?//php }else{ ?>
+							<a href="<?//php echo $login_url; ?>" class="btn btn-default" >Get Pages</a>
+							<?//php }?>
+						   </div>-->
+					
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+						  </div>
+						  <div class="modal-body">
+							...
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Save changes</button>
+						  </div>
+						</div>
+					  </div>
 					</div>
 					<div style="display:none;" class="form-group">
 							<label for="field-ta" class="col-sm-3 control-label">Twitter Hash Tag</label>
@@ -460,6 +629,39 @@ $logoutURL = $facebook->getLogoutUrl();
 					
 							<div class="form-group" style="width: 362px;margin-left: 253px;">
 								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube2" id="youtube" ><?php echo $row2['event_video_code2']; ?></textarea>
+							</div>
+		
+					</div>
+					<div class="form-group">
+							<label for="field-ta" class="col-sm-3 control-label">YouTube Video 3 Code</label>
+					
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube3" id="youtube" ><?php echo $row2['event_video_code3']; ?></textarea>
+							</div>
+		
+					</div>
+					
+					<div class="form-group">
+							<label for="field-ta" class="col-sm-3 control-label">YouTube Video 4 Code</label>
+					
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube4" id="youtube" ><?php echo $row2['event_video_code4']; ?></textarea>
+							</div>
+		
+					</div>
+					<div class="form-group">
+							<label for="field-ta" class="col-sm-3 control-label">YouTube Video 5 Code</label>
+					
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube5" id="youtube" ><?php echo $row2['event_video_code5']; ?></textarea>
+							</div>
+		
+					</div>
+					<div class="form-group">
+							<label for="field-ta" class="col-sm-3 control-label">YouTube Video 6 Code</label>
+					
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube6" id="youtube" ><?php echo $row2['event_video_code6']; ?></textarea>
 							</div>
 		
 					</div>

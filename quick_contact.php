@@ -29,19 +29,20 @@
 														$quick_contact_map = $quick_contact_res['quick_contact_map'];
 													}
 												?> 
-                                                    	
-                                                       <p style="font-size:17px;"><b>
-													   		Contact:
-															<br /><br />
-                                                        	Email : <a href="mailto:contactus@cio-honour.sg"><?php echo $quick_contact_email; ?></a><br>
-															<br />
-                                                            Telephone : +65 9668 2895<br>
-                                                             <br />
-                                                        	Address : <?php echo $quick_contact_address; ?>
-                                                        </b></p>
+                                                    	<ul style="font-family: "Lato";font-size:17px;color:#FFFFFF;">
+													<p>Contact:</p>
+													<br /><br />
+													<li style="padding-top:7px;"><p>Email : <a href="mailto:contactus@cio-honour.sg"><?php echo $quick_contact_email; ?></a></p></li>
+													<li style="padding-top:7px;"</li>
+													<li style="padding-top:11px;"><p>Telephone : +65 9668 2895</p></li>
+													<li style="padding-top:18px;"></li>
+													<li style="padding-top:35px;"><p>Address : <?php echo $quick_contact_address; ?></p></li>
+													
+												</ul>
+                                                       
 						</div>
                                                    
-                        <div class="contact_detail fl" style="width:350px;">
+                        <div class="contact_detail fl" style="width:350px; padding-top:10px">
 											<?php echo $quick_contact_map; ?> 
 													
                         </div>

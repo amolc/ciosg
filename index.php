@@ -237,7 +237,7 @@
         </script> 
     </head>
 
-    <body style="margin:0px;padding:0px;">
+    <body>
 
         <?php
         include('sql_config/database/cio_db.php');
@@ -245,12 +245,12 @@
         include('header.php');
         ?>
 
-        <div id="black_wrapper" >
+        <div id="black_wrapper">
             <div class="black_container">
                 <?php include('navigation.php'); ?>
 			  <div class="video fl">
                	 <!--carousel start-->
-                        <div id="container" > 
+                        <div id="container"> 
                             <div id="carousel">
 							   <?php 
 								$video_query = mysql_query("SELECT * FROM videos order by ordernum ASC");
@@ -292,7 +292,7 @@
                                             <?php  $path_page  = $video_res['path'] ? $video_res['path'] : 'registration.php' ?>
 										 		<div>
 												<a href="<?php echo $path_page ?>">
-													<img style="height: 415px;width: 737px;" src="admin/<?php  echo $row_tmp['path'] ?>" alt="" />
+													<img style="height: 415px;width: 737px;" src="images/c1.jpg" alt="" />
 												</a>
 												</div>
 									<?php   } 
@@ -309,7 +309,7 @@
             <!-- VIDEO GALLERY -->
         </div>
     </div>
-    
+   
     <div style="padding-top:75px;height: 630px;" id="advisory_wrapper">
         <div class="sixteen columns">
             <div class="project">
@@ -377,58 +377,66 @@
 
     </div>
 </div>
+<div style="display:none;" id="advisory_wrapper">
+    <div class="our_advisory_panel">
+        <h1>Our Advisory Panel</h1>
+        <span><img src="images/alice_abigail.jpg" alt="" width="863" height="298"></span>
+        <h2>Alice Abigail</h2>
+        <p>Ms Alice Abigail, an Information Technology Head of Department with over 20 years<br>
+            of regional experience in leading and managing a team of IT managers and executives in IT goal setting, initiatives and support for the organization Find out more</p>
 
+    </div>
+    <div style="clear:both"></div>
+</div>
 <?php
 	//include('events_panel.php'); 
 	include('quick_contact.php');
 	include('footer.php');
 ?>                                
-</body>
-</html>
 
 <!-- Google CDN jQuery with fallback to local-->
 <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript">
-        (function($){
-            $(window).load(function(){
-                $("#content_6").mCustomScrollbar({
-                    scrollButtons:{
-                        enable:true
-                    },
-            advanced:{
-               updateOnContentResize:true
-                },
+	<script type="text/javascript">
+		(function($){
+			$(window).load(function(){
+				$("#content_6").mCustomScrollbar({
+					scrollButtons:{
+						enable:true
+					},
+			advanced:{
+     		   updateOnContentResize:true
+    			},
 
-                    theme:"dark-thick"
-                });
-                $("#content_7").mCustomScrollbar({
-                    scrollButtons:{
-                        enable:true
-                    },
+					theme:"dark-thick"
+				});
+				$("#content_7").mCustomScrollbar({
+					scrollButtons:{
+						enable:true
+					},
 
-            advanced:{
-               updateOnContentResize:true
-                },
+			advanced:{
+     		   updateOnContentResize:true
+    			},
 
-                    theme:"dark-thick"
-                });
-                $("#content_8").mCustomScrollbar({
-                    scrollButtons:{
-                        enable:true
-                    },
-            advanced:{
-               updateOnContentResize:true
-                },
+					theme:"dark-thick"
+				});
+				$("#content_8").mCustomScrollbar({
+					scrollButtons:{
+						enable:true
+					},
+			advanced:{
+     		   updateOnContentResize:true
+    			},
 
 
-                    theme:"dark-thick"
-                });
-            });
-        })(jQuery);
-</script>
-<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
-<script type="text/javascript" src="js/jquery.ui.rcarousel.js"></script>
-<script type="text/javascript">
+					theme:"dark-thick"
+				});
+			});
+		})(jQuery);
+	</script>
+  <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+ <script type="text/javascript" src="js/jquery.ui.rcarousel.js"></script>
+    <script type="text/javascript">
         jQuery(function($) {
 
             function generatePages() {
@@ -437,7 +445,7 @@
                 _total = $("#carousel").rcarousel("getTotalPages");
 
                 for (i = 0; i < _total; i++) {
-                    count ++;
+                	count ++;
                     _link = $("<a href='#'></a>");
 
                     $(_link)
@@ -501,11 +509,11 @@
                     );
 
                 
-                var count = 0;
-                count = <?php echo $list_count?>;
+            	var count = 0;
+        	    count = <?php echo $list_count?>;
 
                     if(count == 1){
-                        $('#pages .off').remove();
+                    	$('#pages .off').remove();
                     }
 
 
@@ -548,4 +556,7 @@
         });
 
 
-</script>
+    </script>
+
+</body>
+</html>

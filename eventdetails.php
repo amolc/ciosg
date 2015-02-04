@@ -33,6 +33,11 @@
 	width:390px!important;
 	height:125px!important;
 }
+
+img {
+    vertical-align: middle;
+} 
+
 </style>
 </head>
 
@@ -58,10 +63,10 @@
                                                         <?php 
                                               $today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
                         $current_date = date("Y/m/d", $today_date);
-                        $query = "SELECT * FROM `events` where event_held_date >= '$current_date'";
+                       $query = "SELECT * FROM `events`";
                                               $q1 = mysql_query($query); 
                                               while($res = mysql_fetch_array($q1)) { ?>
-                                                <li><a href="/eventdetails.php?event=<?php echo $res['event_id']; ?>" style="height:auto;"><?php echo $res['event_name']; ?></a></li>
+	                                              <div style="height:30px;"><a href="/eventdetails.php?event=<?php echo $res['event_id']; ?>"><?php echo $res['event_name']; ?></a></div>
                                               <?php } ?>
                                                     </div>
                                                   </div>
@@ -79,6 +84,7 @@
                           {
                               $id = $res['event_id'];
                               $event_name = $res['event_name'];
+							  $event_tag_name = $res['event_tag_name'];
                               $event_held_date = $res['event_held_date'];
 														  $event_held_time = $res['event_held_time'];
                                                           $event_image = $res['event_image'];
@@ -106,11 +112,11 @@
                                                          <h1>Date : 
 															
 															 <?php echo date('d F Y', strtotime($event_held_date)); ?> &nbsp;&nbsp;&nbsp; <?php echo $event_held_time?>
-															</h1>
+															</h1><br /> <br />
 															                             </div>
-                                                           <div>
+                                                           <div style="margin-top:105px;">
                                                              
-															  <br /> 
+															  
                                                             <span class="fr map_span"><!--<img src="images/map.jpg" alt="" >--><?php echo $event_map; ?></span>
                                                             <p>
 															   <strong style="font-size: 16px;font-weight: bold;">Event Location</strong>
@@ -123,11 +129,69 @@
                                                             <p><?php echo $event_description; ?></p>
                                                             <h2>On Social...</h2>
                                                           
-                                                            <p>
+														  <p>
+<div class="facebook_scroll owl-carousel" style="clear: both;" >
+<?php
+$query1 = mysql_query("select * from event_fb_images where event_id='".$id."' LIMIT 1000");
+while($res1 = mysql_fetch_array($query1))
+{
+$fb_image = $res1['event_fb_pic'];
+if (!empty($fb_image)) {
+?>
+<div><a href="admin/user_data/<?php echo $fb_image ; ?>" rel="prettyPhoto[pp_gal]" title="">
+<img src="admin/user_data/<?php echo $fb_image ; ?>" alt="" width="131" height="100" style="margin-bottom:22px;" /></a></div>
+<?php
+}
+}
+?>
+</div>
+</p>
+
+                                                         <!--     <p>
                                                             <div class="facebook_scroll owl-carousel" style="clear: both;" >
                                                            
-                                                            <?php
-                                                              $query1 = mysql_query("select * from event_fb_images where event_id='".$id."' LIMIT 1000");
+                                                          <?//php
+															
+															
+															/*function callInstagram($url)
+															{
+																$ch = curl_init();
+																curl_setopt_array($ch, array(
+																CURLOPT_URL => $url,
+																CURLOPT_RETURNTRANSFER => true,
+																CURLOPT_SSL_VERIFYPEER => false,
+																CURLOPT_SSL_VERIFYHOST => 2
+																));
+																
+																$result = curl_exec($ch);
+																curl_close($ch);
+																return $result;
+															}
+															
+															$tag =$event_tag_name;
+															$client_id = "8ec43f34ed7e443ab0b73bd98f21c2ab";
+															
+															$url = 'https://api.instagram.com/v1/tags/'.$tag.'/media/recent?client_id='.$client_id;
+															
+															$inst_stream = callInstagram($url);
+															$results = json_decode($inst_stream, true);
+															
+															//Now parse through the $results array to display your results... 
+															foreach($results['data'] as $item){
+																$image_link = $item['images']['low_resolution']['url'];?>*/
+																
+																 <div><a href="admin/upload<?//php echo $event_image ; ?>" rel="prettyPhoto[pp_gal]" title="">
+                                                                 <img src="admin/upload<?//php echo $event_image ; ?>" alt="" width="131" height="auto"/></a></div>
+																
+													
+															
+															
+															
+															
+															
+															
+															
+                                                            <!--  $query1 = mysql_query("select * from event_fb_images where event_id='".$id."' LIMIT 1000");
                                                               while($res1 = mysql_fetch_array($query1))
                                                               {
                                                                   $fb_image = $res1['event_fb_pic'];
@@ -135,10 +199,10 @@
                                                                 ?>
                                                            
                                                                   
-                                                                    <div><a href="admin/user_data/<?php echo $fb_image ; ?>" rel="prettyPhoto[pp_gal]" title="">
-                                                                    <img src="admin/user_data/<?php echo $fb_image ; ?>" alt="" width="131" height="auto"/></a></div>
+                                                                    <div><a href="admin/user_data/<?//php echo $fb_image ; ?>" rel="prettyPhoto[pp_gal]" title="">
+                                                                    <img src="admin/user_data/<?//php echo $fb_image ; ?>" alt="" width="131" height="auto"/></a></div>
 
-                                                             <?php   
+                                                             <?//php   
                                                                
                                                                 }
                                                               }
@@ -146,7 +210,7 @@
                                                      
                                                            
                                                               </div>
-                                                            </p>
+                                                            </p>-->
 
                                                             
                                                             <br>
@@ -154,7 +218,7 @@
                                                             
                                                             <?php
 															
-                                                              $query2 = mysql_query("select * from event_videos where event_id='".$id."' LIMIT 1");
+                                                              $query2 = mysql_query("select * from event_videos where event_id='".$id."'");
                                                               // while($res2 = mysql_fetch_array($query2))
                                                               // {
 
@@ -171,10 +235,22 @@
 																$res2 = mysql_fetch_array($query2);                                                            
                                                                $event_video_code1 = $res2['event_video_code1'];
                                                                $event_video_code2 = $res2['event_video_code2'];
+															   $event_video_code3 = $res2['event_video_code3'];
+															   $event_video_code4 = $res2['event_video_code4'];
+															   $event_video_code5 = $res2['event_video_code5'];
+															   $event_video_code6 = $res2['event_video_code6'];
                                                                 if ($event_video_code1 !="" || $event_video_code2 !="") {																
 																 echo '<p><strong>YouTube Videos</strong></p>';                                                                 
 																 echo '<span class="video_span" style="margin-right:4px; width:285px;height:161px; float:left;">'.$event_video_code1.'</span>';
 																 echo '<span class="video_span" style="margin-right:4px; width:285px;height:161px; float:left;">'.$event_video_code2.'</span>';
+																 echo '<span class="video_span" style="margin-right:4px; width:285px;height:161px; float:left;">'.$event_video_code3.'</span>';
+
+																 echo '<span class="video_span" style="margin-right:4px; width:285px;height:161px; float:left;">'.$event_video_code4.'</span>';
+
+																 echo '<span class="video_span" style="margin-right:4px; width:285px;height:161px; float:left;">'.$event_video_code5.'</span>';
+
+																 echo '<span class="video_span" style="margin-right:4px; width:285px;height:161px; float:left;">'.$event_video_code6.'</span>';
+
                                                                 }
  														  
                                                             ?>

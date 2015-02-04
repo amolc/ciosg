@@ -37,7 +37,7 @@
 <?php include('include/admin_side_menu/admin_side_menu.php'); ?>
 	<div class="main-content">
 <?php include('include/admin_header/admin_header.php'); ?>
-
+ 
 			<ol class="breadcrumb bc-3">
 				<li>
 					<a href="admin_dashboard.php"><i class="entypo-home"></i>Home</a>
@@ -73,6 +73,7 @@
 		<?php
 
 				 include('../sql_config/database/cio_db.php'); 
+				 
 
 			if($_POST['upload_button'] == "Submit"){
 			
@@ -116,6 +117,7 @@
 				$event_name = mysql_real_escape_string($_POST['event_name']);
 				$event_held_date = mysql_real_escape_string($_POST['event_held_date']);
 				$event_held_time = mysql_real_escape_string($_POST['event_held_time']);
+				$event_tag_name = mysql_real_escape_string($_POST['event_tag_name']);
 				$temp_date = explode("/",$event_held_date);
 				
 				/*$event_held_date = $temp_date[2]."/".$temp_date[0]."/".$temp_date[1];*/
@@ -136,9 +138,9 @@
 				$today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
 				$current_date = date("m/d/Y", $today_date);
 				
-					$sql   = "insert into events(event_name,event_held_date,event_held_time,event_image,event_description,event_insert_date,event_address1,event_address2,event_city,event_country,event_pincode,event_map,event_facebook,event_twitter_hashtag,event_youtube_video)
+					$sql   = "insert into events(event_name,event_tag_name,event_held_date,event_held_time,event_image,event_description,event_insert_date,event_address1,event_address2,event_city,event_country,event_pincode,event_map,event_facebook,event_twitter_hashtag,event_youtube_video)
 					values
-					('$event_name','$event_held_date','$event_held_time','$event_image','$event_description','$current_date','$address1','$address2','$city','$country','$pincode','$map','$facebook','$twitter','$youtube')";
+					('$event_name','$event_tag_name','$event_held_date','$event_held_time','$event_image','$event_description','$current_date','$address1','$address2','$city','$country','$pincode','$map','$facebook','$twitter','$youtube')";
 					
 					$query = mysql_query($sql) or die (mysql_error());
 					$event_id = mysql_insert_id();
@@ -162,6 +164,7 @@
 				  {
 				  
 			    $event_name = mysql_real_escape_string($_POST['event_name']);
+				$event_tag_name = mysql_real_escape_string($_POST['event_tag_name']);
 				$event_held_date = mysql_real_escape_string($_POST['event_held_date']);
 				$event_held_time = mysql_real_escape_string($_POST['event_held_time']);
 				$temp_date = explode("/",$event_held_date);
@@ -185,9 +188,9 @@
 				$today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
 				$current_date = date("m/d/Y", $today_date);
 				
-					$sql   = "insert into events(event_name,event_held_date,event_held_time,event_image,event_description,event_insert_date,event_address1,event_address2,event_city,event_country,event_pincode,event_map,event_facebook,event_twitter_hashtag,event_youtube_video)
+					$sql   = "insert into events(event_name,event_tag_name,event_held_date,event_held_time,event_image,event_description,event_insert_date,event_address1,event_address2,event_city,event_country,event_pincode,event_map,event_facebook,event_twitter_hashtag,event_youtube_video)
 					values
-					('$event_name','$event_held_date','$event_held_time','$event_image','$event_description','$current_date','$address1','$address2','$city','$country','$pincode','$map','$facebook','$twitter','$youtube')";
+					('$event_name','$event_tag_name','$event_held_date','$event_held_time','$event_image','$event_description','$current_date','$address1','$address2','$city','$country','$pincode','$map','$facebook','$twitter','$youtube')";
 
 
 					
@@ -205,11 +208,15 @@
 				  }
 				  
 				      $errors= array();
+					 // include('BFI/BFI_Thumb.php'); 
+
 						foreach($_FILES['files']['tmp_name'] as $key => $tmp_name ){
 							$file_name = $key.$_FILES['files']['name'][$key];
 							$file_size =$_FILES['files']['size'][$key];
 							$file_tmp =$_FILES['files']['tmp_name'][$key];
 							$file_type=$_FILES['files']['type'][$key];	
+							//$params = array( 'width' => 400, 'height' => 300 );
+							//$file_name=bfi_thumb($image, $params );
 							if($file_size > 2097152){
 								$errors[]='File size must be less than 2 MB';
 							}		
@@ -234,7 +241,7 @@
 							echo "Success";
 						}
 	
-				$vide_query1="INSERT into event_videos (event_id,event_video_code1,event_video_code2,event_video_inserted_date) VALUES('$event_id','$youtube1','$youtube2','$event_video_inserted_date')";
+				$vide_query1="INSERT into event_videos (event_id,event_video_code1,event_video_code2,event_video_code3,event_video_code4,event_video_code5,event_video_code6,event_video_inserted_date) VALUES('$event_id','$youtube1','$youtube2','$youtube3','$youtube4','$youtube5','$youtube6','$event_video_inserted_date')";
 				mysql_query($vide_query1);	
 				echo'<script>window.location.replace("admin_all_event.php?add=ok");</script>';	
 					// if($query)
@@ -258,6 +265,7 @@
 							<input type="text" class="form-control" id="field-1" name="event_name"  placeholder=" " required>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Event Address1</label>
 
@@ -269,7 +277,7 @@
 						<label for="field-1" class="col-sm-3 control-label">Event Address2</label>
 
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" name="event_address2"  placeholder=" " required>
+							<input type="text" class="form-control" id="field-1" name="event_address2"  placeholder=" " >
 						</div>
 					</div>
 					<div class="form-group">
@@ -322,6 +330,8 @@
 							</div>
 		
 					</div>
+					
+					
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Image Upload</label>
 						
@@ -352,14 +362,175 @@
 							</div>
 		
 					</div>
+					<!--<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Instagram Tag Name</label>
+
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="event_tag_name" name="event_tag_name"  placeholder="" required>						
+						</div>
+					</div>-->
 					<div class="form-group">
-							<label for="field-ta" class="col-sm-3 control-label">FaceBook Images</label>
+					<label for="field-ta" class="col-sm-3 control-label">Upload Multiple pictures</label>
 					
 							<div class="form-group" style="width: 362px;margin-left: 253px;">
 								<input type="file" name="files[]" multiple/>
-							</div>
-		
+							</div> 
 					</div>
+					<style>
+#filelist {
+    margin-top: 15px;
+}
+
+#uploadFilesButtonContainer, #selectFilesButtonContainer, #overallProgress {
+    display: inline-block;
+}
+
+#overallProgress {
+    float: right;
+}
+
+.yellowBackground {
+  background: #F2E699;
+}
+</style>
+
+<div id="exampleContainer">
+<div id="uploaderContainer">
+    <div id="selectFilesButtonContainer">
+    </div>
+    <div id="uploadFilesButtonContainer">
+      <button type="button" id="uploadFilesButton"
+              class="yui3-button" style="width:250px; height:35px;">Upload Files</button>
+    </div>
+    <div id="overallProgress">
+    </div>
+</div>
+
+<div id="filelist">
+  <table id="filenames">
+    <thead>
+       <tr><th>File name</th><th>File size</th><th>Percent uploaded</th></tr>
+       <tr id="nofiles">
+        <td colspan="3" id="ddmessage">
+            <strong>No files selected.</strong>
+        </td>
+       </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<script>
+
+YUI({filter:"raw"}).use("uploader", function(Y) {
+Y.one("#overallProgress").set("text", "Uploader type: " + Y.Uploader.TYPE);
+   if (Y.Uploader.TYPE != "none" && !Y.UA.ios) {
+       var uploader = new Y.Uploader({width: "250px",
+                                      height: "35px",
+                                      multipleFiles: true,
+                                      swfURL: "flashuploader.swf?t=" + Math.random(),
+                                      uploadURL: "http://yuilibrary.com/sandbox/upload/",
+                                      simLimit: 2,
+                                      withCredentials: false
+                                     });
+       var uploadDone = false;
+
+       if (Y.Uploader.TYPE == "html5") {
+          uploader.set("dragAndDropArea", "body");
+
+          Y.one("#ddmessage").setHTML("<strong>Drag and drop files here.</strong>");
+
+          uploader.on(["dragenter", "dragover"], function (event) {
+              var ddmessage = Y.one("#ddmessage");
+              if (ddmessage) {
+                ddmessage.setHTML("<strong>Files detected, drop them here!</strong>");
+                ddmessage.addClass("yellowBackground");
+              }
+           });
+
+           uploader.on(["dragleave", "drop"], function (event) {
+              var ddmessage = Y.one("#ddmessage");
+              if (ddmessage) {
+                ddmessage.setHTML("<strong>Drag and drop files here.</strong>");
+                ddmessage.removeClass("yellowBackground");
+              }
+           });
+       }
+
+       uploader.render("#selectFilesButtonContainer");
+
+       uploader.after("fileselect", function (event) {
+
+          var fileList = event.fileList;
+          var fileTable = Y.one("#filenames tbody");
+          if (fileList.length > 0 && Y.one("#nofiles")) {
+            Y.one("#nofiles").remove();
+          }
+
+          if (uploadDone) {
+            uploadDone = false;
+            fileTable.setHTML("");
+          }
+
+          Y.each(fileList, function (fileInstance) {
+              fileTable.append("<tr id='" + fileInstance.get("id") + "_row" + "'>" +
+                                    "<td class='filename'>" + fileInstance.get("name") + "</td>" +
+                                    "<td class='filesize'>" + fileInstance.get("size") + "</td>" +
+                                    "<td class='percentdone'>Hasn't started yet</td>");
+                             });
+       });
+
+       uploader.on("uploadprogress", function (event) {
+            var fileRow = Y.one("#" + event.file.get("id") + "_row");
+                fileRow.one(".percentdone").set("text", event.percentLoaded + "%");
+       });
+
+       uploader.on("uploadstart", function (event) {
+            uploader.set("enabled", false);
+            Y.one("#uploadFilesButton").addClass("yui3-button-disabled");
+            Y.one("#uploadFilesButton").detach("click");
+       });
+
+       uploader.on("uploadcomplete", function (event) {
+            var fileRow = Y.one("#" + event.file.get("id") + "_row");
+                fileRow.one(".percentdone").set("text", "Finished!");
+       });
+
+       uploader.on("totaluploadprogress", function (event) {
+                Y.one("#overallProgress").setHTML("Total uploaded: <strong>" +
+                                                     event.percentLoaded + "%" +
+                                                     "</strong>");
+       });
+
+       uploader.on("alluploadscomplete", function (event) {
+                     uploader.set("enabled", true);
+                     uploader.set("fileList", []);
+                     Y.one("#uploadFilesButton").removeClass("yui3-button-disabled");
+                     Y.one("#uploadFilesButton").on("click", function () {
+                          if (!uploadDone && uploader.get("fileList").length > 0) {
+                             uploader.uploadAll();
+                          }
+                     });
+                     Y.one("#overallProgress").set("text", "Uploads complete!");
+                     uploadDone = true;
+       });
+
+       Y.one("#uploadFilesButton").on("click", function () {
+         if (!uploadDone && uploader.get("fileList").length > 0) {
+            uploader.uploadAll();
+         }
+       });
+   }
+   else {
+       Y.one("#uploaderContainer").set("text", "We are sorry, but to use the uploader, you either need a browser that support HTML5 or have the Flash player installed on your computer.");
+   }
+
+
+});
+
+</script>
 					<!--<div  class="form-group">
 							<label for="field-ta" class="col-sm-3 control-label">Twitter Hash Tag</label>
 					
@@ -381,6 +552,38 @@
 					
 							<div class="form-group" style="width: 362px;margin-left: 253px;">
 								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube2" id="youtube" ></textarea>
+							</div>
+		
+					</div>
+					<div class="form-group">
+							<label for="field-ta" class="col-sm-3 control-label">YouTube Video 3 Code</label>
+					
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube3" id="youtube" ></textarea>
+							</div>
+		
+					</div>
+					<div class="form-group">
+							<label for="field-ta" class="col-sm-3 control-label">YouTube Video 4 Code</label>
+					
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube4" id="youtube" ></textarea>
+							</div>
+		
+					</div>
+					<div class="form-group">
+							<label for="field-ta" class="col-sm-3 control-label">YouTube Video 5 Code</label>
+					
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube5" id="youtube" ></textarea>
+							</div>
+		
+					</div>
+					<div class="form-group">
+							<label for="field-ta" class="col-sm-3 control-label">YouTube Video 6 Code</label>
+					
+							<div class="form-group" style="width: 362px;margin-left: 253px;">
+								<textarea style="width:362px;height:140px;" class="form-control wysihtml5 overview" name="youtube6" id="youtube" ></textarea>
 							</div>
 		
 					</div>

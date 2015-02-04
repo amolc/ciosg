@@ -49,7 +49,7 @@
                                         
                                                                                 
                                    
-                                        <div id="black_wrapper">
+                                       <div id="black_wrapper">
                                             <div class="inner_nav">
                                                 <?php include('navigation.php'); ?>
                                             </div>
@@ -59,7 +59,7 @@
                                                   <div class="overview_left fl">
                                                   	<div class="about fl">
                                                     	<h1>NEWS</h1>
-														<h1 style="background: none;"><a style="font-size: 24px;font-weight: bold;" id="total_news" href="news.php">2014 &nbsp;( <?php echo $total;?> )</a></h1>
+														<!--<h1 style="background: none;"><a style="font-size: 24px;font-weight: bold;" id="total_news" href="news.php">2014 &nbsp;( <?php echo $total;?> )</a></h1>-->
                                                         <?php
 															
 															function check_input($value)
@@ -133,14 +133,14 @@
 													// else {
 													include ('paginate.php'); //include of paginat page
 													
-$per_page =4;   
+$per_page =2;   
 // $result1 = "";      // number of results to show per page 
 // if(isset($_REQUEST['tags']))
 // {
 // $Keyword = $_REQUEST['tags'];
 
 if($Keyword == "") {
-$result = mysql_query("SELECT * FROM `news` ORDER BY `news`.`news_inserted_date` DESC");
+$result = mysql_query("SELECT * FROM `news` ORDER BY `news`.`news_date` DESC");
 }
 else {
 // $result = mysql_query("SELECT * FROM news where news_tags LIKE '%Keyword%'");
@@ -203,17 +203,17 @@ if ($page <= 0)
 					?>
 					
 					<div class="singapore_news_detail fl"> 
-                                                        	<a href="view_news.php?id=<?php echo mysql_result($result, $i, 'news_id'); ?>" target="_blank" class="read">
-															<img src="admin/upload/news/<?php echo mysql_result($result, $i, 'news_img'); ?>" width="661">
-															</a>
+                                                        	<!--<a href="view_news.php?id=<?php echo mysql_result($result, $i, 'news_id'); ?>" target="_blank" class="read">
+																<img src="admin/upload/news/<?php echo mysql_result($result, $i, 'news_img'); ?>" width="661">
+																</a>-->
                                                             <h1 style="line-height: 24px;height: auto;margin-top: 10px;margin-bottom: 10px;"><?php echo  mysql_result($result, $i, 'news_title'); ?></h1>
-                                                            <h2>Posted: <span><?php echo mysql_result($result, $i, 'news_inserted_date'); ?></span></h2>
+                                                            <h2>Posted: <span style="color:#bea52e"><?php echo date('d M Y', strtotime(mysql_result($result, $i, 'news_date'))); ?></span></h2>
 																	<?php
 																$description = mysql_result($result, $i, 'news_description');
 																$news_tags = mysql_result($result, $i, 'news_tags');
 																		if (strlen($description) > 190) {
 																		$stringCut = substr($description, 0, 300);
-																		 $description = substr($stringCut, 0, strrpos($stringCut, ' ')).'...';
+																		$description = substr($stringCut, 0, strrpos($stringCut, ' ')).'...';
 																			}
 																	?>
                                                             <p><?php echo $description; ?></p>
@@ -281,7 +281,7 @@ if ($page <= 0)
                                         
                                             	<?php 
            
-											include('events_panel.php');
+											//include('events_panel.php');
 											include('quick_contact.php');
 											include('footer.php');
 											

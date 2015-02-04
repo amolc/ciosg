@@ -39,6 +39,8 @@
 </head>
 
 <body>
+	<div class="clsWrapper">
+		<div class="clsHeader">
                                    
 												<?php
 												
@@ -74,13 +76,18 @@
 												?>
                                         
                                          
-                                                                                
-                                  
-                                        <div id="black_wrapper">
-                                            <div class="inner_nav">
-                                                <?php include('navigation.php'); ?>
-                                            </div>
-                                        </div>
+                            <div class="clsLogo_ban">
+				<div class="container">
+					<div class="clsPadding_cont">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="clsLogo"><img src="images/logo.png"/></div>
+							</div>
+						</div>                                                        
+                                  <div class="row">
+							<div class="col-md-12">
+								<div class="clsData_cont">
+                                        
                                             <div id="advisory_wrapper">
                                                 <div class="news_container mrgn_top" style="height:auto;">
                                                   <div class="overview_left fl">
@@ -118,8 +125,8 @@
                                                                 </div>
                                                             
                                                         </div>
-                                                        <div class="singapore_news_detail fl">
-                                                        	<img src="http://cio.fountaintechies.com/admin/upload/news/<?php echo $row['news_img']; ?>" width="661">
+                                                        <div class="singapore_news_detail fl" style="text-align: center">
+                                                        	<img src="http://cio.fountaintechies.com/CXO_HONOUR/admin/upload/news/<?php echo $row['news_img']; ?>" width="auto">
                                                             <h1 style="line-height: 24px;height: auto;margin-top: 10px;margin-bottom: 10px;"><?php echo $row['news_title']; ?></h1>
                                                             <h2>Posted: <span><?php echo $row['news_inserted_date']; ?></span></h2>
                                                             <p><?php echo $row['news_description']; ?></p>
@@ -145,16 +152,11 @@
 																		<div class="social_media fr" style="width:145px;">
 																		<span class='st_sharethis'></span>
 																		<span class='st_facebook'></span>
-																		<span style="margin-top: -99px;" class='st_twitter'></span>
+																		<span class='st_twitter'></span>
 																		<span class='st_linkedin'></span>
 																		<span class='st_pinterest'></span>
 																		<span class='st_email'></span>
-																		<!--<span>
-																			<a target="_blank" href="http://www.linkedin.com/company/cio-choice-singapore/" style="margin:0px 0px 0px 5px;"><img src="images/linkedin.png" width="30" height="31"></a>
-																			<a target="_blank" href="https://twitter.com/CIOCHOICE_SG" style="margin:0px 0px 0px 5px;"><img src="images/twitter.png" width="30" height="31"></a>
-																			<a target="_blank" href="https://plus.google.com/+CiochoiceSg1/posts" style="margin:0px 0px 0px 5px;"><img src="images/google_plus.png" width="30" height="31"></a>
-																			<a target="_blank" href="https://www.facebook.com/ciochoice.sg" style="margin:0px 0px 0px 5px;"><img src="images/facebook.png" width="30" height="31"></a>
-																		</span> -->
+																		
 																	</div>
 																	
                                                                     
@@ -168,11 +170,17 @@
                                                 </div>
                                                 
                                             </div>
-                                        
+											</div>
+											</div>
+											</div>
+											</div>
+											</div>
+											</div>
+											</div>
+											</div>
                                             	<?php 
            
-											include('events_panel.php');
-											include('quick_contact.php');
+											
 											include('footer.php');
 											
 											 ?>

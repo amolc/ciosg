@@ -29,13 +29,26 @@
       <script src="js/html5shiv.min.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
-	
+	<style>
+		.cls_imgs img:hover 
+		{
+			-webkit-filter: grayscale(100%);
+   -moz-filter: grayscale(100%);
+   -ms-filter: grayscale(100%);
+   filter: grayscale(100%);
+   filter: gray; /* IE 6-9 */
+		}
+	</style>
   </head>
   <body>
 	<div class="clsWrapper">
 	<div class="clsHeader">
-			
-							<?php include("header.php")?>
+							
+		<?php
+        include('sql_config/database/cio_db.php');
+        
+        include('header.php');
+        ?>
 			<div class="clsLogo_ban">
 				<div class="container">
 					<div class="clsPadding_cont">
@@ -61,7 +74,7 @@
 										
 										<div class="clsCxo_logo_bx_main">
 											<div class="clsCxo_logo_bx">
-												<div class="cls_img"><img src="images/cio_logo2_gry.png"/></div>
+												<div class="cls_img cls_imgs"><img src="images/cio_logo2.png"/></div>
 												<div class="cls_img"><img src="images/lg2.png" width="165px"/></div>
 												<div class="clsLine"></div>
 												<div class="cls_flg"><img src="images/Malaysia.png"/></div>
@@ -70,7 +83,7 @@
 										
 										<div class="clsCxo_logo_bx_main">
 											<div class="clsCxo_logo_bx">
-												<div class="cls_img"><img src="images/cio_logo3_gry.png"/></div>
+												<div class="cls_img cls_imgs"><img src="images/cio_logo3.png"/></div>
 												<div class="cls_img"><img src="images/lg3.png" width="165px"/></div>
 												<div class="clsLine"></div>
 												<div class="cls_flg"><img src="images/Indonezia.png"/></div>
@@ -79,7 +92,7 @@
 										
 										<div class="clsCxo_logo_bx_main">
 											<div class="clsCxo_logo_bx">
-												<div class="cls_img"><img src="images/cio_logo4_gry.png"/></div>
+												<div class="cls_img cls_imgs"><img src="images/cio_logo4.png"/></div>
 												<div class="cls_img"><img src="images/lg4.png" width="165px"/></div>
 												<div class="clsLine"></div>
 												<div class="cls_flg"><img src="images/Singapore.png"/></div>
@@ -88,7 +101,7 @@
 										
 										<div class="clsCxo_logo_bx_main">
 											<div class="clsCxo_logo_bx">
-												<div class="cls_img"><img src="images/cio_logo5_gry.png"/></div>
+												<div class="cls_img cls_imgs"><img src="images/cio_logo5.png"/></div>
 												<div class="cls_img"><img src="images/lg5.png" width="165px"/></div>
 												<div class="clsLine"></div>
 												<div class="cls_flg"><img src="images/Singapore.png"/></div>
@@ -184,7 +197,10 @@
 			</div>	
 		</div>	-->
 		
-		<?php include "footer.php"?>
+		<?php 
+			
+			include('footer.php');
+		?>
 	</div>	<!--clsWrapper-->
 	
 	

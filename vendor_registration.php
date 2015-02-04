@@ -60,12 +60,12 @@ function passwordvalid()
 <body>
 							     <?php
 													include('sql_config/database/cio_db.php'); 
-														// include('top_header.php');
+													
+														include('top_header.php');
+														include('header.php');
 														
 									?>
-                                        <div id="top_wrapper">
-	<div class="top_container">
-	<div class="top_login fl">
+                                      
 					<?php
 						session_start();
 						if(isset($_SESSION['user_name']))
@@ -90,32 +90,75 @@ function passwordvalid()
 	
 	  
 	
-	</div>
-	  <div class="social_media fr">
-		<!--<p>CONNECT WITH US</p>-->
-			<span>
-				<a href="http://www.linkedin.com/company/cio-choice-singapore/" title="Linkedin" target="_blank"><img src="images/linkedin.png" alt="Linkedin" title="Linkedin" width="30" height="31"></a>
-				<a href="https://twitter.com/CIOCHOICE_SG" title="Twitter" target="_blank"><img src="images/twitter.png" width="30" height="31"></a>
-				<a href="https://plus.google.com/+CiochoiceSg1/posts" title="Google Plus" target="_blank"><img src="images/google_plus.png" alt="" width="30" height="31"></a>
-				<a href="https://www.facebook.com/ciochoice.sg" title="Facebook" target="_blank"><img src="images/facebook.png" width="30" height="31"></a>
-				<a href="http://www.youtube.com/user/CIOCHOICEsingapore" title="Youtube" target="_blank" style="margin-right:0;"><img src="images/play.png" width="30" height="31"></a>
-			</span> 
-		</div>
-	</div>
-</div>
-<div style="width:100%; height:49px;"></div>
-
+	
 
                                         <div id="black_wrapper">
+										
                                             <div class="inner_nav">
-                                                <?php include('navigation.php'); ?>
+                                                <?php
+												 include('navigation.php'); ?>
                                             </div>
                                         </div>
-                                            <div id="advisory_wrapper">
-                                                <div class="get_in_touch" style="margin-top:15px;">
-                                                  <div class="login_main fl">
+										 <div id="advisory_wrapper">
+                                                <div class="get_in_touch mrgn_top">
+                                                  
+                                                  <div class="contact_details_2 fl">
                                                   	
-                                                    <?php
+                                                    <a href="vendor_login.php">Login</a> 
+													<a href="vendor_registration.php" class="active">Registration</a>
+													<br />
+																				
+													
+                                                  </div>
+                                                  <div class="advisory_panel fl" style="height:auto;">
+                                                  	<div class="contact_address fl" style="height:auto;">
+                                                     <span>Register as a Vendor</span>
+                                                      <p>Subscribe and get visibility with CIO's in Singapore</p>
+                                                    </div>
+                                                    
+                                                   <div class="contact_form fr" name="registration" id="registration" > 
+														<form name="register_venor" action="vendor_sucess.php" method="post" onSubmit="return validate();">
+                                                         
+                                                            	
+                                                              <label> First name</label>
+                                                                <input style="font-size: 15px;" id="fname" name="fname" type="text"  required>
+                                                              <label> Last name</label>
+                                                                <input style="font-size: 15px;" id="lname" name="lname" type="text" required>
+															  <label> Company</label>
+                                                                <input style="font-size: 15px;" id="company" name="company" type="text" required>
+																 <label>Title</label>
+                                                                <input style="font-size: 15px;" id="btitle" name="btitle" type="text" required>
+															   <label> Mobile No.</label>
+                                                                <input style="font-size: 15px;" id="mobile" name="mobile" type="text" required>
+															  <label> Email</label>
+                                                                <input style="font-size: 15px;" id="email" name="email" type="text" required>
+															  <label> Password</label>
+                                                                <input style="font-size: 15px;" id="pwd" name="pwd" type="password" required>
+															   <label>Confirm Password</label>
+                                                                <input style="font-size: 15px;" onKeyUp="passwordvalid()" id="rtype" name="rtype" type="password" required>
+												
+                                                                <input value="Register" style="margin-left: 10px;" name="submit" type="submit">
+														</form>
+                                                        </div>
+																						
+                                                    
+                                                  </div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                     
+									   
+									                          
+                                                  	
+                                                    
+													
+													
+													 
+                                                    	
+														
+														
+														
+														<?php
 													if($_POST['submit'] == "SIGN IN")
 													{
 					
@@ -204,33 +247,6 @@ function passwordvalid()
 																echo "<h1 style='color: #F00;'>The Username or password you entered is incorrect , please try again</h1>";
 															}
 													?>
-													
-													
-													 
-                                                    	<div class="login_form fl"> 
-														<form name="register_venor" action="vendor_sucess.php" method="post" onSubmit="return validate();">
-                                                        	<div class="login_box fl">  
-                                                            	<h1>Vendor Register Here</h1>
-                                                              <label> First name</label>
-                                                                <input style="font-size: 15px;" id="fname" name="fname" type="text"  required>
-                                                              <label> Last name</label>
-                                                                <input style="font-size: 15px;" id="lname" name="lname" type="text" required>
-															  <label> Company</label>
-                                                                <input style="font-size: 15px;" id="company" name="company" type="text" required>
-																 <label>Title</label>
-                                                                <input style="font-size: 15px;" id="btitle" name="btitle" type="text" required>
-															   <label> Mobile No.</label>
-                                                                <input style="font-size: 15px;" id="mobile" name="mobile" type="text" required>
-															  <label> Email</label>
-                                                                <input style="font-size: 15px;" id="email" name="email" type="text" required>
-															  <label> Password</label>
-                                                                <input style="font-size: 15px;" id="pwd" name="pwd" type="password" required>
-															   <label>Confirm Password</label>
-                                                                <input style="font-size: 15px;" onKeyUp="passwordvalid()" id="rtype" name="rtype" type="password" required>
-												
-                                                                <input value="Register" style="margin-left: 10px;" name="submit" type="submit">
-																</form>
-                                                        </div>
 														
 														
 														
@@ -238,35 +254,18 @@ function passwordvalid()
 														
 														
 														
-														
-														
-                                                       	  <div class="sign_in fr"> 
-														  <form action="vendor_sucess.php" method="post">
-                                                         <div class="login_box fl">
-                                                            	<h1>Login Here</h1>
-                                                              <label> Username</label>
-                                                                <input style="font-size: 15px;" name="username" type="email" required>
-                                                              <label>Password</label> 
-                                                                <input name="password" type="password" required>
-																
-																	<a style="color: #FFFFFF; float: left; margin-left: 86px;text-decoration: underline;    width: 222px;" href="forgot_password.php">Forgot your password ?</a>
-                                                                <input value="SIGN IN" style="margin-left: 10px;" name="submit" type="submit">
-																
-                                                        </div>
-                                                            </div>
+                                                       	  
                                                             
-                                                            <div style="text-decoration: underline;" class="register_now fl"></div>
+                                                            
                                                     
-                                                  </div>
-												  </form>
+                                                  
+												  
                                                   <?php
 												  
 												  }
 												  ?>
-                                                </div>
-                                                <div style="clear:both;"></div>
-                                            </div>
-                                        	</div>
+                                                
+                                                
 											<?php 
            
 											include('quick_contact.php');

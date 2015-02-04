@@ -16,8 +16,18 @@
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic"  id="style-resource-4">
 	<link rel="stylesheet" href="include/resource/css/neon.css"  id="style-resource-5">
 	<link rel="stylesheet" href="include/resource/css/custom.css"  id="style-resource-6">
+	<link rel="stylesheet" type="text/css" href="master/jquery.datetimepicker.css" />
+
 
 	<script src="include/resource/js/jquery-1.10.2.min.js"></script>
+	
+	<script src="include/resource/js/jquery-1.10.2.min.js"></script>
+	<script src="include/resource/js/jquery-1.10.2.min.js"></script>
+	<script src="include/resource/js/bootstrap.min.js" id="script-resource-3"></script>
+	<script src="include/resource/js/bootstrap.js" id="script-resource-3"></script>
+	<script type="text/javascript" src="master/jquery.js"></script>               
+	<script type="text/javascript" src="master/jquery.datetimepicker.js"></script>  
+	
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -116,7 +126,8 @@
 					}
 					///
 			
-				$title = mysql_real_escape_string($_POST['title']);				
+				$title = mysql_real_escape_string($_POST['title']);		
+							
 				//$image = $_FILES["file"]["name"];
 				$description = addslashes($_POST['description']);
 				$tags = mysql_real_escape_string($_POST['tags']);
@@ -124,9 +135,18 @@
 				$today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
 				$current_date = date("m/d/Y", $today_date);
 				
-					$sql   = "insert into news(news_title,news_img,news_description,news_tags,news_inserted_date)
+				if($_POST['news_held_date'] == '')
+				{
+					$news_date = $current_date;
+				}
+				else
+				{
+					$news_date = mysql_real_escape_string($_POST['news_held_date']);
+				}
+				
+					$sql   = "insert into news(news_title,news_img,news_description,news_date,news_tags,news_inserted_date)
 					values
-					('$title','$img_name','$description','$tags','$current_date')";
+					('$title','$img_name','$description','$news_date','$tags','$current_date')";
 					
 					$query = mysql_query($sql) or die (mysql_error());
 					
@@ -165,7 +185,21 @@
 							<input type="text" class="form-control" id="field-1" name="title"  placeholder=" " required>
 						</div>
 					</div>
-											
+					<script>
+											jQuery(function ($) 
+											{
+												$("#news_held_date").datetimepicker({format:'d/m/Y',timepicker:false});
+												
+											});
+					</script>
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Date</label>
+
+						<div class="col-sm-5">
+						<input type="text" class="form-control" id="news_held_date" name="news_held_date"  placeholder="yyyy-mm-dd" value="<?php echo $row['news_date']; ?>">
+							
+						</div>
+					</div>					
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Image Upload</label>
 						

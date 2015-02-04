@@ -39,8 +39,8 @@
                                               <div class="overview_left fl">
                                                 <div class="about fl">
                                                   <h1>About</h1>
-                                                   <!-- <a href="cio_choice_overview.php">CIO HONOUR Overview</a>-->
-                                                    <a href="cio_choice_community.php">The Community</a>
+                                                  <a href="cio_choice_overview.php">CIO HONOUR Overview</a>
+                                                   <a href="cio_choice_community.php">The Community</a>
                                                 </div>
                                               </div>
                                                <?php

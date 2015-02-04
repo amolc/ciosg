@@ -41,10 +41,10 @@
                                                   <h1>Events</h1><?php 
                                               $today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
 											  $current_date = date("Y/m/d", $today_date);
-											  $query = "SELECT * FROM `events` where event_held_date >= '$current_date'";
+											  $query = "SELECT * FROM `events`";
 	                                            $q1 = mysql_query($query); 
 	                                            while($res = mysql_fetch_array($q1)) { ?>
-	                                              <li><a href="/eventdetails.php?event=<?php echo $res['event_id']; ?>" style="height:auto;"><?php echo $res['event_name']; ?></a></li>
+	                                              <a href="/eventdetails.php?event=<?php echo $res['event_id']; ?>" class="event"><?php echo $res['event_name']; ?></a></li>
 	                                            <?php } ?>
                                                 
                                                 </div>
@@ -53,14 +53,14 @@
 																$faq_result = mysql_query("SELECT
 																						*
 																						FROM
-																						about where abt_type='community'
+																						event_landing_page where page_title='THE CIO HONOUR COMMUNITY'
 																						");
 
 																//fetch tha data from the database
 																while ($faq_row = mysql_fetch_array($faq_result))
 																{      ?>
                                               <div class="overview_right fr">
-                                                   <?php echo $faq_row['abt_description']; ?>
+                                                   <?php echo $faq_row['page_desc']; ?>
                                               </div>
                                               <?php } ?>
                                               <div style="clear:both"></div>
@@ -70,7 +70,7 @@
 										   <?php
 
 												//include('events_panel.php');
-												//include('quick_contact.php');
+												include('quick_contact.php');
 												include('footer.php');
 											?>
 

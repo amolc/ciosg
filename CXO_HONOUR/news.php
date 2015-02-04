@@ -46,7 +46,9 @@
 </head>
 
 <body>
-                                   
+<div class="clsWrapper">
+		<div class="clsHeader">
+                              
 												<?php
 												
 													include('cio_db.php'); 
@@ -62,14 +64,21 @@
 													
 												?>
                                         
-                                        
-                                                                                
+               <div class="clsLogo_ban">
+				<div class="container">
+					<div class="clsPadding_cont">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="clsLogo"><img src="images/logo.png"/></div>
+							</div>
+						</div>       
+
+								<div class="row">
+							<div class="col-md-12">
+								<div class="clsData_cont">
+                                                                    
                                    
-                                        <div id="black_wrapper">
-                                            <div class="inner_nav">
-                                                <?php include('navigation.php'); ?>
-                                            </div>
-                                        </div>
+                                        
                                             <div id="advisory_wrapper">
                                                 <div class="news_container mrgn_top" style="height:auto;">
                                                   <div class="overview_left fl">
@@ -149,7 +158,7 @@
 													// else {
 													include ('paginate.php'); //include of paginat page
 													
-$per_page =4;   
+$per_page =2;   
 // $result1 = "";      // number of results to show per page 
 // if(isset($_REQUEST['tags']))
 // {
@@ -219,11 +228,11 @@ if ($page <= 0)
 					?>
 					
 					<div class="singapore_news_detail fl"> 
-                                                        	<a href="view_news.php?id=<?php echo mysql_result($result, $i, 'news_id'); ?>" target="_blank" class="read">
-															<img src="http://cio.fountaintechies.com/admin/upload/news/<?php echo mysql_result($result, $i, 'news_img'); ?>" width="661">
-															</a>
+                                                        	<!--<a href="view_news.php?id=<?php echo mysql_result($result, $i, 'news_id'); ?>" target="_blank" class="read">
+															<img src="http://cio.fountaintechies.com/CXO_HONOUR/admin/upload/news/<?php echo mysql_result($result, $i, 'news_img'); ?>" width="661">
+															</a>-->
                                                             <h1 style="line-height: 24px;height: auto;margin-top: 10px;margin-bottom: 10px;"><?php echo  mysql_result($result, $i, 'news_title'); ?></h1>
-                                                            <h2>Posted: <span><?php echo mysql_result($result, $i, 'news_inserted_date'); ?></span></h2>
+                                                            <h2>Posted: <span><?php echo date('d M Y', strtotime(mysql_result($result, $i, 'news_inserted_date'))); ?></span></h2>
 																	<?php
 																$description = mysql_result($result, $i, 'news_description');
 																$news_tags = mysql_result($result, $i, 'news_tags');
@@ -256,12 +265,7 @@ if ($page <= 0)
 																		<span class='st_linkedin'></span>
 																		<span class='st_pinterest'></span>
 																		<span class='st_email'></span>
-																		<!--<span>
-																			<a target="_blank" href="http://www.linkedin.com/company/cio-choice-singapore/" style="margin:0px 0px 0px 5px;"><img src="images/linkedin.png" width="30" height="31"></a>
-																			<a target="_blank" href="https://twitter.com/CIOCHOICE_SG" style="margin:0px 0px 0px 5px;"><img src="images/twitter.png" width="30" height="31"></a>
-																			<a target="_blank" href="https://plus.google.com/+CiochoiceSg1/posts" style="margin:0px 0px 0px 5px;"><img src="images/google_plus.png" width="30" height="31"></a>
-																			<a target="_blank" href="https://www.facebook.com/ciochoice.sg" style="margin:0px 0px 0px 5px;"><img src="images/facebook.png" width="30" height="31"></a>
-																		</span> -->
+																		>
 																	</div>
                                                                     
                                                                 </div>
@@ -270,14 +274,7 @@ if ($page <= 0)
 														
 														<?php
 														    }  
-                    // close table>
-                // echo "</table>";
-            // pagination
-			 // echo '<div class="pagination"><ul>';
-                    // if ($total_pages > 1) {
-                        // echo paginate($reload, $show_page, $total_pages);
-                    // }
-                    // echo "</ul></div>";
+                  
 					
 					echo ' <div style="margin-left:273px;" class="pagination fl">
 					 ';
@@ -294,11 +291,18 @@ if ($page <= 0)
                                                 </div>
                                                 
                                             </div>
+											  </div>
+											  </div>
+											  </div>
+											  </div>
+											  </div>
+											  </div>
+											  </div>
+											  </div>
                                         
                                             	<?php 
            
-											include('events_panel.php');
-											include('quick_contact.php');
+											
 											include('footer.php');
 											
 											 ?>

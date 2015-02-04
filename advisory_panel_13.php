@@ -61,8 +61,8 @@
                                                 <div class="advisory_panel_1 mrgn_top">
                                                   <h1>Advisory Panel</h1>
 													<div class="contact_details_2 fl">
-														<a href="advisory_panel.php">2015</a>
-														<a href="#" class="active">2014</a>
+														<!--<a href="advisory_panel.php">2015</a>
+														<a href="#" class="active">2014</a>-->
 													</div>
                                                   <div id="content_7" class="advisory_panel">
 												  <?php

@@ -183,9 +183,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-* {
-    box-sizing: border-box;
-}
+
 .fa-trash:before {
     content: "?";
 }
@@ -205,16 +203,5 @@ table {
     line-height: 1;
     text-rendering: auto;
 }
-* {
-    box-sizing: border-box;
-}
 
-.box{
-    border: 2px solid  #666666 ;
-   
-	padding: 15px 208px 32px 0px;
-    background: #FFFFFF;
-    width: 380px;
-    border-radius: 25px;
-	
-}
+

@@ -5,12 +5,20 @@ $currentSegment = $segments[$numSegments - 1];
 
 
 	?>
+	
 		<div class="clsTop_bar">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-8">
+					<div class="col-md-1">
+						<div class="social_media fr">
+							<span>
+								<a href="" title="" target="" style="margin-right:0;"><img src="images/Singapore.png" width="30" height="30"></a>
+							</span>
+						</div>
+					</div>
+						<div class="col-md-7">
 							<div class="clsMenu">
-								<nav class="navbar navbar-default clsMenu" role="navigation">
+								<nav class="navbar navbar-default clsMenu" role="navigation" > 
 								  <div class="container-fluid">
 									<!-- Brand and toggle get grouped for better mobile display -->
 									<div class="navbar-header">
@@ -23,23 +31,52 @@ $currentSegment = $segments[$numSegments - 1];
 									  </div>
 									  <div id="navbar" class="navbar-collapse collapse">
 										  <ul class="nav navbar-nav navbar-left">
-											<li <?php if($currentSegment == 'CXO_HONOUR') { ?>class="active"<?php }?>><a href="http://cio.fountaintechies.com/CXO_HONOUR/">HOME</a></li>
-											<li <?php if($currentSegment == 'about.php') { ?>class="active"<?php }?>><a href="http://cio.fountaintechies.com/CXO_HONOUR/about.php">ABOUT US</a></li>
-											<li <?php if($currentSegment == 'news_page.php') { ?>class="active"<?php }?>><a href="http://cio.fountaintechies.com/CXO_HONOUR/news_page.php">NEWS</a></li>	
-											<li <?php if($currentSegment == 'contact.php') { ?>class="active"<?php }?>><a href="http://cio.fountaintechies.com/CXO_HONOUR/contact.php">CONTACT US</a></li>															
+											<?php
+												include('sql_config/database/cio_db.php');
+													 $menu_query = mysql_query("select * from menu order by menu_order");
+													while($menu_res = mysql_fetch_array($menu_query))
+													{
+														$menu = $menu_res['menu_name'];
+														$menu_link = $menu_res['menu_link'];
+														$menu_id = $menu_res['menu_id'];
+														
+														echo '<li><a class="menu_ancher"  href="'.$menu_link.'">'.$menu.'</a>'; 
+														
+															$menu_query2 = mysql_query("select * from sub_menu where parent_id = '$menu_id'");
+															if(mysql_num_rows($menu_query2) > 0)
+															{
+															echo "<ul>";
+																while($menu_res2 = mysql_fetch_array($menu_query2))
+																{
+																	$menu2 = $menu_res2['sub_name'];
+																	$menu_link2 = $menu_res2['sub_link'];
+																	
+																	echo '<li><a href="'.$menu_link2.'">'.$menu2.'</a></li>';
+																	
+																}
+																echo "</ul>";
+															}
+														echo "</li>";
+													}
+											?>																
 										  </ul>
 									  </div><!-- /.navbar-collapse -->
 								  </div><!-- /.container-fluid -->
 								</nav>
 							</div>	<!--clsMenu-->
 						</div>
-						<div class="col-md-4">
-							<div class="clsSocial_menu pull-right">
-								<span><a href=""><img src="images/ico1.png"  width="26px" height="27px"></a></span>
-								<span><a href=""><img src="images/ico2.png"  width="26px" height="27px"></a></span>
-								<span><a href=""><img src="images/ico3.png"  width="26px" height="27px"></a></span>
-								<span><a href=""><img src="images/ico4.png"  width="26px" height="27px"></a></span>
-								<span><a href=""><img src="images/linkedin-icon.png" width="30px" height="31px"></a></span>
+						<div class="col-md-3">
+							<div class="social_media fr">
+		
+								<span>
+									<a href="http://www.linkedin.com/company/cio-choice-singapore/" title="Linkedin" target="_blank"><img src="images/linkedin.png" alt="Linkedin" title="Linkedin" width="30" height="31"></a>
+									<a href="https://twitter.com/CIOCHOICE_SG" title="Twitter" target="_blank"><img src="images/twitter.png" width="30" height="31"></a>
+									<a href="https://plus.google.com/+CiochoiceSg1/posts" title="Google Plus" target="_blank"><img src="images/google_plus.png" alt="" width="30" height="31"></a>
+									<a href="https://www.facebook.com/ciochoice.sg" title="Facebook" target="_blank"><img src="images/facebook.png" width="30" height="31"></a>
+									<a href="http://www.youtube.com/user/CIOCHOICEsingapore" title="Youtube" target="_blank" ><img src="images/play.png" width="30" height="31"></a>
+									<!--<a href="" title="" target="" style="margin-right:0;"><img src="images/ico5.png" width="30" height="30"></a>-->
+								</span> 
+							</div>
 								<?php 
 								
 									include("geoiploc.php"); // Must include this
@@ -50,13 +87,13 @@ $currentSegment = $segments[$numSegments - 1];
 									{
 										
 								?>
-									<span><a href=""><img src="images/Singapore.png"  width="30px" height="31px"></a></span>
+									<!--<span><a href=""><img src="images/Singapore.png"  width="30px" height="31px"></a></span>-->
 									
 								<?php  }elseif($country == 'Indonesia') {?>
-									<span><a href=""><img src="images/Indonezia.png"  width="30px" height="31px"></a></span>
+									<!--<span><a href=""><img src="images/Indonezia.png"  width="30px" height="31px"></a></span>-->
 									
 								<?php }elseif($country == 'Malaysia') {?>
-									<span><a href=""><img src="images/Malaysia.png"  width="30px" height="31px"></a></span>
+									<!--<span><a href=""><img src="images/Malaysia.png"  width="30px" height="31px"></a></span>-->
 								<?php }?>
 							</div>	<!--clsSocial_menu-->
 						</div>

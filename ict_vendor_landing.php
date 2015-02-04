@@ -39,7 +39,8 @@ if (!empty($_SESSION['username']) && !empty($_SESSION['ict']))
 <meta charset="utf-8">
 <title>Cio Choice</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<link href="css/text_style.css" rel="stylesheet" type="text/css">
+<link href="css/style_vendor.css" rel="stylesheet" type="text/css">
+
 
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <link href="css/tinycarousel.css" rel="stylesheet" type="text/css" />
@@ -69,13 +70,11 @@ if (!empty($_SESSION['username']) && !empty($_SESSION['ict']))
 <script>
 function getCategory()
 {
-	
-	
-	$("#div_2").html("<img src=images/loadingAnimation.gif width='550px' align=center>");
+	$("#div_2").html("<div align='center' style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
 	$.getJSON('http://www.globalprompt.org/sg/cio/category/list_category/?callback=?' , function(array) {
 
-	var tbl_body = "";
-	var tbl_row ="<tr>";
+	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Category</h2></div><div class='clsCo_Serv_cont clearfix'>";
+	
 	var id='';
 	var i=0;
 	name='';
@@ -88,16 +87,16 @@ function getCategory()
         })
 		id=array[i].catID;
 		name=array[i].cat_name;
-		if(i%2==0)
+		if(i%3==0)
 		{
-			tbl_row +="<tr class=\""+( odd_even ? "odd" : "even")+"\">"
+			tbl_row +="<div class='clsCo_Serv_cont clearfix'>";
 		}
 		
-		tbl_row += "<td><div class='btn-box'><div class='clsButton_red fr'><a href='javascript:void(0);'class='mrgn partner' onClick='get_div(3);get_item("+id+","+'/'+name+'/'+");'>"+array[i].cat_name+"</a></div></div></td>";
-		tbl_row +="<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";
-		if(i%2==0)
+		tbl_row += "<a href='javascript:void(0);' class='clsCo_frt_serv_bx' onClick='get_div(3);get_item("+id+","+'/'+name+'/'+");'><b>"+array[i].cat_name+"</b></a>";
+		
+		if(i%3==0)
 		{
-			tbl_body +="</tr>";
+			tbl_body +="</div>";
 		}
 		tbl_body += ""+tbl_row+"";
 
@@ -105,7 +104,7 @@ function getCategory()
 		 i++;            
 		          
     })
-	
+	tbl_body +="</div></div>";
 	 $("#div_2").html(tbl_body);
 	 $("#div_2").show();
  	   
@@ -118,10 +117,10 @@ function getContract()
 {
 	
 	
-	$("#div_6").html("<img src=images/loadingAnimation.gif width='550px' align=center>");
+	$("#div_6").html("<div align='center'  style='margin-top:150px;margin-bottom:350px;'><img src=images/loader.gif width='150px' align=center></div>");
 	$.getJSON('get_contract.php/?callback=?' , function(array) {
 
-	var tbl_body = "<table width='100%'><tbody><tr><th>Contract_id</th><th>Date</th><th>Action</th></tr>";
+	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Contract List</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h1>Contract_id</h1></div><div class='clsC1_list_bx'><h1>Date</h1></div><div class='clsC1_list_bx'><h1>Action</h1></div></div></div>";
 	var tbl_row ="";
 	var id='';
 	var i=0;
@@ -135,8 +134,8 @@ function getContract()
         })
 		
 		
-		tbl_row += "<tr><td>"+array[i].contract_id+"</td><td>"+array[i].date+"</td><td><button onClick='view_pdf("+array[i].contract_id+");'>Download</button></td></tr>";
-		tbl_row +="<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>";
+		
+		tbl_row +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h2>"+array[i].contract_id+"</h2></div><div class='clsC1_list_bx'><h2>"+array[i].date+"</h2></div><div class='clsC1_list_bx'><div class='clsCo_frt_btn_sml' style='width:150px;'><h2><a href='javascript:void(0);' onClick='view_pdf("+array[i].contract_id+");'>Download</a></h2></div></div></div></div>";
 		
 		tbl_body += ""+tbl_row+"";
 
@@ -144,39 +143,31 @@ function getContract()
 		 i++;            
 		          
     })
+	tbl_row +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:100px;'><h2>Back</h2></div></div></div></div>";
+	tbl_body += ""+tbl_row+"";
 	
 	 $("#div_6").html(tbl_body);
 	 $("#div_6").show();
  	   
 });
 }
-
 function view_pdf(cid)
 {
-	//window.open('view_pdf.php');
-	
-	$.getJSON('view_pdf.php/?callback=?' ,"cid="+cid+"",function( data ) {   
-	window.location.href = "http://cio.fountaintechies.com/view_pdf.php"
-	var doc=window.open('view_pdf.php');
-	doc.document.write(data);
-		
+	$.post('view_pdf.php',{'cid':cid},function(res){
+		//var doc=window.open('view_pdf.php');
 	});
+	
 }
-
-
 function get_item(catID,name)
 {
 
-	$("#div_3").html("<img src=images/loadingAnimation.gif width='550px' align=center>");
-	var tbl_body ="<table>";
-	
-	
-	 tbl_body +="<th>Product List->"+name+"</th><th></th><th align='right'>Please check the Sub-Category you would like to participate.</th>";
+	$("#div_3").html("<div align='center'  style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
+	var tbl_body ="<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Category"+name+"</h2></div><div class='clsCo_frt_top'><h2>Please select the Sub-Category you would like to participate.</h2></div>";
 	$.getJSON('http://www.globalprompt.org/sg/cio/category/get_item_for/'+catID+'?callback=?' , function(array) {
-
 
 	var id='';
 	var i=0;
+	var j=1;
     var odd_even = false;
     $.each(array, function(key,val) {
         var tbl_row = "";
@@ -184,21 +175,27 @@ function get_item(catID,name)
           
         
         })
+		
 		id=array[i].item_ID;
 		name=array[i].item_name;
+		tbl_row += "<div class='clsCo_frt_"+j+"'><div class='clsCio_inp'><input type='checkbox' value="+id+" name='item'></div><h2>"+array[i].item_name+"</h2></div>";
 		
-		tbl_row += "<td><div class='btn-box'><div class='clsButton_item fr'><a 'class='mrgn partner'>"+array[i].item_name+"</a></div></div></td><td></td><td ><div align='center'><input type='checkbox' value="+id+" name='item'></div></td>";
-        tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
-        odd_even = !odd_even; 
-		 i++;            
+       	if(i%2==0)
+		{
+			j=2;
+		}
+		else
+		{
+			j=1;
+		}
+		 i++;   
+		 tbl_body += ""+tbl_row+"";         
 		          
     })
-	  tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";
-	   tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";
-	 tbl_body += "<td><div align='right'><button class='clsButton_checkout' style='width:200px' onClick='get_div(4);insrt_into_cart("+catID+");'>Proceed to Participation</button></div></td><td></td><td><div align='right'><button class='clsButton_checkout' onClick='get_div(2);'>Back</button></div></td>";
-	
-	
-	 tbl_body +="</table>"
+	    
+	    tbl_body +="<div class='clsCo_frt_bot clearfix'><a href='javascript:void(0);' class='clsCo_frt_btn' style='width:200px;' style='width:200px' onClick='get_div(4);insrt_into_cart("+catID+");'>Proceed to Participation</a><a href='javascript:void(0);' class='clsCo_frt_btn2' style='width:100px;'  onClick='get_div(2);'>Back</a></div>";
+	 
+	 tbl_body +="</div></div>";
 	 $("#div_3").html(tbl_body);
 	 $('#div_3').show();
 });
@@ -225,13 +222,12 @@ function shopping_cart()
 	
 	var id='';
 	var i=0;
+	j=1;
+	var total=0;
     var odd_even = false;
-	$("#div_4").html("<img src=images/loadingAnimation.gif width='550px' align=center>");
-	  var tbl_body ="<div align='right'><button class='clsButton_checkout' style='width:250px' onClick='get_div(2);'>Continue Shopping</button>&nbsp;&nbsp;&nbsp;<button class='clsButton_checkout'  style='width:250px' onClick='generate_pdf();'>Proceed to Participation</button></div>";
-	tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td>Check-Out</td></tr>";
-    tbl_body +="<table class='table'>";
-	tbl_body +="<th>Category</th><th>Item</th><th></th><th>Total</th>";
-	tbl_body +="<tr><div class='clsLine' ></div></tr>";
+	$("#div_4").html("<div align='center'  style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
+	  var tbl_body ="<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Check-Out</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h1><b>Category</b></h1></div><div class='clsC1_list_bx2'><h1><b>Item</b></h1></div><div class='clsC1_list_bx3'><h1><b>Delete</b></h1></div><div class='clsC1_list_bx3'><h1><b>Total</b></h1></div></div></div>";
+	
 	$.getJSON('get_cart.php?callback=?',function(array){
 	
     $.each(array, function(key,val) {
@@ -241,22 +237,33 @@ function shopping_cart()
         
         })
 		id=array[i].item_ID;
-		tbl_row += "<td>"+array[i].cat_name+"</td><td>"+array[i].item_name+"</td><td><a href='javascript:void(0);' onClick='remove_item("+id+")'><img src=images/delete.png width='20px'></a></td><td>"+array[i].item_price+"</td>";
-        tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
-		tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";
-        odd_even = !odd_even; 
-		 i++;            
+		total +=parseInt(array[i].item_price);
+		tbl_row +="<div class='clsCo_frt_"+j+"'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2>"+array[i].cat_name+"</h2></div><div class='clsC1_list_bx2'><h2>"+array[i].item_name+"</h2></div><div class='clsC1_list_bx3'><h2><a href='javascript:void(0);' onClick='remove_item("+id+")'><img src='images/dlt_ico.png' width='15px;'/></a></h2></div><div class='clsC1_list_bx3'><h2>S$"+array[i].item_price+".00</h2></div></div></div>";
+		if(i%2==0)
+		{
+			j=2;
+		}
+		else
+		{
+			j=1;
+		}
+      
+		 i++;    
+		 tbl_body += ""+tbl_row+"";           
 		          
     })
+	tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont'><h2><div align='right'><button style='height:33px;' type='button' class='btn btn-warning'>Do you have promotional code?</button>&nbsp;&nbsp;&nbsp;<input type='text' style='height:27px;'>&nbsp;&nbsp;&nbsp;<button style='height:33px;' type='button' class='btn btn-warning'>Apply</button></div></h2></div></div>";
+	 tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2>Estimated Tax : </h2></div><div class='clsC1_list_bx3'><h2>S$00</h2></div></div></div>";
+	 tbl_body +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2>Total : </h2></div><div class='clsC1_list_bx3'><h2>$"+total+".00</h2></div></div></div>";
 	
-	 tbl_body +="</table>"
-	 tbl_body +="<div class='clsLine' ></div>";
+	/*tbl_body +="<div class='clsCo_frt_2'><div align='right'><div class='clsCo_frt_btn3' style='width:200px;'><p style='font-size:14px;' ><b>Estimated Tax : $0</b></p><br><p style='font-size:18px;'><b>Total : $"+total+".00<b></p></div></div></div>";
 	
-	 tbl_body +="<div align='right'><button class='btn btn-warning' type='button' style='height:33px'>Do you have promotional code?</button>&nbsp;&nbsp;&nbsp;<input type='text' name='' value='' style='height:27px;'>&nbsp;&nbsp;&nbsp;<button class='clsButton_checkout' type='submit'>Apply</button></div>";
-	 tbl_body +="<br>";
-	tbl_body +="<div align='right'><div class='box'><h5>Estimated Tax:$0<br>Sub-Total:$0<br>Sub-Total:$0</h5></div></div>";
-	tbl_body +="<br>";
-	  tbl_body +="<div align='right'><button class='clsButton_checkout' style='width:250px' onClick='get_div(2)'>Continue Shopping</button>&nbsp;&nbsp;&nbsp;<button class='clsButton_checkout'  style='width:250px' onClick='generate_pdf();'>Proceed to Participation</button></div>";
+	 /*tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont'><h2><div align='right'><button style='height:33px;' type='button' class='btn btn-warning'>Do you have promotional code?</button>&nbsp;&nbsp;&nbsp;<input type='text' style='height:27px;'>&nbsp;&nbsp;&nbsp;<button type='submit' class='clsButton_checkout'>Apply</button></div></h2></div>	
+</div>";*/
+	 tbl_body +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:200px;'><h2><a href='javascript:void(0);' onClick=' generate_pdf();'>Proceed to Participation</a></h2></div><div style='width:200px;' class='clsCo_frt_btn'><h2><a href='javascript:void(0);' onClick='get_div(2);getCategory();'>Continue Shopping</a></h2></div></div>";
+	
+	 
+	  tbl_body +="</div></div>";
 	
 	 $("#div_4").html(tbl_body);
 	 $('#div_4').show();
@@ -276,6 +283,7 @@ function generate_pdf()
 }
 function remove_item(itemID)
 {
+//$.getJSON('delete_item.php?callback=?',"itemID="+itemID+"",function(res){
 		
 	$.getJSON('delete_item.php?callback=?',"itemID="+itemID+"",function(res){
 
@@ -581,10 +589,12 @@ function remove_item(itemID)
 <?php
 
 include('top_header.php');
+include('header.php');
+
 ?>
 
 
-<div id="shadow_wrapper"></div>
+<div id="shadow_wrapper">
 <div id="black_wrapper">
     <div class="inner_nav">
 	
@@ -593,7 +603,7 @@ include('top_header.php');
 			<ul>
 			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(1);">HOME</a></li>
 			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(2);getCategory();">CATEGORY</a></li>
-			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(6);getContract();">MY PURCHASE</a></li>
+			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(6);getContract();">MY PARTICIPATION</a></li>
 			  <li><a class="menu_ancher">FAQ</a></li>
 			  <li><a class="menu_ancher">CONTACT US</a></li> 
 			</ul>
@@ -601,36 +611,52 @@ include('top_header.php');
     </div>
 	
 	</div>
-<div class="advisory_wrapper landing_head" style="display:none;" id="div_1">
-    
-	 
-       
-        
-        
-        <h3>Welcome to CXO Honour <span>Singapore</span></h3>
+	
+<div class="advisory_wrapper landing_head" style="margin-bottom:30px;margin-top:20px" style="display:none;" id="div_1">
+   <?php 
+	session_start();
+	$name=$_SESSION['firstname'];?>
+        <h3>Welcome <?php echo $name;?></h3>
+		<br><br><br>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+		<br>
+		<br>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur
+		<br>
+		<br>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+		<br>
+		
+		
+		<br>
+		
   </div>
  
- <div class="advisory_wrapper landing_head" style="margin-top:0px;" id="div_2" style="display:none;" >
+ <div class="advisory_wrapper landing_head" style="margin-bottom:30px;margin-top:20px" id="div_2" style="display:none;">
+  
+	
+	
+</div>
+ <div class=" advisory_wrapper landing_head" style="margin-bottom:30px;margin-top:20px" id="div_3" style="display:none;">
    
 	
 	
 </div>
- <div class=" advisory_wrapper landing_head" style="margin-top:0px;" id="div_3" style="display:none;" >
-   
-	
-	
-</div>
- <div class="advisory_wrapper landing_head"  id="div_4" style="display:none;" >
+ <div class="advisory_wrapper landing_head"  id="div_4" style="margin-bottom:30px;margin-top:20px"  style="display:none;">
  
 </div>
-<div class="advisory_wrapper landing_head"  id="div_5" style="display:none;" >
+<div class="advisory_wrapper landing_head"  id="div_5" style="margin-bottom:360px;margin-top:20px"  style="display:none;">
  
 
 </div> 
-<div class="advisory_wrapper landing_head"  id="div_6" style="display:none;" >
+<div class="advisory_wrapper landing_head"  id="div_6" style="margin-bottom:30px;margin-top:20px"  style="display:none;">
  
 
 </div> 
+<?php
+include('quick_contact.php');
+include('footer.php');
+?>
+
+</div>
 
 <!--<div id="cio_area">
     <div class="landing_head" style="margin-top:0px;height:50px;">
@@ -833,7 +859,7 @@ if(isset($_REQUEST['add']))
 
 
 <!--</div>
-<?php
+<?//php
 $sql3 = mysql_query('SELECT * FROM landing_page_content WHERE tab="tab3"');
 $row3 =  mysql_num_rows($sql3);
 $data3 =  mysql_fetch_array($sql3);
@@ -842,7 +868,7 @@ $content_3 = ($row3 >0 ) ? $data3['content'] : '';
 <div id="tab3"  style="height: auto;width: auto;" class="content three_tabs fl">
     <div id="content_7" class="advisory_panel" style="height:400px;">
 
-        <?php  //$data3['content'] ;?>
+        <?//php  //$data3['content'] ;?>
 
         <div class="article fl">
             <strong style="font-size:18px;">A. </strong>Participation Fee
@@ -868,8 +894,8 @@ $content_3 = ($row3 >0 ) ? $data3['content'] : '';
         </div>
 
     </div>
-</div><!--tab3 close-->
-<?php
+</div><!--tab3 close
+<?//php
 $sql4 = mysql_query('SELECT * FROM landing_page_content WHERE tab="tab4"');
 $row4 =  mysql_num_rows($sql4);
 $data4 =  mysql_fetch_array($sql4);
@@ -877,7 +903,7 @@ $content_4 = ($row4 >0 ) ? $data4['content'] : '';
 ?>
 <!--<div id="tab4"  style="height: auto;width: auto;" class="content three_tabs fl">
     <div id="content_8" class="advisory_panel" style="height:500px;">
-        <?php //  $data4['content'] ;?>
+        <?//php //  $data4['content'] ;?>
 
         <div class="article fl">
             <h1>Article 1</h1>
@@ -1037,8 +1063,8 @@ $content_4 = ($row4 >0 ) ? $data4['content'] : '';
         </div>
 
     </div>
-</div><!--tab4 close-->
-<?php
+</div><!--tab4 close
+<?//php
 
 
 $inactive = 500;
@@ -1083,7 +1109,7 @@ if(isset($_SESSION['enter_now_msg']))
 
 
 
-<?php
+<?//php
 include('sql_config/database/cio_db.php');
 
 if(isset($_POST['Submit']))
@@ -1310,7 +1336,7 @@ Once we receive your completed form, we&acute;ll be in touch to confirm your det
 
         <div class="get_in_touch" style="margin-top:0px;">
 
-            <?php
+            <?//php
 
 
             if(isset($_REQUEST['add']) )
@@ -1486,7 +1512,7 @@ Once we receive your completed form, we&acute;ll be in touch to confirm your det
 
 
 </div>
-<?php }?>
+<?//php }?>
 </div>
 <div style="clear:both;"></div>
 </div>
@@ -1495,16 +1521,12 @@ Once we receive your completed form, we&acute;ll be in touch to confirm your det
   <div id="item_display" class="advisory_panel" style="height:400px;">
 	</div>
     
-</div><!--tab-container end-->
-</div><!---->
+</div><!--tab-container end
+</div>
 <!--<div style="clear:both;"></div>
 </div>
 
 
-<?php
-include('quick_contact.php');
-include('footer.php');
-?>
 
 
 

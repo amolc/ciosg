@@ -1,3 +1,4 @@
+<? include("index.php")?>
 <div class="clsFooter">
 				<div class="container">
 					<div class="clsPadding_cont">
@@ -38,20 +39,24 @@
 									</ul>
 								</div>				
 							</div>
-							
-							<!--<div class="col-xs-3 col-sm-3">
-								<div class="clsFut_menu">
-									<ul>	
-									  <li><img src="images/logo2.png" width="250px;"/></li>
-									</ul>
-								</div>				
-							</div>-->
+													
 						</div>
 					</div>	
 				</div>	
 		</div>
 		
 		<div class="clsCopyright">
-			<p style="float:left">Copyright © 2014 CXO HONOUR Singapore. All Rights Reserved.</p>
-			<!--<div class="clsLogo"><img src="images/logo.png"/></div>-->
+			<?php
+			
+				$footer_query = mysql_query("select * from footer");
+				while($footer_res = mysql_fetch_array($footer_query))
+				{
+					$footer_text = $footer_res['footer_text'];
+				}
+			?> 
+			<p style="float:left"><?php echo $footer_text;?></p>
+			
+		</div>
+		 <div style="margin-top:17px; margin-right:180px;" >
+			<img width="200px;" height="50px;" src="images/logo.png" align="right">
 		</div>

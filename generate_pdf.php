@@ -8,6 +8,7 @@ error_reporting(E_ALL);
 	$date=date("Y-m-d H:i:s");
 	mysql_query("insert into contract (vID,date) values('$userID','$date')");
 	$cid=mysql_insert_id();
+	$total='';
 	/*$query=mysql_query("SELECT contract_id FROM contract WHERE vID='$userID'");
 	SELECT LAST_INSERT_ID();
 	$value=mysql_fetch_object($query);
@@ -38,11 +39,12 @@ h1 { margin-bottom: 0; }z
 
 	while($row=mysql_fetch_array($res))
 	{
-		$html.="<tr><td>10/20/2015</td><td>".$row['cat_name']."</td><td>".$row['item_name']."</td><td>".$row['item_price']."</td></tr>";
+		$total=$total+$row['item_price'];
+		$html.="<tr><td>10/20/2015</td><td>".$row['cat_name']."</td><td>".$row['item_name']."</td><td>S$".$row['item_price'].".00</td></tr>";
 					
 	}
 	
-	$html.="<tr><td><hr/></td><td><hr/></td><td><hr/></td><td><hr/></td></tr><tr><td></td><td></td><td>Tax : </td><td>$00.00</td></tr><tr><td></td><td></td><td>Estimated Total : </td><td>$00.00</td></tr></tbody></table>";
+	$html.="<tr><td><hr/></td><td><hr/></td><td><hr/></td><td><hr/></td></tr><tr><td></td><td></td><td>Tax : </td><td>$00.00</td></tr><tr><td></td><td></td><td>Estimated Total :  </td><td>$".$total.".00</td></tr></tbody></table>";
 	
 $data = bin2hex($html);
 $qry = "UPDATE contract SET content=0x".$data."  WHERE contract_id='$cid'";

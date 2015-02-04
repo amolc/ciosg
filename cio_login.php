@@ -7,7 +7,45 @@
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 
+<script>
 
+function validate()
+{
+	var pass1 = document.forms["register_venor"]["pwd"].value;
+    var pass2 = document.forms["register_venor"]["rtype"].value;
+	 if (pass1 != pass2) {
+        
+		alert("Confirm Password does Not Match");
+        return false;
+    } 
+	
+	var x = document.forms["register_venor"]["email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+	
+	var mobile = document.forms["register_venor"]["mobile"].value;
+	 
+	
+	if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+    }
+	else if(document.getElementById('mobile').value.length<=12)  
+	{  
+	  return true;  
+	}  
+	else  
+	{  
+		alert("Mobile Number is not greater than 12 Digit");  
+		return false;  
+	}  
+	
+	
+    
+	
+}
+
+</script>
 
 
 </head>
@@ -15,12 +53,11 @@
 <body>
 							     <?php
 													include('sql_config/database/cio_db.php'); 
-														// include('top_header.php');
+												    include('top_header.php');
+													include('header.php');
 														
 									?>
-                                        <div id="top_wrapper">
-	<div class="top_container">
-	<div class="top_login fl">
+                                       
 					<?php
 						session_start();
 						if(isset($_SESSION['user_name']))
@@ -37,7 +74,7 @@
 						{
 					?>
 							
-							<a href="registration.php" class="border"><img src="images/register_icon.png" width="12" height="16">REGISTER</a>
+							<!--<a href="registration.php" class="border"><img src="images/register_icon.png" width="12" height="16">REGISTER</a>-->
 					<?php
 
 						}
@@ -45,20 +82,7 @@
 	
 	  
 	
-	</div>
-	  <div class="social_media fr">
-		<!--<p>CONNECT WITH US</p>-->
-			<span>
-				<a href="http://www.linkedin.com/company/cio-choice-singapore/" title="Linkedin" target="_blank"><img src="images/linkedin.png" alt="Linkedin" title="Linkedin" width="30" height="31"></a>
-				<a href="https://twitter.com/CIOCHOICE_SG" title="Twitter" target="_blank"><img src="images/twitter.png" width="30" height="31"></a>
-				<a href="https://plus.google.com/+CiochoiceSg1/posts" title="Google Plus" target="_blank"><img src="images/google_plus.png" alt="" width="30" height="31"></a>
-				<a href="https://www.facebook.com/ciochoice.sg" title="Facebook" target="_blank"><img src="images/facebook.png" width="30" height="31"></a>
-				<a href="http://www.youtube.com/user/CIOCHOICEsingapore" title="Youtube" target="_blank" style="margin-right:0;"><img src="images/play.png" width="30" height="31"></a>
-			</span> 
-		</div>
-	</div>
-</div>
-<div style="width:100%; height:49px;"></div>
+	
 
 
                                         <div id="black_wrapper">
@@ -66,12 +90,50 @@
                                                 <?php include('navigation.php'); ?>
                                             </div>
                                         </div>
-                                            <div id="advisory_wrapper">
-                                                <div class="get_in_touch" style="margin-top:15px;">
-                                                  <div class="login_main fl">
-                                                  	<div class="login_header fl">
-                                               	    	<img width="961" height="219" alt="" src="images/register/login-logo.jpg">
+										
+										<div id="advisory_wrapper">
+                                                <div class="get_in_touch mrgn_top">
+                                                  
+                                                  <div class="contact_details_2 fl">
+                                                  	
+                                                    <a href="cio_login.php" class="active">Login</a> 
+													<a href="cio_registration.php">Registration</a>
+													<br />
+																				
+													
+                                                  </div>
+                                                  <div class="advisory_panel fl" style="height:auto;">
+                                                  	
+                                                    <div class="contact_address fl" style="height:auto;">
+                                                    <span>Login as a CIO</span>
+                                                      <p>Get connected with us for surveys and information in the CIO</p>
+                                                      
                                                     </div>
+													
+														  
+                                                         <div class="contact_form fr">
+														 <form action="cio_sucess.php" method="post">
+                                                            	
+                                                              <label> Username</label>
+                                                                <input name="username" type="text" required>
+                                                              <label> Password</label> 
+                                                                <input name="password" type="password" required>
+																
+																	<a style="color: #FFFFFF; float: left; margin-left: 138px;text-decoration: underline;    width: 222px;" href="forgot_password.php">Forgot your password ?</a>
+                                                                <input value="SIGN IN" style="margin-left: 10px;" name="submit" type="submit">
+																</form>
+                                                        </div>
+                                                            
+																						
+                                                    
+                                                  </div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+										
+										
+                                            
+                                                  	
                                                     <?php
 													if($_POST['submit'] == "SIGN IN")
 													{
@@ -83,13 +145,13 @@
 														// $username = strip_tags(stripslashes(mysql_real_escape_string($username)));
 														// $password = sha1(strip_tags(stripslashes(mysql_real_escape_string($password))));
 
-														$sql="SELECT * FROM registration WHERE registration_email = '$username' and registration_password='$password' and registration_status='accepted' and login_type='email'";
+														$sql="SELECT * FROM user_cio WHERE emailID = '$username' and password='$password' and registration_status='accepted' and login_type='email'";
 														$rs = mysql_query($sql) or die ("Query failed");
 
 														// $numofrows = mysql_num_rows($rs);
 														$row = mysql_fetch_array($rs);
 
-														if($row['registration_email'] == $username && $row['registration_password'] == $password)
+														if($row['emailID'] == $username && $row['password'] == $password)
 														{
 														// if($numofrows > 0){
 															// session_register("username");
@@ -99,23 +161,25 @@
 																session_start();
 																// store session data
 																$_SESSION['username']=$username;
-																$_SESSION['user_name']=$row['registration_name'];
+																$_SESSION['firstname']=$row['firstname'];
+																$_SESSION['lastname']=$row['lastname'];
 																$_SESSION['cio']=$row['registration_type'];
-																$_SESSION['corperate_email']=$row['corperate_email'];
+																$_SESSION['emailID']=$row['emailID'];
 																$_SESSION['type']='cio_landing.php';
 																header("location:cio_landing.php?action=yes");
 															 
 															}
 															else if($row['registration_type']=='ICTVendor') 
 															{
-																session_start();
+																/*session_start();
 																// store session data
 																$_SESSION['username']=$username; 
 																$_SESSION['user_name']=$row['registration_name'];
 																$_SESSION['ict']=$row['registration_type'];
 																$_SESSION['type']='ict_vendor_landing.php';
 																$_SESSION['corperate_email']=$row['corperate_email'];
-																header("location:ict_vendor_landing.php?action=yes");
+																header("location:ict_vendor_landing.php?action=yes");*/
+																header("location:login.php?wrong=yes");
 															}
 															
 														}
@@ -159,28 +223,9 @@
 													
 													
 													 
-                                                    	<div class="login_form fl"> 
-														<form name="register_venor" action="register_msg.php" method="post">
-                                                        	<div class="login_box fl"> 
-                                                            	<h1>Register Here</h1>
-                                                              <label> First name</label>
-                                                                <input style="font-size: 20px;" name="fname" type="text" required>
-                                                              <label> Last name</label>
-                                                                <input style="font-size: 20px;" name="lname" type="text" required>
-															  <label> Comapany</label>
-                                                                <input style="font-size: 20px;" name="company" type="text" required>
-															  <label> EmailId</label>
-                                                                <input style="font-size: 20px;" name="email" type="text" required>
-															  <label> Mobile No.</label>
-                                                                <input style="font-size: 20px;" name="mobile" type="text" required>
-															   <label> Password</label>
-                                                                <input style="font-size: 20px;" name="pwd" type="text" required>
-															   <label>Retype Password</label>
-                                                                <input style="font-size: 20px;" name="rtype" type="text" required>
-												
-                                                                <input value="Register" style="margin-left: 10px;" name="submit" type="submit">
-																</form>
-                                                        </div>
+                                                    	
+														
+                                                        	
 														
 														
 														
@@ -190,31 +235,18 @@
 														
 														
 														
-                                                       	  <div class="sign_in fr"> 
-														  <form action="<?php $_SERVER["PHP_SELF"];?>" method="post">
-                                                         <div class="login_box fl">
-                                                            	<h1>Login Here</h1>
-                                                              <label> Username</label>
-                                                                <input style="font-size: 20px;" name="username" type="email" required>
-                                                              <label>Password</label> 
-                                                                <input name="password" type="password" required>
-																	<a style="color: #FFFFFF; float: left; margin-left: 86px;text-decoration: underline;    width: 222px;" href="forgot_password.php">Forgot your password ?</a>
-                                                                <input value="SIGN IN" style="margin-left: 10px;" name="submit" type="submit">
-                                                        </div>
-                                                            </div>
+                                                       	  
                                                             
-                                                            <div style="text-decoration: underline;" class="register_now fl"></div>
+                                                            
                                                     
-                                                  </div>
-												  </form>
+                                                  
+												  
                                                   <?php
 												  
 												  }
 												  ?>
-                                                </div>
-                                                <div style="clear:both;"></div>
-                                            </div>
-                                        	</div>
+                                                
+                                                
 											<?php 
            
 											include('quick_contact.php');

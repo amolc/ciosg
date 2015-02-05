@@ -186,7 +186,7 @@
 																   exit;
 																}
 															header("Location:forgot_password.php?sent=ok");
-															//echo $mail_sent ? " Your Tour Detail Sent To Your Inbox" : "Mail failed";
+															echo $mail_sent ? " Your Tour Detail Sent To Your Inbox" : "Mail failed";
 														}
 														else
 														{

@@ -34,8 +34,8 @@
 				$mail->Password = '7sendgrid';               // SMTP password
 				$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 				$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-				$mail->setFrom('registration@cio-choice.sg', 'CIO CHOICE');     //Set who the message is to be sent from
-				$mail->addReplyTo('registration@cio-choice.sg', 'CIO CHOICE');   //Set an alternative reply-to address
+				$mail->setFrom('registration@cio-honour.sg', 'CIO Honour');     //Set who the message is to be sent from
+				$mail->addReplyTo('registration@cio-honour.sg', 'CIO Honour');   //Set an alternative reply-to address
 				// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 				$mail->addAddress($registration_email);               // Name is optional 
 				// $mail->addCC('cc@example.com');
@@ -133,7 +133,7 @@
 																						
 												<li style="	float:left; list-style-type: none; margin:0px;"><a href="#" style="float:left; font-family:Source Sans Pro; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Privacy Policy</a></li>
 											  </ul>
-											  <p style=" float:left; font-family:Source Sans Pro; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO CHOICE Singapore. All Rights Reserved.</p>
+											  <p style=" float:left; font-family:Source Sans Pro; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO Honour Singapore. All Rights Reserved.</p>
 										  </div>
 										</div>
 										  
@@ -144,7 +144,7 @@
 									</div>
 									
 									<div style="float:left; margin:0px; width:100%; font-size:12px; color:#616161;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-weight:400px;">
-									This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO CHOICE account. This is a one-time email. You received this email because you signed up for a CIO CHOICE account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
+									This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO Honour account. This is a one-time email. You received this email because you signed up for a CIO Honour account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
 									
 									<div style="clear:both;"></div> 
 							</div></body></html>';
@@ -174,8 +174,8 @@
 				$mail->Password = '7sendgrid';               // SMTP password
 				$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 				$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-				$mail->setFrom('registration@cio-choice.sg', 'CIO CHOICE');     //Set who the message is to be sent from
-				$mail->addReplyTo('registration@cio-choice.sg', 'CIO CHOICE');   //Set an alternative reply-to address 
+				$mail->setFrom('registration@CIO Honour.sg', 'CIO CHOICE');     //Set who the message is to be sent from
+				$mail->addReplyTo('registration@CIO Honour.sg', 'CIO CHOICE');   //Set an alternative reply-to address 
 				// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 				$mail->addAddress($registration_email);               // Name is optional
 				// $mail->addCC('cc@example.com');
@@ -291,7 +291,7 @@
 									</div>
 									
 									<div style="float:left; margin:0px; width:100%; font-size:12px; color:#616161;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-weight:400px;">
-									This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO CHOICE account. This is a one-time email. You received this email because you signed up for a CIO CHOICE account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
+									This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO Honour account. This is a one-time email. You received this email because you signed up for a CIO Honour account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
 									
 									<div style="clear:both;"></div>
 							</div></body></html>'; 

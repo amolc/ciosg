@@ -186,17 +186,17 @@
 																   exit;
 																}
 															header("Location:forgot_password.php?sent=ok");
-															echo $mail_sent ? " Your Tour Detail Sent To Your Inbox" : "Mail failed";
+															echo '<h3 style="color:green;margin-left: 404px;">Email has been sent.....</h3>';
 														}
 														else
 														{
 															header("Location:forgot_password.php?error=ok");
+															echo '<h3 style="color:red;margin-left: 373px;">Email You enterd is Invalid !!</h3>';
 														}
 														
 													}
 																										
-													else 
-													{
+													
 													?>
 													
 													
@@ -268,10 +268,7 @@
                                                            
                                                   </div>
 												  </form>-->
-                                                  <?php
-												  
-												  }
-												  ?>
+                                                  
                                                 </div>
                                                 <div style="clear:both;"></div>
                                             </div>

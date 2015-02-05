@@ -29,15 +29,12 @@ while($header__res = mysql_fetch_array($header__query))
 						if(!isset($_SESSION['username']))
 						{ ?>
 	
-			 <div class="ict_vendor fr" style="float:left; left: 522px;;">
+			 <ul class="ict_vendor fr" >
 			  
-             <a href="vendor_login.php" target="_self"> VENDOR LOGIN</a>
-												 
+             	<li><a href="vendor_login.php" target="_self"> VENDOR LOGIN</a></li>
+		<li><a href="cio_login.php" target="_self" > CIO LOGIN</a></li> 												 		
                                                  
-			</div>
- 			 <div class="ict_vendor fr" style="left:745px; padding-left: unset;">
-			  <a href="cio_login.php" target="_self" > CIO LOGIN</a> 
-			 </div>
+			</ul>
 			<?php }?>
 			<div class="phone fr">
 				<p style="font-weight: 300"><img src="images/email.png" width="21" height="19">Email: <a href="mailto:hello@cxohonour.com"><?php echo $header_email; ?></a></p>

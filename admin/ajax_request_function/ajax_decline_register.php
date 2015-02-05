@@ -28,8 +28,8 @@ $registration_id = mysql_real_escape_string($_POST['registration_id']);
 				$mail->Password = '7sendgrid';               // SMTP password
 				$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 				$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-				$mail->setFrom('registration@cio-choice.sg', 'CIO CHOICE');     //Set who the message is to be sent from
-				$mail->addReplyTo('registration@cio-choice.sg', 'CIO CHOICE');   //Set an alternative reply-to address
+				$mail->setFrom('registration@cio-honour.sg', 'CIO Honour');     //Set who the message is to be sent from
+				$mail->addReplyTo('registration@cio-honour.sg', 'CIO Honour');   //Set an alternative reply-to address
 				// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 				$mail->addAddress($registration_email);               // Name is optional
 				// $mail->addCC('cc@example.com'); 
@@ -39,7 +39,7 @@ $registration_id = mysql_real_escape_string($_POST['registration_id']);
 				// $mail->addAttachment('/images/image.jpg', 'new.jpg'); // Optional name
 				$mail->isHTML(true);                                  // Set email format to HTML
 				 
-				$mail->Subject = 'Your Membership To Cio-Choice is Declined';
+				$mail->Subject = 'Your Membership To Cio-Honour is Declined';
 				$mail->Body    = '
 				<html>
 				<body style="padding:0px; margin:0px;">
@@ -57,11 +57,11 @@ $registration_id = mysql_real_escape_string($_POST['registration_id']);
                     </div>
           </div> 
             <div style="width:100%; float:left; padding:20px 0px; text-align:center;">
-                    	<h1 style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:26px; font-weight:bold; margin:0px 5%; padding:0px;">Sorry, we are unable to accept your CIO CHOICE Singapore application this time.</h1>
+                    	<h1 style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:26px; font-weight:bold; margin:0px 5%; padding:0px;">Sorry, we are unable to accept your CIO Honour Singapore application this time.</h1>
            	  <p style=" float:left; width:90%; display:block; font-family: Arial, Helvetica, sans-serif; line-height:20px; margin:15px 5% 0px 5%; padding:0px; font-size:15px; font-weight:400;">Your Membership Application may have failed due to a number of reasons. Please ensure that you have provided the following valid details:</p>
             
               <div style="float:left; width:90%; margin:30px 5% 0px 5%;"> 
-                       		<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO CHOICE SINGAPORE</a>
+                       		<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO Honour SINGAPORE</a>
                         </div>
           </div>
             <div style="float:left; width:100%;">
@@ -95,7 +95,7 @@ $registration_id = mysql_real_escape_string($_POST['registration_id']);
                                                             
                     <li style="	float:left; list-style-type: none; margin:0px;"><a href="'.$web_url.'/privacy_policy.php" style="float:left; font-family: Arial, Helvetica, sans-serif; block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Privacy Policy</a></li> 
                   </ul>
-                  <p style=" float:left; font-family: Arial, Helvetica, sans-serif; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO CHOICE Singapore. All Rights Reserved.</p>
+                  <p style=" float:left; font-family: Arial, Helvetica, sans-serif; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO Honour Singapore. All Rights Reserved.</p>
               </div>
             </div>
               
@@ -106,7 +106,7 @@ $registration_id = mysql_real_escape_string($_POST['registration_id']);
         </div>
         
         <div style="float:left; margin:0px; width:100%; font-size:12px; color:#616161; font-family: Arial, Helvetica, sans-serif; font-weight:400px;">
-       	This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO CHOICE account. This is a one-time email. You received this email because you signed up for a CIO CHOICE account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
+       	This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO Honour account. This is a one-time email. You received this email because you signed up for a CIO Honour account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
         
         <div style="clear:both;"></div>
 </div>

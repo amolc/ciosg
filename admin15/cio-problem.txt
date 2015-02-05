@@ -1,0 +1,7 @@
+activation_link2.php:		$mail->setFrom('registration@cxohonour.com', 'CIO CHOICE');     //Set who the message is to be sent from
+activation_link2.php:		$mail->addReplyTo('registration@cxohonour.com', 'CIO CHOICE');  //Set an alternative reply-to address
+vendor_activation.php:		$mail->setFrom('registration@cxohonour.com', 'CIO CHOICE');     //Set who the message is to be sent from
+vendor_activation.php:		$mail->addReplyTo('registration@cxohonour.com', 'CIO CHOICE');  //Set an alternative reply-to address
+vendor_activation.php:                    	<h1 style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:26px; font-weight:bold; margin:0% 5%; padding:0px;">Thank you for your CIO CHOICE Singapore Membership application</h1>
+vendor_activation.php:                  <p style=" float:left; font-family: Arial, Helvetica, sans-serif; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO CHOICE Singapore. All Rights Reserved.</p>
+vendor_activation.php:       	This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO CHOICE account. This is a one-time email. You received this email because you signed up for a CIO CHOICE account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>

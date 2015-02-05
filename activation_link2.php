@@ -1,5 +1,15 @@
 <?php 
 	//email send to cio when sign up
+	
+													include('sql_config/database/cio_db.php'); 
+													$sql="SELECT * FROM `mail_settings`";
+														$rs = mysql_query($sql) or die ("Query failed");
+
+														// $numofrows = mysql_num_rows($rs);
+														$row = mysql_fetch_array($rs);
+													    $from=$row['from'];
+														$reply=$row['reply'];
+										
     require 'admin/classes/PHPMailer-master/PHPMailerAutoload.php';
 		
 	function email_to_cio_signup($registration_name , $registration_email ,$web_url,$registration_type,$pass,$str) {
@@ -13,14 +23,14 @@
 		$mail->Password = 'Gigsteremail78';               // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-		$mail->setFrom('registration@cxohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from
-		$mail->addReplyTo('registration@cxohonour.com', 'CIO HONOUR');  //Set an alternative reply-to address
+		$mail->setFrom($from, 'CIO HONOUR');     //Set who the message is to be sent from
+		$mail->addReplyTo($reply, 'CIO HONOUR');  //Set an alternative reply-to address
 		// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 		$mail->addAddress($registration_email); 
 		$mail->WordWrap = 500;      
 		$mail->isHTML(true);                                  // Set email format to HTML
 		$confirm_url="<a  href='http://cio.fountaintechies.com/accepted.php?id=".$str."'>click here to activate your account</a>";
-		$mail->Subject = 'Congratulations! Your Have Registered With CIO Choice';
+		$mail->Subject = 'Congratulations! Your Have Registered With CIO HONOUR';
 		$mail->Body    = '
 		<html>
 		<body style="padding:0px; margin:0px;">
@@ -56,7 +66,7 @@
     $mail->addAddress('registration@cxohonour.com'); 
     $mail->addAddress('registration@cxohonour.com'); 
     $mail->addAddress('registration@cxohonour.com'); 
-    $mail->Subject = 'A new member has just registered using the Cio-Choice.sg network.';
+    $mail->Subject = 'A new member has just registered using the Cio-Honour.sg network.';
      $mail->Body='
     <html>
     <body>
@@ -83,14 +93,14 @@
 		$mail->Password = 'Gigsteremail78';           // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-		$mail->setFrom('registration@cxohonour.com', 'CIO CHOICE');     //Set who the message is to be sent from
-		$mail->addReplyTo('registration@cxohonour.com', 'CIO CHOICE');  //Set an alternative reply-to address
+		$mail->setFrom('registration@cxohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from
+		$mail->addReplyTo('registration@cxohonour.com', 'CIO HONOUR');  //Set an alternative reply-to address
 		// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 		$mail->addAddress($registration_email); 
 		$mail->WordWrap = 500;      
 		$mail->isHTML(true);                                  // Set email format to HTML
 		 $confirm_url="<a  href='http://cio.fountaintechies.com/vendor_accepted.php?id=".$str."'>click here to activate your account</a>";
-		$mail->Subject = 'Congratulations! Your Have Registered With CIO Choice';
+		$mail->Subject = 'Congratulations! Your Have Registered With CIO Honour';
 		$mail->Body    = '
 		<html>
 		<body style="padding:0px; margin:0px;">
@@ -126,7 +136,7 @@
     $mail->addAddress('registration@cxohonour.com'); 
     $mail->addAddress('registration@cxohonour.com'); 
     $mail->addAddress('registration@cxohonour.com'); 
-    $mail->Subject = 'A new member has just registered using the Cio-Choice.sg network.';
+    $mail->Subject = 'A new member has just registered using the Cio-Honour.sg network.';
      $mail->Body='
     <html>
     <body>
@@ -155,14 +165,14 @@
 		$mail->Password = 'Gigsteremail78';                // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-		$mail->setFrom('registration@cxohonour.com', 'CIO CHOICE');     //Set who the message is to be sent from
-		$mail->addReplyTo('registration@cxohonour.com', 'CIO CHOICE');  //Set an alternative reply-to address
+		$mail->setFrom('registration@cxohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from
+		$mail->addReplyTo('registration@cxohonour.com', 'CIO HONOUR');  //Set an alternative reply-to address
 		// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 		$mail->addAddress($registration_email); 
 		$mail->WordWrap = 500;      
 		$mail->isHTML(true);                                  // Set email format to HTML
 		 $confirm_url="Your application is under review. We will get back to you in a shortly";
-		$mail->Subject = 'Congratulations! Your Have Registered With CIO Choice';
+		$mail->Subject = 'Congratulations! Your Have Registered With CIO Honour';
 		$mail->Body    = '
 		<html>
 		<body style="padding:0px; margin:0px;">
@@ -207,7 +217,7 @@
     $mail->addAddress('registration@cxohonour.com'); 
     $mail->addAddress('registration@cxohonour.com'); 
     $mail->addAddress('registration@cxohonour.com'); 
-    $mail->Subject = 'A new member has just registered using the Cio-Choice.sg network.';
+    $mail->Subject = 'A new member has just registered using the Cio-Honour.sg network.';
      $mail->Body='
     <html>
     <body>

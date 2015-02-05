@@ -74,10 +74,10 @@
 										</div>
 										<div style="width:100%; float:left; padding:20px 0px; text-align:center;">
 											<h1 style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:26px; font-weight:bold; margin:0% 5%; padding:0px;">
-												Your Registration has been accepted, welcome to CIO CHOICE Singapore
+												Your Registration has been accepted, welcome to CIO Honour Singapore
 											</h1>
 											<p style=" float:left; width:90%; display:block; font-family:Source Sans Pro; line-height:20px; margin:15px 5% 0px 5%; padding:0px; font-size:15px; font-weight:400;">
-												Let&acute;s get started straight away, here are your login details to access the exclusive CIO CHOICE '.$registration_type.' AREA:
+												Let&acute;s get started straight away, here are your login details to access the exclusive CIO Honour '.$registration_type.' AREA:
 											</p>
 										</div>
 										<div style="width:98.5%; float:left; background:#20201f; margin-left:10px; ">
@@ -174,8 +174,8 @@
 				$mail->Password = '7sendgrid';               // SMTP password
 				$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 				$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-				$mail->setFrom('registration@CIO Honour.sg', 'CIO CHOICE');     //Set who the message is to be sent from
-				$mail->addReplyTo('registration@CIO Honour.sg', 'CIO CHOICE');   //Set an alternative reply-to address 
+				$mail->setFrom('registration@CIO Honour.sg', 'CIO Honour');     //Set who the message is to be sent from
+				$mail->addReplyTo('registration@CIO Honour.sg', 'CIO Honour');   //Set an alternative reply-to address 
 				// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 				$mail->addAddress($registration_email);               // Name is optional
 				// $mail->addCC('cc@example.com');
@@ -214,10 +214,10 @@
 										</div>
 										<div style="width:100%; float:left; padding:20px 0px; text-align:center;">
 											<h1 style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:26px; font-weight:bold; margin:0% 5%; padding:0px;">
-												Your Registration has been accepted, welcome to CIO CHOICE Singapore
+												Your Registration has been accepted, welcome to CIO Honour Singapore
 											</h1>
 											<p style=" float:left; width:90%; display:block;  font:Lato; font-family:Arial, Helvetica, sans-serif; line-height:20px; margin:15px 5% 0px 5%; padding:0px; font-size:15px; font-weight:400;">
-												Let&acute;s get started straight away, here are your login details to access the exclusive CIO CHOICE  AREA:
+												Let&acute;s get started straight away, here are your login details to access the exclusive CIO Honour  AREA:
 											</p>
 										</div>
 										<div style="width:98.5%; float:left; background:#20201f; margin-left:10px; ">
@@ -280,7 +280,7 @@
 																						
 												<li style="	float:left; list-style-type: none; margin:0px;"><a href="'.$web_url.'/privacy_policy.php" style="float:left;  font:Lato; font-family:Arial, Helvetica, sans-serif; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Privacy Policy</a></li>
 											  </ul>
-											  <p style=" float:left;  font:Lato; font-family:Arial, Helvetica, sans-serif; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO CHOICE Singapore. All Rights Reserved.</p>
+											  <p style=" float:left;  font:Lato; font-family:Arial, Helvetica, sans-serif; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO Honour Singapore. All Rights Reserved.</p>
 										  </div>
 										</div>
 										  

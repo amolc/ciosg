@@ -52,9 +52,9 @@
 
         <div class="wrapper">              
             <div class="register-page">
-                <div class="register-logo">
+              <!--  <div class="register-logo">
                     <img src="images/register/register-logo.jpg" width="961" height="219" alt="">
-                </div>
+                </div>-->
                 <!--register-logo-->
                 <?php
                 // include('sql_config/database/cio_db.php'); 

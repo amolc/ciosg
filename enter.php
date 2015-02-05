@@ -39,7 +39,7 @@
                                                   	<div class="about fl">
                                                     	<h1>Enter</h1>
                                                         <a href="enter.php">Enter Now</a>
-                                                        <a href="cio_choice_process.php">CIO CHOICE Process</a>
+                                                        <a href="cio_choice_process.php">CIO HONOUR Process</a>
                                                     </div>
                                                   </div>
                                                   

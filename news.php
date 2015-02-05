@@ -102,9 +102,9 @@
                                                   
                                                	  <div class="singapore_news_right fr">
                                                	    <div class="singapore_news fl">
-                                                        	<h1>CIO HONOUR Singapore News</h1>
+                                                        	<h1 style="font-size: 30px; font-family: 'Lato';  text-transform: uppercase;">CIO HONOUR Singapore News</h1>
                                                             	<div  style="width: 40%;" class="latest_news">
-                                                                  <a href="#" class="active">News</a>
+                                                                  <!--<a href="#" class="active">News</a>
 																   <span style="float:left;">></span>
                                                                   <a href="#">
 																  <?php
@@ -117,7 +117,7 @@
 																	}
 																  ?>
 																 
-																  </a>
+																  </a>-->
                                                                 </div>
                                                             
                                                         </div>

@@ -8,8 +8,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/twitterfeed.js"></script>
 <link href="css/twitter-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!--<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />-->
 
 
 
@@ -40,7 +40,7 @@
 										
     <div id="advisory_wrapper">
         <div class="advisory_panel_1 mrgn_top">
-			<h1>Advisory Panel</h1>
+			<h1 style="font-size: 30px; font-family: 'Lato';text-transform: uppercase;">Advisory Panel</h1>
 			<div class="contact_details_2 fl">
 				<a href="#" class="active">2014</a>
 			</div>

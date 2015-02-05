@@ -13,7 +13,7 @@ else {
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cio Choice</title>
+<title>Cio HONOUR</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -42,7 +42,7 @@ else {
 													<p><img src="images/Landing_logo.jpg" width="240" height="238"></p>
                                                     <h1>Hi</h1>
                                                     <h2><?php echo $name; ?><strong style="color:#20201f;">,</strong> </h2>
-                                                    <h3>Welcome to CIO CHOICE <span>SINGAPORE</span></h3>
+                                                    <h3>Welcome to CIO HONOUR <span>SINGAPORE</span></h3>
                                                 </div>
                                         	</div>
                                             <div id="cio_area">
@@ -71,7 +71,7 @@ else {
                                                	    <div class="choice_overview fl">
 	
 															<h1> Enter Now </h1>
-                                                            <h1 style="color:#c5ac35; text-transform:none;">Welcome to the CIO CHOICE entry page</h1>
+                                                            <h1 style="color:#c5ac35; text-transform:none;">Welcome to the CIO HONOUR entry page</h1>
                                                             
                                                       <p style="margin:0px 0px 20px 20px;">If you are an ICT Vendor we would like to invite you to register your Product, Service or solution in the relevant ICT category. The categories are part of the ICT segments - hardware, software &amp; services, across the various ICT domains - business apps, infra, security, mobility, big data, analytics, etc.</p>
                                                       
@@ -86,20 +86,20 @@ else {
                                                     <div class="choice_overview fl">
 	
 													  <h1>want to know more?</h1>
-                                                      <h2>The CIO CHOICE Process</h2>
-													  <p style="text-align:left;">Your Products, Service and Solutions will be presented in an online survery to more than 700 CIOs. The survey is conducted across Singapore and then further validated by the <a href="#"><strong>CIO CHOICE independent Advisory Panel.</strong></a><br>
+                                                      <h2>The CIO HONOUR Process</h2>
+													  <p style="text-align:left;">Your Products, Service and Solutions will be presented in an online survery to more than 700 CIOs. The survey is conducted across Singapore and then further validated by the <a href="#"><strong>CIO HONOUR independent Advisory Panel.</strong></a><br>
 <br>
-The result of <a href="#"><strong>the process conducted</strong></a> with CIOs and ICT Decision makers is to recognise the leaders in each cateogry and crown them the CIO’s preferred choice.</p>
+The result of <a href="#"><strong>the process conducted</strong></a> with CIOs and ICT Decision makers is to recognise the leaders in each cateogry and crown them the CIO’s preferred HONOUR.</p>
                                                       
                                                      <div class="readmore fl"><a href="/cio_choice_process.php" class="read_more">read more</a></div>
                                                      
                                                      <h2>our Community</h2>
-													  <p style="text-align:left;">The CIO CHOICE community aims to connect people to share ideas and establish a strong network of CIOs and ICT vendors within the Singapore area.</p>
+													  <p style="text-align:left;">The CIO HONOUR community aims to connect people to share ideas and establish a strong network of CIOs and ICT vendors within the Singapore area.</p>
                                                       
                                                      <div class="readmore fl"><a href="/cio_choice_community.php" class="read_more">read more</a></div>
                                                      
-                                                     <h2>CIO CHOICE Partners</h2>
-													  <p style="text-align:left;">We are always looking to partner with like-minded companies and professionals wishing to focus on enterprise and innovation within ICT. If you believe there is opportunity to extend the CIO CHOICE family, drop us an email to <a href="mailto:partners@cio-choice.sg"><strong>partners@cio-choice.sg</strong></a></p>
+                                                     <h2>CIO HONOUR Partners</h2>
+													  <p style="text-align:left;">We are always looking to partner with like-minded companies and professionals wishing to focus on enterprise and innovation within ICT. If you believe there is opportunity to extend the CIO HONOUR family, drop us an email to <a href="mailto:partners@cio-choice.sg"><strong>partners@cio-choice.sg</strong></a></p>
                                                       
                                                      <div class="become_partner mrgn fl">
                                                 	<a class="partner" href="/contact_us.php">BECOME A PARTNER</a>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cio Choice</title>
+<title>CIO HONOUR</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
@@ -39,7 +39,7 @@
                                                   	<div class="about fl">
                                                     	<h1>Enter</h1>
                                                         <a href="/enter.php">Enter Now</a>
-                                                        <a href="cio_choice_process.php">CIO CHOICE Process</a>
+                                                        <a href="cio_choice_process.php">CIO HONOUR Process</a>
                                                     </div>
                                                   </div>
                                                   

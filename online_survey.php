@@ -15,7 +15,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cio Choice</title>
+<title>Cio HONOUR</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -111,7 +111,7 @@ $(document).ready(function(){
                 <p><img src="images/Landing_logo.jpg" width="240" height="238"></p>
                 <h1>Hi</h1>
                 <h2><?php echo $name; ?><strong style="color:#20201f;">,</strong> </h2>
-                <h3>Welcome to CIO CHOICE <span>SINGAPORE</span></h3>
+                <h3>Welcome to CIO HONOUR <span>SINGAPORE</span></h3>
             </div>
         </div>
                                             <div id="cio_area">
@@ -159,7 +159,7 @@ $(document).ready(function(){
 														<div class="online_survey fl">
                                                         	<div class="send_btn fl"><a href="#"><img src="images/send_survey.png" width="263" height="263"></a></div>
                                                             <div class="online_survey_text fl">
-                                                            	<h1>CIO CHOICE <span>ONLINE SURVEY</span></h1>
+                                                            	<h1>CIO HONOUR <span>ONLINE SURVEY</span></h1>
                                                                 <p>To request the survey, or if you would like to be re-sent a reminder </p>
                                                               <h2>HIT THE &acute;<span>SEND ME THE SURVEY</span>&acute; BUTTON</h2>
                                                               <p>and we’ll have it delivered to your registered email address<br><br>

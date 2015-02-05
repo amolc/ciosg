@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cio Choice</title>
+<title>Cio Honour</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -56,13 +56,41 @@
 													if($_POST['submit'] == "Submit")
 													{
 														$registration_email = check_input($_POST['email']);
+														$password='';
 																										
-														$sql = mysql_query("select emailID,password from user_cio where emailID = '$registration_email' and registration_status='accepted'")or die(mysql_error());					
-														$row = mysql_fetch_array($sql);
-												
-														if($row['emailID'] == $registration_email)
+														$sql = mysql_query("select emailID,password from user_cio where emailID = '$registration_email' and registration_status='accepted'")or die(mysql_error());				
+														if(mysql_num_rows($sql))
 														{
-															$password = $row['password'];	
+															$row = mysql_fetch_array($sql);
+															if($row['emailID'] == $registration_email)
+															{
+																$password = $row['password'];
+															}
+															else
+															{
+																header("Location:forgot_password.php?error=ok");
+																echo '<h3 style="color:red;margin-left: 373px;">Email You enterd is Invalid !!</h3>';
+															}
+															
+														}	
+														else
+														{
+															$sql2 = mysql_query("select emailID,password from user_vendor where emailID = '$registration_email' and registration_status='accepted'")or die(mysql_error());					
+															$row2 = mysql_fetch_array($sql2);
+															if($row2['emailID'] == $registration_email)
+															{
+																$password = $row2['password'];
+															}
+															else
+															{
+																header("Location:forgot_password.php?error=ok");
+																echo '<h3 style="color:red;margin-left: 373px;">Email You enterd is Invalid !!</h3>';
+															}
+															
+															
+													
+														}
+														
 															
 															// $to = $registration_email;
 															// $subject = "Forgot Password"; 
@@ -75,7 +103,7 @@
 
 															// $mail_sent = mail( $to, $subject, $message, $headers );
 															require 'admin/classes/PHPMailer-master/PHPMailerAutoload.php';
- 															$web_url ="http://cio.fountaintechies.com";
+ 															$web_url ="http://google.com";
 																$mail = new PHPMailer;  
 																 
 																$mail->isSMTP();                                      // Set mailer to use SMTP
@@ -87,8 +115,8 @@
                                                             $mail->Port = 587;
 
 
-                                                            $mail->setFrom('registration@cio-choice.sg', 'CIO CHOICE');     //Set who the message is to be sent from
-                                                            $mail->addReplyTo('registration@cio-choice.sg', 'CIO CHOICE');  //Set an alternative reply-to address
+                                                            $mail->setFrom('registration@cio-choice.sg', 'CIO HONOUR');     //Set who the message is to be sent from
+                                                            $mail->addReplyTo('registration@cio-choice.sg', 'CIO HONOUR');  //Set an alternative reply-to address
                                                             $mail->addAddress($registration_email);               // Name is optional
 																// $mail->addCC('cc@example.com'); 
 																// $mail->addBCC('bcc@example.com');
@@ -113,7 +141,7 @@
 														  </div> 
 															<div style="width:100%; float:left; padding:20px 0px; text-align:center;">
 																		<h1 style=" float:left; width:90%; font-family:Lato; font-size:26px; font-weight:bold; margin:0px 5%; padding:0px;">
-																		 CIO CHOICE Singapore.
+																		 CIO HONOUR Singapore.
 																		</h1>
 															  <p style=" float:left; width:90%; display:block; font-family:Source Sans Pro; line-height:20px; margin:15px 5% 0px 5%; padding:0px; font-size:15px; font-weight:400;">
 															  According to our records, you have requested that your password be resend. Your new
@@ -126,7 +154,7 @@
 																		
 																		<p style=" float:left; width:86%; display:block; font-family:Source Sans Pro; line-height:20px; margin:5px 7% 0% 7%; padding:0px; font-size:15px; font-weight:400;">'.$password.'</p>
 															  <div style="float:left; width:90%; margin:30px 5% 0px 5%;">
-																			<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO CHOICE SINGAPORE</a>
+																			<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO HONOUR SINGAPORE</a>
 																		</div>
 														  </div>
 															<div style="float:left; width:100%;">
@@ -160,7 +188,7 @@
 																											
 																	<li style="	float:left; list-style-type: none; margin:0px;"><a href="'.$web_url.'/privacy_policy.php" style="float:left; font-family:Source Sans Pro; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Privacy Policy</a></li>
 																  </ul>
-																  <p style=" float:left; font-family:Source Sans Pro; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO CHOICE Singapore. All Rights Reserved.</p>
+																  <p style=" float:left; font-family:Source Sans Pro; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO HONOUR Singapore. All Rights Reserved.</p>
 															  </div>
 															</div>
 															  
@@ -171,7 +199,7 @@
 														</div>
 														
 														<div style="float:left; margin:0px; width:100%; font-size:12px; color:#616161; font-family:Source Sans Pro; font-weight:400px;">
-														This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO CHOICE account. This is a one-time email. You received this email because you signed up for a CIO CHOICE account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
+														This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO HONOUR account. This is a one-time email. You received this email because you signed up for a CIO HONOUR account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
 														
 														<div style="clear:both;"></div>
 												</div>';
@@ -185,17 +213,15 @@
 																   echo 'Mailer Error: ' . $mail->ErrorInfo;
 																   exit;
 																}
-															header("Location:forgot_password.php?sent=ok");
-															echo '<h3 style="color:green;margin-left: 404px;">Email has been sent.....</h3>';
-														}
-														else
-														{
-															header("Location:forgot_password.php?error=ok");
-															echo '<h3 style="color:red;margin-left: 373px;">Email You enterd is Invalid !!</h3>';
-														}
+															header("Location:forgot_password.php?sent=ok");?> 
+															<div class="red-box" style="height:50px;">
+                            									<h2 style="color:#FFFFFF;"><b>We have sent an email to your registered email address. You will have your login credentials in that email.</b></h2>	
+																
+                       										 </div>
 														
-													}
-																										
+														
+												<?php	}
+													else {													
 													
 													?>
 													
@@ -237,7 +263,7 @@
 														</form>
                                                         </div>
                                                             
-																						
+													<?php }?>									
                                                     
                                                   </div>
                                                 </div>

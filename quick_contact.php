@@ -3,21 +3,21 @@
 											
 		<div class="contact_container" >
 											   
-						<div class="contact_detail fl" style="width:200px;">
+						<div class="contact_detail fl" style="width:15%;">
 											
 												<ul style="font-family: "Lato";font-size:17px;">
 													<p>Links</p>
 													<br /><br />
 													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com" style="text-decoration:none;">Home</a></li>
-													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com" style="text-decoration:none;">About</a></li>
-													<li style="padding-top:7px;"><a href="" style="text-decoration:none;">Advisory Panel</a></li>
-													<li style="padding-top:7px;"><a href="" style="text-decoration:none;">Events</a></li>
-													<li style="padding-top:7px;"><a href="" style="text-decoration:none;">Awards</a></li>
+													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/cio_choice_overview.php" style="text-decoration:none;">About</a></li>
+													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/advisory_panel.php" style="text-decoration:none;">Advisory Panel</a></li>
+													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/events.php" style="text-decoration:none;">Events</a></li>
+													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/awards.php" style="text-decoration:none;">Awards</a></li>
 													
 												</ul>
 						</div>
 
-                        <div class="contact_detail fl" style="width:350px;">
+                        <div class="contact_detail fl" >
 												<?php
 													//quick contact
 													$quick_contact_query = mysql_query("select * from quick_contact");
@@ -42,7 +42,7 @@
                                                        
 						</div>
                                                    
-                        <div class="contact_detail fl" style="width:350px; padding-top:10px">
+                        <div class="contact_detail fl" style="style="width:40%;padding-top:10px">
 											<?php echo $quick_contact_map; ?> 
 													
                         </div>

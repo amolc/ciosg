@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Honour</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/twitterfeed.js"></script>
 <link href="css/twitter-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!--<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+
 
 
 
@@ -41,7 +42,7 @@
 										
                                             <div id="advisory_wrapper">
                                                 <div class="advisory_panel_1 mrgn_top">
-                                                  <h1>AWARDS</h1>
+                                                  <h1 style="font-size: 30px; font-family: 'Lato';  text-transform: uppercase;">AWARDS</h1>
 													<div class="contact_details_2 fl">
 														<a href="#" class="active">2014</a>
 														<a style="display:none;" href="advisory_panel_13.php">2013</a>
@@ -94,10 +95,11 @@
                                                                ?>
        
                                                              
-															   <button type="button" style="font-weight:bold;" onclick="return readmore('<?php $advisory_res['awardID']?>');" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#longdetail<?php echo $advisory_res['awardID']; ?>">
+															   <button type="button" style="font-weight:bold;" onClick="return readmore('<?php $advisory_res['awardID']?>');" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#longdetail<?php echo $advisory_res['awardID']; ?>">
   Read more
 </button>
                                                               </div>
+															 </div>
 															  
 											<div class="modal fade" id="longdetail<?php echo $advisory_res['awardID']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:14%;">
 												<div class="modal-dialog" style="width:80%;">
@@ -143,6 +145,8 @@
                                                 </div>
                                                 <div style="clear:both"></div>
                                             </div>
+										</div>
+									
 											<?php 
 											
 												//include('events_panel.php');

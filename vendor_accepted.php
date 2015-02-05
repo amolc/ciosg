@@ -125,7 +125,7 @@
                             $result = mysql_query("SELECT registration_email FROM registration WHERE registration_email='$registration_email'");
                             if (mysql_num_rows($result) > 0)
                             {
-                                // echo "<h1 style='margin-bottom: 22px;text-align: center;'>Sorry this email address is already register with CIO CHOICE Singapore, please enter a new email address.</h1>";
+                                // echo "<h1 style='margin-bottom: 22px;text-align: center;'>Sorry this email address is already register with CIO HONOUR Singapore, please enter a new email address.</h1>";
                                 header("Location:registration.php?exit=ok");
                             } else
                             {
@@ -144,8 +144,8 @@
 										$mail2->Password = '7sendgrid';               // SMTP password
 										$mail2->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 										$mail2->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-										$mail2->setFrom('registration@cio-choice.sg', 'CIO CHOICE');     //Set who the message is to be sent from
-										$mail2->addReplyTo('registration@cio-choice.sg', 'CIO CHOICE');  //Set an alternative reply-to address
+										$mail2->setFrom('registration@cio-choice.sg', 'CIO HONOUR');     //Set who the message is to be sent from
+										$mail2->addReplyTo('registration@cio-choice.sg', 'CIO HONOUR');  //Set an alternative reply-to address
 										$mail2->addAddress($admin);                // Name is optional
 										$mail2->addAddress('preeti@cio-choice.sg'); 
                                                                                 $mail2->WordWrap = 500;       
@@ -169,10 +169,10 @@
 																  </div>
 																	<div style="width:100%; float:left; padding:20px 0px; text-align:center;">
 																				<h1 style=" float:left; width:90%; font-family:Lato; font-size:26px; font-weight:bold; margin:0px 5%; padding:0px;">
-																					Accept your CIO CHOICE Singapore registration request.
+																					Accept your CIO HONOUR Singapore registration request.
 																				</h1>
 																	  <p style=" float:left; width:90%; display:block; font-family:Source Sans Pro; line-height:20px; margin:15px 5% 0px 5%; padding:0px; font-size:15px; font-weight:400;">
-																		Accept your CIO CHOICE Singapore registration request. <a href="'.$web_url.'/admin/admin_pending_register.php">Accept</a>
+																		Accept your CIO HONOUR Singapore registration request. <a href="'.$web_url.'/admin/admin_pending_register.php">Accept</a>
 																		Please accept a new '.$registration_type.' registration request for cio-choice.sg
 																	  </p>
 																	  
@@ -185,7 +185,7 @@
 																				<p style=" float:left; width:86%; display:block; font-family:Source Sans Pro; line-height:20px; margin:5px 7% 0% 7%; padding:0px; font-size:15px; font-weight:400;">'.$registration_email.'</p>
 																				
 																	  <div style="float:left; width:90%; margin:30px 5% 0px 5%;">
-																					<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO CHOICE SINGAPORE</a>
+																					<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO HONOUR SINGAPORE</a>
 																				</div>
 																  </div> 
 																	<div style="float:left; width:100%;">
@@ -219,7 +219,7 @@
 																													
 																			<li style="	float:left; list-style-type: none; margin:0px;"><a href="'.$web_url.'/privacy_policy.php" style="float:left; font-family:Source Sans Pro; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Privacy Policy</a></li>
 																		  </ul>
-																		  <p style=" float:left; font-family:Source Sans Pro; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO CHOICE Singapore. All Rights Reserved.</p>
+																		  <p style=" float:left; font-family:Source Sans Pro; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO HONOUR Singapore. All Rights Reserved.</p>
 																	  </div>
 																	</div>
 																	  
@@ -230,7 +230,7 @@
 																</div>
 																
 																<div style="float:left; margin:0px; width:100%; font-size:12px; color:#616161; font-family:Source Sans Pro; font-weight:400px;">
-																This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO CHOICE account. This is a one-time email. You received this email because you signed up for a CIO CHOICE account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
+																This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO HONOUR account. This is a one-time email. You received this email because you signed up for a CIO HONOUR account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
 																
 																<div style="clear:both !important;"></div>
 														</div></body></html>'; 
@@ -286,8 +286,8 @@
 										$mail4->Password = '7sendgrid';               // SMTP password
 										$mail4->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 										$mail4->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-										$mail4->setFrom('registration@cio-choice.sg', 'CIO CHOICE');     //Set who the message is to be sent from
-										$mail4->addReplyTo('registration@cio-choice.sg', 'CIO CHOICE');  //Set an alternative reply-to address
+										$mail4->setFrom('registration@cio-choice.sg', 'CIO HONOUR');     //Set who the message is to be sent from
+										$mail4->addReplyTo('registration@cio-choice.sg', 'CIO HONOUR');  //Set an alternative reply-to address
 										$mail4->addAddress($admin);               // Name is optional
 										$mail4->WordWrap = 500;                                 // Set word wrap to 50 characters
 										$mail4->isHTML(true);                                  // Set email format to HTML
@@ -311,10 +311,10 @@
 																  </div>
 																	<div style="width:100%; float:left; padding:20px 0px; text-align:center;">
 																				<h1 style=" float:left; width:90%; font-family: Arial, Helvetica, sans-serif; font-size:26px; font-weight:bold; margin:0px 5%; padding:0px;">
-																					Accept your CIO CHOICE Singapore registration request.
+																					Accept your CIO HONOUR Singapore registration request.
 																				</h1>
 																	  <p style=" float:left; width:90%; display:block; font-family: Arial, Helvetica, sans-serif; line-height:20px; margin:15px 5% 0px 5%; padding:0px; font-size:15px; font-weight:400;">
-																			Accept your CIO CHOICE Singapore registration request. <a href="'.$web_url.'/admin/admin_pending_register.php">Accept</a>
+																			Accept your CIO HONOUR Singapore registration request. <a href="'.$web_url.'/admin/admin_pending_register.php">Accept</a>
 																		Please accept a new ICT Vendor registration request for cio-choice.sg
 																	  </p>
 																	  
@@ -327,7 +327,7 @@
 																				<p style=" float:left; width:86%; display:block; font-family: Arial, Helvetica, sans-serif; line-height:20px; margin:5px 7% 0% 7%; padding:0px; font-size:15px; font-weight:400;">'.$registration_email.'</p>
 																				
 																	  <div style="float:left; width:90%; margin:30px 5% 0px 5%;">
-																					<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO CHOICE SINGAPORE</a>
+																					<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO HONOUR SINGAPORE</a>
 																				</div>
 																  </div>
 																	<div style="float:left; width:100%;">
@@ -361,7 +361,7 @@
 																													
 																			<li style="	float:left; list-style-type: none; margin:0px;"><a href="'.$web_url.'/privacy_policy.php" style="float:left; font-family: Arial, Helvetica, sans-serif; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Privacy Policy</a></li>
 																		  </ul>
-																		  <p style=" float:left; font-family: Arial, Helvetica, sans-serif; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO CHOICE Singapore. All Rights Reserved.</p>
+																		  <p style=" float:left; font-family: Arial, Helvetica, sans-serif; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO HONOUR Singapore. All Rights Reserved.</p>
 																	  </div>
 																	</div>
 																	  
@@ -372,7 +372,7 @@
 																</div>
 																161
 																<div style="float:left; margin:0px; width:100%; font-size:12px; color:#616; font-family: Arial, Helvetica, sans-serif; font-weight:400px;">
-																This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO CHOICE account. This is a one-time email. You received this email because you signed up for a CIO CHOICE account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
+																This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO HONOUR account. This is a one-time email. You received this email because you signed up for a CIO HONOUR account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
 																
 																<div style="clear:both;"></div>
 														</div></body></html>'; 
@@ -396,11 +396,11 @@
 
                     if (isset($_REQUEST['sent']))
                     {
-                        echo "<h1 style='line-height: 30px;text-align: center;margin-bottom: 52px;'>Thank you for registering with CIO CHOICE Singapore, our moderators will review your account and keep you posted. Please check your email in the next 12-24 hours.</h1>";
+                        echo "<h1 style='line-height: 30px;text-align: center;margin-bottom: 52px;'>Thank you for registering with CIO HONOUR Singapore, our moderators will review your account and keep you posted. Please check your email in the next 12-24 hours.</h1>";
                     }
                     if (isset($_REQUEST['exit']))
                     {
-                        echo "<h1 style='margin-bottom: 22px;text-align: center;line-height: 30px;'>Sorry this email address is already register with CIO CHOICE Singapore, please enter a new email address.</h1>";
+                        echo "<h1 style='margin-bottom: 22px;text-align: center;line-height: 30px;'>Sorry this email address is already register with CIO HONOUR Singapore, please enter a new email address.</h1>";
                     }
                     // if(isset($_REQUEST['not_reg']))
                     // {

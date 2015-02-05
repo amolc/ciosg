@@ -1057,7 +1057,7 @@ $.getJSON('http://www.globalprompt.org/sg/cio/category/list_pending_vendor/?call
 		id=array[i].vID;
 		i++;
 		
-		tbl_row += "<td><button class='btn btn-info'  onClick='accept_vendor("+id+")'>Accept</button></td><td><button class='btn btn-danger' onClick='inactive_user("+id+")'>Decline</button></td>";
+		tbl_row += "<td><button class='btn btn-info'  onClick='accept_vendor("+id+")'>Accept</button></td><td><button onClick='decline_vendor("+id+")' class='btn btn-danger' onClick='inactive_user("+id+")'>Decline</button></td>";
         tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
         odd_even = !odd_even;               
     })
@@ -1087,7 +1087,7 @@ $.getJSON('http://www.globalprompt.org/sg/cio/category/list_pending_cio/?callbac
 		id=array[i].cID;
 		i++;
 		
-		tbl_row += "<td><button class='btn btn-info'  onClick='accept_cio("+id+")'>Accept</button></td><td><button class='btn btn-danger' onClick='delete_cio("+id+")'>Decline</button></td>";
+		tbl_row += "<td><button class='btn btn-info'  onClick='accept_cio("+id+")'>Accept</button></td><td><button onClick='decline_cio("+id+")' class='btn btn-danger' onClick='delete_cio("+id+")'>Decline</button></td>";
         tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
         odd_even = !odd_even;               
     })
@@ -1130,6 +1130,48 @@ function accept_vendor(vid)
 							if(data=="OK")
 							{
 								$.getJSON('http://www.globalprompt.org/sg/cio/category/vendor_accepted/?callback=?' ,"vid="+vid+"",function(array) {
+									list_pending_vendor();
+									document.getElementById('pvlist').innerHTML=array.result;   
+  									 $('#pvlist').show().delay(5000).hide(0);
+									 
+									 });
+							}
+																																																			
+	 });
+		
+	});
+}
+
+
+function decline_vendor(vid)
+{
+		document.getElementById('pvlist').innerHTML="Working..."; 
+		$.getJSON('http://www.globalprompt.org/sg/cio/category/accept_vendor/?callback=?' ,"vid="+vid+"",function(array) {
+				$.post("activation_decline.php" ,{'name':array.email_data.firstname ,'email':array.email_data.emailID,'reg_type':array.email_data.registration_type,'pass':array.email_data.password}).done(function( data ) {   
+																																																					
+							if(data=="OK")
+							{
+								$.getJSON('http://www.globalprompt.org/sg/cio/category/vendor_declined/?callback=?' ,"vid="+vid+"",function(array) {
+									list_pending_vendor();
+									document.getElementById('pvlist').innerHTML=array.result;   
+  									 $('#pvlist').show().delay(5000).hide(0);
+									 
+									 });
+							}
+																																																			
+	 });
+		
+	});
+}
+function decline_cio(cid)
+{
+		document.getElementById('pvlist').innerHTML="Working..."; 
+		$.getJSON('http://www.globalprompt.org/sg/cio/category/accept_cio/?callback=?' ,"cid="+cid+"",function(array) {
+				$.post("activation_decline.php" ,{'name':array.email_data.firstname ,'email':array.email_data.emailID,'reg_type':array.email_data.registration_type,'pass':array.email_data.password}).done(function( data ) {   
+																																																					
+							if(data=="OK")
+							{
+								$.getJSON('http://www.globalprompt.org/sg/cio/category/cio_declined/?callback=?' ,"cid="+cid+"",function(array) {
 									list_pending_vendor();
 									document.getElementById('pvlist').innerHTML=array.result;   
   									 $('#pvlist').show().delay(5000).hide(0);

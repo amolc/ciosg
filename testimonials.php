@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cio Choice</title>
+<title>Cio HONOUR</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
@@ -38,7 +38,7 @@
                                                   <div class="overview_left fl">
                                                   	<div class="about fl">
                                                     	<h1>About</h1>
-                                                        <a href="cio_choice_overview.php">CIO CHOICE Overview</a>
+                                                        <a href="cio_choice_overview.php">CIO HONOUR Overview</a>
                                                         <a href="cio_choice_community.php">The Community</a>
                                                         <a href="testimonials.php">Testimonials</a>
                                                     </div>

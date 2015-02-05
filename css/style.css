@@ -134,6 +134,7 @@ a img {
 img {
 	border: none;
 }
+
 .fl { float:left;}
 .fr { float:right;}
 .border { border:none !important;}
@@ -217,7 +218,7 @@ textarea:focus, input[type="text"]:focus, input[type="checkbox"]:focus, input[ty
 	position:relative;
 }
 .header_container {
-    width:960px;
+    max-width:960px;
 	height:258px;
 	margin:0 auto;
 	position:relative;
@@ -265,15 +266,15 @@ textarea:focus, input[type="text"]:focus, input[type="checkbox"]:focus, input[ty
 	text-decoration:underline;
 }
 .ict_vendor {
-	width:289px;
 	height:56px;
 	position:absolute;
 	right:35px;
 	top:232px;
 	z-index:999;
 }
+.ict_vendor li { display:inline-block;}
 .ict_vendor a {
-	float: left;
+	float:left;
 	font-family: 'Lato';
     font-size: 17px;
     font-weight: bold;
@@ -316,18 +317,17 @@ textarea:focus, input[type="text"]:focus, input[type="checkbox"]:focus, input[ty
 	position:relative;
 }
 .inner_nav {
-	width:960px;
+	max-width:960px;
 	margin:0 auto;
 	height:70px;
 }
 .nav {
-	width:970px;
+	max-width:970px;
 	margin:14px 0px 0px -1px;
 }
 .nav ul {
-	float:left;
+
     margin:0px;
-	width:970px;
 }
 .nav ul li {
 	float:left;
@@ -336,9 +336,13 @@ textarea:focus, input[type="text"]:focus, input[type="checkbox"]:focus, input[ty
 	display:block;
 	background:url(../images/nav_line.jpg) no-repeat right top;
 	position:relative;
+	padding:0 15px;
 }
 .nav ul li:last-child {
 	background: none !important;
+}
+@media screen and (max-width: 786px) { 
+.nav ul li { padding:0 15px; }
 }
 .nav ul li a {
 	float:left;
@@ -347,7 +351,6 @@ textarea:focus, input[type="text"]:focus, input[type="checkbox"]:focus, input[ty
     font-size:17px;
 	letter-spacing:2px;
 	margin:0px;
-	padding:0px 26px;
     text-align: center;
 	font-weight:bold;
     text-decoration: none;
@@ -389,7 +392,7 @@ color: #E73535;
 	
 }
 .our_advisory_panel {
-	width:960px;
+	max-width:960px;
 	margin: 0 auto;
 	height:470px;
 }
@@ -421,7 +424,7 @@ color: #E73535;
 }
 .our_advisory_panel p {
 	float:left;
-	width:735px;
+	max-width:735px;
 	font-size:19px;
 	line-height:28px;
 	margin:0px 115px 80px 115px;
@@ -612,12 +615,12 @@ color: #E73535;
 	background:#20201f;
 }
 .contact_container {
-    width:960px;
+    max-width:960px;
 	height:205px;
 	margin:0 auto;
 }
 .contact_detail {
-    width:380px;
+    width:33%;
 	margin:15px 0px 0px 10px;
 }
 .contact_detail h1 {
@@ -632,7 +635,6 @@ color: #E73535;
 	font-family: 'Lato';
 }
 .contact_detail p {
-	width:325px;
 	margin:5px 0px 0px 0px;
 	float:left;
 	display:block;
@@ -767,7 +769,7 @@ color: #E73535;
 }
 
 .footer_links {
-	width:960px;
+	max-width:960px;
 	height:50px;
 	margin:0 auto;
 	position:relative;
@@ -779,7 +781,7 @@ color: #E73535;
 }
 .footer_link {
 	margin:0px;
-	width:450px;
+	max-width:450px;
 }
 .footer_link p {
 	float:left;
@@ -1064,11 +1066,11 @@ a:hover {
 }
 
 .overview_right {
-	width:680px;
+	max-width:680px;
 	margin:0px 10px 30px 0px;
 }
 .choice_overview {
-	width:610px;
+	float:none;
 	margin:0px 0px 0px 20px;
 	text-align:center; 
 }
@@ -1112,12 +1114,10 @@ a:hover {
 }
 
 .network {
-	width:590px;
-	margin:35px 0px 0px 40px;
+	text-align:center;float:none;
 }
 .learn {
-	width:136px;
-	margin:0px 90px 0px 0px;
+	width:33%;
 	text-align:center;
 	cursor:pointer;
 }
@@ -1125,7 +1125,8 @@ a:hover {
 	color:black;
 }
 .learn span {
-	width:136px;
+	float:none;
+	width:auto;
 	margin:15px 0px;
 	text-align:center;
 	font-size:24px;

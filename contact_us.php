@@ -51,11 +51,11 @@ function validateForm(formName)
 										
 			
 										 <!--<form  action="<?php $_SERVER["PHP_SELF"];?>" method="post">-->
-                        <form action="<?php $_SERVER["PHP_SELF"];?>" method="post" id="myForm" onsubmit="return validateForm(this.id)" >
+                        <form action="<?php $_SERVER["PHP_SELF"];?>" method="post" id="myForm" onSubmit="return validateForm(this.id)" >
                                          
                                             <div id="advisory_wrapper">
                                                 <div class="get_in_touch mrgn_top">
-                                                  <h1>Get in Touch</h1>
+                                                  <h1 style="font-size: 30px; font-family: 'Lato';  text-transform: uppercase;">Get in Touch</h1>
                                                   <div class="contact_details_2 fl">
                                                   	<a href="contact_us.php" class="active">Contact Details</a>
                                                     <a href="faq.php">FAQs</a> 
@@ -147,7 +147,7 @@ function validateForm(formName)
 																				<p style=" float:left; width:86%; display:block; font-family:Source Sans Pro; line-height:20px; margin:5px 7% 0% 7%; padding:0px; font-size:15px; font-weight:400;">'.$message.'</p>
 																				
 																	  <div style="float:left; width:90%; margin:30px 5% 0px 5%;">
-																					<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO CHOICE SINGAPORE</a>
+																					<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO HONOUR SINGAPORE</a>
 																				</div>
 																  </div> 
 																	<div style="float:left; width:100%;">

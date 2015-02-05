@@ -1,4 +1,11 @@
 <?php
+include('sql_config/cio_db.php'); 
+	$sql="SELECT * FROM `mail_settings`";
+	$rs = mysql_query($sql) or die ("Query failed");
+	$row = mysql_fetch_array($rs);
+	$from=$row['from'];
+	$reply=$row['reply'];
+   
  		require 'admin/PHPMailerAutoload.php';
 		 
 		$registration_name=$_POST['name'];
@@ -24,14 +31,14 @@
 		$mail->Password = '10gXWOqeaf';               // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-		$mail->setFrom('registration@cxohonour.com', 'CIO CHOICE');     //Set who the message is to be sent from
-		$mail->addReplyTo('registration@cxohonour.com', 'CIO CHOICE');  //Set an alternative reply-to address
+		$mail->setFrom($from, 'CIO-HONOUR');     //Set who the message is to be sent from
+		$mail->addReplyTo($reply, 'CIO-HONOUR');  //Set an alternative reply-to address
 		// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 		$mail->addAddress($registration_email); 
 		$mail->WordWrap = 500;      
 		$mail->isHTML(true);                                  // Set email format to HTML
 		 $confirm_url="<a  href='http://cio.fountaintechies.com/vendor_accepted.php?id=".$str."'>click here to activate your account</a>";
-		$mail->Subject = 'Congratulations! Your Have Registered With CIO Choice';
+		$mail->Subject = 'Congratulations! Your Have Registered With CIO-HONOUR';
 		$mail->Body    = '
 		<html>
 		<body style="padding:0px; margin:0px;">
@@ -44,7 +51,7 @@
                 	
           </div>
             <div style="width:100%; float:left; padding:20px 0px; text-align:center;">
-                    	<h1 style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:26px; font-weight:bold; margin:0% 5%; padding:0px;">Thank you for your CIO CHOICE Singapore Membership application</h1>
+                    	<h1 style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:26px; font-weight:bold; margin:0% 5%; padding:0px;">Thank you for your CIO-HONOUR Singapore Membership application</h1>
               <hr>
 			  <hr>
 			  
@@ -80,7 +87,7 @@
                                                             
                     <li style="	float:left; list-style-type: none; margin:0px;"><a href="'.$web_url.'/privacy_policy.php" style="float:left; font-family: Arial, Helvetica, sans-serif; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Privacy Policy</a></li>
                   </ul>
-                  <p style=" float:left; font-family: Arial, Helvetica, sans-serif; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO CHOICE Singapore. All Rights Reserved.</p>
+                  <p style=" float:left; font-family: Arial, Helvetica, sans-serif; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO-HONOUR Singapore. All Rights Reserved.</p>
               </div>
             </div>
               
@@ -91,7 +98,7 @@
         </div>
         
         <div style="float:left; margin:0px; width:100%; font-size:12px; color:#616161; font-family: Arial, Helvetica, sans-serif; font-weight:400px;">
-       	This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO CHOICE account. This is a one-time email. You received this email because you signed up for a CIO CHOICE account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
+       	This e-mail was sent to <a href="#" style="color:#616161; text-decoration:underline;">'.$registration_email.'</a> and contains information directly related to your CIO-HONOUR account. This is a one-time email. You received this email because you signed up for a CIO-HONOUR account. Please do not reply to this email. If you want to contact us, please contact us directly. </div>
         
         <div style="clear:both !important;"></div>
 </div>

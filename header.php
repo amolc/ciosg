@@ -37,7 +37,7 @@ while($header__res = mysql_fetch_array($header__query))
 			</ul>
 			<?php }?>
 			<div class="phone fr">
-				<p style="font-weight: 300"><img src="images/email.png" width="21" height="19">Email: <a href="mailto:hello@cxohonour.com"><?php echo $header_email; ?></a></p>
+				<p style="font-weight: 300"><img src="images/email.png" width="21" height="19">Email: <a href="mailto:hello@cxohonour.com" style="color:#fff"><?php echo $header_email; ?></a></p>
 				<p style="margin-top:15px; font-weight: 300"><img src="images/phone.png" width="21" height="19">Telephone: <span class="tel_bold">+65 9668 2895</span></p>
 			</div>
 			

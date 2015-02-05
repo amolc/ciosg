@@ -2019,6 +2019,8 @@ input[type=radio]:checked + label:before {
 	background:white;
 	border:solid #8f0100 1px;
 	border-radius:10px;
+	font-size:17px;
+	font-weight:bold;
 }
 .login_box input[type="text"]:focus {
 	box-shadow:0px 0px 3px #a01211;

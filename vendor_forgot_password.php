@@ -53,11 +53,11 @@
 
                                                            
 
-													if($_POST['submit'] == "Submit")
+													if($_POST['submit'] == "submit")
 													{
 														$registration_email = check_input($_POST['email']);
-																										
-														$sql = mysql_query("select emailID,password from user_cio where emailID = '$registration_email' and registration_status='accepted'")or die(mysql_error());					
+																						
+														$sql = mysql_query("select emailID,password from user_vendor where emailID = '$registration_email' and registration_status='accepted'")or die(mysql_error());					
 														$row = mysql_fetch_array($sql);
 												
 														if($row['emailID'] == $registration_email)
@@ -75,13 +75,13 @@
 
 															// $mail_sent = mail( $to, $subject, $message, $headers );
 															require 'admin/classes/PHPMailer-master/PHPMailerAutoload.php';
- 															$web_url ="http://cio.fountaintechies.com";
+															$web_url ="http://cio.fountaintechies.com";
 																$mail = new PHPMailer;  
 																 
 																$mail->isSMTP();                                      // Set mailer to use SMTP
                                                             $mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
                                                             $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                                                          $mail->Username = 'gigsterjames';                   // SMTP username
+                                                            $mail->Username = 'gigsterjames';                   // SMTP username
 															$mail->Password = 'Gigsteremail78';              // SMTP password
                                                             $mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
                                                             $mail->Port = 587;
@@ -184,8 +184,10 @@
 																   echo 'Message could not be sent.';
 																   echo 'Mailer Error: ' . $mail->ErrorInfo;
 																   exit;
-																}
-															header("Location:forgot_password.php?sent=ok");
+																}else
+																{
+																
+																header("Location:vendor_forgot_password.php?sent=ok"); }
 															//echo $mail_sent ? " Your Tour Detail Sent To Your Inbox" : "Mail failed";
 														}
 														else
@@ -195,8 +197,7 @@
 														
 													}
 																										
-													else 
-													{
+													
 													?>
 													
 													
@@ -268,10 +269,7 @@
                                                            
                                                   </div>
 												  </form>-->
-                                                  <?php
-												  
-												  }
-												  ?>
+                                                  
                                                 </div>
                                                 <div style="clear:both;"></div>
                                             </div>

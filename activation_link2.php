@@ -13,8 +13,8 @@
 		$mail->Password = 'Gigsteremail78';               // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-		$mail->setFrom('registration@cxohonour.com', 'CIO CHOICE');     //Set who the message is to be sent from
-		$mail->addReplyTo('registration@cxohonour.com', 'CIO CHOICE');  //Set an alternative reply-to address
+		$mail->setFrom('registration@cxohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from
+		$mail->addReplyTo('registration@cxohonour.com', 'CIO HONOUR');  //Set an alternative reply-to address
 		// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 		$mail->addAddress($registration_email); 
 		$mail->WordWrap = 500;      

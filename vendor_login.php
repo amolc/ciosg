@@ -122,7 +122,7 @@ function passwordvalid()
                                                               <label>Password</label> 
                                                                 <input name="password" type="password" required>
 																
-																	<a style="color: #FFFFFF; float: left; margin-left: 138px;text-decoration: underline;    width: 222px;" href="forgot_password.php">Forgot your password ?</a>
+																	<a style="color: #FFFFFF; float: left; margin-left: 138px;text-decoration: underline;    width: 222px;" href="vendor_forgot_password.php">Forgot your password ?</a>
                                                                 <input value="SIGN IN" style="margin-left: 10px;" name="submit" type="submit">
 																</form>
                                                         </div>

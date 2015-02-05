@@ -53,11 +53,11 @@
 
                                                            
 
-													if($_POST['submit'] == "Submit")
+													if($_POST['submit'] == "submit")
 													{
 														$registration_email = check_input($_POST['email']);
 																										
-														$sql = mysql_query("select emailID,password from user_cio where emailID = '$registration_email' and registration_status='accepted'")or die(mysql_error());					
+														$sql = mysql_query("select emailID,password from user_vendor where emailID = '$registration_email' and registration_status='accepted'")or die(mysql_error());					
 														$row = mysql_fetch_array($sql);
 												
 														if($row['emailID'] == $registration_email)
@@ -75,7 +75,7 @@
 
 															// $mail_sent = mail( $to, $subject, $message, $headers );
 															require 'admin/classes/PHPMailer-master/PHPMailerAutoload.php';
- 															$web_url ="http://cio.fountaintechies.com";
+ 
 																$mail = new PHPMailer;  
 																 
 																$mail->isSMTP();                                      // Set mailer to use SMTP

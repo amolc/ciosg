@@ -231,7 +231,7 @@ class Category extends CI_Controller {
 	public function list_pending_cio()
 	{
 			$array=array();
-			$res=mysql_query("select cID,firstname,lastname,emailID,registration_status from user_cio where registration_status='pending'")or die(mysql_error());
+			$res=mysql_query("select cID,firstname,lastname,emailID,registration_status from user_cio where registration_status in('pending','declined')")or die(mysql_error());
 			$n=mysql_num_rows($res);
 			if(!$n)
 			{
@@ -249,7 +249,7 @@ class Category extends CI_Controller {
 	public function list_pending_vendor()
 	{
 			$array=array();
-			$res=mysql_query("select vID,firstname,lastname,emailID,registration_status from user_vendor where registration_status='pending'")or die(mysql_error());
+			$res=mysql_query("select vID,firstname,lastname,emailID,registration_status from user_vendor where registration_status in('pending','declined')")or die(mysql_error());
 			$n=mysql_num_rows($res);
 			if(!$n)
 			{
@@ -298,6 +298,23 @@ class Category extends CI_Controller {
 		$res['result']="request accepted";
 		echo $_GET['callback'] . '(' .json_encode($res) . ')';
 	}
+	
+	public function vendor_declined()
+	{
+		$vid=$_GET['vid'];
+		mysql_query("update user_vendor set registration_status='declined' where vID='$vid'");
+		$res['result']="request declined";
+		echo $_GET['callback'] . '(' .json_encode($res) . ')';
+	}
+	
+	public function cio_declined()
+	{
+		$cid=$_GET['cid'];
+		mysql_query("update user_cio set registration_status='declined' where cID='$cid'");
+		$res['result']="request declined";
+		echo $_GET['callback'] . '(' .json_encode($res) . ')';
+	}
+			
 									
 	
 }

@@ -112,7 +112,12 @@ function passwordvalid()
                                                      <span>Login as a Vendor</span>
                                                       <p>Subscribe and get visibility with CIO's in Singapore</p>
                                                     </div>
-                                                    
+                                                    <?php
+														if(isset($_REQUEST['wrong']))
+															{
+																echo "<h2 style='color: #F00;padding:15px;'>The Username or password you entered is incorrect , please try again</h2>";
+															}
+													?>
                                                   
                                                          <div class="contact_form fr">
 														 <form action="vendor_sucess.php" method="post">
@@ -227,12 +232,7 @@ function passwordvalid()
 													<!--<div style="text-align: center;float: left;width: 100%;line-height: 40px;height: 40px;color: #20201F;display: block;font-size: 30px;font-weight: bold;">
 														 Please use your preferred method of login...
 													</div>-->
-													<?php
-														if(isset($_REQUEST['wrong']))
-															{
-																echo "<h1 style='color: #F00;'>The Username or password you entered is incorrect , please try again</h1>";
-															}
-													?>
+													
 														
 														
 														

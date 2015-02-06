@@ -13,7 +13,7 @@
     require 'admin/classes/PHPMailer-master/PHPMailerAutoload.php';
 		
 	function email_to_cio_signup($registration_name , $registration_email ,$web_url,$registration_type,$pass,$str) {
-
+	
 		$mail = new PHPMailer;
 		  
 		$mail->isSMTP();                                      // Set mailer to use SMTP
@@ -23,8 +23,8 @@
 		$mail->Password = 'Gigsteremail78';               // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-		$mail->setFrom($from, 'CIO HONOUR');     //Set who the message is to be sent from
-		$mail->addReplyTo($reply, 'CIO HONOUR');  //Set an alternative reply-to address
+		$mail->setFrom('registration@ciohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from
+		$mail->addReplyTo('registration@ciohonour.com', 'CIO HONOUR');  //Set an alternative reply-to address
 		// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 		$mail->addAddress($registration_email); 
 		$mail->WordWrap = 500;      
@@ -46,7 +46,7 @@
 			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px;  margin:0% 5%; padding:10px;">Below are the login credentials for your profile.</div>
 			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;"><b>Email address : &nbsp;'. $registration_email.'</b></div>
 			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;"><b>Password : &nbsp;'. $pass.'</b></div>
-			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;">Please click on the link to activate your account  :  &nbsp; <a  href="http://cio.fountaintechies.com/vendor_accepted.php?id="'.$str.'">Activate you profile </a>.</div>
+			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;">Please click on the link to activate your account  :  &nbsp; <a  href="http://cio.fountaintechies.com/cio_accepted.php?id='.$str.'">Activate you profile </a>.</div>
 			    <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;">Need help?  :  &nbsp; <a href="'.$web_url.'/contact_us.php" style="float:left; font-family: Arial, Helvetica, sans-serif; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Contact US</a></div>
        
 </div>
@@ -93,8 +93,8 @@
 		$mail->Password = 'Gigsteremail78';           // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-		$mail->setFrom($from, 'CIO HONOUR');     //Set who the message is to be sent from
-		$mail->addReplyTo($reply, 'CIO HONOUR');  //Set an alternative reply-to address
+		$mail->setFrom('registration@ciohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from
+		$mail->addReplyTo('registration@ciohonour.com', 'CIO HONOUR');  //Set an alternative reply-to address
 		// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 		$mail->addAddress($registration_email); 
 		$mail->WordWrap = 500;      
@@ -116,7 +116,7 @@
 			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px;  margin:0% 5%; padding:10px;">Below are the login credentials for your profile.</div>
 			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;"><b>Email address : &nbsp;'. $registration_email.'</b></div>
 			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;"><b>Password : &nbsp;'. $pass.'</b></div>
-			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;">Please click on the link to activate your account  :  &nbsp; <a  href="http://cio.fountaintechies.com/vendor_accepted.php?id="'.$str.'">Activate you profile </a>.</div>
+			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;">Please click on the link to activate your account  :  &nbsp; <a  href="http://cio.fountaintechies.com/vendor_accepted.php?id='.$str.'">Activate you profile </a>.</div>
 			    <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; margin:0% 5%; padding:10px;">Need help?  :  &nbsp; <a href="'.$web_url.'/contact_us.php" style="float:left; font-family: Arial, Helvetica, sans-serif; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Contact US</a></div>
        
 </div>
@@ -165,14 +165,14 @@
 		$mail->Password = 'Gigsteremail78';                // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-		$mail->setFrom($from, 'CIO HONOUR');     //Set who the message is to be sent from
-		$mail->addReplyTo($reply, 'CIO HONOUR');  //Set an alternative reply-to address
+		$mail->setFrom('registration@ciohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from
+		$mail->addReplyTo('registration@ciohonour.com', 'CIO HONOUR');  //Set an alternative reply-to address
 		// $mail->addAddress('developer@day7.co', 'developer devday7');  // Add a recipient
 		$mail->addAddress($registration_email); 
 		$mail->WordWrap = 500;      
 		$mail->isHTML(true);                                  // Set email format to HTML
 		 $confirm_url="Your application is under review. We will get back to you in a shortly";
-		$mail->Subject = 'Congratulations! Your Have Registered With CIO Honour';
+		$mail->Subject = 'Your application is under review!';
 		$mail->Body    = '
 		<html>
 		<body style="padding:0px; margin:0px;">
@@ -213,10 +213,10 @@
 		   exit;
 		}
     $mail->ClearAllRecipients();
-    $mail->addAddress('$from'); 
-    $mail->addAddress('$from'); 
-    $mail->addAddress('$from'); 
-    $mail->addAddress('$from'); 
+    $mail->addAddress('registration@ciohonour.com'); 
+    $mail->addAddress('registration@ciohonour.com'); 
+    $mail->addAddress('registration@ciohonour.com'); 
+    $mail->addAddress('registration@ciohonour.com'); 
     $mail->Subject = 'A new member has just registered using the Cio-Honour.sg network.';
      $mail->Body='
     <html>

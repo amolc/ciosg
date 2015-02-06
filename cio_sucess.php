@@ -143,7 +143,7 @@ if(!isset($_SESSION['user_name']))
 														}
 														else 
 														{
-															header("location:login.php?wrong=yes");
+															header("location:vendor_login.php?wrong=yes");
 															
 														}
 															
@@ -190,31 +190,33 @@ include('activation_link2.php');
 
 								
 								
-										$web_url ="http://cio.fountaintechies.com";			
-													
-													$retval = mysql_query( $sql, $con);
-													
-													
-													
-									$pos1= strpos($email,"@gmail.com");
-									$pos2= strpos($email,"@yahoo.com");
+											$web_url ="http://cio.fountaintechies.com";	
+													$query = mysql_query( $sql, $con);
 									
-									$sql1="SELECT * FROM parent_company";
+									//header("Location:registration.php?sent=ok");
+                                    
+                              $pos1= strpos($email,"@gmail.com");
+									$pos2= strpos($email,"@yahoo.com");
+												
+								
+								$sql1="SELECT * FROM parent_company";
 								$rs = mysql_query($sql1) or die ("Query failed");
 								//$row = mysql_fetch_array($rs);
 								while($row = mysql_fetch_array($rs))
 								{
-								$pos3= strpos($email,$row['domain_name']);
+								// echo $row['domain_name'];
+									$pos3= strpos($email,$row['domain_name']);
 								 if($pos3 >0)
 								 {
 								 break;
 								 }
+								 
 								}
-										
+								 //echo  $pos3;
 								if($pos3 > 0 || $pos1 < 0 || $pos1 < 0 )
 								{
 									
-									email_to_cio_signup($fname, $email, $web_url,$reg_type,$pass,$str); //email function for cio
+								email_to_cio_signup($fname, $email, $web_url,$reg_type,$pass,$str);  //email function for cio
 										?>
 												<div class="login_box fl" style="width:auto"> 
 												<h1>Congratulations!<br><br>
@@ -239,10 +241,15 @@ include('activation_link2.php');
 											
 								
 								}
-												  
-												  
-												  }
+								
+								
+								
+								}
 												  ?>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                        	</div>
                                                 </div>
                                                 <div style="clear:both;"></div>
                                             </div>

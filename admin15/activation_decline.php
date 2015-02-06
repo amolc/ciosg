@@ -37,7 +37,7 @@
 		$mail->WordWrap = 500;      
 		$mail->isHTML(true);                                  // Set email format to HTML
 		 $confirm_url="<a  href='http://cio.fountaintechies.com/accepted.php?id=".$str."'>click here to activate your account</a>";
-		$mail->Subject = 'Congratulations! Your Have Registered With CIO HONOUR';
+		$mail->Subject = 'Declined! Your Request For CIO HONOUR Registered Has Been Declined';
 		$mail->Body    = '
 		<html>
 		<body style="padding:0px; margin:0px;">
@@ -49,7 +49,7 @@
               </div>      
 			  <!--Acoount Details-->
 			  <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px;  margin:0% 5%; padding:10px;"><b>Dear&nbsp;'. $registration_name.',</b></div>
-			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px;  margin:0% 5%; padding:10px;">Your registration request Declined  </div>
+			   <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px;  margin:0% 5%; padding:10px;">Your registration request has been Declined  </div>
 			  
 			    <div style=" float:left; width:90%;  font:Lato; font-family:Arial, Helvetica, sans-serif; font-size:17px;  margin:0% 5%; padding:10px;">Need help?  :  &nbsp; <a href="'.$web_url.'/contact_us.php" font-size:13px; text-decoration: underline;>Contact US</a></div>
        

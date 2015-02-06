@@ -122,9 +122,9 @@ if(!isset($_SESSION['user_name']))
 																$_SESSION['corperate_email']=$row['corperate_email'];
 																$_SESSION['type']='cio_landing.php';
 																;*/
-															header("location:vendor_registration?&wrong=yes");
+															//header("location:vendor_registration?&wrong=yes");
 												
-															//header("location:login.php?wrong=yes");
+															header("location:cio_login.php");
 															
 															}
 															else if($row['registration_type']=='ICTVendor') 
@@ -146,7 +146,7 @@ if(!isset($_SESSION['user_name']))
 															
 														}
 														else {
-															header("location:login.php?wrong=yes");
+															header("location:vendor_login.php?wrong=yes");
 															// echo "<h1>The UserName or password you entered is incorrect , please rry again</h1>";
 														}
 															// $sql = mysql_query('SELECT * FROM registration where registration_email ="'.$username.'" AND registration_password ="'.$password.'"');

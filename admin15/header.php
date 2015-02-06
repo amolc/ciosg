@@ -51,7 +51,7 @@
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="col-md-4">
-						<div class="clsLogo" style="text-align:center;"><img src="images/logo_cio.png" width="174" height="68" style="margin-left:-266px;" /></div>
+						<div class="clsLogo" style="text-align:center;"><img width="auto" height="60" style="margin-left:-143px;" src="images/logo_cio.png"></div>
 					</div>
 					<div class="col-md-8">
 						<div class="row">

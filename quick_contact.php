@@ -3,7 +3,7 @@
 											
 		<div class="contact_container" >
 											   
-						<div class="contact_detail fl" style="width:15%;">
+						<div class="contact_detail fl" style="width:27%;">
 											
 												<ul style="font-family: "Lato";font-size:17px;">
 													<p>Links</p>

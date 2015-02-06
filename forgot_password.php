@@ -62,35 +62,23 @@
 														if(mysql_num_rows($sql))
 														{
 															$row = mysql_fetch_array($sql);
-															if($row['emailID'] == $registration_email)
-															{
-																$password = $row['password'];
-															}
-															else
-															{
-																header("Location:forgot_password.php?error=ok");
-																echo '<h3 style="color:red;margin-left: 373px;">Email You enterd is Invalid !!</h3>';
-															}
+															$password = $row['password'];
 															
 														}	
 														else
 														{
 															$sql2 = mysql_query("select emailID,password from user_vendor where emailID = '$registration_email' and registration_status='accepted'")or die(mysql_error());					
 															$row2 = mysql_fetch_array($sql2);
-															if($row2['emailID'] == $registration_email)
-															{
-																$password = $row2['password'];
-															}
-															else
-															{
-																header("Location:forgot_password.php?error=ok");
-																echo '<h3 style="color:red;margin-left: 373px;">Email You enterd is Invalid !!</h3>';
-															}
-															
-															
-													
+															$password = $row2['password'];
 														}
-														
+															
+							
+														if($row2['emailID'] == $registration_email || $row['emailID'] == $registration_email)
+														{
+															$sql3=mysql_query("select * from mail_settings")or die(mysql_error());
+															$row3 = mysql_fetch_array($sql3);
+															$from=$row3['from'];
+															$reply=$row3['reply'];
 															
 															// $to = $registration_email;
 															// $subject = "Forgot Password"; 
@@ -115,8 +103,8 @@
                                                             $mail->Port = 587;
 
 
-                                                            $mail->setFrom('registration@cio-choice.sg', 'CIO HONOUR');     //Set who the message is to be sent from
-                                                            $mail->addReplyTo('registration@cio-choice.sg', 'CIO HONOUR');  //Set an alternative reply-to address
+                                                            $mail->setFrom($from, 'CIO HONOUR');     //Set who the message is to be sent from
+                                                            $mail->addReplyTo($reply, 'CIO HONOUR');  //Set an alternative reply-to address
                                                             $mail->addAddress($registration_email);               // Name is optional
 																// $mail->addCC('cc@example.com'); 
 																// $mail->addBCC('bcc@example.com');
@@ -126,17 +114,17 @@
 																$mail->isHTML(true);                                  // Set email format to HTML
 																 
 																$mail->Subject = 'Forgot Password';
-																$mail->Body    = '<div style=" height:100%; padding:25px; background:#eaeaea">
+																$mail->Body    = '<div style=" height:870px; padding:25px; background:#eaeaea">
 														<div style="float:left; width:100%; margin:0px 0px 25px 0px; background:white; box-shadow:0px 2px 5px #7d7c7c;">
-															<div style=" float:left; width:100%; height:225px; background:url('.$web_url.'/images/cio_choice_head_bg.png) repeat-x  center top;">
+															<div style=" float:left; width:100%; height:225px; background:url(http://cio.fountaintechies.com/images/cio_choice_head_bg.png) repeat-x  center top;">
 																<div style=" width:210px;height: 225px; margin:0 auto;">
-																<a href="#" style="height:245px;"><img src="'.$web_url.'/images/cio_choice_head_logo.png" alt="" width="100%" height="100%"></a>
+																<a href="#" style="height:245px;"><img src="http://cio.fountaintechies.com/images/logo3.png" alt="" width="100%" height="100%"></a>
 																<div style="clear:both;"></div>
 																</div>
 															</div>
 															<div style="width:100%; height:65px; float:left; background:#20201f;">
 																	<div style=" width:115px;text-align:center; float:left;">
-																	<a href="#" style=" text-decoration:none; padding:0px 27px; text-align:center; float:left; line-height:65px; font-family: Lato; color:#FFF; font-size:17.5px; font-weight:bold; text-transform:uppercase; text-shadow:0px 2px #000; letter-spacing:1px; background:url('.$web_url.'/images/border.jpg) no-repeat right">home</a>
+																	<a href="#" style=" text-decoration:none; padding:0px 27px; text-align:center; float:left; line-height:65px; font-family: Lato; color:#FFF; font-size:17.5px; font-weight:bold; text-transform:uppercase; text-shadow:0px 2px #000; letter-spacing:1px; background:url(http://cio.fountaintechies.com/images/border.jpg) no-repeat right">home</a>
 																	</div>
 														  </div> 
 															<div style="width:100%; float:left; padding:20px 0px; text-align:center;">
@@ -154,40 +142,31 @@
 																		
 																		<p style=" float:left; width:86%; display:block; font-family:Source Sans Pro; line-height:20px; margin:5px 7% 0% 7%; padding:0px; font-size:15px; font-weight:400;">'.$password.'</p>
 															  <div style="float:left; width:90%; margin:30px 5% 0px 5%;">
-																			<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO HONOUR SINGAPORE</a>
+																			<a href="http://cio.fountaintechies.com/" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO HONOUR SINGAPORE</a>
 																		</div>
 														  </div>
 															<div style="float:left; width:100%;">
-															<div style="float:left; width:46.1%; background:#eaeaea; height:1px; margin:28px 0px 0px 10px;"></div>
-															<div style="float:left; margin:18px 0px 0px 0px;"><img src="'.$web_url.'/images/star_rating.jpg" width="82" height="11"></div>
+															<div style="float:left; width:42.1%; background:#eaeaea; height:1px; margin:28px 0px 0px 10px;"></div>
+															<div style="float:left; margin:18px 0px 0px 0px;"><img src="http://cio.fountaintechies.com/images/star_rating.jpg" width="82" height="11"></div>
 															<div style="float:left; width:46.3%; background:#eaeaea; height:1px; margin:28px 0px 0px 0px;"></div>
 															</div>
 															<div style="float:left; width:98.8%; padding:0px; margin-left:10px">
 															<div style="width:80%; float:left; height:80px;">
-																	<span style="float:left; margin:15px 12px 0px 0px; display:block;"><img src="'.$web_url.'/images/question.jpg" alt="" width="41" height="41"></span>
+																	<span style="float:left; margin:15px 12px 0px 0px; display:block;"><img src="http://cio.fountaintechies.com/images/logo3.png" alt="" width="41" height="41"></span>
 																	<span style="float:left; width:50%; margin:15px 20px 0px 0px; display:block; text-transform:uppercase; font-family:Source Sans Pro; color:#616161">Need help?</span>
-																  <a href="#" style="float:left; width:50%; margin:0px; display:block; text-transform:uppercase; font-family:Source Sans Pro; color:#616161;">Send us your question</a>
+																  <a href="http://cio.fountaintechies.com/contact_us.php" style="float:left; width:50%; margin:0px; display:block; text-transform:uppercase; font-family:Source Sans Pro; color:#616161;">Send us your question</a>
 															  </div>
 															<div style="width:170px; float:right; margin-top:22px;">
-																<a href="http://www.linkedin.com/company/cio-choice-singapore/" target="_blank"><img width="30" height="31 " alt="" src="'.$web_url.'/images/linkedin.png"></a>
-																<a href="https://twitter.com/CIOCHOICE_SG" target="_blank"><img width="30" height="31 " alt="" src="'.$web_url.'/images/twitter.png"></a>
-																<a href="https://plus.google.com/+CiochoiceSg1/posts" target="_blank"><img width="30" height="31 " alt="" src="'.$web_url.'/images/google_plus.png"></a>
-																<a href="https://www.facebook.com/ciochoice.sg" target="_blank"><img width="30" height="31 " alt="" src="'.$web_url.'/images/facebook.png"></a>
-																<a href="http://www.youtube.com/user/CIOCHOICEsingapore" target="_blank"><img width="30" height="31 " alt="" src="'.$web_url.'/images/play.png"></a>
+																<a href="http://www.linkedin.com/company/cio-choice-singapore/" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/linkedin.png"></a>
+																<a href="https://twitter.com/CIOCHOICE_SG" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/twitter.png"></a>
+																<a href="https://plus.google.com/+CiochoiceSg1/posts" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/google_plus.png"></a>
+																<a href="https://www.facebook.com/ciochoice.sg" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/facebook.png"></a>
+																<a href="http://www.youtube.com/user/CIOCHOICEsingapore" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/play.png"></a>
 															</div>
 															
 															<div style="float:left; width:100%; border-top: #EAEAEA solid 1px;">
 																<div style="float:left; margin:0px; width:96%;">
-																  <ul style="	float:left; margin:20px 0px 0px 0px; padding:0px; display:block;">
-																											
-																	<li style="	float:left; list-style-type: none; border-right:#504d4d solid 2px; margin:0px;"><a href="'.$web_url.'/index.php" style="float:left; font-family:Source Sans Pro; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 10px 0px 0px;">Home</a></li>
-																											
-																	<li style="	float:left; list-style-type: none; border-right:#504d4d solid 2px; margin:0px;"><a href="'.$web_url.'/registration.php" style="float:left; font-family:Source Sans Pro; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 10px;">Register</a></li>
-																											
-																	<li style="	float:left; list-style-type: none;  border-right:#504d4d solid 2px; margin:0px;"><a href="'.$web_url.'/login.php" style="float:left; font-family:Source Sans Pro; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 10px;">Login</a></li>
-																											
-																	<li style="	float:left; list-style-type: none; margin:0px;"><a href="'.$web_url.'/privacy_policy.php" style="float:left; font-family:Source Sans Pro; display: block; font-size:13px; font-weight:bold; color:#585858; text-decoration: underline; padding:0px 0px 0px 10px;">Privacy Policy</a></li>
-																  </ul>
+																
 																  <p style=" float:left; font-family:Source Sans Pro; width:100%; display:block; font-size:13px; font-weight:400; color:#504d4d; margin:15px 0px;">Copyright &copy; 2014 CIO HONOUR Singapore. All Rights Reserved.</p>
 															  </div>
 															</div>
@@ -218,9 +197,18 @@
                             									<h2 style="color:#FFFFFF;"><b>We have sent an email to your registered email address. You will have your login credentials in that email.</b></h2>	
 																
                        										 </div>
+												<?php		}
+														else
+														{
+															header("Location:forgot_password.php?error=ok");?>
+																<div class="red-box" style="height:50px;">
+                            									<h2 style="color:#FFFFFF;"><b>Email You enterd is Invalid !!   Please Enter Correct Email Address</b></h2>	
+																
+                       										 </div>
+														<?php }
 														
 														
-												<?php	}
+													}
 													else {													
 													
 													?>

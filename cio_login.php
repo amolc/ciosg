@@ -109,7 +109,12 @@ function validate()
                                                       <p>Get connected with us for surveys and information in the CIO</p>
                                                       
                                                     </div>
-													
+													 <?php
+														if(isset($_REQUEST['wrong']))
+															{
+																echo "<h2 style='color: #F00;padding:15px;'>The Username or password you entered is incorrect , please try again</h2>";
+															}
+													?>
 														  
                                                          <div class="contact_form fr">
 														 <form action="cio_sucess.php" method="post">

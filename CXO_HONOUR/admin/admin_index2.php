@@ -68,7 +68,7 @@
 		<div class="login-content">
 			
 			<a href="#" class="logo">
-				<h1 style="color:#fff;">cio-choice.sg</h1>
+				<h1 style="color:#fff;">cxo-honour.sg</h1>
 			</a>
 			
 			<p class="description">Dear user, log in to access the admin area!</p>

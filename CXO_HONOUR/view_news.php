@@ -105,7 +105,7 @@
 																	$title = substr($stringCut, 0, strrpos($stringCut, ' ')).'...';
 																}
 															
-															echo '<a style="line-height:22px;" href="view_news.php?id='.$row2['news_id'].'" target="_blank">'.$title.'</a>';
+															echo '<a style="line-height:22px;" href="view_news.php?id='.$row2['news_id'].'">'.$title.'</a>';
 															}
 														?>
                                                         

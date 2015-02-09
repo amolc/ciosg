@@ -115,7 +115,7 @@
 																	$title = substr($stringCut, 0, strrpos($stringCut, ' ')).'...';
 																}
 															
-															echo '<a style="line-height:22px;" href="view_news.php?id='.$row2['news_id'].'" target="_blank">'.$title.'</a>';
+															echo '<a style="line-height:22px;" href="view_news.php?id='.$row2['news_id'].'">'.$title.'</a>';
 															}
 															
 															$Keyword = check_input($_GET['tags']);
@@ -257,7 +257,7 @@ if ($page <= 0)
                                                                     
                                                                 </div>
                                                                 <div class="included_topics fl mrgn_bottom">
-                                                                  <a href="view_news.php?id=<?php echo mysql_result($result, $i, 'news_id'); ?>" target="_blank" style="text-decoration: none;" class="read">read more</a>
+                                                                  <a href="view_news.php?id=<?php echo mysql_result($result, $i, 'news_id'); ?>" style="text-decoration: none;" class="read">read more</a>
 																	<div class="social_media fr" style="width:145px;">
 																		<span class='st_sharethis'></span>
 																		<span class='st_facebook'></span>

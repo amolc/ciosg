@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Honour</title>
+<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
@@ -53,13 +54,13 @@
 																$faq_result = mysql_query("SELECT
 																						*
 																						FROM
-																						event_landing_page where page_title='THE CIO HONOUR COMMUNITY'
-																						");
+																						event_landing_page");
 
 																//fetch tha data from the database
 																while ($faq_row = mysql_fetch_array($faq_result))
 																{      ?>
-                                              <div class="overview_right fr">
+                                              <div class="overview_right fr" >
+                                                 
                                                    <?php echo $faq_row['page_desc']; ?>
                                               </div>
                                               <?php } ?>

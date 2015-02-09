@@ -121,13 +121,14 @@
 					$award_year = mysql_real_escape_string($_POST['award_year']);
 					$award_industry = mysql_real_escape_string($_POST['award_industry']);		
 					$award_image = $_FILES["file"]["name"];
-					
+					$award_video = mysql_real_escape_string($_POST['award_video']);	
+					$award_company_profile = mysql_real_escape_string($_POST['award_company_profile']);	
 					$today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
 					$current_date = date("m/d/Y", $today_date);
 				
-					$sql   = "insert into awards(award_name,award_company,award_industry,award_image,award_insert_date,award_year,award_company_details)
+					$sql   = "insert into awards(award_name,award_company,award_industry,award_image,award_insert_date,award_year,award_company_details,video_embed_code,company_profile)
 					values
-					('$award_name','$award_company','$award_industry','$award_image','$current_date',$award_year,'$award_company_details')";
+					('$award_name','$award_company','$award_industry','$award_image','$current_date',$award_year,'$award_company_details','$award_video','$award_company_profile')";
 					
 					$query = mysql_query($sql) or die (mysql_error());
 					$event_id = mysql_insert_id();
@@ -156,12 +157,14 @@
 				$award_year = mysql_real_escape_string($_POST['award_year']);
 				$award_industry = mysql_real_escape_string($_POST['award_industry']);		
 				$award_image = $_FILES["file"]["name"];
+				$award_video = mysql_real_escape_string($_POST['award_video']);	
+				$award_company_profile = mysql_real_escape_string($_POST['award_company_profile']);	
 				$today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
 				$current_date = date("m/d/Y", $today_date);
 				
-					$sql   = "insert into awards(award_name,award_company,award_industry,award_image,award_insert_date,award_year,award_company_details)
+					$sql   = "insert into awards(award_name,award_company,award_industry,award_image,award_insert_date,award_year,award_company_details,video_embed_code,company_profile)
 					values
-					('$award_name','$award_company','$award_industry','$award_image','$current_date',$award_year,'$award_company_details')";
+					('$award_name','$award_company','$award_industry','$award_image','$current_date',$award_year,'$award_company_details','$award_video','$award_company_profile')";
 					
 					$query = mysql_query($sql) or die (mysql_error());
 					$event_id = mysql_insert_id();
@@ -244,6 +247,21 @@
 								</div>
 							</div>
 							
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Video(Embed Code)</label>
+
+						<div class="col-sm-5">
+							<textarea class="form-control" id="field-1" name="award_video" required></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Company Profile</label>
+
+						<div class="col-sm-5">
+							
+							<textarea class="form-control" id="field-1" name="award_company_profile" required></textarea>
 						</div>
 					</div>
 					<div class="form-group">

@@ -62,7 +62,7 @@ function validateForm(formName)
 										<div class="col-md-8">
 											<div class="clsForm">
 												<div class="row">
-												<form action="<?php $_SERVER["PHP_SELF"];?>" method="post" id="myForm" onsubmit="return validateForm(this.id)" >
+												<form action="<?php $_SERVER["PHP_SELF"];?>" method="post" id="myForm" onSubmit="return validateForm(this.id)" >
 												<?php
 																			
 												error_reporting(0);
@@ -102,15 +102,17 @@ function validateForm(formName)
 										 $mail = new PHPMailer;
 		  
 										$mail->isSMTP();                                      // Set mailer to use SMTP
-										$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
+										$mail->Host = 'smtp.mandrillapp.com';                       // Specify main and backup server
 										$mail->SMTPAuth = true;                               // Enable SMTP authentication
-										$mail->Username = 'gigster';                   // SMTP username
-										$mail->Password = '10gXWOqeaf';               // SMTP password
+										$mail->Username = 'ankush.lomte@fountaintechies.com';                   // SMTP username
+										$mail->Password = 'dvZ19kPylIgqIO6QvDLN5g';               // SMTP password
 										$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 										$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
-										$mail->setFrom($email,''.$first_name.'' .$last_name.'');     //Set who the message is to be sent from
-										$mail->addReplyTo('contactus@cio-honour.sg', 'CXO HONOUR');  //Set an alternative reply-to address
-										$mail->addAddress('contactus@cio-honour.sg','CXO HONOUR'); 
+										$mail->setFrom($email,''.$first_name.' ' .$last_name.'');     //Set who the message is to be sent from
+										$mail->addReplyTo('hello@cxohonour.com', 'CXO HONOUR');  //Set an alternative reply-to address
+										$mail->addAddress('amol.chawathe@fountaintechies.com','CXO HONOUR'); 
+										$mail->addAddress('hello@cxohonour.com','CXO');
+										
 										$mail->WordWrap = 500;      
 										$mail->isHTML(true);                                  // Set email format to HTML
 										$confirm_url="<a  href='http://cio.fountaintechies.com/accepted.php?id=".$str."'>click here to activate your account</a>";
@@ -134,7 +136,7 @@ function validateForm(formName)
 																				<p style=" float:left; width:86%; display:block; font-family:Source Sans Pro; line-height:20px; margin:15px 7% 0% 7%;">You have one Contact Request,</p>
 																				<br />
 																	  
-																				<p style=" float:left; width:86%; display:block; font-family:Source Sans Pro; line-height:20px; margin:15px 7% 0% 7%;">Name: '.$first_name.'' .$last_name.'</p>
+																				<p style=" float:left; width:86%; display:block; font-family:Source Sans Pro; line-height:20px; margin:15px 7% 0% 7%;">Name: '.$first_name.' ' .$last_name.'</p>
 																				
 																				
 																				
@@ -148,9 +150,9 @@ function validateForm(formName)
 																	  
 																  </div> 
 																	<div style="float:left; width:100%;">
-																	<div style="float:left; width:43%; background:#eaeaea; height:1px; margin:28px 0px 0px 10px;"></div>
+																	<div style="float:left; width:45%; background:#eaeaea; height:1px; margin:28px 0px 0px 10px;"></div>
 																	<div style="float:left; margin:18px 0px 0px 0px;"><img src="'.$web_url.'/images/star_rating.jpg" width="82" height="11"></div>
-																	<div style="float:left; width:43%; background:#eaeaea; height:1px; margin:28px 0px 0px 0px;"></div>
+																	<div style="float:left; width:40%; background:#eaeaea; height:1px; margin:28px 0px 0px 0px;"></div>
 																	</div>
 																	<div style="float:left; width:98.8%; padding:0px; margin-left:10px">
 																	<div style="width:60%; float:left; height:80px;">
@@ -235,13 +237,14 @@ function validateForm(formName)
 													</div>
 													                                                     
 													<div class="col-xs-6" style="margin-bottom:15px;">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* I'm a...</label>
-														<select name="select" id="select" class="form-control ">
+													<label>&nbsp;&nbsp;* Company:</label>
+														<!--<select name="select" id="select" class="form-control ">
 														<option value="CIO">CIO</option>
                                                         <option value="ICT Vendor">ICT Vendor</option>
                                                         <option value="Partner">Partner</option>
                                                         <option value="Other">Other</option>
-                                                        </select>		
+                                                        </select>		-->
+														<input type="text" name="select" id="select" class="form-control " placeholder="Company">
 													</div>
 													<div class="col-xs-12" style="margin-bottom:15px;">
 													<label>&nbsp;* Your Message:</label>
@@ -261,13 +264,13 @@ function validateForm(formName)
 													<div class="clsLine"></div>
 													<h1>Address</h1>
 													<p>
-														<b>CXO Honour Headquaters</b><br/>
+														<b>Core Services (Asia) Pte Ltd</b><br/>
 														100 Cecil Street, #10-01<br/>
 														The Globe, Singapore 069532<br/>
 													</p>
 													<div class="clsLine"></div>
 													<p>
-														<b>CIO Honour</b><br/>
+														<b>CXO HONOUR INDONESIA</b><br/>
 														Graha BIP, 7th Floor<br/>
 														Jl. Gatot Subroto Kav 23 Jakarta 12930,<br/> Indonesia
 													</p>

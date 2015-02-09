@@ -38,6 +38,7 @@ if (!empty($_SESSION['username']) && !empty($_SESSION['ict']))
 <head>
 <meta charset="utf-8">
 <title>CIO HONOUR</title>
+<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/style_vendor.css" rel="stylesheet" type="text/css">
 
@@ -113,14 +114,15 @@ function getCategory()
 
 
 }
-function getContract()
+function getContract(status)
 {
 	
 	
+	get_div(6);
 	$("#div_6").html("<div align='center'  style='margin-top:150px;margin-bottom:350px;'><img src=images/loader.gif width='150px' align=center></div>");
 	$.getJSON('get_contract.php/?callback=?' , function(array) {
 
-	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Contract List</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h1>Contract_id</h1></div><div class='clsC1_list_bx'><h1>Date</h1></div><div class='clsC1_list_bx'><h1>Action</h1></div></div></div>";
+	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div id='contract_msg'><h2>Your contract created successfully</h2></div><div class='clsCat_tlt'><h2>Contract List</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h1>Contract_id</h1></div><div class='clsC1_list_bx'><h1>Date</h1></div><div class='clsC1_list_bx'><h1>Action</h1></div></div></div>";
 	var tbl_row ="";
 	var id='';
 	var i=0;
@@ -135,7 +137,7 @@ function getContract()
 		
 		
 		
-		tbl_row +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h2>"+array[i].contract_id+"</h2></div><div class='clsC1_list_bx'><h2>"+array[i].date+"</h2></div><div class='clsC1_list_bx'><div class='clsCo_frt_btn_sml' style='width:150px;'><h2><a href='javascript:void(0);' onClick='view_pdf("+array[i].contract_id+");'>Download</a></h2></div></div></div></div>";
+		tbl_row +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h2>"+array[i].contract_id+"</h2></div><div class='clsC1_list_bx'><h2>"+array[i].date+"</h2></div><div class='clsC1_list_bx'><div class='clsCo_frt_btn_sml' style='width:150px;'><h2><a href='/view_pdf.php?id="+array[i].contract_id+"' target='_blank'>Download</a></h2></div></div></div></div>";
 		
 		tbl_body += ""+tbl_row+"";
 
@@ -148,6 +150,14 @@ function getContract()
 	
 	 $("#div_6").html(tbl_body);
 	 $("#div_6").show();
+	 if(status==1)
+	{
+		$('#contract_msg').show().delay(5000).hide(0);;
+	}
+	else
+	{
+		$('#contract_msg').hide();
+	}
  	   
 });
 }
@@ -298,9 +308,12 @@ function save_contract()
 	$.post("generate_pdf.php" ,{'cname': cname,'add1':add1,'add2':add2,'city': city,'country':country,'website': website,'email':email,'designation': designation,'contact_name':contact_name,'phone_number': phone_number}).done(function( data ) {   
 	if(data=='OK')
 	{
-    	tbl_body ="<div class='btn-box'><div class='msg_box fl' style='width:auto'>Thank you for your interest to participate in CIO HONOUR. Contract for participation has been created.<br /><br /><div align='right'><button onClick='get_div(6);getContract();'>OK</button></div></div></div>";
+    	/*tbl_body ="<div class='btn-box'><div class='msg_box fl' style='width:auto'>Thank you for your interest to participate in CIO HONOUR. Contract for participation has been created.<br /><br /><div align='right'><button onClick='get_div(6);getContract();'>OK</button></div></div></div>";
 		$("#div_5").html(tbl_body);
-		get_div(5);
+		get_div(5);*/
+		//alert("hiii");
+		
+		getContract("1");
 		
 	}
 });
@@ -684,14 +697,14 @@ include('header.php');
 <div class="advisory_wrapper landing_head"  id="div_7" style="margin-bottom:30px;margin-top:20px"  style="display:none;">
 
  	
-			<div class="clsMid_cont_cio" id="middle">
+			<div class="clsMid_cont_cio" id="middle" style="display:none">
 				<div class="clsCat_tlt"><h2>Enterprise Participation Form</h2></div>
 				
 				<div class="clsCont_form_bx">
 					<div class="clsC1_list_cont clearfix">
 						<div class="clsLD_Bx_frm">
 							<div class="clsCont_form">
-								<form method="post" action="generate_pdf.php">
+								
 									<h2>Company Name</h2>
 									<div><input type="text" class="clsInput" value="" name="cname" id="cname"></div>
 									<h2>Address 1</h2>
@@ -724,12 +737,12 @@ include('header.php');
 						</div>	<!--clsLD_Bx_frm-->
 						
 						
-							<!--<h2><a href="javascript:void(0);" onClick="save_contract();">Submit</a></h2>-->
-							<button type="submit" style="width:200px; height:35px;margin-right:35px;color:#FFFFFF;" class="clsCo_frt_btn">Submit</button>
+							<a href="javascript:void(0);"  class="clsCo_frt_btn" style="width:200px; height:35px;margin-right:35px;color:#FFFFFF;" onClick="save_contract();" >Submit</a>
+						<!--	<button type="submit" style="width:200px; height:35px;margin-right:35px;color:#FFFFFF;" class="clsCo_frt_btn">Submit</button>-->
 						
 						
 					</div>	<!--clsC1_list_cont-->
-				</form>
+				
 				</div>
 			
 		</div>	

@@ -136,8 +136,10 @@
                                 }
 				
 				$award_industry = addslashes($_POST['award_industry']);
+				$award_video = mysql_real_escape_string($_POST['award_video']);	
+				$award_company_profile = mysql_real_escape_string($_POST['award_company_profile']);	
 				$awardID = mysql_real_escape_string($_POST['awardID']);
-
+			
 				$today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
 				$current_date = date("m/d/Y", $today_date);
 				
@@ -148,7 +150,9 @@
 					award_image = '$advisory_image',
 					award_company_details = '$award_company_details',
 					award_company = '$award_company',
-					award_industry = '$award_industry'
+					award_industry = '$award_industry',
+					video_embed_code = '$award_video',
+					company_profile = '$award_company_profile'
 					where awardID ='$awardID'";
 					mysql_query($sql) or die(mysql_error());
 					echo "<h1>Updated</h1>";
@@ -159,7 +163,9 @@
 					award_year = '$award_year', 
 					award_company_details = '$award_company_details',
 					award_company = '$award_company',
-					award_industry = '$award_industry'
+					award_industry = '$award_industry',
+					video_embed_code = '$award_video',
+					company_profile = '$award_company_profile'
 					where awardID ='$awardID'";
 					mysql_query($sql) or die(mysql_error());
 					echo "<h1>Updated</h1>";
@@ -240,7 +246,21 @@
 						</div>
 					</div>
 					
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Video(Embed Code)</label>
 
+						<div class="col-sm-5">
+							<textarea class="form-control" id="field-1" name="award_video" required><?php echo $row['video_embed_code']; ?></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Company Profile</label>
+
+						<div class="col-sm-5">
+							
+							<textarea class="form-control" id="field-1" name="award_company_profile" required><?php echo $row['company_profile']; ?></textarea>
+						</div>
+					</div>
 
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">

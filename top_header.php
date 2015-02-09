@@ -55,11 +55,11 @@
 		
 			<span>
 				
-				<a href="http://www.linkedin.com/company/cio-choice-singapore/" title="Linkedin" target="_blank"><img src="images/linkedin.png" alt="Linkedin" title="Linkedin" width="30" height="31"></a>
-				<a href="https://twitter.com/CIOCHOICE_SG" title="Twitter" target="_blank"><img src="images/twitter.png" width="30" height="31"></a>
-				<a href="https://plus.google.com/+CiochoiceSg1/posts" title="Google Plus" target="_blank"><img src="images/google_plus.png" alt="" width="30" height="31"></a>
-				<a href="https://www.facebook.com/ciochoice.sg" title="Facebook" target="_blank"><img src="images/facebook.png" width="30" height="31"></a>
-				<a href="http://www.youtube.com/user/CIOCHOICEsingapore" title="Youtube" target="_blank" ><img src="images/play.png" width="30" height="31"></a>
+				<a href=" https://www.linkedin.com/company/cxohonour/" title="Linkedin" target="_blank"><img src="images/linkedin.png" alt="Linkedin" title="Linkedin" width="30" height="31"></a>
+				<a href="https://twitter.com/cxohonour" title="Twitter" target="_blank"><img src="images/twitter.png" width="30" height="31"></a>
+				<a href="https://plus.google.com/+Cxohonour8102014/" title="Google Plus" target="_blank"><img src="images/google_plus.png" alt="" width="30" height="31"></a>
+				<a href="https://www.facebook.com/cxohonour?ref=br_tf" title="Facebook" target="_blank"><img src="images/facebook.png" width="30" height="31"></a>
+				<a href="https://www.youtube.com/channel/UCo57R1G9SLKqqXyl_-iScOQ" title="Youtube" target="_blank" ><img src="images/play.png" width="30" height="31"></a>
 				<?php if(isset($_SESSION['username']))
 				{?>
 				<a href="" title="" target="" style="margin-right:0;"><img src="images/Singapore.png" width="30" height="30"></a>

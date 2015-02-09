@@ -32,10 +32,10 @@
 								<div class="clsFut_menu">
 									<ul style="margin-left:-35px;">
 									  <h1 style="color:#d8d0c1;"><span><!--<img src="images/tab.png"/>--></span> Links</h1>	
-									  <li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/CXO_HONOUR/" style="color:#d8d0c1;">Home</a></li>
-									  <li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/CXO_HONOUR/about.html" style="color:#d8d0c1;">Privacy Policy</a></li>
-									  <li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/CXO_HONOUR/news.php" style="color:#d8d0c1;">Terms and Conditions</a></li>
-									  <li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/CXO_HONOUR/contact.php" style="color:#d8d0c1;">GET IN TOUCH</a></li>
+									  <li style="padding-top:7px;"><a href="index.php" style="color:#d8d0c1;">Home</a></li>
+									  <li style="padding-top:7px;"><a href="about.php" style="color:#d8d0c1;">About Us</a></li>
+									  <li style="padding-top:7px;"><a href="news.php" style="color:#d8d0c1;">News</a></li>
+									  <li style="padding-top:7px;"><a href="contact.php" style="color:#d8d0c1;">Get In Touch</a></li>
 									 
 									</ul>
 								</div>				

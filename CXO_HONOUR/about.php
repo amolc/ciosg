@@ -77,29 +77,29 @@
 								<div class="clsCont_data">
 									<div class="list-group">
 									  <a class="list-group-item" style="background:#5d5d5d;">
-										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 1 – Forming the CIO HONOUR Advisory Panel</h1>
+										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 1 – Forming the Advisory Council</h1>
 									  </a>
-									  <a class="list-group-item"><p>We invite Industry Leading CIOs and ICT Decision makers to join our independent advisory panel.</p></a>
+									  <a class="list-group-item"><p>We invite Industry Leading CXOs to join our independent advisory council.</p></a>
 									  
 									  <a class="list-group-item" style="background:#5d5d5d;">
-										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 2 – ICT Vendors register in categories</h1>
+										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 2 – Vendors register for ICM categories</h1>
 									  </a>
-									  <a class="list-group-item"><p>Vendors are invited to register their Products, Services and Solutions into ICT categories. The categories cover a wide range of segments with the technolgy and communications sectors.</p></a>
+									  <a class="list-group-item"><p>Vendors are invited to register their Products, Services and Solutions for ICM categories. The categories cover a wide range of segments within the infocomm and media industry.</p></a>
 									  
 									  <a class="list-group-item" style="background:#5d5d5d;">
-										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 3 – Online survey begins</h1>
+										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 3 – Online Poll</h1>
 									  </a>
-									  <a class="list-group-item"><p>Over 700 CIOs across Singapore are invited to take part in our unbiased online survey. Voting consists of CIOs naming their preferred Vendors in selected segments and categories over the full technology landscape.</p></a>
+									  <a class="list-group-item"><p>CXOs across the various industry verticals are invited to participate in an Online Poll. The Online Poll requires the participants to endorse their preferred and most valued vendors for the specific ICM categories.</p></a>
 									  
 									 <a class="list-group-item" style="background:#5d5d5d;">
-										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 4 – Validation by our Advisory Panel</h1>
+										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 4 – Validation & Endorsement by the Advisory Council</h1>
 									  </a>
-									  <a class="list-group-item"><p>The independent advisory panel study and endorse the results of the survey to establish the CIO's Preferred choice within each category.</p></a>
+									  <a class="list-group-item"><p>The independent Advisory Council reviews and validates the results of the Online Poll to determine the winning vendors for the more popular ICM categories.</p></a>
 									  
 									  <a class="list-group-item" style="background:#5d5d5d;">
-										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 5 – Recognition and Award</h1>
+										<h1 style="color:white; margin:0px;"><span><img src="images/tab.png"/></span> Step 5 – Recognition and Awards</h1>
 									  </a>
-									  <a class="list-group-item"><p>CIO HONOUR EVENTS bring together the leaders of the ICT community. Vendors are honoured in each category and presented with the title of CIO HONOUR. The awards come directly from CIOs, making the recognition a truly invaluable sales and marketing tool.</p></a>
+									  <a class="list-group-item"><p>The CXO HONOUR AWARDS RECEPTION brings together the leaders of from across the ICM community to honour and celebrate the success with leading Vendors who have been given their Vote of Trust & Confidence by the CXO community.</p></a>
 									</div>
 									
 									

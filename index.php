@@ -8,9 +8,10 @@
         <meta name="keywords" content="CIO, ICT Vendor, products, services, solutions, success">
 
         <title>CIO Honour.sg</title>
+		<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-
+		
         <!-- Required CSS -->
 
         <!--[if lt IE 9]>

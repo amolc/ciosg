@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Choice</title>
+<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -44,10 +45,7 @@
 						}
 						else
 						{
-					?>
-							
-							<!--<a href="registration.php" class="border"><img src="images/register_icon.png" width="12" height="16">REGISTER</a>-->
-					<?php
+								
 
 						}
 					?>
@@ -69,13 +67,13 @@
 </div>
 <div style="width:100%; height:49px;"></div>
 <?php 
-
+/*
 if(!isset($_SESSION['user_name']))
 { 
 
 	include('header.php');
 	
-}	
+}*/	
 ?>
 
 

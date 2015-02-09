@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Honour</title>
+<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -90,7 +91,7 @@
 																	$title = substr($stringCut, 0, strrpos($stringCut, ' ')).'...';
 																}
 															
-															echo '<a style="line-height:22px;" href="view_news.php?id='.$row2['news_id'].'" target="_blank">'.$title.'</a>';
+															echo '<a style="line-height:22px;" href="view_news.php?id='.$row2['news_id'].'">'.$title.'</a>';
 															}
 															
 															$Keyword = check_input($_GET['tags']);
@@ -207,7 +208,7 @@ if ($page <= 0)
 																<img src="admin/upload/news/<?php echo mysql_result($result, $i, 'news_img'); ?>" width="661">
 																</a>-->
                                                             <h1 style="line-height: 24px;height: auto;margin-top: 10px;margin-bottom: 10px;"><?php echo  mysql_result($result, $i, 'news_title'); ?></h1>
-                                                            <h2>Posted: <span style="color:#bea52e"><?php echo date('d M Y', strtotime(mysql_result($result, $i, 'news_date'))); ?></span></h2>
+                                                            <h2>Posted: <span style="color:#bea52e"><?php echo mysql_result($result, $i, 'news_date');?></span></h2>
 																	<?php
 																$description = mysql_result($result, $i, 'news_description');
 																$news_tags = mysql_result($result, $i, 'news_tags');
@@ -232,7 +233,7 @@ if ($page <= 0)
                                                                     
                                                                 </div>
                                                                 <div class="included_topics fl mrgn_bottom">
-                                                                  <a href="view_news.php?id=<?php echo mysql_result($result, $i, 'news_id'); ?>" target="_blank" style="text-decoration: none;" class="read">read more</a>
+                                                                  <a href="view_news.php?id=<?php echo mysql_result($result, $i, 'news_id'); ?>" style="text-decoration: none;" class="read">read more</a>
 																	<div class="social_media fr" style="width:145px;">
 																		<span class='st_sharethis'></span>
 																		<span class='st_facebook'></span>

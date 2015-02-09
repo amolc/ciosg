@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Honour</title>
+<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 
@@ -72,7 +73,7 @@ function validateForm(formName)
 							$first_name = mysql_real_escape_string($_POST['first_name']);
 							$last_name = mysql_real_escape_string($_POST['last_name']);
 							$email = mysql_real_escape_string($_POST['email']);
-							$select = mysql_real_escape_string($_POST['select']);
+							$select = mysql_real_escape_string($_POST['Company']);
 							$message = $_POST['message'];
 
                             strip_tags($first_name);
@@ -100,8 +101,8 @@ function validateForm(formName)
 										$mail2->isSMTP();                                      // Set mailer to use SMTP
 										$mail2->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
 										$mail2->SMTPAuth = true;                               // Enable SMTP authentication
-										$mail2->Username = 'dayseven';                   // SMTP username
-										$mail2->Password = '7sendgrid';               // SMTP password
+										$mail2->Username = 'gigsterjames';                   // SMTP username
+										$mail2->Password = 'Gigsteremail78';               // SMTP password
 										$mail2->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 										$mail2->Port = 587;                                     //Set the SMTP port number - 587 for authenticated TLS
 										$mail2->setFrom('registration@cio-honour.sg', 'CIO HONOUR');     //Set who the message is to be sent from
@@ -221,7 +222,7 @@ function validateForm(formName)
                                                   <div class="advisory_panel fl" style="height:auto;">
                                                   	<div class="contact_address fl">
                                                     <span>Please feel free to get in touch using these details or the handy form on the right...</span>
-                                                      <p>Email: <a href="mailto:contactus@cio-honour.sg">contactus@cio-honour.sg</a><br>
+                                                      <p>Email: <a href="mailto:hello@cxohonour.com"> hello@cxohonour.com</a><br>
                                                       <br>
                                                         Telephone: +65 9668 2895<br>
                                                         <br>
@@ -236,13 +237,15 @@ function validateForm(formName)
                                                         <input name="last_name" type="text">
                                                         <label>* Email Address:</label>
                                                         <input name="email" type="text">
-                                                        <label>* I'm a...</label>
+                                                        <!--<label>* I'm a...</label>
                                                         <select name="select" id="select">
 														<option value="CIO">CIO</option>
                                                         <option value="ICT Vendor">ICT Vendor</option>
                                                         <option value="Partner">Partner</option>
                                                         <option value="Other">Other</option>
-                                                        </select>
+                                                        </select>-->
+														<label>* Company Name:</label>
+                                                        <input name="Company" type="text">
 														<label>* Your Message:</label>
                                                         <textarea name="message" cols="" rows=""></textarea>
                                               			<input name="Submit" value="Submit" type="submit">

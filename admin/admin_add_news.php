@@ -196,7 +196,7 @@
 						<label for="field-1" class="col-sm-3 control-label">Date</label>
 
 						<div class="col-sm-5">
-						<input type="text" class="form-control" id="news_held_date" name="news_held_date"  placeholder="yyyy-mm-dd" value="<?php echo $row['news_date']; ?>">
+						<input type="text" class="form-control" id="news_held_date" name="news_held_date"  placeholder="yyyy-mm-dd">
 							
 						</div>
 					</div>					

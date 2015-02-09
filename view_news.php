@@ -107,7 +107,7 @@
                                                         <div class="singapore_news_detail fl">
                                                         	<img src="admin/upload/news/<?php echo $row['news_img']; ?>" width="661">
                                                             <h1 style="line-height: 24px;height: auto;margin-top: 10px;margin-bottom: 10px;"><?php echo $row['news_title']; ?></h1>
-                                                            <h2>Posted: <span><?php echo $row['news_inserted_date']; ?></span></h2>
+                                                            <h2>Posted: <span><?php echo $row['news_date']; ?></span></h2>
                                                             <p><?php echo $row['news_description']; ?></p>
                                                             <?php 
 																// $result = mysql_query("SELECT * FROM `news` ORDER BY `news`.`news_inserted_date` DESC");

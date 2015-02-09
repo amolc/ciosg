@@ -9,7 +9,7 @@ $id = $_REQUEST['id'];
 <head>
 <meta charset="utf-8">
 <title>Cio Choice</title>
-
+<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
@@ -425,19 +425,19 @@ $id = $_REQUEST['id'];
                 $("a:eq(0)", "#pages")
                         .removeClass("off")
                         .addClass("on")
-                        .css( "background-image", "url(images/page-on.png)");
+                        .css(ï¿½"background-image", "url(images/page-on.png)");
 
             }
 
             function pageLoaded(event, data) {
                 $("a.on", "#pages")
                         .removeClass("on")
-                        .css( "background-image", "url(images/page-off.png)");
+                        .css(ï¿½"background-image", "url(images/page-off.png)");
 
                 $("a", "#pages")
                         .eq(data.page)
                         .addClass("on")
-                        .css( "background-image", "url(images/page-on.png)");
+                        .css(ï¿½"background-image", "url(images/page-on.png)");
             }
 
             $("#carousel").rcarousel(
@@ -455,15 +455,15 @@ $id = $_REQUEST['id'];
                     }
             );
 
-            $( "#ui-carousel-next")
+            $(ï¿½"#ui-carousel-next")
                     .add("#ui-carousel-prev")
-                    .add( ".bullet")
+                    .add(ï¿½".bullet")
                     .hover(
-                            function() {
-                                $(this).css( "opacity", 0.7);
+                            function()ï¿½{
+                                $(this).css(ï¿½"opacity", 0.7);
                             },
-                            function() {
-                                $(this).css( "opacity", 1.0);
+                            function()ï¿½{
+                                $(this).css(ï¿½"opacity", 1.0);
                             }
                     );
         });

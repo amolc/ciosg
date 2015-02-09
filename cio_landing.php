@@ -36,6 +36,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
 <head>
     <meta charset="utf-8">
     <title>Cio Choice</title>
+	<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 	<link href="css/text_style.css" rel="stylesheet" type="text/css">
 

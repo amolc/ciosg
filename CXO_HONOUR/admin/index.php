@@ -34,7 +34,7 @@
 		<div class="login-content">
 			
 			<a href="index.php" class="logo">
-				<h1 style="color:#fff;">CIO HONOUR SG</h1>
+				<h1 style="color:#fff;">CXO HONOUR SG</h1>
 			</a>
 			
 			

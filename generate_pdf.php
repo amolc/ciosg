@@ -17,7 +17,7 @@ error_reporting(E_ALL);
 	$phone_number=$_POST['phone_number'];
 	$date=date("Y-m-d H:i:s");
 
-$cid=mysql_query("insert into contract (vID,date,company_name,city,country,emailID,website,designation,address1,address2,contact_name,phone_number) values('$userID','$date','$cname','$add1','$add2','$city','$country','$website','$email','$designation','$contact_name','$phone_number')")or die(mysql_error());
+$ci=mysql_query("insert into contract (vID,date,company_name,city,country,emailID,website,designation,address1,address2,contact_name,phone_number) values('$userID','$date','$cname','$add1','$add2','$city','$country','$website','$email','$designation','$contact_name','$phone_number')")or die(mysql_error());
 	$date=date("Y-m-d H:i:s");
 	//mysql_query("insert into contract (vID,date) values('$userID','$date')");
 	$cid=mysql_insert_id();
@@ -63,9 +63,9 @@ $data = bin2hex($html);
 $qry = "UPDATE contract SET content=0x".$data."  WHERE contract_id='$cid'";
 mysql_query($qry);
 $r=mysql_query("delete from shopping_cart where userID='$userID'");
-require_once('mpdf/mpdf.php');
+//require_once('mpdf/mpdf.php');
 
-$mpdf=new mPDF('c','A4','','',12,12,10,10,16,13); 
+/*$mpdf=new mPDF('c','A4','','',12,12,10,10,16,13); 
 
 $mpdf->SetDisplayMode('fullpage');
 
@@ -77,7 +77,7 @@ $mpdf->list_indent_first_level = 0;	// 1 or 0 - whether to indent the first leve
 $mpdf->debug = true;
 $mpdf->WriteHTML($html);
 $mpdf->Output('contract.pdf','I');
-//$mpdf->WriteHTML($html);
-exit;
+//$mpdf->WriteHTML($html);*/
+echo "OK";
 
 ?>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Honour</title>
+<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
@@ -40,7 +41,7 @@
 										
     <div id="advisory_wrapper">
         <div class="advisory_panel_1 mrgn_top">
-			<h1 style="font-size: 30px; font-family: 'Lato';text-transform: uppercase;">Advisory Panel</h1>
+			<h1 style="font-size: 30px; font-family: 'Lato';text-transform: uppercase;">Advisory Council</h1>
 			<div class="contact_details_2 fl">
 				<a href="#" class="active">2014</a>
 			</div>
@@ -77,12 +78,13 @@
                                         <h3><?php echo $advisory_company; ?></h3>
 										<div id="shortDetail<?php echo $advisory_res['advisory_id']; ?>">
 											<p class="textContainer_Truncate "><?php echo $advisory_description; ?></p>                                 
-                                            <?php echo  '<a style="font-weight:bold;" href="advisory_detail.php?id=' . $advisory_res['advisory_id'] . '" class="readmore-js-toggle" target="_blank" > Read more</a>'; ?>
+                                            <?php echo  '<a style="font-weight:bold;" href="javascript:void(0)" onclick="return readmore('.$advisory_res['advisory_id'].');" class="readmore-js-toggle"> Read more</a>'; ?>
+										</div>
 											<div id="longdetail<?php echo $advisory_res['advisory_id']; ?>" style="display: none;">
 												<p class="textContainer_Truncate " ><?php echo $advisory_description1; ?></p>
 												<?php echo  '<a style="font-weight:bold;" href="javascript:void(0)" onclick="return hidemore('.$advisory_res['advisory_id'].');" class="readmore-js-toggle"> Hide</a>';?>
                                             </div>
-                                        </div>
+                                        
                                     </div>
 			
 							</div>
@@ -96,10 +98,10 @@
 			<?php include('quick_contact.php');
 				  include('footer.php');?>
 
-<!--    <script src="js/readmore.js" ></script>-->
+   <script src="js/readmore.js" ></script>
 
   <script>
-   // $('.textContainer_Truncate').readmore({maxHeight: 50});
+   $('.textContainer_Truncate').readmore({maxHeight: 50});
   </script>
     <!-- Google CDN jQuery with fallback to local -->
 	<!--<script type="text/javascript" src="js/jquery.min.js"></script>--> 
@@ -135,8 +137,9 @@
                 
                 function readmore(cid)
                 {
-                   $('#shortDetail'+cid).hide(); 
-                   $('#longdetail'+cid).show();
+					 $('#longdetail'+cid).css("display","block");
+                   $('#shortDetail'+cid).css("display","none"); 
+                  
                 }
                 
                 function hidemore(cid)

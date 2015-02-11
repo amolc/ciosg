@@ -22,7 +22,7 @@
                                                         <p><?php echo $footer_text;?></p>
                                                     </div>
 												<div style="padding-top:10px; margin-right:5px;">
-												<a href="http://cio.fountaintechies.com/CXO_HONOUR/"><img width="150px;" src="images/CXO_logo.png" align="right"></a>
+												<a href="http://www.cxohonour.com"><img width="150px;" src="images/CXO_logo.png" align="right"></a>
 													
 												</div>
                                             	

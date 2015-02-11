@@ -6,7 +6,7 @@
 		<!-- logo -->
 		<div class="logo">
 			<a href="../index.php">
-				<h3 style="color:#fff;">ciochoice.sg</h3>
+				<h3 style="color:#fff;font-size: 13px;">CIOHONOUR SINGAPORE</h3>
 			</a>
 		</div>
 		
@@ -47,37 +47,44 @@
 					<a href="admin_menu.php"><span>Menu</span></a>
 				</li>
 				
-				<li>
+				<!--<li>
 					<a href="admin_all_pages.php"><span>Pages</span></a>
+				</li>-->
+				<li>
+					<a href="admin_event_pages.php"><span>Event - Landing page </span></a>
 				</li>
-				
-
-                  <!-- <li>
+                   <!--<li>
 					<a href="admin_cio_choice_enter.php"><span>CIO CHOICE Enter Now</span></a>
 				</li>
 
                  <li>
 					<a href="admin_cio_choice_process.php"><span>CIO CHOICE Process</span></a>
-				</li>
-
+				</li>-->
+				
                 <li>
-					<a href="admin_cio_choice_overview.php"><span>CIO CHOICE Overview</span></a>
+					<a href="admin_cio_choice_overview.php"><span>About - Overview</span></a>
 				</li>
+				<!--
                 <li>
 					<a href="admin_careers_page.php"><span>CIO CHOICE Careers</span></a>
 				</li> 
                  <li>
 					<a href="admin_privacy_policy_page.php"><span>CIO CHOICE Privacy policy</span></a>
-				</li>
+				</li>-->
                 <li>
                     
-					<a href="admin_cio_choice_community.php"><span>The Community</span></a>
+					<a href="admin_cio_choice_community.php"><span>About - Community </span></a>
 				</li>
+				<!--
                 <li>
 					<a href="admin_testimonials.php"><span>Testimonials</span></a>
+				</li>-->
+               
+			   <li>
+					<a href="admin_news.php"><span>News</span></a>
 				</li>
-              
-				<li>
+				
+				<!--<li>
 					<a href="admin_img_gallery.php"><span>Image Gallery</span></a>
 				</li>
 				<li>
@@ -102,19 +109,19 @@
 				</li>
 				<li>
 					<a href="cio_massage_board.php"><span>CIO Message Board</span></a>
-				</li>
+				</li>-->
 				<li>
 					<a href="admin_show_faq.php"><span>Faq</span></a>
 				</li>
 				
-				<li>
+<!--				<li>
 					<a href="admin_add_social_link.php"><span>Add Social Link</span></a>
 
-				</li>	-->			
+				</li>				-->
 			</ul>
 		</li> 
 		
-	<!--	<li>
+		<li>
 			<a href="admin_contact_us.php"><i class="entypo-info-circled"></i><span>Contact Inquiries</span></a>
 
 		</li>
@@ -134,51 +141,22 @@
 
 			</ul>
 
-		</li>-->
-		<li>
-			<a href="#"><i class="entypo-doc-text"></i><span>About</span></a>
-			<ul>
-				<li>
-					<a href="admin_cio_choice_overview.php"><span>About-Overview </span></a>
-				</li>
-				
-				<li>
-					<a href="admin_cio_choice_community.php"><span>About-Community</span></a>
-				</li>
-				
-			</ul>
-
 		</li>
-		<li>
-			<a href="#"><i class="entypo-window"></i><span>Advisory Panel</span></a>
-			<ul>
-				<li>
-					<a href="admin_add_advisory_panel.php"><span>Add New </span></a>
-				</li>
-				<li>
-					<a href="admin_all_advisory_panel.php"><span>All Advisory Panel</span></a>
-				</li>
-
-			</ul>
-
-		</li>
+		
 		<li>
 			<a href="#"><i class="entypo-doc-text"></i><span>Events</span></a>
 			<ul>
 				<li>
 					<a href="admin_add_event.php"><span>Add New </span></a>
 				</li>
-				
 				<li>
 					<a href="admin_all_event.php"><span>All Events</span></a>
-				</li>
-				<li>
-					<a href="admin_event_pages.php"><span>Event Landing Page</span></a>
 				</li>
 
 			</ul>
 
 		</li>
+		
 		<li>
 			<a href="#"><i class="entypo-trophy"></i><span>Awards</span></a>
 			<ul>
@@ -192,35 +170,20 @@
 			</ul>
 
 		</li>
-		<li>
-			<a href="#"><i class="entypo-info-circled"></i><span>News</span></a>
-			<ul>
-				 <li>
-					<a href="admin_news.php"><span>News</span></a>
-				</li>
-				
-			</ul>
-
-		</li>
-		
-		
 		
 		<li>
-			<a href="#"><i class="entypo-info-circled"></i><span>Get in Touch</span></a>
+			<a href="#"><i class="entypo-window"></i><span>Advisory Panel</span></a>
 			<ul>
 				<li>
-					<a href="admin_show_faq.php"><span>FAQ</span></a>
+					<a href="admin_add_advisory_panel.php"><span>Add New </span></a>
 				</li>
-				
-				
+				<li>
+					<a href="admin_all_advisory_panel.php"><span>All Advisory Panel</span></a>
+				</li>
+
 			</ul>
 
 		</li>
-		
-		
-		
-		
-		
 		
 		<li style="display:none;">
 			<a href="#"><i class="entypo-window"></i><span>Landing Panel</span></a>

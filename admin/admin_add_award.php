@@ -152,6 +152,8 @@
 			{
 				  
 			    $award_name = mysql_real_escape_string($_POST['award_name']);
+				$award_item = addslashes($_POST['award_item']);
+				$award_category = addslashes($_POST['award_category']);
 				$award_company = mysql_real_escape_string($_POST['award_company']);
 				$award_company = mysql_real_escape_string($_POST['award_company_details']);
 				$award_year = mysql_real_escape_string($_POST['award_year']);
@@ -162,9 +164,9 @@
 				$today_date = mktime(0,0,0,date("m"),date("d"),date("Y"));
 				$current_date = date("m/d/Y", $today_date);
 				
-					$sql   = "insert into awards(award_name,award_company,award_industry,award_image,award_insert_date,award_year,award_company_details,video_embed_code,company_profile)
+					$sql   = "insert into awards(award_name,award_category,award_item,award_company,award_industry,award_image,award_insert_date,award_year,award_company_details,video_embed_code,company_profile)
 					values
-					('$award_name','$award_company','$award_industry','$award_image','$current_date',$award_year,'$award_company_details','$award_video','$award_company_profile')";
+					('$award_name','$award_category','$award_item','$award_company','$award_industry','$award_image','$current_date',$award_year,'$award_company_details','$award_video','$award_company_profile')";
 					
 					$query = mysql_query($sql) or die (mysql_error());
 					$event_id = mysql_insert_id();
@@ -191,7 +193,58 @@
 
 
 				<form role="form" action="<?php $_SERVER["PHP_SELF"];?>" method="post"  enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
+				
+				<?php $query=mysql_query("select catID,cat_name from category");?>
+				
+						
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Award Category</label>
 
+						<div class="col-sm-5">
+							<select name="award_category" onChange="get_item(this.value)" style="height:35px; width:300px;">
+						<?php	while($row2=mysql_fetch_array($query)){?>
+								<option value="<?php echo $row2['catID'];?>"><?php echo $row2['cat_name'];?></option>
+							
+								<?php }?>
+							</select>
+						</div>
+					</div>
+					<script>
+					function get_item(cid)
+					{
+						
+						var tbl_row = "<select name='award_item' style='height:35px; width:300px;'>";
+						var tbl_body='';
+						var i=0;
+						$.getJSON('get_item.php?callback=?',"cid="+cid+"",function(array){
+						$.each(array, function(key,val) {
+						
+						$.each(this, function(k , v) {
+						  
+						
+						})
+						
+						tbl_row += "<option value='"+array[i].item_ID+"'>"+array[i].item_name+"</option>";
+						i++;
+						
+					})
+						
+						
+					 
+					 tbl_body +="</select>";
+					 tbl_body +=""+tbl_row+"";
+					 $("#items").html(tbl_body);
+					
+						
+						});
+					}
+					</script>
+					<div class="form-group" >
+						<label for="field-1" class="col-sm-3 control-label">Item</label>
+
+						<div class='col-sm-5' id="items">
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Award Name</label>
 
@@ -199,6 +252,32 @@
 							<input type="text" class="form-control" id="field-1" name="award_name"  placeholder=" " required>
 						</div>
 					</div>
+					<!--<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Company Details</label>
+
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="field-1" name="award_company_details" value="<?//php echo $row['award_company_details']; ?>">
+						</div>
+					</div>-->
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Year</label>
+
+						<div class="col-sm-5">
+							<select name="award_year" style="height:35px; width:300px;">
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								
+							</select>
+							<!--<input type="text" class="form-control" id="field-1" name="award_year" value="<?//php echo $row['award_year']; ?>">-->
+						</div>
+					</div>
+
+				
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Company</label>
 
@@ -213,13 +292,13 @@
 							<input type="text" class="form-control" id="field-1" name="award_company_details"  placeholder=" " required>
 						</div>
 					</div>
-					<div class="form-group">
+				<!--	<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Year</label>
 
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="field-1" name="award_year"  placeholder=" " required>
 						</div>
-					</div>
+					</div>-->
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Industry</label>
 
@@ -227,6 +306,7 @@
 							<input type="text" class="form-control" id="field-1" name="award_industry"  placeholder=" " required>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Image Upload</label>
 						

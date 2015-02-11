@@ -38,7 +38,7 @@ if (!empty($_SESSION['username']) && !empty($_SESSION['ict']))
 <head>
 <meta charset="utf-8">
 <title>CIO HONOUR</title>
-<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
+<link rel="icon" type="image/png" href="cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/style_vendor.css" rel="stylesheet" type="text/css">
 

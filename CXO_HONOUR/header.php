@@ -69,11 +69,13 @@ $currentSegment = $segments[$numSegments - 1];
 							<div class="social_media fr">
 		
 								<span>
-									<a href="https://www.linkedin.com/company/cxohonour" title="Linkedin" target="_blank"><img src="images/linkedin.png" alt="Linkedin" title="Linkedin" width="30" height="31"></a>
-									<a href="https://twitter.com/cxohonour" title="Twitter" target="_blank"><img src="images/twitter.png" width="30" height="31"></a>
-									<a href="https://plus.google.com/+Cxohonour8102014/" title="Google Plus" target="_blank"><img src="images/google_plus.png" alt="" width="30" height="31"></a>
-									<a href="https://www.facebook.com/cxohonour?ref=br_tf" title="Facebook" target="_blank"><img src="images/facebook.png" width="30" height="31"></a>
-									<a href=" https://www.youtube.com/channel/UCo57R1G9SLKqqXyl_-iScOQ" title="Youtube" target="_blank" ><img src="images/play.png" width="30" height="31"></a>
+								<table>
+								<tr>
+									<td><a href="https://www.linkedin.com/company/cxohonour" title="Linkedin" target="_blank"><img src="images/linkedin.png" alt="Linkedin" title="Linkedin" width="30" height="31"></a></td>
+									<td><a href="https://twitter.com/cxohonour" title="Twitter" target="_blank"><img src="images/twitter.png" width="30" height="31"></a></td>
+									<td><a href="https://plus.google.com/+Cxohonour8102014/" title="Google Plus" target="_blank"><img src="images/google_plus.png" alt="" width="30" height="31"></a></td>
+									<td><a href="https://www.facebook.com/cxohonour?ref=br_tf" title="Facebook" target="_blank"><img src="images/facebook.png" width="30" height="31"></a></td>
+									<td><a href=" https://www.youtube.com/channel/UCo57R1G9SLKqqXyl_-iScOQ" title="Youtube" target="_blank" ><img src="images/play.png" width="30" height="31"></a></td></tr></table>
 									<!--<a href="" title="" target="" style="margin-right:0;"><img src="images/ico5.png" width="30" height="30"></a>-->
 								</span> 
 							</div>

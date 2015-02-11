@@ -8,11 +8,11 @@
 												<ul style="font-family: "Lato";font-size:17px;">
 													<p>Links</p>
 													<br /><br />
-													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com" style="text-decoration:none;">Home</a></li>
-													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/cio_choice_overview.php" style="text-decoration:none;">About</a></li>
-													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/advisory_panel.php" style="text-decoration:none;">Advisory Panel</a></li>
-													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/events.php" style="text-decoration:none;">Events</a></li>
-													<li style="padding-top:7px;"><a href="http://cio.fountaintechies.com/awards.php" style="text-decoration:none;">Awards</a></li>
+													<li style="padding-top:7px;"><a href="index.php" style="text-decoration:none;">Home</a></li>
+													<li style="padding-top:7px;"><a href="cio_choice_overview.php" style="text-decoration:none;">About</a></li>
+													<li style="padding-top:7px;"><a href="advisory_panel.php" style="text-decoration:none;">Advisory Panel</a></li>
+													<li style="padding-top:7px;"><a href="events.php" style="text-decoration:none;">Events</a></li>
+													<li style="padding-top:7px;"><a href="awards.php" style="text-decoration:none;">Awards</a></li>
 													
 												</ul>
 						</div>

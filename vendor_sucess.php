@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Choice</title>
-<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
+<link rel="icon" type="image/png" href="cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -216,7 +216,7 @@ include('activation_link2.php');
 								
 								
 													
-												$web_url ="http://cio.fountaintechies.com";	
+												$web_url ="http://www.cxohonour.com";	
 													$query = mysql_query( $sql, $con);
 									
 									//header("Location:registration.php?sent=ok");

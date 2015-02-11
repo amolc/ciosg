@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "manage";
+$route['default_controller'] = "ceo";
 
 
 

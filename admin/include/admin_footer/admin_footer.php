@@ -4,6 +4,6 @@
 		<a href="" target=""><strong></strong></a>
 	</div>
 		
-	&copy; 2014 <strong>cio-choice.sg</strong>
+	Copyright © 2015 CXO HONOUR Singapore. All Rights Reserved.
 	
 </footer>	

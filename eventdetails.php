@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Honour</title>
-<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
+<link rel="icon" type="image/png" href="cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <link href="css/prettyPhoto.css" rel="stylesheet" type="text/css">
@@ -67,7 +67,7 @@ img {
                        $query = "SELECT * FROM `events`";
                                               $q1 = mysql_query($query); 
                                               while($res = mysql_fetch_array($q1)) { ?>
-	                                              <div style="height:30px;"><a href="/eventdetails.php?event=<?php echo $res['event_id']; ?>"><?php echo $res['event_name']; ?></a></div>
+	                                              <div style="height:30px;"><a href="eventdetails.php?event=<?php echo $res['event_id']; ?>"><?php echo $res['event_name']; ?></a></div>
                                               <?php } ?>
                                                     </div>
                                                   </div>

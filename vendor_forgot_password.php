@@ -75,7 +75,7 @@
 
 															// $mail_sent = mail( $to, $subject, $message, $headers );
 															require 'admin/classes/PHPMailer-master/PHPMailerAutoload.php';
-															$web_url ="http://cio.fountaintechies.com";
+															$web_url ="http://www.cxohonour.com";
 																$mail = new PHPMailer;  
 																 
 																$mail->isSMTP();                                      // Set mailer to use SMTP

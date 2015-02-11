@@ -36,7 +36,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
 <head>
     <meta charset="utf-8">
     <title>Cio Choice</title>
-	<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
+	<link rel="icon" type="image/png" href="cxo_fav_ico.png">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 	<link href="css/text_style.css" rel="stylesheet" type="text/css">
 
@@ -233,6 +233,8 @@ function listCategory()
 		tbl_row +="<div class='clsCo_frt_top_LD'><div class='clsC1_list_cont'>";
 		
 		tbl_row += "<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>"+array[i].cat_name+"</a></h1></div>";
+		
+		
 		
 		tbl_row +="<div class='clsLD_cont2 clearfix'><div class='clsChart_bx' style='text-align:center;'><img src='images/chart_img.jpg' width='200px;'/></div><div class='clsChart_cont'  id='item_div'><h1>Item1</h1><h1>Item2</h1><h1>Item3</h1></div></div>";
 		

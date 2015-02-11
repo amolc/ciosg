@@ -136,6 +136,8 @@
                                 }
 				
 				$award_industry = addslashes($_POST['award_industry']);
+				$award_item = addslashes($_POST['award_item']);
+				$award_category = addslashes($_POST['award_category']);
 				$award_video = mysql_real_escape_string($_POST['award_video']);	
 				$award_company_profile = mysql_real_escape_string($_POST['award_company_profile']);	
 				$awardID = mysql_real_escape_string($_POST['awardID']);
@@ -146,6 +148,8 @@
 					if($advisory_image != ""){
 					$sql   = "update awards set
 					award_name = '$award_name', 
+					award_item = '$award_item', 
+					award_category = '$award_category', 
 					award_year = '$award_year', 
 					award_image = '$advisory_image',
 					award_company_details = '$award_company_details',
@@ -160,6 +164,8 @@
 					{
 					$sql   = "update awards set
 					award_name = '$award_name', 
+					award_item = '$award_item', 
+					award_category = '$award_category', 
 					award_year = '$award_year', 
 					award_company_details = '$award_company_details',
 					award_company = '$award_company',
@@ -186,12 +192,101 @@
 				<form role="form" action="<?php $_SERVER["PHP_SELF"];?>" method="post"  enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
 
 				<input type="hidden" class="form-control"  name="awardID"  value="<?php echo $row['awardID']; ?>">
+				<?php $query=mysql_query("select catID,cat_name from category");?>
+				
 						
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Award Category</label>
+
+						<div class="col-sm-5">
+							<select name="award_category" onChange="get_item(this.value)" style="height:35px; width:300px;">
+						<?php	while($row2=mysql_fetch_array($query)){?>
+								<option value="<?php echo $row2['catID'];?>" <?php if($row['award_category']==$row2['catID']) { ?> selected="selected" <?php }?>><?php echo $row2['cat_name'];?></option>
+																<?php }?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group" >
+						
+						<label for="field-1" class="col-sm-3 control-label">Item</label>
+						<div class='col-sm-5' id="item_list" style="display:none;">
+						
+						</div>
+					
+						<?php 	$cid=$row['award_category'];
+								$query3=mysql_query("select item_ID,item_name from item where catID='$cid'");?>
+						<div class="col-sm-5" id="item_list1">
+						
+							<select name="award_item" onChange="get_item(this.value)" style="height:35px; width:300px;">
+						<?php	while($row3=mysql_fetch_array($query3)){?>
+								<option value="<?php echo $row3['item_ID'];?>"<?php if($row['award_item']==$row2['item_ID']) { ?> selected="selected" <?php }?>><?php echo $row3['item_name'];?></option>
+							
+								<?php }?>
+							</select>
+						</div>
+					</div>
+					<script>
+					function get_item(cid)
+					{
+						
+						var tbl_row = "<select name='' style='height:35px; width:300px;'>";
+						var tbl_body='';
+						var i=0;
+						$.getJSON('get_item.php?callback=?',"cid="+cid+"",function(array){
+						$.each(array, function(key,val) {
+						
+						$.each(this, function(k , v) {
+						  
+						
+						})
+						
+						tbl_row += "<option name='award_item' value='"+array[i].item_ID+"'>"+array[i].item_name+"</option>";
+						i++;
+						
+					})
+						
+						
+					 
+					 tbl_body +="</select>";
+					 tbl_body +=""+tbl_row+"";
+					  $("#item_list1").hide();
+					 $("#item_list").html(tbl_body);
+					 $("#item_list").show();
+					
+						
+						});
+					}
+					</script>
+					
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Award Name</label>
 
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="field-1" name="award_name"  value="<?php echo $row['award_name']; ?>">
+						</div>
+					</div>
+					<!--<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Company Details</label>
+
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="field-1" name="award_company_details" value="<?//php echo $row['award_company_details']; ?>">
+						</div>
+					</div>-->
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Year</label>
+
+						<div class="col-sm-5">
+							<select name="award_year" style="height:35px; width:300px;">
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								
+							</select>
+							<!--<input type="text" class="form-control" id="field-1" name="award_year" value="<?//php echo $row['award_year']; ?>">-->
 						</div>
 					</div>
 					<div class="form-group">
@@ -206,13 +301,6 @@
 
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="field-1" name="award_company_details" value="<?php echo $row['award_company_details']; ?>">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label">Year</label>
-
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="field-1" name="award_year" value="<?php echo $row['award_year']; ?>">
 						</div>
 					</div>
 					<div class="form-group">
@@ -248,9 +336,11 @@
 					
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Video(Embed Code)</label>
+						
 
 						<div class="col-sm-5">
 							<textarea class="form-control" id="field-1" name="award_video" required><?php echo $row['video_embed_code']; ?></textarea>
+							<h5><b>(video width & height must be 300 & 250)</b></h5>
 						</div>
 					</div>
 					<div class="form-group">

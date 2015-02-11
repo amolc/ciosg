@@ -29,12 +29,12 @@
     <head>
         <meta charset="utf-8">
         <title>cio-choice.sg</title>
-		<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
+		<link rel="icon" type="image/png" href="http://www.cxohonour.com/cxo_fav_ico.png">
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="js/jquery.min.js"></script>
 		<script>
 		function redirect(){
-		  window.location = "http://cio.fountaintechies.com/vendor_login.php";
+		  window.location = "http://www.cxohonour.com/vendor_login.php";
 		}
 		</script>
 		

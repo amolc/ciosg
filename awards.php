@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Honour</title>
-<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
+<link rel="icon" type="image/png" href="cxo_fav_ico.png">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
@@ -103,29 +103,29 @@
 															 </div>
 															  
 											<div class="modal fade" id="longdetail<?php echo $advisory_res['awardID']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:14%; height:auto; width:auto;">
-												<div class="modal-dialog" style="width:80%; height:100%">
+												<div class="modal-dialog" style="width:66.5%; height:100%;margin-left:230px;">
 													<div class="modal-content">
 												
-														<a data-dismiss="modal" aria-hidden="true"  style="float: right; margin-right:0px;margin-top:2px;"><img src="images/cross.png" class="close" width="25px"/></a>
+														<a href="javascript:window.close();" style="float: right; margin-right:0px;margin-top:2px;"><img src="images/cross.png"  width="25px"/></a>
 												  
-														<div class="modal-body" style="width:200px">
+														<div class="modal-body">
 													
 															
 																
-																	<div style="height:400px" >
+																	<div>
 																		<div style="text-align:left;margin-top:10px">
 																		<img class="advisor_img" src="admin/upload/<?php echo $advisory_image; ?>">
 																			<br /><br />
 																			<h1><?php echo $advisory_name?></h1>
 																			<br /><br />																	
 																			<h2><?php echo $advisory_desination?></h2>
-																		</div>
-																		<div style="text-align:right;margin-top:-229px;">
+																			<h2 style="text-align:right;margin-top:-266px;margin-left:200px;">
 																			<?php echo $video_embed_code?>	
+																			</h2>
 																		</div>
+																		
 																	</div>
-																	<br /><br />
-																													
+																	<br /><br />							
 																
 																<div style="text-align: justify;font-size: 13px;;">
 																	<h3>About us:</h3>

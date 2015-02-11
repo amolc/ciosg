@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Cio Honour</title>
-<link rel="icon" type="image/png" href="http://cio.fountaintechies.com/cxo_fav_ico.png">
+<link rel="icon" type="image/png" href="cxo_fav_ico.png">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -117,15 +117,15 @@
 																$mail->Subject = 'Forgot Password';
 																$mail->Body    = '<div style=" height:870px; padding:25px; background:#eaeaea">
 														<div style="float:left; width:100%; margin:0px 0px 25px 0px; background:white; box-shadow:0px 2px 5px #7d7c7c;">
-															<div style=" float:left; width:100%; height:225px; background:url(http://cio.fountaintechies.com/images/cio_choice_head_bg.png) repeat-x  center top;">
+															<div style=" float:left; width:100%; height:225px; background:url(images/cio_choice_head_bg.png) repeat-x  center top;">
 																<div style=" width:210px;height: 225px; margin:0 auto;">
-																<a href="#" style="height:245px;"><img src="http://cio.fountaintechies.com/images/logo3.png" alt="" width="100%" height="100%"></a>
+																<a href="#" style="height:245px;"><img src="images/logo3.png" alt="" width="100%" height="100%"></a>
 																<div style="clear:both;"></div>
 																</div>
 															</div>
 															<div style="width:100%; height:65px; float:left; background:#20201f;">
 																	<div style=" width:115px;text-align:center; float:left;">
-																	<a href="#" style=" text-decoration:none; padding:0px 27px; text-align:center; float:left; line-height:65px; font-family: Lato; color:#FFF; font-size:17.5px; font-weight:bold; text-transform:uppercase; text-shadow:0px 2px #000; letter-spacing:1px; background:url(http://cio.fountaintechies.com/images/border.jpg) no-repeat right">home</a>
+																	<a href="#" style=" text-decoration:none; padding:0px 27px; text-align:center; float:left; line-height:65px; font-family: Lato; color:#FFF; font-size:17.5px; font-weight:bold; text-transform:uppercase; text-shadow:0px 2px #000; letter-spacing:1px; background:url(images/border.jpg) no-repeat right">home</a>
 																	</div>
 														  </div> 
 															<div style="width:100%; float:left; padding:20px 0px; text-align:center;">
@@ -143,26 +143,26 @@
 																		
 																		<p style=" float:left; width:86%; display:block; font-family:Source Sans Pro; line-height:20px; margin:5px 7% 0% 7%; padding:0px; font-size:15px; font-weight:400;">'.$password.'</p>
 															  <div style="float:left; width:90%; margin:30px 5% 0px 5%;">
-																			<a href="http://cio.fountaintechies.com/" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO HONOUR SINGAPORE</a>
+																			<a href="#" style="width:100%; line-height:22px; padding:15px 0px; text-align:center; text-shadow:0px 2px #4b0e0e; float:left; color:#FFF; font-family:Lato; font-weight:bold; font-size:16px; text-decoration:none; border-radius:5px; text-transform:uppercase; letter-spacing:1px; background: -webkit-linear-gradient(#e63535, #c11e1e); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(#e63535, #c11e1e); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(#e63535, #c11e1e); /* For Firefox 3.6 to 15 */ background: linear-gradient(#e63535, #c11e1e); /* Standard syntax */">return TO CIO HONOUR SINGAPORE</a>
 																		</div>
 														  </div>
 															<div style="float:left; width:100%;">
 															<div style="float:left; width:42.1%; background:#eaeaea; height:1px; margin:28px 0px 0px 10px;"></div>
-															<div style="float:left; margin:18px 0px 0px 0px;"><img src="http://cio.fountaintechies.com/images/star_rating.jpg" width="82" height="11"></div>
+															<div style="float:left; margin:18px 0px 0px 0px;"><img src="images/star_rating.jpg" width="82" height="11"></div>
 															<div style="float:left; width:46.3%; background:#eaeaea; height:1px; margin:28px 0px 0px 0px;"></div>
 															</div>
 															<div style="float:left; width:98.8%; padding:0px; margin-left:10px">
 															<div style="width:80%; float:left; height:80px;">
-																	<span style="float:left; margin:15px 12px 0px 0px; display:block;"><img src="http://cio.fountaintechies.com/images/logo3.png" alt="" width="41" height="41"></span>
+																	<span style="float:left; margin:15px 12px 0px 0px; display:block;"><img src="images/logo3.png" alt="" width="41" height="41"></span>
 																	<span style="float:left; width:50%; margin:15px 20px 0px 0px; display:block; text-transform:uppercase; font-family:Source Sans Pro; color:#616161">Need help?</span>
-																  <a href="http://cio.fountaintechies.com/contact_us.php" style="float:left; width:50%; margin:0px; display:block; text-transform:uppercase; font-family:Source Sans Pro; color:#616161;">Send us your question</a>
+																  <a href="contact_us.php" style="float:left; width:50%; margin:0px; display:block; text-transform:uppercase; font-family:Source Sans Pro; color:#616161;">Send us your question</a>
 															  </div>
 															<div style="width:170px; float:right; margin-top:22px;">
-																<a href="http://www.linkedin.com/company/cio-choice-singapore/" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/linkedin.png"></a>
-																<a href="https://twitter.com/CIOCHOICE_SG" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/twitter.png"></a>
-																<a href="https://plus.google.com/+CiochoiceSg1/posts" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/google_plus.png"></a>
-																<a href="https://www.facebook.com/ciochoice.sg" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/facebook.png"></a>
-																<a href="http://www.youtube.com/user/CIOCHOICEsingapore" target="_blank"><img width="30" height="31 " alt="" src="http://cio.fountaintechies.com/images/play.png"></a>
+																<a href="http://www.linkedin.com/company/cio-choice-singapore/" target="_blank"><img width="30" height="31 " alt="" src="images/linkedin.png"></a>
+																<a href="https://twitter.com/CIOCHOICE_SG" target="_blank"><img width="30" height="31 " alt="" src="images/twitter.png"></a>
+																<a href="https://plus.google.com/+CiochoiceSg1/posts" target="_blank"><img width="30" height="31 " alt="" src="images/google_plus.png"></a>
+																<a href="https://www.facebook.com/ciochoice.sg" target="_blank"><img width="30" height="31 " alt="" src="images/facebook.png"></a>
+																<a href="http://www.youtube.com/user/CIOCHOICEsingapore" target="_blank"><img width="30" height="31 " alt="" src="images/play.png"></a>
 															</div>
 															
 															<div style="float:left; width:100%; border-top: #EAEAEA solid 1px;">
@@ -196,15 +196,13 @@
 															header("Location:forgot_password.php?sent=ok");?> 
 															<div class="red-box" style="height:50px;">
                             									<h2 style="color:#FFFFFF;"><b>We have sent an email to your registered email address. You will have your login credentials in that email.</b></h2>	
-																
-                       										 </div>
+           										    </div>
 												<?php		}
 														else
 														{
 															header("Location:forgot_password.php?error=ok");?>
 																<div class="red-box" style="height:50px;">
                             									<h2 style="color:#FFFFFF;"><b>Email You enterd is Invalid !!   Please Enter Correct Email Address</b></h2>	
-																
                        										 </div>
 														<?php }
 														

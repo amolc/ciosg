@@ -54,7 +54,7 @@
 					<div class="clsPadding_cont">
 						<div class="row">
 							<div class="col-md-12">
-								<div class="clsLogo"><img src="images/logo.png"/></div>
+								<div class="clsLogo"><img class="img-responsive" src="images/logo.png" /></div>
 							</div>
 						</div>
 						

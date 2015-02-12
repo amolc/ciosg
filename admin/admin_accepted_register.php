@@ -146,9 +146,9 @@ echo '<h2 style="color:green">Updated</h2>';
 <table class="table table-bordered datatable" id="table-1">
 	<thead>
 		<tr>
-			<th> Name</th>
+			<th>Name</th>
 			<th>Email</th>
-			<th>Corporate Email</th>
+			<th>Company</th>
 			<th>Type</th>
 			<th>Decline</th>
 			<th>Delete</th>
@@ -162,12 +162,7 @@ echo '<h2 style="color:green">Updated</h2>';
 *@Date & Time:		13-march-2014 GM +5
 *@Modified Date:	13-march-2014 GM +5
 */
-$result = mysql_query("SELECT
-						*
-						FROM
-						registration 
-						where registration_status ='accepted'
-						");
+$result = mysql_query("SELECT *  FROM user_cio as C, user_vendor as V where C.registration_status ='accepted' and V.registration_status ='accepted'");
 
 		//fetch tha data from the database 
 		while ($row = mysql_fetch_array($result)) 
@@ -175,9 +170,9 @@ $result = mysql_query("SELECT
 			
 			echo'
 				<tr class="odd gradeX" id="'.$row['registration_id'].'">
-					<td>'.$row['registration_name'].'</td>
-					<td>'.$row['registration_email'].'</td>
-					<td>'.$row['corperate_email'].'</td>
+					<td>'.$row['firstname'].' '.$row['lastname'].'</td>
+					<td>'.$row['emailID'].'</td>
+					<td>'.$row['company'].'</td>
 					<td>'.$row['registration_type'].'</td>
 					<td>
 						<a style="color: red;" id="'.$row['registration_id'].'" class="decline">

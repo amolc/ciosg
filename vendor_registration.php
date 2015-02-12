@@ -112,10 +112,10 @@ function passwordvalid()
 													
                                                   </div>
                                                   <div class="advisory_panel fl" style="height:auto;">
-                                                  	<div class="contact_address fl" style="height:auto;">
+                                                  	<!--<div class="contact_address fl" style="height:auto;">
                                                      <span>Register as a Vendor</span>
                                                       <p>Subscribe and get visibility with CIO's in Singapore</p>
-                                                    </div>
+                                                    </div>-->
                                                     
                                                    <div class="contact_form fr" name="registration" id="registration" > 
 														<form name="register_venor" action="vendor_sucess.php" method="post" onSubmit="return validate();">

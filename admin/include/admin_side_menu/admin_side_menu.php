@@ -126,22 +126,7 @@
 
 		</li>
 		
-		<li>
-			<a href="#"><i class="entypo-user"></i><span>Subscribers</span></a>
-			<ul>
-				<li>
-					<a href="admin_pending_register.php"><span>Pending</span></a>
-				</li>
-				<li>
-					<a href="admin_decline_register.php"><span>Decline</span></a>
-				</li>
-				<li>
-					<a href="admin_accepted_register.php"><span>Accepted</span></a>
-				</li>
-
-			</ul>
-
-		</li>
+		
 		
 		<li>
 			<a href="#"><i class="entypo-doc-text"></i><span>Events</span></a>
@@ -245,6 +230,26 @@
 				</li>
 				<li>
 					<a href="admin_quick_contact.php"><span>Quick Contact </span></a>
+				</li>
+
+			</ul>
+
+		</li>
+		
+		<li>
+			<a href="#"><i class="entypo-user"></i><span>Management</span></a>
+			<ul>
+				<li>
+					<a href="admin_pending_register.php"><span>Subscribers</span></a>
+				</li>
+				<li>
+					<a href="admin_pending_register.php"><span>Pending</span></a>
+				</li>
+				<li>
+					<a href="admin_decline_register.php"><span>Decline</span></a>
+				</li>
+				<li>
+					<a href="admin_accepted_register.php"><span>Accepted</span></a>
 				</li>
 
 			</ul>

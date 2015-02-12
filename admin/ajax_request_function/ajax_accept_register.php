@@ -2,6 +2,7 @@
 <?php
 	include('../../sql_config/database/cio_db.php'); 
 	$registration_id = mysql_real_escape_string($_POST['registration_id']);
+	
 
 	$sql = mysql_query("UPDATE registration SET registration_status = 'accepted' WHERE  registration_id = $registration_id");
 	$result2 = mysql_query("select registration_name,registration_password,registration_email,registration_type ,login_type from registration  WHERE  registration_id = $registration_id");

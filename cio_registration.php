@@ -105,10 +105,10 @@ function validate()
                                                   <div class="advisory_panel fl" style="height:auto;">
                                                   	
                                                   
-												   <div class="contact_address fl" style="height:auto;">
+												   <!--<div class="contact_address fl" style="height:auto;">
                                                      <span>Register as a CIO</span>
                                                       <p>Get connected with us for surveys and information in the CIO</p>
-                                                    </div>
+                                                    </div>-->
 													<div class="contact_form fr" > 
 															<form name="register_venor" action="cio_sucess.php" method="post" onSubmit="return validate();">
                                                             	

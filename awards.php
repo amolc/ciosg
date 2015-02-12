@@ -102,35 +102,32 @@
                                                               </div>
 															 </div>
 															  
-											<div class="modal fade" id="longdetail<?php echo $advisory_res['awardID']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:14%; height:auto; width:auto;">
-												<div class="modal-dialog" style="width:66.5%; height:100%;margin-left:230px;">
+											<div class="modal fade" id="longdetail<?php echo $advisory_res['awardID']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:14%;">
+												<div class="modal-dialog" style="width:70%; height:100%">
 													<div class="modal-content">
-												
-														<a href="javascript:window.close();" style="float: right; margin-right:0px;margin-top:2px;"><img src="images/cross.png"  width="25px"/></a>
-												  
-														<div class="modal-body">
 													
-															
+													<div class="modal-body">
+													
+															<a href="javascript:void(0)" data-dismiss="modal" aria-hidden="true" style="float: right; margin-right:-17px;margin-top:-18px;"><img src="images/cross.png"  width="25px"/></a>
 																
-																	<div>
-																		<div style="text-align:left;margin-top:10px">
+																	<div class="row">
+																		<div class="col-md-7">
 																		<img class="advisor_img" src="admin/upload/<?php echo $advisory_image; ?>">
 																			<br /><br />
-																			<h1><?php echo $advisory_name?></h1>
+																			<strong style="font-size: 18px;color: #c5ac36;"><?php echo $advisory_name?></strong>
 																			<br /><br />																	
-																			<h2><?php echo $advisory_desination?></h2>
-																			<h2 style="text-align:right;margin-top:-266px;margin-left:200px;">
-																			<?php echo $video_embed_code?>	
-																			</h2>
+																			<strong><?php echo $advisory_desination?></strong>
+																			
 																		</div>
-																		
+																		<div class="col-md-5"><?php echo $video_embed_code?></div>
 																	</div>
 																	<br /><br />							
-																
-																<div style="text-align: justify;font-size: 13px;;">
-																	<h3>About us:</h3>
-																	<br /><br />
-																	<?php echo $company_profile; ?>
+																<div class="row">
+																	<div class="col-md-12" style="text-align: justify;font-size: 13px;">
+																		<h3>About us:</h3>
+																		<br /><br />
+																		<?php echo $company_profile; ?>
+																	</div>
 																</div>
 													
 															

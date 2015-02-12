@@ -106,6 +106,20 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
 
         });
     </script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+    $('#textarea').textext({
+        plugins : 'tags prompt focus autocomplete ajax arrow',
+        tagsItems : [ 'Basic', 'JavaScript', 'PHP', 'Scala' ],
+        prompt : 'Add one...',
+        ajax : {
+            url : '/manual/examples/data.json',
+            dataType : 'json',
+            cacheResults : true
+        }
+    });
+});
+</script>
 	<script>
 		
 function getCategory()
@@ -180,7 +194,7 @@ function get_item(catID,name)
 		id=array[i].item_ID;
 		name=array[i].item_name;
 		
-		tbl_row += "<td><div class='btn-box'><div class='clsButton_item fr' style='height: 18px;'>"+array[i].item_name+"</div></div></td><td></td><tr><td ><div align='center'><br><textarea value="+id+" name='item' placeholder='Please let us know the vendors who provide the best "+array[i].item_name+"' style='width: 729px; height: 173px;font-size: 16px;'></textarea></div></td></tr>";
+		tbl_row += "<td><div class='btn-box'><div class='clsButton_item fr' style='height: 18px;'>"+array[i].item_name+"</div></div></td><td></td><tr><td ><div align='center'><br><textarea value="+id+" name='item' placeholder='Please let us know the vendors who provide the best "+array[i].item_name+"' style='width: 729px; height: 173px;font-size: 16px;' id='textarea'></textarea></div></td></tr>";
         tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
         odd_even = !odd_even; 
 		 i++;            
@@ -199,7 +213,6 @@ function get_item(catID,name)
 
 function listCategory()
 {
-	
 	
 	$("#category_div").html("<div align='center' style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
 	$.getJSON('http://www.globalprompt.org/sg/cio/category/list_category/?callback=?' , function(array) {

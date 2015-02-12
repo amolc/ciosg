@@ -998,7 +998,8 @@ color: #E73535;
     margin-bottom: 80px;
     overflow: auto;
     padding:20px;
-    width: 910px;
+    width: 621px;
+	padding-bottom:0px;
 }
 #content_6{color:#333;}
 #content_7{color:#333;}

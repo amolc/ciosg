@@ -105,11 +105,11 @@ function validate()
                                                   </div>
                                                   <div class="advisory_panel fl" style="height:auto;">
                                                   	
-                                                    <div class="contact_address fl" style="height:auto;">
+                                                   <!-- <div class="contact_address fl" style="height:auto;">
                                                     <span>Login as a CIO</span>
                                                       <p>Get connected with us for surveys and information in the CIO</p>
                                                       
-                                                    </div>
+                                                    </div>-->
 													 <?php
 														if(isset($_REQUEST['wrong']))
 															{

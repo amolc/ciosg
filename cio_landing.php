@@ -27,7 +27,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
     }
 } else
 {
-    header('Location: login.php');
+    header('Location: cio_login.php');
 }
 ?>
 
@@ -39,14 +39,16 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
 	<link rel="icon" type="image/png" href="cxo_fav_ico.png">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 	<link href="css/text_style.css" rel="stylesheet" type="text/css">
-
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
     <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <link href="css/tinycarousel.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery.tinycarousel.js"></script>
-
+	
     <!-- Carousel -->
     <link href="css/bootstrap-carousel.css" rel="stylesheet" type="text/css" />
+	 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -102,25 +104,82 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
              // $(".enter_form_send").prop('disabled', 'false');
              }
              });*/
-
+			
 
         });
     </script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-    $('#textarea').textext({
-        plugins : 'tags prompt focus autocomplete ajax arrow',
-        tagsItems : [ 'Basic', 'JavaScript', 'PHP', 'Scala' ],
-        prompt : 'Add one...',
-        ajax : {
-            url : '/manual/examples/data.json',
-            dataType : 'json',
-            cacheResults : true
-        }
-    });
+	
+	
+	<script> 
+//var companytag=[];
+
+function autosuggest(i)
+{
+	//$.post('.php', function(data) {
+  		// $('#textarea_'+i).autocomplete("hii");
+
+  		// });
+		 
+
+  function split( val ) {
+return val.split( /,\s*/ );
+}
+function extractLast( term ) {
+return split( term ).pop();
+}
+$( '#textarea_'+i )
+// don't navigate away from the field on tab when selecting an item
+.bind( "keydown", function( event ) {
+if ( event.keyCode === $.ui.keyCode.TAB &&
+$( this ).autocomplete( "instance" ).menu.active ) {
+event.preventDefault();
+}
+})
+.autocomplete({
+source: function( request, response ) {
+$.getJSON( "search.php", {
+term: extractLast( request.term )
+}, response );
+},
+/*search: function() {
+// custom minLength
+var term = extractLast( this.value );
+if ( term.length < 2 ) {
+return false;
+}
+},*/
+focus: function() {
+// prevent value inserted on focus
+return false;
+},
+select: function( event, ui ) {
+var terms = split( this.value );
+// remove the current input
+terms.pop();
+// add the selected item
+terms.push( ui.item.value );
+// add placeholder to get the comma-and-space at the end
+terms.push( "" );
+//companytag.push(this.value);
+
+this.value = terms.join( ", " );
+
+return false;
+}
 });
-</script>
-	<script>
+ 
+ 
+}
+function tagvalues()
+{
+	$.post("tag.php" ,{'company': companytag}).done(function( data ) {   
+	if(data=='OK')
+		{
+			alert("company inserted");
+		}
+	
+	});
+}
 		
 function getCategory()
 {
@@ -193,16 +252,15 @@ function get_item(catID,name)
         })
 		id=array[i].item_ID;
 		name=array[i].item_name;
-		
-		tbl_row += "<td><div class='btn-box'><div class='clsButton_item fr' style='height: 18px;'>"+array[i].item_name+"</div></div></td><td></td><tr><td ><div align='center'><br><textarea value="+id+" name='item' placeholder='Please let us know the vendors who provide the best "+array[i].item_name+"' style='width: 729px; height: 173px;font-size: 16px;' id='textarea'></textarea></div></td></tr>";
+		/*height:173px;*/
+		tbl_row += "<td><div class='btn-box'><div class='clsButton_item fr' style='height: 18px;'>"+array[i].item_name+"</div></div></td><td></td><tr><td ><div align='center'><br><textarea  name='item' placeholder='Please let us know the vendors who provide the best "+array[i].item_name+"' style='width: 729px; height: 50px;font-size: 16px;' id='textarea_"+i+"' onClick='autosuggest("+i+");'></textarea><input type='hidden' value='"+id+"' id='item_"+i+"'></div></td></tr>";
         tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
         odd_even = !odd_even; 
 		 i++;            
 		          
     })
 	  tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";
-	   tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";
-	 tbl_body += "<td><div align='center'><button class='clsButton_checkout' style='width:200px;background-color: #e73535;font-size: 17px;border-color: #e73535;' onClick='get_div(1);insrt_into_cart("+catID+");'>Submit Survey</button></div><br /></td>";
+	   tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";tbl_body += "<td><div align='center'><button class='clsButton_checkout' style='width:200px;background-color: #e73535;font-size: 17px;border-color: #e73535;' onClick='insrt_into_cart("+i+","+catID+");'>Submit Survey</button></div><br /></td>";
 	
 	
 	 tbl_body +="</table>"
@@ -210,7 +268,25 @@ function get_item(catID,name)
 	 $('#div_3').show();
 });
 }
-
+function insrt_into_cart(n,catID)
+{
+	var survey = [];
+	var itemID=[];
+	for(i=0;i<n;i++)
+	{
+		if(document.getElementById('textarea_'+i).value!='')
+		{
+			survey.push(document.getElementById('textarea_'+i).value);
+			itemID.push(document.getElementById('item_'+i).value);
+		}
+	}
+	$.post("survey.php" ,{'survey_array': survey,'item_id':itemID,'catID':catID}).done(function( data ) {   
+	if(data=='OK')
+	{
+    	alert("inserted");
+	}
+});
+}
 function listCategory()
 {
 	
@@ -365,7 +441,7 @@ include('header.php');
 		</div>
     </div>
 </div>
-<div class="landing_head advisory_wrapper" style="margin-top:0px;" id="div_1">
+<div class="landing_head advisory_wrapper" style="margin-top:0px;" id="div_1" >
       <div class="clsMiddle">
 			<div class="clsMid_cont_cio" id="category_div">
 				
@@ -437,8 +513,8 @@ $('#accordion > ul:eq(0)').show();
 
 </script> -->
 
-<!--<script type="text/javascript" src="js/jquery-1.7.1.js"></script>-->
-<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+<!--<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="js/jquery.ui.widget.js"></script>-->
 
 
 

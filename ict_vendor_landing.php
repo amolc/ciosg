@@ -11,7 +11,7 @@ if (!empty($_SESSION['username']) && !empty($_SESSION['ict']))
         $corperate_email = $_SESSION['corperate_email'];
         $disnone="";
         $login_type_linkedin="";
-        $login_type_result = mysql_query("SELECT login_type FROM user_vendor WHERE emailID ='$corperate_email'");
+        $login_type_result = mysql_query("SELECT login_type FROM all_users WHERE emailID ='$corperate_email'");
         while ($login_type_row = mysql_fetch_array($login_type_result))
         {
             $login_type_linkedin = $login_type_row['login_type'];
@@ -74,7 +74,7 @@ function getCategory()
 	$("#div_2").html("<div align='center' style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
 	$.getJSON('http://www.globalprompt.org/sg/cio/category/list_category/?callback=?' , function(array) {
 
-	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Category</h2></div><div class='clsCo_Serv_cont clearfix'>";
+	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='advisory_panel_1 mrgn_top'><h1 style='font-size: 30px; font-family: 'Lato';text-transform: uppercase;'>CATEGORY</h1></div><div class='clsCo_Serv_cont clearfix'>";
 	
 	var id='';
 	var i=0;
@@ -145,7 +145,7 @@ function getContract(status)
 		 i++;            
 		          
     })
-	tbl_row +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:100px;'><h2>Back</h2></div></div></div></div>";
+	tbl_row +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:100px;'><h2><a href='javascript:void(0)' onclick='get_div(2);getCategory();'>Back</h2></div></div></div></div>";
 	tbl_body += ""+tbl_row+"";
 	
 	 $("#div_6").html(tbl_body);
@@ -172,7 +172,7 @@ function get_item(catID,name)
 {
 
 	$("#div_3").html("<div align='center'  style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
-	var tbl_body ="<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Category"+name+"</h2></div><div class='clsCo_frt_top'><h2>Please select the Sub-Category you would like to participate.</h2></div>";
+	var tbl_body ="<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='contact_details_2 fl' style='padding-top:20px;'><a href='javascript:void(0);' class='active' onClick='get_div(2);'>Category</a></div><div class='clsCat_tlt'><h2>Category"+name+"</h2></div><div class='clsCo_frt_top'><h2>Please select the Sub-Category you would like to participate.</h2></div>";
 	$.getJSON('http://www.globalprompt.org/sg/cio/category/get_item_for/'+catID+'?callback=?' , function(array) {
 
 	var id='';
@@ -188,7 +188,7 @@ function get_item(catID,name)
 		
 		id=array[i].item_ID;
 		name=array[i].item_name;
-		tbl_row += "<div class='clsCo_frt_"+j+"'><div class='clsCio_inp'><input type='checkbox' value="+id+" name='item'></div><h2>"+array[i].item_name+"</h2></div>";
+		tbl_row += "<div class='clsCo_frt_"+j+"'><div class='clsCio_inp'  style='padding: 9px;'><input type='checkbox' value="+id+" name='item'></div><h2>"+array[i].item_name+"</h2></div>";
 		
        	if(i%2==0)
 		{
@@ -203,13 +203,90 @@ function get_item(catID,name)
 		          
     })
 	    
-	    tbl_body +="<div class='clsCo_frt_bot clearfix'><a href='javascript:void(0);' class='clsCo_frt_btn' style='width:200px;' style='width:200px' onClick='get_div(4);insrt_into_cart("+catID+");'>Proceed to Participation</a><a href='javascript:void(0);' class='clsCo_frt_btn2' style='width:100px;'  onClick='get_div(2);'>Back</a></div>";
+	   tbl_body +="<div class='clsCo_frt_bot clearfix'><a href='javascript:void(0);' class='clsCo_frt_btn' style='width:200px;' style='width:200px' onClick='terms("+catID+");'>Proceed to Participation</a></div>";
+		
+			 
+	 tbl_body +="</div></div>";
+	 $("#div_3").html(tbl_body);
+	 $('#div_3').show();
+});
+}
+
+function terms(catID)
+{
+	
+	var items = [];
+	$.each($("input[name='item']:checked"), function(){            
+		items.push($(this).val());
+		
+	});
+	$.post("cart.php" ,{'item_array': items,'catID':catID}).done(function( data ) {   
+	if(data=='OK')
+	{
+    	terms_conditions(catID);
+	}
+	else
+	{
+		var tbl_body = "<label style='font-size: 24px;color:red;'>Please Select Sub-Category before you proceed to Participation</label>"
+		$("#div_3").html(tbl_body);
+		$('#div_3').show();
+		//alert("<label style='font-size: 24px;color:red;'>Please Select Sub-Category before you proceed to Participation</label>");
+	}
+});
+ 
+	
+}
+
+
+
+function terms_conditions(catID)
+{
+	
+	$("#div_3").html("<div align='center'  style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
+	
+	//var tbl_body ="<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='contact_details_2 fl' style='padding-top:20px;'><a href='javascript:void(0);' class='active' onClick='get_div(2);'>Category</a></div><div class='clsCat_tlt'><h2>Category"+name+"</h2></div><div class='clsCo_frt_top'><h2>Please select the Sub-Category you would like to participate.</h2></div>";
+	
+	var tbl_body ="<div class='clsCat_tlt'><h2>Terms And Conditions</h2></div><ul class='breadcrumb'><li><a href='javascript:void(0)' onclick='get_div(4);terms_conditions("+catID+");'>Terms and Conditions</a></li><li><a href='javascript:void(0)' onclick='get_div(4);proceed_to_oarticipation();'>Enterprise Participation From</a></li><li><a href='javascript:void(0)' onclick='save_contract();'>Contract Summary</a></li><li></li></ul><br />";
+	
+	$.getJSON('http://www.globalprompt.org/sg/cio/ceo/list_terms/?callback=?' , function(array) {
+
+	var id='';
+	var i=0;
+	var j=1;
+    var odd_even = false;
+    $.each(array, function(key,val) {
+        var tbl_row = "";
+        $.each(this, function(k , v) {
+          
+        
+        })
+		
+		id=array[i].item_ID;
+		name=array[i].item_name;
+		tbl_row += "<div class='clsCo_frt_top'><h2>"+array[i].section+"</h2></div><div class='clsCo_frt_"+j+"'><h2>"+array[i].description+"</h2></div><div class='clsCo_frt_bot clearfix'></div><br />";
+		
+       	if(i%2==0)
+		{
+			j=2;
+		}
+		else
+		{
+			j=1;
+		}
+		 i++;   
+		 tbl_body += ""+tbl_row+"";         
+		          
+    })
+	    
+	    tbl_body +="<div class='clearfix'><a href='javascript:void(0);' class='clsCo_frt_btn' style='width:200px;' style='width:200px' onClick='get_div(4);proceed_to_oarticipation();'>Proceed to Participation</a></div>";
 	 
 	 tbl_body +="</div></div>";
 	 $("#div_3").html(tbl_body);
 	 $('#div_3').show();
 });
 }
+
+
 function insrt_into_cart(catID)
 {
 	
@@ -223,6 +300,7 @@ function insrt_into_cart(catID)
 	{
     	shopping_cart();
 	}
+	
 });
  
 	
@@ -266,25 +344,16 @@ function shopping_cart()
 	 tbl_body +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2 style='width:100px;'>Estimated Tax : </h2></div><div class='clsC1_list_bx3'><h2>S$00.00</h2></div></div></div>";
 	 tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2>Total : </h2></div><div class='clsC1_list_bx3'><h2>$"+total+".00</h2></div></div></div>";
 	
-	/*tbl_body +="<div class='clsCo_frt_2'><div align='right'><div class='clsCo_frt_btn3' style='width:200px;'><p style='font-size:14px;' ><b>Estimated Tax : $0</b></p><br><p style='font-size:18px;'><b>Total : $"+total+".00<b></p></div></div></div>";
-	
-	 /*tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont'><h2><div align='right'><button style='height:33px;' type='button' class='btn btn-warning'>Do you have promotional code?</button>&nbsp;&nbsp;&nbsp;<input type='text' style='height:27px;'>&nbsp;&nbsp;&nbsp;<button type='submit' class='clsButton_checkout'>Apply</button></div></h2></div>	
-</div>";generate_pdf();*/
-
-	 tbl_body +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:200px;'><h2><a href='javascript:void(0);' onClick='proceed_to_oarticipation();'>Proceed to Participation</a></h2></div><div style='width:200px;' class='clsCo_frt_btn'><h2><a href='javascript:void(0);' onClick='get_div(2);getCategory();'>Continue Shopping</a></h2></div></div>";
+	tbl_body +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:200px;'><h2><a href='javascript:void(0);' onClick='save_contract();'>Proceed to Participation</a></h2></div><div style='width:200px;' class='clsCo_frt_btn'><h2><a href='javascript:void(0);' onClick='get_div(2);getCategory();'>Continue Shopping</a></h2></div></div>";
 	
 	 tbl_body +="<br />";
-	// tbl_body +="<div class='clsCat_tlt'><h2>Enterprise Participation Form</h2></div><div class='clsCont_form_bx'><div class='clsC1_list_cont clearfix'><div class='clsLD_Bx_frm'><div class='clsCont_form'><h2>Company Name</h2><div><input type='text' class='clsInput' name='cname' id='cname' ></div><h2>Address 1</h2><div><input type='text' class='clsInput' name='add1' id='add1' ></div><h2>Address 2</h2><div><input type='text' class='clsInput' name='add2' id='add2' ></div><h2>City</h2><div><input type='text' class='clsInput' name='city' id='city'></div><h2>Country</h2><div><input type='text' class='clsInput' name='country' id='country'></div></div></div><div class='clsLD_Bx_frm'><div class='clsCont_form'><h2>Website</h2><div><input type='text' class='clsInput' name='website' id='website'></div><h2>Email</h2><div><input type='text' class='clsInput' name='email' id='email'></div><h2>Contact Name</h2><div><input type='text' class='clsInput' name='contact_name' id='contact_name'></div><h2>Designation</h2><div><input type='text' class='clsInput' id='desg' name='desg'></div><h2>Phone Number</h2><div><input type='text' class='clsInput' name=''></div></form></div></div><div style='width:200px;margin-left:17px;' class='clsCo_frt_btn'><h2>SUBMIT</h2></div></div></div></div>	</div>	";
-		
-		
-	  tbl_body +="</div>";
+	 tbl_body +="</div>";
 	
 	 $("#div_4").html(tbl_body);
 	 $('#div_4').show();
 
 });
-/*alert(items);
-*/
+
 }
 function proceed_to_oarticipation()
 {
@@ -619,7 +688,77 @@ function remove_item(itemID)
     });
 </script>
 
-
+<style>
+	
+		.breadcrumb { 
+			list-style: none; 
+			overflow: hidden; 
+			
+		}
+		.breadcrumb li { 
+			float: left; 
+		}
+		.breadcrumb li a {
+			color: white;
+			text-decoration: none; 
+			padding: 10px 0 10px 55px;
+			background: brown;                   /* fallback color */
+			background: hsla(34,85%,35%,1); 
+			position: relative; 
+			display: block;
+			float: left;
+		}
+		.breadcrumb li a:after { 
+			content: " "; 
+			display: block; 
+			width: 0; 
+			height: 0;
+			border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+			border-bottom: 50px solid transparent;
+			border-left: 35px solid hsla(34,85%,35%,1);
+			position: absolute;
+			top: 50%;
+			margin-top: -50px; 
+			left: 100%;
+			z-index: 2; 
+		}	
+		.breadcrumb li a:before { 
+			content: " "; 
+			display: block; 
+			width: 0; 
+			height: 0;
+			border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+			border-bottom: 50px solid transparent;
+			border-left: 35px solid white;
+			position: absolute;
+			top: 50%;
+			margin-top: -50px; 
+			margin-left: 1px;
+			left: 100%;
+			z-index: 1; 
+		}	
+		.breadcrumb li:first-child a {
+			padding-left: 10px;
+		}
+		.breadcrumb li:nth-child(2) a       { background:        hsla(34,85%,45%,1); }
+		.breadcrumb li:nth-child(2) a:after { border-left-color: hsla(34,85%,45%,1); }
+		.breadcrumb li:nth-child(3) a       { background:        hsla(34,85%,55%,1); }
+		.breadcrumb li:nth-child(3) a:after { border-left-color: hsla(34,85%,55%,1); }
+		.breadcrumb li:nth-child(4) a       { background:        hsla(34,85%,65%,1); }
+		.breadcrumb li:nth-child(4) a:after { border-left-color: hsla(34,85%,65%,1); }
+		.breadcrumb li:nth-child(5) a       { background:        hsla(34,85%,75%,1); }
+		.breadcrumb li:nth-child(5) a:after { border-left-color: hsla(34,85%,75%,1); }
+		.breadcrumb li:last-child a {
+			background: white !important;
+			color: black;
+			pointer-events: none;
+ 			cursor: default;
+		}
+		.breadcrumb li:last-child a:after { border: 0; }
+		.breadcrumb li a:hover { background: hsla(34,85%,25%,1); }
+		.breadcrumb li a:hover:after { border-left-color: hsla(34,85%,25%,1) !important; }
+		
+	</style>
 
 
 </head>
@@ -699,7 +838,7 @@ include('header.php');
  	
 			<div class="clsMid_cont_cio" id="middle" style="display:none">
 				<div class="clsCat_tlt"><h2>Enterprise Participation Form</h2></div>
-				
+				<ul class='breadcrumb'><li><a href='javascript:void(0)' onclick='get_div(4);terms_conditions("+catID+");'>Terms and Conditions</a></li><li><a href='javascript:void(0)' onclick='get_div(4);proceed_to_oarticipation();'>Enterprise Participation From</a></li><li><a href='javascript:void(0)' onclick='save_contract();'>Contract Summary</a></li></ul>
 				<div class="clsCont_form_bx">
 					<div class="clsC1_list_cont clearfix">
 						<div class="clsLD_Bx_frm">
@@ -737,7 +876,7 @@ include('header.php');
 						</div>	<!--clsLD_Bx_frm-->
 						
 						
-							<a href="javascript:void(0);"  class="clsCo_frt_btn" style="width:200px; height:35px;margin-right:35px;color:#FFFFFF;" onClick="save_contract();" >Submit</a>
+							<a href="javascript:void(0);"  class="clsCo_frt_btn" style="width:200px; height:35px;margin-right:35px;color:#FFFFFF;" onClick="get_div(4);shopping_cart();" >Submit</a>
 						<!--	<button type="submit" style="width:200px; height:35px;margin-right:35px;color:#FFFFFF;" class="clsCo_frt_btn">Submit</button>-->
 						
 						

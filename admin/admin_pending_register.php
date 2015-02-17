@@ -181,7 +181,7 @@ echo '<h2 style="color:green">Updated</h2>';
 *@Date & Time:		13-march-2014 GM +5
 *@Modified Date:	13-march-2014 GM +5
 */
-$result = mysql_query("SELECT *  FROM user_cio as C, user_vendor as V where C.registration_status ='pending' OR V.registration_status ='pending'");
+$result = mysql_query("SELECT *  FROM all_users where registration_status ='pending'");
 
 
 
@@ -193,7 +193,7 @@ $result = mysql_query("SELECT *  FROM user_cio as C, user_vendor as V where C.re
 			
 			echo'
 				<tr class="odd gradeX" id="'.$row['registration_id'].'">
-					<td>'.$row['firstname'].' '.$row['lastname'].'</td>
+					<td><a href="admin_user_profile.php?id='.$row['registration_id'].'" style="color:#949494">'.$row['firstname'].' '.$row['lastname'].'</a></td>
 					<td>'.$row['emailID'].'</td>
 					<td>'.$row['company'].'</td>
 					<td>'.$row['registration_type'].'</td>

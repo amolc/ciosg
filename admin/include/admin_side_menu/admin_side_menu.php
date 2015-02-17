@@ -237,24 +237,102 @@
 		</li>
 		
 		<li>
-			<a href="#"><i class="entypo-user"></i><span>Management</span></a>
-			<ul>
+			<a><i class="entypo-user"></i><span>Management</span></a>
+		</li>
 				<li>
 					<a href="admin_pending_register.php"><span>Subscribers</span></a>
+					<ul>
+						<li>
+							<a href="admin_pending_register.php"><span>Pending</span></a>
+						</li>
+						<li>
+							<a href="admin_decline_register.php"><span>Decline</span></a>
+						</li>
+						<li>
+							<a href="admin_accepted_register.php"><span>Accepted</span></a>
+						</li>
+					</ul>
 				</li>
 				<li>
-					<a href="admin_pending_register.php"><span>Pending</span></a>
+					<a href="admin_pending_register.php"><span>Company</span></a>
+					<ul>
+						<li>
+							<a href="admin_pending_register.php"><span>Parent Company</span></a>
+							<ul>
+								<li>
+									<a href="admin_add_parent_company.php"><span>Add Company</span></a>
+								</li>
+								<li>
+									<a href="admin_all_parent_companies.php"><span>List Company</span></a>
+								</li>
+								
+							</ul>
+						</li>
+						<li>
+							<a href="admin_decline_register.php"><span>Regional Company</span></a>
+							
+							<ul>
+								<li>
+									<a href="admin_add_regional_company.php"><span>Add Company</span></a>
+								</li>
+								<li>
+									<a href="admin_all_regional_companies.php"><span>List Company</span></a>
+								</li>
+								
+							</ul>
+						</li>
+						
+					</ul>
 				</li>
 				<li>
-					<a href="admin_decline_register.php"><span>Decline</span></a>
+					<a href="admin_pending_register.php"><span>Category</span></a>
+					<ul>
+						<li>
+							<a href="admin_pending_register.php"><span>Category</span></a>
+							
+							<ul>
+								<li>
+									<a href="admin_add_category.php"><span>Add Category</span></a>
+								</li>
+								<li>
+									<a href="admin_all_category.php"><span>List Category</span></a>
+								</li>
+								
+							</ul>
+						</li>
+						<li>
+							<a href="admin_decline_register.php"><span>Item</span></a>
+							
+							<ul>
+								<li>
+									<a href="admin_add_item.php"><span>Add Item</span></a>
+								</li>
+								<li>
+									<a href="admin_all_items.php"><span>List Item</span></a>
+								</li>
+								
+							</ul>
+						</li>
+						
+					</ul>
 				</li>
 				<li>
-					<a href="admin_accepted_register.php"><span>Accepted</span></a>
+					<a href="admin_pending_register.php"><span>Currency</span></a>
+					<ul>
+						<li>
+							<a href="admin_add_currency.php"><span>Add Currency</span></a>
+						</li>
+						<li>
+							<a href="admin_all_currency.php"><span>List Currency</span></a>
+						</li>
+						
+					</ul>
 				</li>
+				
+				
+			
 
-			</ul>
-
-		</li>
+		
 		<!--<li>
 			<a href="#"><i class="entypo-layout"></i><span>Users</span></a>
 			<ul>

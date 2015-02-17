@@ -23,8 +23,7 @@
 ?>
 							     <?php
 													include('sql_config/database/cio_db.php'); 
-													//include('top_header.php');
-													//include('header.php');
+													
 														
 									?>
                                  <div id="top_wrapper">
@@ -47,7 +46,7 @@
 							
 					?>
 							
-							<!--<a href="registration.php" class="border"><img src="images/register_icon.png" width="12" height="16">REGISTER</a>-->
+							
 					<?php
 
 						}
@@ -98,34 +97,21 @@
 														$username = $_POST['username'];
 														$password = $_POST['password'];
 
-														// $username = strip_tags(stripslashes(mysql_real_escape_string($username)));
-														// $password = sha1(strip_tags(stripslashes(mysql_real_escape_string($password))));
+														
 
-														$sql="SELECT * FROM user_vendor WHERE emailID = '$username' and password='$password' and registration_status='accepted' and login_type='email'";
+														$sql="SELECT * FROM all_users WHERE emailID = '$username' and password='$password' and registration_type='ICTVendor' and registration_status='accepted' and login_type='email'";
 														$rs = mysql_query($sql) or die ("Query failed");
 
-														// $numofrows = mysql_num_rows($rs);
+														
 														$row = mysql_fetch_array($rs);
 
 														if($row['emailID'] == $username && $row['password'] == $password)
 														{
-														// if($numofrows > 0){
-															// session_register("username");
-															// echo $row['registration_type'];
+														
 															if($row['registration_type']=='CIO') 
 															{
 															
-															/*	session_start();
-																// store session data
-																$_SESSION['username']=$username;
-																$_SESSION['user_name']=$row['registration_name'];
-																$_SESSION['cio']=$row['registration_type'];
-																$_SESSION['corperate_email']=$row['corperate_email'];
-																$_SESSION['type']='cio_landing.php';
-																;*/
-															//header("location:vendor_registration?&wrong=yes");
-												
-															header("location:cio_login.php");
+																header("location:cio_login.php");
 															
 															}
 															else if($row['registration_type']=='ICTVendor') 
@@ -133,7 +119,7 @@
 																session_start();
 																// store session data
 																$_SESSION['username']=$username; 
-															//	$_SESSION['user_name']=$row['registration_name'];
+															
 																$_SESSION['firstname']=$row['firstname'];
 																$_SESSION['lastname']=$row['lastname'];
 																$_SESSION['vID']=$row['vID'];
@@ -148,25 +134,9 @@
 														}
 														else {
 															header("location:vendor_login.php?wrong=yes");
-															// echo "<h1>The UserName or password you entered is incorrect , please rry again</h1>";
+															
 														}
-															// $sql = mysql_query('SELECT * FROM registration where registration_email ="'.$username.'" AND registration_password ="'.$password.'"');
-
-
-																	// $row = mysql_fetch_array($sql);
-
-																	// if($row['registration_email'] == $name && $row['registration_password'] == $password)
-																		// {
-																			
-																			// session_start();
-																			// $_SESSION['user_name'] = $row['username'];
-																			 // header("location:advisory_detail.php?action=yes");
-																			
-																		// }
-																		// else 
-																		// {
-																			 // echo "<h1>user name wrong</h1>";
-																		// } 
+															
 														
 													}
 																										
@@ -183,14 +153,14 @@
 													return $randomString;
 												}		
 												
-												//echo generateRandomString();		
+											
 												$str=generateRandomString();	
-												//echo $str;	
+												
 																									
 													$fname =$_POST["fname"];
 													$lname =$_POST["lname"];
 													$name=$fname.$lname;
-													//echo $name;
+													
 													$cname =$_POST["company"];
 													$email =$_POST["email"];
 													$mno =$_POST["mobile"];
@@ -200,18 +170,18 @@
 													$reg_type="ICTVendor";
 													$log_type="email";
 													$time = time();
-													//echo $fname;
+													
 									$admin = 'andre.tan@day7.co';
                         
 include('activation_link2.php');
                         			
 								
-								/*$sql ="insert into registration(registration_name,registration_email,corperate_email,registration_password,registration_type,login_type,registration_insert_date,registration_status,regist_mobile,business_title,confirm_id) values('".$name."','".$email."','".$email."','".$pass."','".$reg_type."','".$log_type."','".$time."','pending','".$mno."','".$btitle."','".$str."')";*/
-								$sql ="insert into user_vendor(firstname,lastname,company,business_title,emailID,mobile_number,password,registration_type,login_type,registration_insert_date,registration_status,confirm_id) values('".$fname."','".$lname."','".$cname."','".$btitle."','".$email."','".$mno."','".$pass."','".$reg_type."','".$log_type."','".$time."','pending','".$str."')";
+								
+								$sql ="insert into all_users(firstname,lastname,company,business_title,emailID,mobile_number,password,registration_type,login_type,registration_insert_date,registration_status,confirm_id) values('".$fname."','".$lname."','".$cname."','".$btitle."','".$email."','".$mno."','".$pass."','".$reg_type."','".$log_type."','".$time."','pending','".$str."')";
 								
 								
 								
-							/*	$sql ="INSERT INTO `user_vendor`(`vID`, `firstname`, `lastname`, `company`, `business_title`, `emailID`, `mobile_number`, `password`, `registration_type`, `login_type`, `registration_insert_date`, `registration_status`, `confirm_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12],[value-13])";*/
+							
 								
 								
 								
@@ -219,7 +189,7 @@ include('activation_link2.php');
 												$web_url ="http://www.cxohonour.com";	
 													$query = mysql_query( $sql, $con);
 									
-									//header("Location:registration.php?sent=ok");
+									
                                     
                               $pos1= strpos($email,"@gmail.com");
 									$pos2= strpos($email,"@yahoo.com");
@@ -227,10 +197,10 @@ include('activation_link2.php');
 								
 								$sql1="SELECT * FROM parent_company";
 								$rs = mysql_query($sql1) or die ("Query failed");
-								//$row = mysql_fetch_array($rs);
+								
 								while($row = mysql_fetch_array($rs))
 								{
-								// echo $row['domain_name'];
+								
 									$pos3= strpos($email,$row['domain_name']);
 								 if($pos3 >0)
 								 {
@@ -238,7 +208,7 @@ include('activation_link2.php');
 								 }
 								 
 								}
-								 //echo  $pos3;
+								 
 								if($pos3 > 0 || $pos1 < 0 || $pos1 < 0 )
 								{
 									

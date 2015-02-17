@@ -54,7 +54,7 @@ function validate()
 <body>
 							     <?php
 													include('sql_config/database/cio_db.php'); 
-														// include('top_header.php');
+														
 														
 									?>
                                         <div id="top_wrapper">
@@ -76,7 +76,7 @@ function validate()
 						{
 					?>
 							
-							<!--<a href="registration.php" class="border"><img src="images/register_icon.png" width="12" height="16">REGISTER</a>-->
+							
 					<?php
 
 						}
@@ -158,20 +158,17 @@ function validate()
 														$username = $_POST['username'];
 														$password = $_POST['password'];
 
-														// $username = strip_tags(stripslashes(mysql_real_escape_string($username)));
-														// $password = sha1(strip_tags(stripslashes(mysql_real_escape_string($password))));
+														
 
-														$sql="SELECT * FROM user_cio WHERE emailID = '$username' and password='$password' and registration_status='accepted' and login_type='email'";
+														$sql="SELECT * FROM all_users WHERE emailID = '$username' and password='$password' and registration_type='CIO' and registration_status='accepted' and login_type='email'";
 														$rs = mysql_query($sql) or die ("Query failed");
 
-														// $numofrows = mysql_num_rows($rs);
+														
 														$row = mysql_fetch_array($rs);
 
 														if($row['emailID'] == $username && $row['password'] == $password)
 														{
-														// if($numofrows > 0){
-															// session_register("username");
-															// echo $row['registration_type'];
+														
 															if($row['registration_type']=='CIO') 
 															{
 																session_start();
@@ -187,39 +184,16 @@ function validate()
 															}
 															else if($row['registration_type']=='ICTVendor') 
 															{
-																/*session_start();
-																// store session data
-																$_SESSION['username']=$username; 
-																$_SESSION['user_name']=$row['registration_name'];
-																$_SESSION['ict']=$row['registration_type'];
-																$_SESSION['type']='ict_vendor_landing.php';
-																$_SESSION['corperate_email']=$row['corperate_email'];
-																header("location:ict_vendor_landing.php?action=yes");*/
+																
 																header("location:login.php?wrong=yes");
 															}
 															
 														}
 														else {
 															header("location:login.php?wrong=yes");
-															// echo "<h1>The UserName or password you entered is incorrect , please rry again</h1>";
+															
 														}
-															// $sql = mysql_query('SELECT * FROM registration where registration_email ="'.$username.'" AND registration_password ="'.$password.'"');
-
-
-																	// $row = mysql_fetch_array($sql);
-
-																	// if($row['registration_email'] == $name && $row['registration_password'] == $password)
-																		// {
-																			
-																			// session_start();
-																			// $_SESSION['user_name'] = $row['username'];
-																			 // header("location:advisory_detail.php?action=yes");
-																			
-																		// }
-																		// else 
-																		// {
-																			 // echo "<h1>user name wrong</h1>";
-																		// } 
+															
 														
 													}
 																										
@@ -227,9 +201,7 @@ function validate()
 													{ 
 													?>
 													
-													<!--<div style="text-align: center;float: left;width: 100%;line-height: 40px;height: 40px;color: #20201F;display: block;font-size: 30px;font-weight: bold;">
-														 Please use your preferred method of login...
-													</div>-->
+													
 													<?php
 														if(isset($_REQUEST['wrong']))
 															{

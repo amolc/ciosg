@@ -23,10 +23,8 @@
 ?>
 							     <?php
 													include('sql_config/database/cio_db.php'); 
-													//include('top_header.php');
-													//include('header.php');
-														
-									?>
+																											
+								?>
                          
 <div id="top_wrapper">
 	<div class="top_container">
@@ -54,7 +52,7 @@
 	
 	</div>
 	  <div class="social_media fr">
-		<!--<p>CONNECT WITH US</p>-->
+		
 			<span>
 				<a href="http://www.linkedin.com/company/cio-choice-singapore/" title="Linkedin" target="_blank"><img src="images/linkedin.png" alt="Linkedin" title="Linkedin" width="30" height="31"></a>
 				<a href="https://twitter.com/CIOCHOICE_SG" title="Twitter" target="_blank"><img src="images/twitter.png" width="30" height="31"></a>
@@ -66,15 +64,6 @@
 	</div>
 </div>
 <div style="width:100%; height:49px;"></div>
-<?php 
-/*
-if(!isset($_SESSION['user_name']))
-{ 
-
-	include('header.php');
-	
-}*/	
-?>
 
 
                                         <div id="black_wrapper">
@@ -96,18 +85,14 @@ if(!isset($_SESSION['user_name']))
 
 														
 
-														$sql="SELECT * FROM user_cio WHERE emailID = '$username' and password='$password' and registration_status='accepted' and login_type='email'";
+														$sql="SELECT * FROM all_users WHERE emailID = '$username' and password='$password' and registration_type='CIO' and registration_status='accepted' and login_type='email'";
 														$rs = mysql_query($sql) or die ("Query failed");
 
-														// $numofrows = mysql_num_rows($rs);
+														
 														$row = mysql_fetch_array($rs);
 
 														
-													//	$sql="SELECT * FROM registration WHERE registration_email = '$username' and registration_password='$password' and registration_status='accepted' and login_type='email'";
-													//	$rs = mysql_query($sql) or die ("Query failed");
-
-														// $numofrows = mysql_num_rows($rs);
-														//$row = mysql_fetch_array($rs);
+													
 
 														if($row['emailID'] == $username && $row['password'] == $password)
 														{
@@ -121,6 +106,7 @@ if(!isset($_SESSION['user_name']))
 																$_SESSION['firstname']=$row['firstname'];
 																$_SESSION['lastname']=$row['lastname'];
 																$_SESSION['corperate_email']=$row['emailID'];
+																$_SESSION['cID']=$row['cID'];
 																$_SESSION['type']='cio_landing.php';
 																$_SESSION['cio']=$row['registration_type'];
 																header("location:cio_landing.php?action=yes");
@@ -159,15 +145,14 @@ if(!isset($_SESSION['user_name']))
 													return $randomString;
 												}		
 												
-												//echo generateRandomString();		
+												
 												$str=generateRandomString();	
-												//echo $str;	
-													
+												
 													
 													$fname =$_POST["fname"];
 													$lname =$_POST["lname"];
 													$name=$fname.$lname;
-													//echo $name;
+												
 													$cname =$_POST["company"];
 													$email =$_POST["email"];
 													$mno =$_POST["mobile"];
@@ -182,8 +167,8 @@ if(!isset($_SESSION['user_name']))
 include('activation_link2.php');	
 													
 								
-		/*$sql ="insert into registration(registration_name,registration_email,corperate_email,registration_password,registration_type,login_type,registration_insert_date,registration_status,regist_mobile,confirm_id) values('".$fname."','".$email."','".$email."','".$pass."','".$reg_type."','".$log_type."','".$time."','pending','".$mno."','".$str."')";*/
-								$sql ="insert into user_cio(firstname,lastname,company,emailID,mobile_number,password,company_address,secretary_name,	secretary_email,secretary_phone,registration_type,login_type,registration_insert_date,registration_status,confirm_id) values('".$fname."','".$lname."','".$cname."','".$email."','".$mno."','".$pass."','None','None','None','None','".$reg_type."','".$log_type."','".$time."','pending','".$str."')";
+		
+								$sql ="insert into all_users(firstname,lastname,company,emailID,mobile_number,password,company_address,secretary_name,	secretary_email,secretary_phone,registration_type,login_type,registration_insert_date,registration_status,confirm_id) values('".$fname."','".$lname."','".$cname."','".$email."','".$mno."','".$pass."','None','None','None','None','".$reg_type."','".$log_type."','".$time."','pending','".$str."')";
 							
 
 								
@@ -191,7 +176,7 @@ include('activation_link2.php');
 											$web_url ="";	
 													$query = mysql_query( $sql, $con);
 									
-									//header("Location:registration.php?sent=ok");
+									
                                     
                               $pos1= strpos($email,"@gmail.com");
 									$pos2= strpos($email,"@yahoo.com");
@@ -199,10 +184,10 @@ include('activation_link2.php');
 								
 								$sql1="SELECT * FROM parent_company";
 								$rs = mysql_query($sql1) or die ("Query failed");
-								//$row = mysql_fetch_array($rs);
+								
 								while($row = mysql_fetch_array($rs))
 								{
-								// echo $row['domain_name'];
+							
 									$pos3= strpos($email,$row['domain_name']);
 								 if($pos3 >0)
 								 {
@@ -210,7 +195,7 @@ include('activation_link2.php');
 								 }
 								 
 								}
-								 //echo  $pos3;
+								
 								if($pos3 > 0 || $pos1 < 0 || $pos1 < 0 )
 								{
 									

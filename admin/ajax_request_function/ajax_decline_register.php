@@ -4,12 +4,12 @@ include('../../sql_config/database/cio_db.php');
 
 $registration_id = mysql_real_escape_string($_POST['registration_id']);
 // echo $registration_id;
-	$sql = mysql_query("UPDATE registration SET registration_status = 'declined' WHERE  registration_id = $registration_id");
-	$result2 = mysql_query("select registration_name,registration_email,registration_type from registration  WHERE  registration_id = $registration_id");
+	$sql = mysql_query("UPDATE all_users SET registration_status = 'declined' WHERE  registration_id = $registration_id");
+	$result2 = mysql_query("select firstname,lastname,emailID,registration_type from all_users  WHERE  registration_id = $registration_id");
 		while ($row = mysql_fetch_array($result2)) 
 		{ 
-			$registration_email = $row['registration_email'];
-			$registration_name = $row['registration_name'];
+			$registration_email = $row['emailID'];
+			$registration_name = $row['firstname']." ".$row['lsstname'];
 			$registration_type = $row['registration_type'];
 			
 		}

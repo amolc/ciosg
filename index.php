@@ -241,12 +241,14 @@
     <body>
 
         <?php
+		//include( "phpjobscheduler/firepjs.php"); 
         include('sql_config/database/cio_db.php');
         include('top_header.php');
         include('header.php');
         ?>
 
         <div id="black_wrapper">
+		<a href="http://www.phpjobscheduler.co.uk/" title="phpJobScheduler"><img src="http://cio.cxohonour.com/dev/phpjobscheduler/firepjs.php?return_image=1" border="0" alt="phpJobScheduler"></a>
             <div class="black_container">
                 <?php include('navigation.php'); ?>
 			  <div class="video fl">

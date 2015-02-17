@@ -4,7 +4,7 @@
 	//$con = mysql_connect('cio-choice-201408141000.ctseggpibot4.ap-southeast-1.rds.amazonaws.com','admin', 'H3ll0$c1o7#');
 	
 	//$db	 = mysql_select_db('cio-choice_27march');
-	 $db	 = mysql_select_db('cio_choice_db');
+	 $db	 = mysql_select_db('cio_id');
 	// $web_url ="http://staging.cio-choice.sg";
-	$web_url ="http://cio.fountaintechies.com";
+	$web_url ="http://cio.cxohonour.com/id-test/";
 ?>

@@ -40,16 +40,16 @@
                                             </div>
                                         </div>
                                             <div id="advisory_wrapper">
-                                                <div class="our_advisory_panel mrgn_top" style="height:auto;">
-                                                  <div class="overview_left fl">
+                                                <div class="mrgn_top" style="height:auto; width:930px;margin-left:200px;">
+                                                  <!--<div class="overview_left fl">
                                                   	<div class="about fl">
                                                     	<h1></h1>
                                                         <a href="careers.php">Careers</a>
                                                         <a href="privacy_policy.php">Privacy Policy</a>
                                                     </div>
-                                                  </div>
+                                                  </div>-->
                                                   
-                                               	  <div class="overview_right fr">
+                                               	  <!--<div class="overview_right fr">-->
                                                	    <div class="choice_overview fl">
                                             	<?php 
                                                 $result = mysql_query("SELECT * FROM enter_page where enter_type='policy' ");
@@ -58,17 +58,16 @@
 															
                     <h1><?php echo $row['enter_heading']; ?></h1>
                     <br/> <br/>
-                    <div class="textdescription"><?php echo $row['enter_description']; ?></div>
+                    <div class="textdescription" style="width:900px;"><?php echo $row['enter_description']; ?></div>
 														
                                                            
                                                         </div>
-                                               	  </div>
+                                               	  <!--</div>-->
                                                   <div style="clear:both"></div>
                                                 </div>
                                                 
                                             </div>
                                         
-<?php include('events_panel.php'); ?>
 
 
 <?php

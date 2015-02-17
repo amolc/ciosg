@@ -6,7 +6,7 @@
 		<!-- logo -->
 		<div class="logo">
 			<a href="../index.php">
-				<h3 style="color:#fff;font-size: 13px;">CIOHONOUR SINGAPORE</h3>
+				<h3 style="color:#fff;font-size: 13px;">CIOHONOUR INDONESIA</h3>
 			</a>
 		</div>
 		

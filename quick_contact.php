@@ -8,11 +8,12 @@
 												<ul style="font-family: "Lato";font-size:17px;">
 													<p>Links</p>
 													<br /><br />
-													<li style="padding-top:7px;"><a href="index.php" style="text-decoration:none;">Home</a></li>
-													<li style="padding-top:7px;"><a href="cio_choice_overview.php" style="text-decoration:none;">About</a></li>
-													<li style="padding-top:7px;"><a href="advisory_panel.php" style="text-decoration:none;">Advisory Panel</a></li>
-													<li style="padding-top:7px;"><a href="events.php" style="text-decoration:none;">Events</a></li>
-													<li style="padding-top:7px;"><a href="awards.php" style="text-decoration:none;">Awards</a></li>
+													<li style="padding-top:2px;"><a href="index.php" style="text-decoration:none;">Home</a></li>
+													<li style="padding-top:2px;"><a href="cio_choice_overview.php" style="text-decoration:none;">About</a></li>
+													<li style="padding-top:2px;"><a href="advisory_panel.php" style="text-decoration:none;">Advisory Panel</a></li>
+													<li style="padding-top:2px;"><a href="events.php" style="text-decoration:none;">Events</a></li>
+													<li style="padding-top:2px;"><a href="awards.php" style="text-decoration:none;">Awards</a></li>
+													<li style="padding-top:2px;"><a href="privacy_policy.php" style="text-decoration:none;">Privacy Policy</a></li>
 													
 												</ul>
 						</div>
@@ -32,11 +33,11 @@
                                                     	<ul style="font-family: "Lato";font-size:17px;color:#FFFFFF;">
 													<p>Contact:</p>
 													<br /><br />
-													<li style="padding-top:7px;"><p>Email : <a href="mailto:contactus@cio-honour.sg"><?php echo $quick_contact_email; ?></a></p></li>
+													<li style="padding-top:0px;"><p>Email : <a href="mailto:contactus@cio-honour.sg"><?php echo $quick_contact_email; ?></a></p></li>
 													<li style="padding-top:7px;"</li>
 													<li style="padding-top:11px;"><p>Telephone : +65 9668 2895</p></li>
 													<li style="padding-top:18px;"></li>
-													<li style="padding-top:35px;"><p>Address : <?php echo $quick_contact_address; ?></p></li>
+													<li style="padding-top:12px;"><p>Address : <?php echo $quick_contact_address; ?></p></li>
 													
 												</ul>
                                                        

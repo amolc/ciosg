@@ -309,7 +309,7 @@
             </div>
             <!-- VIDEO GALLERY -->
         </div>
-    </div>
+   
    
     <div style="padding-top:75px;height: 630px;" id="advisory_wrapper">
         <div class="sixteen columns">
@@ -317,7 +317,7 @@
                 <div class="sky-carousel sc-no-select" style="visibility: visible;">
                     <div class="sky-carousel-wrapper" style="visibility: visible; opacity: 1;">
                         <h1 style="text-align:center; margin-top:37px; color:#20201F; font-size: 30px;font-weight: bold;">Our Advisory Panel</h1>
-                        <ul class="sky-carousel-container" style=" left: -1405px;">
+                        <ul class="sky-carousel-container" style=" left: -1405px;" style="display:block;">
                             <?php
                             $advisory_query1 = mysql_query("select * from advisory_panel");
                             $counter = 0;$imageSlider ='';
@@ -346,7 +346,6 @@
 
                                 <li style="-webkit-transform-origin: 50% 139px; -webkit-transform: translate(0px, 0px) scale(0.5) translateZ(0px); opacity: 0.6;">
                                     <img style="" src="<?php echo $advisory_image; ?>&h=190&w=190&zc=1"  alt="" class="sc-image">
-
                                    
                                     <div class="sc-content">
                                         <h2><a style="font-weight:bold; border:none; font-size:26px;" href="advisory_detail.php?id=<?php echo $advisory_res['advisory_id']; ?>"><?php echo $advisory_name; ?></a></h2>

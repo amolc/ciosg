@@ -63,7 +63,7 @@
                                         
                                            <?php 
 										   
-												include('events_panel.php');                                             
+											//	include('events_panel.php');                                             
 												include('quick_contact.php');
 												include('footer.php');
 											?>     

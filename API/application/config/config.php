@@ -4,7 +4,7 @@
 error_reporting(E_ALL);
 $onlocalpc = 1;
 
-  $config['base_url'] = "https://cio.fountaintechies.com/API/";
+  $config['base_url'] = "https://cio.cxohonour.com/API/";
 
 /*
 |--------------------------------------------------------------------------

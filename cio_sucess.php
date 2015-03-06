@@ -96,7 +96,7 @@ if(!isset($_SESSION['user_name']))
 
 														
 
-														$sql="SELECT * FROM user_cio WHERE emailID = '$username' and password='$password' and registration_status='accepted' and login_type='email'";
+														$sql="SELECT * FROM all_users WHERE emailID = '$username' and password='$password' and registration_type='CIO' and registration_status='accepted' and login_type='email'";
 														$rs = mysql_query($sql) or die ("Query failed");
 
 														// $numofrows = mysql_num_rows($rs);
@@ -117,9 +117,11 @@ if(!isset($_SESSION['user_name']))
 																session_start();
 																// store session data
 																$_SESSION['username']=$username;
-																$_SESSION['user_name']=$row['registration_name'];
+																$_SESSION['user_name']=$row['firstname']." ".$row['lastname'];
 																$_SESSION['firstname']=$row['firstname'];
 																$_SESSION['lastname']=$row['lastname'];
+																$_SESSION['cID']=$row['registration_id'];
+																
 																$_SESSION['corperate_email']=$row['emailID'];
 																$_SESSION['type']='cio_landing.php';
 																$_SESSION['cio']=$row['registration_type'];
@@ -131,17 +133,18 @@ if(!isset($_SESSION['user_name']))
 																session_start();
 																// store session data
 																$_SESSION['username']=$username; 
-																$_SESSION['user_name']=$row['registration_name'];
+																$_SESSION['user_name']=$row['firstname']." ".$row['lastname'];
 																$_SESSION['ict']=$row['registration_type'];
+																$_SESSION['vID']=$row['registration_id'];
 																$_SESSION['type']='ict_vendor_landing.php';
 																$_SESSION['corperate_email']=$row['corperate_email'];
-																header("location:ict_vendor_landing.php?action=yes");
+																header("location:cio_landing.php?action=yes");
 															}
 															
 														}
 														else 
 														{
-															header("location:vendor_login.php?wrong=yes");
+															header("location:cio_login.php?wrong=yes");
 															
 														}
 															
@@ -180,10 +183,17 @@ if(!isset($_SESSION['user_name']))
 												$admin = 'andre.tan@day7.co';
                         
 include('activation_link2.php');	
-													
+										$qry=mysql_query("select emailID from all_users where emailID='$email'")or die(mysql_error());
+										$n=mysql_num_rows($qry);
+										if($n)
+										{
+											header("location:cio_registration.php?wrong=yes");
+										}
+										else
+										{			
 								
 		/*$sql ="insert into registration(registration_name,registration_email,corperate_email,registration_password,registration_type,login_type,registration_insert_date,registration_status,regist_mobile,confirm_id) values('".$fname."','".$email."','".$email."','".$pass."','".$reg_type."','".$log_type."','".$time."','pending','".$mno."','".$str."')";*/
-								$sql ="insert into user_cio(firstname,lastname,company,emailID,mobile_number,password,company_address,secretary_name,	secretary_email,secretary_phone,registration_type,login_type,registration_insert_date,registration_status,confirm_id) values('".$fname."','".$lname."','".$cname."','".$email."','".$mno."','".$pass."','None','None','None','None','".$reg_type."','".$log_type."','".$time."','pending','".$str."')";
+								$sql ="insert into all_users(firstname,lastname,company,emailID,mobile_number,password,company_address,secretary_name,	secretary_email,secretary_phone,registration_type,login_type,registration_insert_date,registration_status,confirm_id) values('".$fname."','".$lname."','".$cname."','".$email."','".$mno."','".$pass."','None','None','None','None','".$reg_type."','".$log_type."','".$time."','pending','".$str."')";
 							
 
 								
@@ -241,7 +251,7 @@ include('activation_link2.php');
 								}
 								
 								
-								
+								}
 								}
 												  ?>
                                                 </div>

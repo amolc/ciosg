@@ -16,11 +16,14 @@
 	
 		$mail = new PHPMailer;
 		  
-		$mail->isSMTP();                                      // Set mailer to use SMTP
-		$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
-		$mail->SMTPAuth = true;               // Enable SMTP authentication
-		$mail->Username = 'gigsterjames';                   // SMTP username
-		$mail->Password = 'Gigsteremail78';               // SMTP password
+		$mail->isSMTP();  
+		$mail->Host = 'smtp.mandrillapp.com';                                      // Set mailer to use SMTP
+		//$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
+		$mail->SMTPAuth = true;    
+		$mail->Username = 'ankush.lomte@fountaintechies.com';             // Enable SMTP authentication
+	//	$mail->Username = 'gigsterjames';   
+		$mail->Password = 'dvZ19kPylIgqIO6QvDLN5g';                // SMTP username
+		//$mail->Password = 'Gigsteremail78';               // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
 		$mail->setFrom('registration@ciohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from
@@ -137,10 +140,17 @@
 		$mail = new PHPMailer;
 		  
 		$mail->isSMTP();                                      // Set mailer to use SMTP
-		$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
+	//	$mail->Host = 'smtp.sendgrid.net';   
+		$mail->Host = 'smtp.mandrillapp.com';                      // Specify main and backup server
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'gigsterjames';                   // SMTP username
-		$mail->Password = 'Gigsteremail78';           // SMTP password
+	//	$mail->Username = 'gigsterjames';                   // SMTP username
+	//	$mail->Password = 'Gigsteremail78';          // SMTP password
+		                                    // Set mailer to use SMTP
+	                     // Specify main and backup server
+		   
+		$mail->Username = 'ankush.lomte@fountaintechies.com';             // Enable SMTP authentication
+	
+		$mail->Password = 'dvZ19kPylIgqIO6QvDLN5g';  
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
 		$mail->setFrom('registration@ciohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from
@@ -258,11 +268,14 @@
 
 		$mail = new PHPMailer;
 		  
-		$mail->isSMTP();                                      // Set mailer to use SMTP
-		$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
-		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'gigsterjames';                   // SMTP username
-		$mail->Password = 'Gigsteremail78';                // SMTP password
+		$mail->isSMTP();  
+		$mail->Host = 'smtp.mandrillapp.com';                                      // Set mailer to use SMTP                                    // Set mailer to use SMTP
+		//$mail->Host = 'smtp.sendgrid.net';                       // Specify main and backup server
+		$mail->SMTPAuth = true;  
+		$mail->Username = 'ankush.lomte@fountaintechies.com';             // Enable SMTP authentication
+		$mail->Password = 'dvZ19kPylIgqIO6QvDLN5g';                               // Enable SMTP authentication
+	//	$mail->Username = 'gigsterjames';                   // SMTP username
+	//	$mail->Password = 'Gigsteremail78';                // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 		$mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
 		$mail->setFrom('registration@ciohonour.com', 'CIO HONOUR');     //Set who the message is to be sent from

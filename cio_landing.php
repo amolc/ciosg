@@ -27,7 +27,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
     }
 } else
 {
-    header('Location: login.php');
+    header('Location: cio_login.php');
 }
 ?>
 
@@ -39,14 +39,17 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
 	<link rel="icon" type="image/png" href="cxo_fav_ico.png">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 	<link href="css/text_style.css" rel="stylesheet" type="text/css">
-
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
     <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <link href="css/tinycarousel.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jquery.tinycarousel.js"></script>
-
+	
     <!-- Carousel -->
     <link href="css/bootstrap-carousel.css" rel="stylesheet" type="text/css" />
+	 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -102,25 +105,82 @@ if (isset($_SESSION['username']) && isset($_SESSION['cio']))
              // $(".enter_form_send").prop('disabled', 'false');
              }
              });*/
-
+			
 
         });
     </script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-    $('#textarea').textext({
-        plugins : 'tags prompt focus autocomplete ajax arrow',
-        tagsItems : [ 'Basic', 'JavaScript', 'PHP', 'Scala' ],
-        prompt : 'Add one...',
-        ajax : {
-            url : '/manual/examples/data.json',
-            dataType : 'json',
-            cacheResults : true
-        }
-    });
+	
+	
+	<script> 
+//var companytag=[];
+
+function autosuggest(i)
+{
+	//$.post('.php', function(data) {
+  		// $('#textarea_'+i).autocomplete("hii");
+
+  		// });
+		 
+
+  function split( val ) {
+return val.split( /,\s*/ );
+}
+function extractLast( term ) {
+return split( term ).pop();
+}
+$( '#textarea_'+i )
+// don't navigate away from the field on tab when selecting an item
+.bind( "keydown", function( event ) {
+if ( event.keyCode === $.ui.keyCode.TAB &&
+$( this ).autocomplete( "instance" ).menu.active ) {
+event.preventDefault();
+}
+})
+.autocomplete({
+source: function( request, response ) {
+$.getJSON( "search.php", {
+term: extractLast( request.term )
+}, response );
+},
+/*search: function() {
+// custom minLength
+var term = extractLast( this.value );
+if ( term.length < 2 ) {
+return false;
+}
+},*/
+focus: function() {
+// prevent value inserted on focus
+return false;
+},
+select: function( event, ui ) {
+var terms = split( this.value );
+// remove the current input
+terms.pop();
+// add the selected item
+terms.push( ui.item.value );
+// add placeholder to get the comma-and-space at the end
+terms.push( "" );
+//companytag.push(this.value);
+
+this.value = terms.join( ", " );
+
+return false;
+}
 });
-</script>
-	<script>
+ 
+ 
+}
+function tagvalues()
+{
+	$.post("tag.php" ,{'company': companytag}).done(function( data ) {   
+	if(data=='OK')
+		{
+			alert("company inserted");
+		}
+	
+	});
+}
 		
 function getCategory()
 {
@@ -193,16 +253,15 @@ function get_item(catID,name)
         })
 		id=array[i].item_ID;
 		name=array[i].item_name;
-		
-		tbl_row += "<td><div class='btn-box'><div class='clsButton_item fr' style='height: 18px;'>"+array[i].item_name+"</div></div></td><td></td><tr><td ><div align='center'><br><textarea value="+id+" name='item' placeholder='Please let us know the vendors who provide the best "+array[i].item_name+"' style='width: 729px; height: 173px;font-size: 16px;' id='textarea'></textarea></div></td></tr>";
+		/*height:173px;*/
+		tbl_row += "<td><div class='btn-box'><div class='clsButton_item fr' style='height: 18px;'>"+array[i].item_name+"</div></div></td><td></td><tr><td ><div align='center'><br><textarea  name='item' placeholder='Please let us know the vendors who provide the best "+array[i].item_name+"' style='width: 729px; height: 50px;font-size: 16px;' id='textarea_"+i+"' onClick='autosuggest("+i+");'></textarea><input type='hidden' value='"+id+"' id='item_"+i+"'></div></td></tr>";
         tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
         odd_even = !odd_even; 
 		 i++;            
 		          
     })
 	  tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";
-	   tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";
-	 tbl_body += "<td><div align='center'><button class='clsButton_checkout' style='width:200px;background-color: #e73535;font-size: 17px;border-color: #e73535;' onClick='get_div(1);insrt_into_cart("+catID+");'>Submit Survey</button></div><br /></td>";
+	   tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\"><td><br></td></tr>";tbl_body += "<td><div align='center'><button class='clsButton_checkout' style='width:200px;background-color: #e73535;font-size: 17px;border-color: #e73535;' onClick='insrt_into_cart("+i+","+catID+");'>Submit Survey</button></div><br /></td>";
 	
 	
 	 tbl_body +="</table>"
@@ -210,7 +269,25 @@ function get_item(catID,name)
 	 $('#div_3').show();
 });
 }
-
+function insrt_into_cart(n,catID)
+{
+	var survey = [];
+	var itemID=[];
+	for(i=0;i<n;i++)
+	{
+		if(document.getElementById('textarea_'+i).value!='')
+		{
+			survey.push(document.getElementById('textarea_'+i).value);
+			itemID.push(document.getElementById('item_'+i).value);
+		}
+	}
+	$.post("survey.php" ,{'survey_array': survey,'item_id':itemID,'catID':catID}).done(function( data ) {   
+	if(data=='OK')
+	{
+    	alert("inserted");
+	}
+});
+}
 function listCategory()
 {
 	
@@ -249,7 +326,7 @@ function listCategory()
 		
 		
 		
-		tbl_row +="<div class='clsLD_cont2 clearfix'><div class='clsChart_bx' style='text-align:center;'><img src='images/chart_img.jpg' width='200px;'/></div><div class='clsChart_cont'  id='item_div'><h1>Item1</h1><h1>Item2</h1><h1>Item3</h1></div></div>";
+		tbl_row +="<div class='clsLD_cont2 clearfix'><div class='clsChart_bx' style='text-align:center;'><div id='donutchart' ></div></div></div>";
 		
 		tbl_body +="</div></div><br /></div>";
 		
@@ -337,16 +414,48 @@ function get_div(id)
 
         });
     </script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	
-<script>
-listCategory();
-</script>
+    	<script>
+	
+	
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+	var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Name');
+        data.addColumn('number', 'Height');
+        data.addRows(3);
+        data.setCell(0, 0, 'Tong Ning mu');
+        data.setCell(1, 0, 'Huang Ang fa');
+        data.setCell(2, 0, 'Teng nu');
+        data.setCell(0, 1, 174);
+        data.setCell(1, 1, 523);
+        data.setCell(2, 1, 86);
+        var options = {
+          title: 'My Daily Activities',
+          is3D: true,
+        };
+
+		for (var i=0;i<9;i++)
+		{
+       	 	var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        	chart.draw(data, options);
+		}
+      }
+	 
+    </script>
+	
+
+
 </head>
 
 <body>
 <?php
 // include('sql_config/database/cio_db.php');
 include('top_header.php');
+include('sql_config/database/cio_db.php'); 
+include "libchart/classes/libchart.php";
 include('header.php');
 ?>
 
@@ -356,7 +465,7 @@ include('header.php');
     <div class="inner_nav">
 		<div class="nav fl">
         	<ul>
-			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(1);listCategory();">HOME</a></li>
+			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(1);">HOME</a></li>
 			  <li><a class="menu_ancher" href="javascript:void(0);">PROFILE</a></li>
 			  <li><a class="menu_ancher" href="javascript:void(0);" onClick="get_div(2);getCategory();">SURVEY</a></li>
 			  <li><a class="menu_ancher">FAQ</a></li>
@@ -365,19 +474,584 @@ include('header.php');
 		</div>
     </div>
 </div>
-<div class="landing_head advisory_wrapper" style="margin-top:0px;" id="div_1">
-      <div class="clsMiddle">
-			<div class="clsMid_cont_cio" id="category_div">
+<!--<div class="landing_head advisory_wrapper" style="margin-top:0px;" id="div_1" >
+
+     <div class="clsMiddle">
+		<div class="clsMid_cont_cio" id="category_div">
+			<div class='clsCat_tlt'><h2>Dashboard</h2></div>
+
 				
+ 
+	
 				
-				
-				
-				
-				
-			</div>	<!--clsMid_cont_cio-->
+			</div>	
 			
 		</div>	
+</div><!--clsMid_cont_cio-->
+
+<div class="landing_head advisory_wrapper" style="margin-top:0px;" id="div_1" >
+     <div class="clsMiddle">
+		<div class="clsMid_cont_cio" id="category_div">
+		
+			<div class='clsCat_tlt'><h2>Dashboard</h2></div>
+			<div class='clsLD_Cont clearfix'>
+			
+				<div class='clsLD_Bx'>
+					<div class='clsCo_frt_top_LD'>
+						<div class='clsC1_list_cont'>
+							<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("1",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>Enterprise Business Management</a></h1></div>
+					
+								<?php $result=mysql_query("select item.item_name,survey_count.count from survey_count,item where categoryID='1' and item.item_ID=survey_count.itemID order by count DESC limit 3");
+										if(mysql_num_rows($result)){?>
+										
+								<script type="text/javascript">
+								  google.load("visualization", "1", {packages:["corechart"]});
+								  google.setOnLoadCallback(drawChart);
+								  function drawChart() {
+									
+									
+									var data = new google.visualization.DataTable();
+									
+									var i=0;
+									 <?php while($row=mysql_fetch_array($result))
+									 {?>
+										  
+										data.addColumn('string', 'Name');
+										data.addColumn('number', 'Height');
+										data.addRows(3);
+										data.setCell(i, 0, '<?php echo $row['item_name'];?>');
+										
+										data.setCell(i, 1, '<?php echo $row['count'];?>');
+										i++;
+									<?php }?>
+									
+							
+									 var options = {
+							
+							  is3D: true,
+							};
+					
+					
+									var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+							
+									chart.draw(data, options);
+								  }
+							</script>
+							<div class='clsLD_cont2 clearfix'>
+ 								<div id="piechart"></div>
+								<div>
+									<?php $query=mysql_query("select distinct userID from survey_1"); 
+									echo "Number of CIO's taken survey under this category : ".mysql_num_rows($query)."";?>
+								</div>
+							
+							</div>
+							
+						<?php }
+						else{
+						?>
+						<div class='clsLD_cont2 clearfix'>
+ 							No Data Found
+						</div>
+						<?php }?>
+					</div>
+				</div>
+			</div>
+			
+			<div class='clsLD_Bx2'>
+					<div class='clsCo_frt_top_LD'>
+						<div class='clsC1_list_cont'>
+							<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>Enterprise Infrastructure Management</a></h1></div>
+					
+								<?php $result=mysql_query("select item.item_name,survey_count.count from survey_count,item where categoryID='2' and item.item_ID=survey_count.itemID order by count DESC limit 3");
+										if(mysql_num_rows($result)){?>
+										
+								<script type="text/javascript">
+								  google.load("visualization", "1", {packages:["corechart"]});
+								  google.setOnLoadCallback(drawChart);
+								  function drawChart() {
+									
+									
+									var data = new google.visualization.DataTable();
+									
+									var i=0;
+									 <?php while($row=mysql_fetch_array($result))
+									 {?>
+										  
+										data.addColumn('string', 'Name');
+										data.addColumn('number', 'Height');
+										data.addRows(3);
+										data.setCell(i, 0, '<?php echo $row['item_name'];?>');
+										
+										data.setCell(i, 1, '<?php echo $row['count'];?>');
+										i++;
+									<?php }?>
+									
+							
+									 var options = {
+							
+							  is3D: true,
+							};
+					
+					
+									var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+							
+									chart.draw(data, options);
+								  }
+							</script>
+							<div class='clsLD_cont2 clearfix'>
+ 							<div id="piechart2"></div>
+							<div>
+									<?php $query=mysql_query("select distinct userID from survey_2"); 
+									echo "Number of CIO's taken survey under this category : ".mysql_num_rows($query)."";?>
+								</div>
+							
+						</div>
+						<?php }
+						else{
+						?>
+						<div class='clsLD_cont2 clearfix'>
+ 							No Data Found
+						</div>
+						<?php }?>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div class='clsLD_Cont clearfix'>
+			
+				<div class='clsLD_Bx'>
+					<div class='clsCo_frt_top_LD'>
+						<div class='clsC1_list_cont'>
+							<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>Enterprise Security & Risk Management</a></h1></div>
+					
+								<?php $result=mysql_query("select item.item_name,survey_count.count from survey_count,item where categoryID='3' and item.item_ID=survey_count.itemID order by count DESC limit 3");
+										if(mysql_num_rows($result)){?>
+										
+								<script type="text/javascript">
+								  google.load("visualization", "1", {packages:["corechart"]});
+								  google.setOnLoadCallback(drawChart);
+								  function drawChart() {
+									
+									
+									var data = new google.visualization.DataTable();
+									
+									var i=0;
+									 <?php while($row=mysql_fetch_array($result))
+									 {?>
+										  
+										data.addColumn('string', 'Name');
+										data.addColumn('number', 'Height');
+										data.addRows(3);
+										data.setCell(i, 0, '<?php echo $row['item_name'];?>');
+										
+										data.setCell(i, 1, '<?php echo $row['count'];?>');
+										i++;
+									<?php }?>
+									
+							
+									 var options = {
+							 
+							  is3D: true,
+							};
+					
+					
+									var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+							
+									chart.draw(data, options);
+								  }
+							</script>
+							<div class='clsLD_cont2 clearfix'>
+ 							<div id="piechart3"></div>
+							<div>
+									<?php $query=mysql_query("select distinct userID from survey_3"); 
+									echo "Number of CIO's taken survey under this category : ".mysql_num_rows($query)."";?>
+								</div>
+							
+						</div>
+						<?php }
+						else{
+						?>
+						<div class='clsLD_cont2 clearfix'>
+ 							No Data Found
+						</div>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+			
+			<div class='clsLD_Bx2'>
+					<div class='clsCo_frt_top_LD'>
+						<div class='clsC1_list_cont'>
+							<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>Enterprise Mobility</a></h1></div>
+					
+								<?php $result=mysql_query("select item.item_name,survey_count.count from survey_count,item where categoryID='4' and item.item_ID=survey_count.itemID order by count DESC limit 3");
+										if(mysql_num_rows($result)){?>
+										
+								<script type="text/javascript">
+								  google.load("visualization", "1", {packages:["corechart"]});
+								  google.setOnLoadCallback(drawChart);
+								  function drawChart() {
+									
+									
+									var data = new google.visualization.DataTable();
+									
+									var i=0;
+									 <?php while($row=mysql_fetch_array($result))
+									 {?>
+										  
+										data.addColumn('string', 'Name');
+										data.addColumn('number', 'Height');
+										data.addRows(3);
+										data.setCell(i, 0, '<?php echo $row['item_name'];?>');
+										
+										data.setCell(i, 1, '<?php echo $row['count'];?>');
+										i++;
+									<?php }?>
+									
+							
+									 var options = {
+							
+							  is3D: true,
+							};
+					
+					
+									var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+							
+									chart.draw(data, options);
+								  }
+							</script>
+							<div class='clsLD_cont2 clearfix'>
+ 							<div id="piechart4"></div>
+							<div>
+									<?php $query=mysql_query("select distinct userID from survey_4"); 
+									echo "Number of CIO's taken survey under this category : ".mysql_num_rows($query)."";?>
+								</div>
+							
+						</div>
+						<?php }
+						else{
+						?><div class='clsLD_cont2 clearfix'>
+ 							No Data Found
+						</div>
+						<?php }?>
+						
+					</div>
+				</div>
+			</div>
+	</div>
+		
+		<div class='clsLD_Cont clearfix'>
+			
+				<div class='clsLD_Bx'>
+					<div class='clsCo_frt_top_LD'>
+						<div class='clsC1_list_cont'>
+							<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>Business Intelligence </a></h1></div>
+					
+								<?php $result=mysql_query("select item.item_name,survey_count.count from survey_count,item where categoryID='5' and item.item_ID=survey_count.itemID order by count DESC limit 3");
+										if(mysql_num_rows($result)){?>
+										
+								<script type="text/javascript">
+								  google.load("visualization", "1", {packages:["corechart"]});
+								  google.setOnLoadCallback(drawChart);
+								  function drawChart() {
+									
+									
+									var data = new google.visualization.DataTable();
+									
+									var i=0;
+									 <?php while($row=mysql_fetch_array($result))
+									 {?>
+										  
+										data.addColumn('string', 'Name');
+										data.addColumn('number', 'Height');
+										data.addRows(3);
+										data.setCell(i, 0, '<?php echo $row['item_name'];?>');
+										
+										data.setCell(i, 1, '<?php echo $row['count'];?>');
+										i++;
+									<?php }?>
+									
+							
+									 var options = {
+							 
+							  is3D: true,
+							};
+					
+					
+									var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
+							
+									chart.draw(data, options);
+								  }
+							</script>
+							<div class='clsLD_cont2 clearfix'>
+ 							<div id="piechart5"></div>
+							<div>
+									<?php $query=mysql_query("select distinct userID from survey_5"); 
+									echo "Number of CIO's taken survey under this category : ".mysql_num_rows($query)."";?>
+								</div>
+							
+						</div>
+						<?php }
+						else{
+						?>
+						<div class='clsLD_cont2 clearfix'>
+ 							No Data Found
+						</div>
+						<?php }?>
+					</div>
+				</div>
+			</div>
+			
+			<div class='clsLD_Bx2'>
+					<div class='clsCo_frt_top_LD'>
+						<div class='clsC1_list_cont'>
+							<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>Big Data </a></h1></div>
+					
+								<?php $result=mysql_query("select item.item_name,survey_count.count from survey_count,item where categoryID='6' and item.item_ID=survey_count.itemID order by count DESC limit 3");
+										if(mysql_num_rows($result)){?>
+										
+								<script type="text/javascript">
+								  google.load("visualization", "1", {packages:["corechart"]});
+								  google.setOnLoadCallback(drawChart);
+								  function drawChart() {
+									
+									
+									var data = new google.visualization.DataTable();
+									
+									var i=0;
+									 <?php while($row=mysql_fetch_array($result))
+									 {?>
+										  
+										data.addColumn('string', 'Name');
+										data.addColumn('number', 'Height');
+										data.addRows(3);
+										data.setCell(i, 0, '<?php echo $row['item_name'];?>');
+										
+										data.setCell(i, 1, '<?php echo $row['count'];?>');
+										i++;
+									<?php }?>
+									
+							
+									 var options = {
+							 
+							  is3D: true,
+							};
+					
+					
+									var chart = new google.visualization.PieChart(document.getElementById('piechart6'));
+							
+									chart.draw(data, options);
+								  }
+							</script>
+							<div class='clsLD_cont2 clearfix'>
+ 							<div id="piechart6"></div>
+							<div>
+									<?php $query=mysql_query("select distinct userID from survey_6"); 
+									echo "Number of CIO's taken survey under this category : ".mysql_num_rows($query)."";?>
+								</div>
+							
+						</div>
+						<?php }
+						else{?>
+						<div class='clsLD_cont2 clearfix'>
+ 							No Data Found
+						</div>
+						<?php }?>
+						
+					</div>
+				</div>
+			</div>
+	</div>	
+	<div class='clsLD_Cont clearfix'>
+			
+				<div class='clsLD_Bx'>
+					<div class='clsCo_frt_top_LD'>
+						<div class='clsC1_list_cont'>
+							<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>Virtualization </a></h1></div>
+					
+								<?php $result=mysql_query("select item.item_name,survey_count.count from survey_count,item where categoryID='7' and item.item_ID=survey_count.itemID order by count DESC limit 3");
+										if(mysql_num_rows($result)){?>
+										
+								<script type="text/javascript">
+								  google.load("visualization", "1", {packages:["corechart"]});
+								  google.setOnLoadCallback(drawChart);
+								  function drawChart() {
+									
+									
+									var data = new google.visualization.DataTable();
+									
+									var i=0;
+									 <?php while($row=mysql_fetch_array($result))
+									 {?>
+										  
+										data.addColumn('string', 'Name');
+										data.addColumn('number', 'Height');
+										data.addRows(3);
+										data.setCell(i, 0, '<?php echo $row['item_name'];?>');
+										
+										data.setCell(i, 1, '<?php echo $row['count'];?>');
+										i++;
+									<?php }?>
+									
+							
+									 var options = {
+							 
+							  is3D: true,
+							};
+					
+					
+									var chart = new google.visualization.PieChart(document.getElementById('piechart7'));
+							
+									chart.draw(data, options);
+								  }
+							</script>
+							<div class='clsLD_cont2 clearfix'>
+ 							<div id="piechart7"></div>
+							<div>
+									<?php $query=mysql_query("select distinct userID from survey_7"); 
+									echo "Number of CIO's taken survey under this category : ".mysql_num_rows($query)."";?>
+								</div>
+							
+						</div>
+						<?php }
+						else{
+						?>
+						<div class='clsLD_cont2 clearfix'>
+ 							No Data Found
+						</div>
+						<?php }?>
+					</div>
+				</div>
+			</div>
+			
+			<div class='clsLD_Bx2'>
+					<div class='clsCo_frt_top_LD'>
+						<div class='clsC1_list_cont'>
+							<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>Hardware and Data center Technology</a></h1></div>
+					
+								<?php $result=mysql_query("select item.item_name,survey_count.count from survey_count,item where categoryID='8' and item.item_ID=survey_count.itemID order by count DESC limit 3");
+										if(mysql_num_rows($result)){?>
+										
+								<script type="text/javascript">
+								  google.load("visualization", "1", {packages:["corechart"]});
+								  google.setOnLoadCallback(drawChart);
+								  function drawChart() {
+									
+									
+									var data = new google.visualization.DataTable();
+									
+									var i=0;
+									 <?php while($row=mysql_fetch_array($result))
+									 {?>
+										  
+										data.addColumn('string', 'Name');
+										data.addColumn('number', 'Height');
+										data.addRows(3);
+										data.setCell(i, 0, '<?php echo $row['item_name'];?>');
+										
+										data.setCell(i, 1, '<?php echo $row['count'];?>');
+										i++;
+									<?php }?>
+									
+							
+									 var options = {
+							 
+							  is3D: true,
+							};
+					
+					
+									var chart = new google.visualization.PieChart(document.getElementById('piechart8'));
+							
+									chart.draw(data, options);
+								  }
+							</script>
+							<div class='clsLD_cont2 clearfix'>
+ 							<div id="piechart8"></div>
+							<div>
+									<?php $query=mysql_query("select distinct userID from survey_8"); 
+									echo "Number of CIO's taken survey under this category : ".mysql_num_rows($query)."";?>
+								</div>
+							
+						</div>
+						<?php }
+						else{?>
+						<div class='clsLD_cont2 clearfix'>
+ 							No Data Found
+						</div> <?php }?>
+						
+					</div>
+				</div>
+			</div>
+	</div>	
+	
+	<div class='clsLD_Cont clearfix'>
+			
+				<div class='clsLD_Bx'>
+					<div class='clsCo_frt_top_LD'>
+						<div class='clsC1_list_cont'>
+							<div class='clsLD_cont1'><h1><a onclick='get_div(3);get_item("+id+",/Enterprise Business Management/);' href='javascript:void(0);' style='color: black'>Professional Services</a></h1></div>
+					
+								<?php $result=mysql_query("select item.item_name,survey_count.count from survey_count,item where categoryID='9' and item.item_ID=survey_count.itemID order by count DESC limit 3");
+										if(mysql_num_rows($result)){?>
+										
+								<script type="text/javascript">
+								  google.load("visualization", "1", {packages:["corechart"]});
+								  google.setOnLoadCallback(drawChart);
+								  function drawChart() {
+									
+									
+									var data = new google.visualization.DataTable();
+									
+									var i=0;
+									 <?php while($row=mysql_fetch_array($result))
+									 {?>
+										  
+										data.addColumn('string', 'Name');
+										data.addColumn('number', 'Height');
+										data.addRows(3);
+										data.setCell(i, 0, '<?php echo $row['item_name'];?>');
+										
+										data.setCell(i, 1, '<?php echo $row['count'];?>');
+										i++;
+									<?php }?>
+									
+							
+									 var options = {
+							
+							  is3D: true,
+							};
+					
+					
+									var chart = new google.visualization.PieChart(document.getElementById('piechart9'));
+							
+									chart.draw(data, options);
+								  }
+							</script>
+							<div class='clsLD_cont2 clearfix'>
+ 							<div id="piechart9"></div>
+							<div>
+									<?php $query=mysql_query("select distinct userID from survey_9"); 
+									echo "Number of CIO's taken survey under this category : ".mysql_num_rows($query)."";?>
+								</div>
+							
+						</div>
+						<?php }
+						else{?>
+						<div class='clsLD_cont2 clearfix'>
+ 							No Data Found
+						</div><?php }?>
+						
+					</div>
+				</div>
+			</div>
+			
+			
+	</div>
+	</div>	<!--clsMid_cont_cio-->
+  </div>	
 </div>
+
+
 
 <div class="advisory_wrapper landing_head" style="margin-top:30px;" style="display:none;" id="div_2">
 </div>
@@ -437,10 +1111,11 @@ $('#accordion > ul:eq(0)').show();
 
 </script> -->
 
-<!--<script type="text/javascript" src="js/jquery-1.7.1.js"></script>-->
-<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+<!--<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="js/jquery.ui.widget.js"></script>-->
 
 
 
 </body>
 </html>
+

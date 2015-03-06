@@ -36,7 +36,7 @@
 													<li style="padding-top:7px;"</li>
 													<li style="padding-top:11px;"><p>Telephone : +65 9668 2895</p></li>
 													<li style="padding-top:18px;"></li>
-													<li style="padding-top:35px;"><p>Address : <?php echo $quick_contact_address; ?></p></li>
+													<li style="padding-top:17px;"><p>Address : <?php echo $quick_contact_address; ?></p></li>
 													
 												</ul>
                                                        

@@ -4,13 +4,13 @@
 	$registration_id = mysql_real_escape_string($_POST['registration_id']);
 	
 
-	$sql = mysql_query("UPDATE registration SET registration_status = 'accepted' WHERE  registration_id = $registration_id");
-	$result2 = mysql_query("select registration_name,registration_password,registration_email,registration_type ,login_type from registration  WHERE  registration_id = $registration_id");
+	$sql = mysql_query("UPDATE all_users SET registration_status = 'accepted' WHERE  registration_id = $registration_id");
+	$result2 = mysql_query("select firstname,lastname,password,emailID,registration_type ,login_type from all_users  WHERE  registration_id = $registration_id");
 		while ($row = mysql_fetch_array($result2)) 
 		{ 
-			$registration_email = $row['registration_email'];
-			$registration_name = $row['registration_name'];
-			$registration_password = $row['registration_password'];
+			$registration_email = $row['emailID'];
+			$registration_name = $row['firstname']." ".$row['lastname'];
+			$registration_password = $row['password'];
 			$registration_type = $row['registration_type'];
 			if($registration_type="ICTVendor"){
 				$registration_type="ICT Vendor";

@@ -34,11 +34,11 @@ for($i=0;$i<$cnt;$i++)
 			if(!$n2)
 			{
 				array_push($new_company,$cname);
-				$rs=mysql_query("INSERT INTO parent_company(name) values('$cname')")or die(mysql_error());
+				$rs=mysql_query("INSERT INTO parent_company(name,inserted_date) values('$cname','$modified_date')")or die(mysql_error());
 			}
 		}
 	}
-	$query=mysql_query("select surveyID from survey where itemID='$iid' and userID='$userID'");
+	$query=mysql_query("select surveyID from survey_".$catID." where itemID='$iid' and userID='$userID'");
 	if(mysql_num_rows($query))
 	{
 		$rs=mysql_query("UPDATE survey_".$catID." SET company_name='$company_name',date_modified='$modified_date' WHERE itemID='$iid' and userID='$userID'")or die(mysql_error());

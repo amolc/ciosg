@@ -8,7 +8,7 @@
 	<meta name="description" content="Tourbooking.co" />
 	<meta name="author" content="Laborator.co" />
 	
-	<title>cio-choice.sg</title>
+	<title>CIO HONOUR</title>
 
 	<link rel="stylesheet" href="include/resource/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css"  id="style-resource-1">
 	<link rel="stylesheet" href="include/resource/css/font-icons/entypo/css/entypo.css"  id="style-resource-2">
@@ -68,7 +68,7 @@
 		<div class="login-content">
 			
 			<a href="#" class="logo">
-				<h1 style="color:#fff;">cio-choice.sg</h1>
+				<h1 style="color:#fff;">CIO HONOUR</h1>
 			</a>
 			
 			<p class="description">Dear user, log in to access the admin area!</p>

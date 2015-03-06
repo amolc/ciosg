@@ -103,7 +103,7 @@ function validate()
 																				
 													
                                                   </div>
-                                                  <div class="advisory_panel fl" style="height:auto;">
+                                                  <div class="advisory_panel fl" style="height:auto; width:620px;">
                                                   	
                                                    <!-- <div class="contact_address fl" style="height:auto;">
                                                     <span>Login as a CIO</span>

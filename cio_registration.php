@@ -102,8 +102,13 @@ function validate()
 																				
 													
                                                   </div>
-                                                  <div class="advisory_panel fl" style="height:auto;">
-                                                  	
+                                                  <div class="advisory_panel fl" style="height:auto; width:620px">
+                                                  	<?php
+														if(isset($_REQUEST['wrong']))
+															{
+																echo "<h2 style='color: #F00;'>This EmailID is alredy registred!!! Please use another EmailID.</h2><br>";
+															}
+													?>
                                                   
 												   <!--<div class="contact_address fl" style="height:auto;">
                                                      <span>Register as a CIO</span>
@@ -151,7 +156,7 @@ function validate()
 														// $username = strip_tags(stripslashes(mysql_real_escape_string($username)));
 														// $password = sha1(strip_tags(stripslashes(mysql_real_escape_string($password))));
 
-														$sql="SELECT * FROM user_cio WHERE emailID = '$username' and password='$password' and registration_status='accepted' and login_type='email'";
+														$sql="SELECT * FROM all_users WHERE emailID = '$username' and password='$password' and registration_type='CIO' and registration_status='accepted' and login_type='email'";
 														$rs = mysql_query($sql) or die ("Query failed");
 
 														// $numofrows = mysql_num_rows($rs);
@@ -185,12 +190,12 @@ function validate()
 																$_SESSION['type']='ict_vendor_landing.php';
 																$_SESSION['corperate_email']=$row['corperate_email'];
 																header("location:ict_vendor_landing.php?action=yes");*/
-																header("location:login.php?wrong=yes");
+																header("location:cio_login.php?wrong=yes");
 															}
 															
 														}
 														else {
-															header("location:login.php?wrong=yes");
+															header("location:cio_login.php?wrong=yes");
 															// echo "<h1>The UserName or password you entered is incorrect , please rry again</h1>";
 														}
 															// $sql = mysql_query('SELECT * FROM registration where registration_email ="'.$username.'" AND registration_password ="'.$password.'"');
@@ -220,32 +225,7 @@ function validate()
 													<!--<div style="text-align: center;float: left;width: 100%;line-height: 40px;height: 40px;color: #20201F;display: block;font-size: 30px;font-weight: bold;">
 														 Please use your preferred method of login...
 													</div>-->
-													<?php
-														if(isset($_REQUEST['wrong']))
-															{
-																echo "<h1 style='color: #F00;'>The Username or password you entered is incorrect , please try again</h1>";
-															}
-													?>
 													
-													
-													 
-                                                    	
-														
-                                                        	
-														
-														
-														
-														
-														
-														
-														
-														
-														
-                                                       	  
-                                                            
-                                                            
-                                                    
-                                                  
 												  
                                                   <?php
 												  

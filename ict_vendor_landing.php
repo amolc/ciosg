@@ -11,7 +11,7 @@ if (!empty($_SESSION['username']) && !empty($_SESSION['ict']))
         $corperate_email = $_SESSION['corperate_email'];
         $disnone="";
         $login_type_linkedin="";
-        $login_type_result = mysql_query("SELECT login_type FROM user_vendor WHERE emailID ='$corperate_email'");
+        $login_type_result = mysql_query("SELECT login_type FROM all_users WHERE emailID ='$corperate_email'");
         while ($login_type_row = mysql_fetch_array($login_type_result))
         {
             $login_type_linkedin = $login_type_row['login_type'];
@@ -55,7 +55,7 @@ if (!empty($_SESSION['username']) && !empty($_SESSION['ict']))
 
 
 
-
+<script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
@@ -74,7 +74,7 @@ function getCategory()
 	$("#div_2").html("<div align='center' style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
 	$.getJSON('http://www.globalprompt.org/sg/cio/category/list_category/?callback=?' , function(array) {
 
-	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Category</h2></div><div class='clsCo_Serv_cont clearfix'>";
+	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='advisory_panel_1 mrgn_top'><h1 style='font-size: 30px; font-family: 'Lato';text-transform: uppercase;'>CATEGORY</h1></div><div class='clsCo_Serv_cont clearfix'>";
 	
 	var id='';
 	var i=0;
@@ -122,7 +122,7 @@ function getContract(status)
 	$("#div_6").html("<div align='center'  style='margin-top:150px;margin-bottom:350px;'><img src=images/loader.gif width='150px' align=center></div>");
 	$.getJSON('get_contract.php/?callback=?' , function(array) {
 
-	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div id='contract_msg'><h2>Your contract created successfully</h2></div><div class='clsCat_tlt'><h2>Contract List</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h1>Contract_id</h1></div><div class='clsC1_list_bx'><h1>Date</h1></div><div class='clsC1_list_bx'><h1>Action</h1></div></div></div>";
+	var tbl_body = "<div class='clsMiddle'><div class='clsMid_cont_cio'><div id='contract_msg'><h2>Your contract created successfully</h2></div><div class='clsCat_tlt' align='center'><h2 style='font-size: 30px; font-family: 'Lato';text-transform: uppercase;'>CONTRACT LIST</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h1>Contract_id</h1></div><div class='clsC1_list_bx'><h1>Date</h1></div><div class='clsC1_list_bx'><h1>Action</h1></div></div></div>";
 	var tbl_row ="";
 	var id='';
 	var i=0;
@@ -137,7 +137,7 @@ function getContract(status)
 		
 		
 		
-		tbl_row +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h2>"+array[i].contract_id+"</h2></div><div class='clsC1_list_bx'><h2>"+array[i].date+"</h2></div><div class='clsC1_list_bx'><div class='clsCo_frt_btn_sml' style='width:150px;'><h2><a href='/view_pdf.php?id="+array[i].contract_id+"' target='_blank'>Download</a></h2></div></div></div></div>";
+		tbl_row +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx'><h2>"+array[i].contract_id+"</h2></div><div class='clsC1_list_bx'><h2>"+array[i].date+"</h2></div><div class='clsC1_list_bx'><div class='clsCo_frt_btn_sml' style='width:150px;'><h2><a href='/dev/view_pdf.php?id="+array[i].contract_id+"' target='_blank'>Download</a></h2></div></div></div></div>";
 		
 		tbl_body += ""+tbl_row+"";
 
@@ -145,7 +145,7 @@ function getContract(status)
 		 i++;            
 		          
     })
-	tbl_row +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:100px;'><h2>Back</h2></div></div></div></div>";
+	tbl_row +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn' style='width:100px;'><h2><a href='javascript:void(0)' onclick='get_div(2);getCategory();'>Back</h2></div></div></div></div>";
 	tbl_body += ""+tbl_row+"";
 	
 	 $("#div_6").html(tbl_body);
@@ -164,7 +164,7 @@ function getContract(status)
 function view_pdf(cid)
 {
 	$.post('view_pdf.php',{'cid':cid},function(res){
-		//var doc=window.open('view_pdf.php');
+		
 	});
 	
 }
@@ -172,7 +172,7 @@ function get_item(catID,name)
 {
 
 	$("#div_3").html("<div align='center'  style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
-	var tbl_body ="<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Category"+name+"</h2></div><div class='clsCo_frt_top'><h2>Please select the Sub-Category you would like to participate.</h2></div>";
+	var tbl_body ="<div class='clsMiddle'><div class='clsMid_cont_cio'><div class='contact_details_2 fl' style='padding-top:20px;'><a href='javascript:void(0);' class='active' onClick='get_div(2);'>Category</a></div><div class='clsCat_tlt'><h2>Category"+name+"</h2></div><div class='clsCo_frt_top'><h2>Please select the Sub-Category you would like to participate.</h2></div>";
 	$.getJSON('http://www.globalprompt.org/sg/cio/category/get_item_for/'+catID+'?callback=?' , function(array) {
 
 	var id='';
@@ -188,7 +188,7 @@ function get_item(catID,name)
 		
 		id=array[i].item_ID;
 		name=array[i].item_name;
-		tbl_row += "<div class='clsCo_frt_"+j+"'><div class='clsCio_inp'><input type='checkbox' value="+id+" name='item'></div><h2>"+array[i].item_name+"</h2></div>";
+		tbl_row += "<div class='clsCo_frt_"+j+"'><div class='clsCio_inp'  style='padding: 9px;'><input type='checkbox' value="+id+" name='item'></div><h2>"+array[i].item_name+"</h2></div>";
 		
        	if(i%2==0)
 		{
@@ -203,13 +203,103 @@ function get_item(catID,name)
 		          
     })
 	    
-	    tbl_body +="<div class='clsCo_frt_bot clearfix'><a href='javascript:void(0);' class='clsCo_frt_btn' style='width:200px;' style='width:200px' onClick='get_div(4);insrt_into_cart("+catID+");'>Proceed to Participation</a><a href='javascript:void(0);' class='clsCo_frt_btn2' style='width:100px;'  onClick='get_div(2);'>Back</a></div>";
+	   tbl_body +="<div class='clsCo_frt_bot clearfix'><a href='javascript:void(0);' class='clsCo_frt_btn' style='width:200px;' style='width:200px' onClick='terms("+catID+");'>Proceed to Participation</a></div>";
+		
+			 
+	 tbl_body +="</div></div>";
+	 $("#div_3").html(tbl_body);
+	 $('#div_3').show();
+});
+}
+
+function terms(catID)
+{
+	
+	var items = [];
+	$.each($("input[name='item']:checked"), function(){            
+		items.push($(this).val());
+		
+	});
+	$.post("cart.php" ,{'item_array': items,'catID':catID}).done(function( data ) {   
+	if(data=='OK')
+	{
+    	get_div(4);proceed_to_oarticipation();
+	}
+	else
+	{
+		error_msg();
+		
+	}
+});
+ 
+	
+}
+
+function error_msg()
+{
+	
+	$("#div_3").html("<div align='center'  style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
+	
+	
+	
+	var tbl_body ="<div style='min-height:400px;'><div class='contact_details_2 fl' style='padding-top:20px;'><a href='javascript:void(0);' class='active' onClick='get_div(2);'>Category</a></div><br /><br /><div class='clsCat_tlt' align='center' style='color:#e73535;'><label style='font-size: 30px; font-family: 'Lato';text-transform: uppercase;'>Please select sub-category before you proceed to participation</label></div></div>";
+	
+	
+		 
+	$("#div_3").html(tbl_body);
+	$('#div_3').show();
+
+}
+
+
+function terms_conditions(catID)
+{
+	
+	$("#div_3").html("<div align='center'  style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
+	
+	
+	
+	var tbl_body ="<div class='breadcrumb flat' style='margin-left:124px;'><a href='javascript:void(0)' onclick='get_div(2);get_category();'>Categories</a><a href='javascript:void(0)' onclick='get_div(4);proceed_to_oarticipation();'>Enterprise Participation From</a><a href='javascript:void(0)' onclick='get_div(3);terms_conditions();' class='active'>Terms and Conditions</a><a href='javascript:void(0)' onclick='get_div(4);shopping_cart();'>Contract Summary</a></div><br /><div class='clsCat_tlt' align='center'><h2 style='font-size: 30px; font-family: 'Lato';text-transform: uppercase;'>TERMS AND CONDITIONS</h2></div>";
+	
+	$.getJSON('http://www.globalprompt.org/sg/cio/ceo/list_terms/?callback=?' , function(array) {
+
+	var id='';
+	var i=0;
+	var j=1;
+    var odd_even = false;
+    $.each(array, function(key,val) {
+        var tbl_row = "";
+        $.each(this, function(k , v) {
+          
+        
+        })
+		
+		id=array[i].item_ID;
+		name=array[i].item_name;
+		tbl_row += "<div class='clsCo_frt_top'><h2>"+array[i].section+"</h2></div><div class='clsCo_frt_"+j+"'><h2>"+array[i].description+"</h2></div><div class='clsCo_frt_bot clearfix'></div><br />";
+		
+       	if(i%2==0)
+		{
+			j=2;
+		}
+		else
+		{
+			j=1;
+		}
+		 i++;   
+		 tbl_body += ""+tbl_row+"";         
+		          
+    })
+	    
+	    tbl_body +="<div class='clearfix'><a href='javascript:void(0);' class='clsCo_frt_btn' style='width:200px;' style='width:200px' onClick='get_div(4);shopping_cart();'>Next</a></div>";
 	 
 	 tbl_body +="</div></div>";
 	 $("#div_3").html(tbl_body);
 	 $('#div_3').show();
 });
 }
+
+
 function insrt_into_cart(catID)
 {
 	
@@ -223,6 +313,7 @@ function insrt_into_cart(catID)
 	{
     	shopping_cart();
 	}
+	
 });
  
 	
@@ -236,7 +327,7 @@ function shopping_cart()
 	var total=0;
     var odd_even = false;
 	$("#div_4").html("<div align='center'  style='margin-top:150px;margin-bottom:150px;'><img src=images/loader.gif width='150px' align=center></div>");
-	  var tbl_body ="<div class='clsMid_cont_cio'><div class='clsCat_tlt'><h2>Check-Out</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h1><b>Category</b></h1></div><div class='clsC1_list_bx2'><h1><b>Item</b></h1></div><div class='clsC1_list_bx3'><h1><b>Delete</b></h1></div><div class='clsC1_list_bx3'><h1><b>Total</b></h1></div></div></div>";
+	  var tbl_body ="<div class='breadcrumb flat' style='margin-left:124px;'><a href='javascript:void(0)' onclick='get_div(2);get_category();'>Categories</a><a href='javascript:void(0)' onclick='get_div(4);proceed_to_oarticipation();'>Enterprise Participation From</a><a href='javascript:void(0)' onclick='get_div(3);terms_conditions();'>Terms and Conditions</a><a href='javascript:void(0)' onclick='get_div(4);shopping_cart();' class='active'>Contract Summary</a></div><br /><div class='clsMid_cont_cio'><div class='clsCat_tlt' align='center'><h2 style='font-size: 30px; font-family: 'Lato';text-transform: uppercase;'>CONTRACT SUMMARY</h2></div><div class='clsCo_frt_top'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h1><b>Category</b></h1></div><div class='clsC1_list_bx2'><h1><b>Item</b></h1></div><div class='clsC1_list_bx3'><h1><b>Delete</b></h1></div><div class='clsC1_list_bx3'><h1><b>Total</b></h1></div></div></div>";
 	
 	$.getJSON('get_cart.php?callback=?',function(array){
 	
@@ -266,29 +357,21 @@ function shopping_cart()
 	 tbl_body +="<div class='clsCo_frt_1'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2 style='width:100px;'>Estimated Tax : </h2></div><div class='clsC1_list_bx3'><h2>S$00.00</h2></div></div></div>";
 	 tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont clearfix'><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx2'><h2></h2></div><div class='clsC1_list_bx3'><h2>Total : </h2></div><div class='clsC1_list_bx3'><h2>$"+total+".00</h2></div></div></div>";
 	
-	/*tbl_body +="<div class='clsCo_frt_2'><div align='right'><div class='clsCo_frt_btn3' style='width:200px;'><p style='font-size:14px;' ><b>Estimated Tax : $0</b></p><br><p style='font-size:18px;'><b>Total : $"+total+".00<b></p></div></div></div>";
-	
-	 /*tbl_body +="<div class='clsCo_frt_2'><div class='clsC1_list_cont'><h2><div align='right'><button style='height:33px;' type='button' class='btn btn-warning'>Do you have promotional code?</button>&nbsp;&nbsp;&nbsp;<input type='text' style='height:27px;'>&nbsp;&nbsp;&nbsp;<button type='submit' class='clsButton_checkout'>Apply</button></div></h2></div>	
-</div>";generate_pdf();*/
-
-	 tbl_body +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn2' style='width:200px;'><h2><a href='javascript:void(0);' onClick='proceed_to_oarticipation();'>Proceed to Participation</a></h2></div><div style='width:200px;' class='clsCo_frt_btn'><h2><a href='javascript:void(0);' onClick='get_div(2);getCategory();'>Continue Shopping</a></h2></div></div>";
+	tbl_body +="<div class='clsCo_frt_bot clearfix'><div class='clsCo_frt_btn' style='width:200px;'><h2><a href='javascript:void(0);' onClick='save_contract();'>Next</a></h2></div></div>";
 	
 	 tbl_body +="<br />";
-	// tbl_body +="<div class='clsCat_tlt'><h2>Enterprise Participation Form</h2></div><div class='clsCont_form_bx'><div class='clsC1_list_cont clearfix'><div class='clsLD_Bx_frm'><div class='clsCont_form'><h2>Company Name</h2><div><input type='text' class='clsInput' name='cname' id='cname' ></div><h2>Address 1</h2><div><input type='text' class='clsInput' name='add1' id='add1' ></div><h2>Address 2</h2><div><input type='text' class='clsInput' name='add2' id='add2' ></div><h2>City</h2><div><input type='text' class='clsInput' name='city' id='city'></div><h2>Country</h2><div><input type='text' class='clsInput' name='country' id='country'></div></div></div><div class='clsLD_Bx_frm'><div class='clsCont_form'><h2>Website</h2><div><input type='text' class='clsInput' name='website' id='website'></div><h2>Email</h2><div><input type='text' class='clsInput' name='email' id='email'></div><h2>Contact Name</h2><div><input type='text' class='clsInput' name='contact_name' id='contact_name'></div><h2>Designation</h2><div><input type='text' class='clsInput' id='desg' name='desg'></div><h2>Phone Number</h2><div><input type='text' class='clsInput' name=''></div></form></div></div><div style='width:200px;margin-left:17px;' class='clsCo_frt_btn'><h2>SUBMIT</h2></div></div></div></div>	</div>	";
-		
-		
-	  tbl_body +="</div>";
+	 tbl_body +="</div>";
 	
 	 $("#div_4").html(tbl_body);
 	 $('#div_4').show();
 
 });
-/*alert(items);
-*/
+
 }
 function proceed_to_oarticipation()
 {
 	 get_div(7);
+	 
 	 $('#middle').show();
 
 }
@@ -305,28 +388,56 @@ function save_contract()
 				var contact_name=document.getElementById('contact_name').value;
 				var phone_number=document.getElementById('phone_number').value;
 				
-	$.post("generate_pdf.php" ,{'cname': cname,'add1':add1,'add2':add2,'city': city,'country':country,'website': website,'email':email,'designation': designation,'contact_name':contact_name,'phone_number': phone_number}).done(function( data ) {   
-	if(data=='OK')
-	{
-    	/*tbl_body ="<div class='btn-box'><div class='msg_box fl' style='width:auto'>Thank you for your interest to participate in CIO HONOUR. Contract for participation has been created.<br /><br /><div align='right'><button onClick='get_div(6);getContract();'>OK</button></div></div></div>";
-		$("#div_5").html(tbl_body);
-		get_div(5);*/
-		//alert("hiii");
-		
-		getContract("1");
-		
-	}
-});
+				
+				
+				
+						$.post("generate_pdf.php" ,{'cname': cname,'add1':add1,'add2':add2,'city': city,'country':country,'website': website,'email':email,'designation': designation,'contact_name':contact_name,'phone_number': phone_number}).done(function( data ) {   
+						if(data=='OK')
+						{
+							
+							
+							getContract("1");
+							
+						}
+					});
+				
 		
 	
 }
+
+function form_submitted()
+{
+	
+	var cname=document.getElementById('cname').value;
+	var add1=document.getElementById('add1').value;
+	var add2=document.getElementById('add2').value;
+	var city=document.getElementById('city').value;
+	var country=document.getElementById('country').value;
+	var website=document.getElementById('website').value;
+	var email=document.getElementById('email').value;
+	var designation=document.getElementById('designation').value;
+	var contact_name=document.getElementById('contact_name').value;
+	var phone_number=document.getElementById('phone_number').value;
+				
+	if(cname== '' || add1== '' || add2== '' || city== '' || country== '' || website== '' || email== '' || designation== '' || contact_name== '' || phone_number== '')
+	{
+		alert("All fields are mendatory");
+	}
+	else
+	{
+		get_div(3);terms_conditions();
+	}
+ 
+	
+}
+
 function remove_item(itemID)
 {
-//$.getJSON('delete_item.php?callback=?',"itemID="+itemID+"",function(res){
+
 		
 	$.getJSON('delete_item.php?callback=?',"itemID="+itemID+"",function(res){
 
-	//$.post('delete_item.php',{itemID :itemID}).done(function(res){
+	
 	if(res.response=='OK')
 	{
 		shopping_cart();
@@ -358,27 +469,14 @@ function remove_item(itemID)
                 success: function(mesg) {
                     alert(mesg);
                     $('.mesg').empty().append(mesg);
-                    // $('#photo_detail').append(mesg);
+                    
 
                 }
 
             });
 
         });
-        /*$('.keyup-email-2').keyup(function() {
-         $('span.error-keyup-8').remove();
-         var inputVal = $(this).val();
-         var emailFreeReg= /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!aol.com)([\w-]+\.)+[\w-]{2,4})?$/;
-         if(!emailFreeReg.test(inputVal)) {
-         $(this).after('<span style="position: absolute;height: 22px;margin-left: -38px;margin-top: 45px;color: #F00;" class="error error-keyup-8">No Free Email Addresses.</span>');
-         // $('.enter_form_send').hide();
-         // $(".enter_form_send").prop('disabled', 'true');
-         }
-         else {
-         // $('.enter_form_send').show();
-         // $(".enter_form_send").prop('disabled', 'false');
-         }
-         });*/
+        
         setTimeout(function() {
             $('.your_register').remove();
 
@@ -405,15 +503,11 @@ function remove_item(itemID)
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
-        /*
-         *  Simple image gallery. Uses default settings
-         */
+       
 
         $('.fancybox').fancybox();
 
-        /*
-         *  Different effects
-         */
+        
 
         // Change title type, overlay closing speed
         $(".fancybox-effects-a").fancybox({
@@ -619,7 +713,138 @@ function remove_item(itemID)
     });
 </script>
 
+<style>
+		a:hover 
+		{
+			color: #FFFFFF;
+		}
+		{margin: 0; padding: 0;}
+		.breadcrumb_new {
+    border-radius: 5px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+    counter-reset: flag;
+    display: inline-block;
+    overflow: hidden;
+}
+.breadcrumb {
+	/*centering*/
+	display: inline-block;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+	overflow: hidden;
+	border-radius: 5px;
+	/*Lets add the numbers for each link using CSS counters. flag is the name of the counter. to be defined using counter-reset in the parent element of the links*/
+	counter-reset: flag; 
+}
 
+.breadcrumb a {
+	text-decoration: none;
+	outline: none;
+	display: block;
+	float: left;
+	font-size: 12px;
+	line-height: 36px;
+	color: white;
+	/*need more margin on the left of links to accomodate the numbers*/
+	padding: 0 10px 0 60px;
+	background: #666;
+	background: linear-gradient(#666, #333);
+	position: relative;
+}
+/*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+.breadcrumb a:first-child {
+	padding-left: 46px;
+	border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+	
+}
+.breadcrumb a:first-child:before {
+	left: 14px;
+}
+.breadcrumb a:last-child {
+	border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
+	padding-right: 20px;
+}
+
+/*hover/active styles*/
+.breadcrumb a.active, .breadcrumb a:hover{
+	background: #333;
+	background: linear-gradient(#333, #000);
+}
+.breadcrumb a.active:after, .breadcrumb a:hover:after {
+	background: #333;
+	background: linear-gradient(135deg, #333, #000);
+}
+
+/*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+.breadcrumb a:after {
+	content: '';
+	position: absolute;
+	top: 0; 
+	right: -18px; /*half of square's length*/
+	/*same dimension as the line-height of .breadcrumb a */
+	width: 36px; 
+	height: 36px;
+	/*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's: 
+	length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+	if diagonal required = 1; length = 1/1.414 = 0.707*/
+	transform: scale(0.707) rotate(45deg);
+	/*we need to prevent the arrows from getting buried under the next link*/
+	z-index: 1;
+	/*background same as links but the gradient will be rotated to compensate with the transform applied*/
+	background: #666;
+	background: linear-gradient(135deg, #666, #333);
+	/*stylish arrow design using box shadow*/
+	box-shadow: 
+		2px -2px 0 2px white, 
+		3px -3px 0 2px white;
+	/*
+		5px - for rounded arrows and 
+		50px - to prevent hover glitches on the border created using shadows*/
+	border-radius: 0 5px 0 50px;
+}
+/*we dont need an arrow after the last link*/
+.breadcrumb a:last-child:after {
+	content: none;
+}
+/*we will use the :before element to show numbers*/
+.breadcrumb a:before {
+	content: counter(flag);
+	counter-increment: flag;
+	/*some styles now*/
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	margin: 8px 0;
+	position: absolute;
+	top: 0;
+	left: 30px;
+	background: #444;
+	background: linear-gradient(#444, #222);
+	font-weight: bold;
+	text-align:center;
+}
+
+
+.flat a, .flat a:after {
+	background: #d02b2b;
+	color: white;
+	transition: all 0.5s;
+	
+}
+.flat a:before {
+	background: black;
+	box-shadow: 0 0 0 1px transparent;
+}
+.flat a:hover, .flat a.active, 
+.flat a:hover:after, .flat a.active:after{
+	background: #616161;
+}
+
+
+
+}
+		
+	</style>
 
 
 </head>
@@ -696,25 +921,35 @@ include('header.php');
 </div> 
 <div class="advisory_wrapper landing_head"  id="div_7" style="margin-bottom:30px;margin-top:20px"  style="display:none;">
 
- 	
+			
 			<div class="clsMid_cont_cio" id="middle" style="display:none">
-				<div class="clsCat_tlt"><h2>Enterprise Participation Form</h2></div>
+				<!-- another version - flat style with animated hover effect -->
+					<div class="breadcrumb flat" style='margin-left:124px;'>
+						<a href='javascript:void(0)' onclick='get_div(2);get_category();'>Categories</a>
+						<a href='javascript:void(0)' onclick='get_div(4);proceed_to_oarticipation();' class="active">Enterprise Participation From</a>
+						<a href='javascript:void(0)' onclick='get_div(3);terms_conditions();'>Terms and Conditions</a>
+						<a href='javascript:void(0)' onclick='get_div(4);shopping_cart();'>Contract Summary</a>
+					</div>
+
+				<!-- Prefixfree -->
+				<br />
+				<div class="clsCat_tlt" align="center"><h2 style="font-size: 30px; font-family: 'Lato';text-transform: uppercase;">ENTERPRISE PARTICIPATION FORM</h2></div>
 				
 				<div class="clsCont_form_bx">
 					<div class="clsC1_list_cont clearfix">
 						<div class="clsLD_Bx_frm">
 							<div class="clsCont_form">
-								
+								<form role="form" name="enterprise_form" id="enterprise_form" action="<?php $_SERVER["PHP_SELF"];?>" method="post">
 									<h2>Company Name</h2>
-									<div><input type="text" class="clsInput" value="" name="cname" id="cname"></div>
+									<div><input type="text" class="clsInput" value="" name="cname" id="cname" required></div>
 									<h2>Address 1</h2>
-									<div><input type="text" class="clsInput" value="" name="add1" id="add1"></div>
+									<div><input type="text" class="clsInput" value="" name="add1" id="add1" required></div>
 									<h2>Address 2</h2>
-									<div><input type="text" class="clsInput" value="" name="add2" id="add2"></div>
+									<div><input type="text" class="clsInput" value="" name="add2" id="add2" required></div>
 									<h2>City</h2>
-									<div><input type="text" class="clsInput" value="" name="city" id="city"></div>
+									<div><input type="text" class="clsInput" value="" name="city" id="city" required></div>
 									<h2>Country</h2>
-									<div><input type="text" class="clsInput" value="" name="country" id="country"></div>
+									<div><input type="text" class="clsInput" value="" name="country" id="country" required></div>
 								
 							</div>
 						</div>	<!--clsLD_Bx_frm-->
@@ -723,22 +958,24 @@ include('header.php');
 							<div class="clsCont_form">
 								
 									<h2>Website</h2>
-									<div><input type="text" class="clsInput" value="" name="website" id="website"></div>
+									<div><input type="text" class="clsInput" value="" name="website" id="website" required></div>
 									<h2>Email</h2>
-									<div><input type="text" class="clsInput" value="" name="email" id="email"></div>
+									<div><input type="text" class="clsInput" value="" name="email" id="email" required></div>
 									<h2>Contact Name</h2>
-									<div><input type="text" class="clsInput" value="" name="contact_name" id="contact_name"></div>
+									<div><input type="text" class="clsInput" value="" name="contact_name" id="contact_name" required></div>
 									<h2>Designation</h2>
-									<div><input type="text" class="clsInput" value="" name="designation" id="designation"></div>
+									<div><input type="text" class="clsInput" value="" name="designation" id="designation" required></div>
 									<h2>Phone Number</h2>
-									<div><input type="text" class="clsInput" value="" name="phone_number" id="phone_number"></div>
+									<div><input type="text" class="clsInput" value="" name="phone_number" id="phone_number" required></div>
 								
 							</div>
 						</div>	<!--clsLD_Bx_frm-->
 						
 						
-							<a href="javascript:void(0);"  class="clsCo_frt_btn" style="width:200px; height:35px;margin-right:35px;color:#FFFFFF;" onClick="save_contract();" >Submit</a>
-						<!--	<button type="submit" style="width:200px; height:35px;margin-right:35px;color:#FFFFFF;" class="clsCo_frt_btn">Submit</button>-->
+						<a href="javascript:void(0);"  class="clsCo_frt_btn" style="width:200px;margin-right:35px;color:#FFFFFF;" onClick="form_submitted();" >Next</a>
+						<!--<input type="submit" name="submit" id="submit" class="clsCo_frt_btn" value="Next" style="width:200px;margin-right:35px;color:#FFFFFF;height:40px;">-->
+						
+						</form>
 						
 						
 					</div>	<!--clsC1_list_cont-->
@@ -746,6 +983,7 @@ include('header.php');
 				</div>
 			
 		</div>	
+		
 
 </div> 
 <?php
@@ -798,13 +1036,7 @@ include('footer.php');
 <script type="text/javascript">
     $(document).ready(function() {
 
-        // Animate the scroll to top
-        /*
-        $('.enter_form_send').delay(500).click(function(event) {
-
-            $('html, body').animate({scrollTop: 0}, 300);
-        })
-         */
+        
 
         $(function(){
             $('.carousel').carousel({

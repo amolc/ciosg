@@ -147,10 +147,8 @@ d.Please send the cheque/ pay order/ demand draft to:
 </div>
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
 <div align="right">Page 3 of 7</div>
-
-<br /><br /><br /><br />
+<br/><br/><br /><br/>
 
 ';
 
@@ -187,7 +185,7 @@ The Signatory, by signing a copy of these Terms (either in his own capacity or o
 behalf he is authorized to act), will create an Agreement between You and the Organiser which will come into force
 on the date the Terms are signed and which will continue until it is terminated in accordance with Articles 5.2 or 5.3.
 </div>
-<div align="center"><h1 align="center">CIO HONOUR AWARDS 2014</h1> <h2 align="center">Terms & Conditions </h2></div><hr><br />
+<div align="center"><h1 align="center">CIO HONOUR AWARDS 2014</h1> <h2 align="center">Terms & Conditions </h2></div><hr><br /><br/><br/>
 <div><label><strong>Article 2</strong></label></div>
 <br />
 <div><label><strong>The Programme</strong></label></div>
@@ -242,6 +240,114 @@ endorsements expressed by those CIOs within the respondent group, who have/ may 
 the Product(s) in the particular ICT category. The group will be reasonably representative of the population of CIOs (as
 determined by the Organiser) and will consist of statistically an appropriate sample size. The online survey is conducted on the
 organiser’s official website www.cxohonour.com<br/><br/><br/>
+';
+
+$html .='<div><label><strong>Article 4</strong></label></div>
+<br/>
+<label><strong>4.1 Organiser’s rights in the Trade Marks</strong></label><br/>
+You acknowledge that the Trade Marks are the exclusive trademarks of the Organiser or its licensors. You agree not to apply
+for or obtain registration of the Trade Marks for any goods or services in any jurisdiction, nor use the Trade Marks (or anything
+confusingly similar to the Trade Marks) as a company, business, trade or Product name in any jurisdiction.<br/>
+<label><strong>4.2 Honoured Product Trade Marks license</strong></label><br/>
+Subject to You making the payments set out in Article 5, if Your Product is selected Under Article 3.4.1. to be “CIO HONOUR
+AWARD of the Year” in a particular ICT category, You will be granted a limited, revocable, non transferable, non assignable
+license (License) to use the Trade Marks only in the assigned Territory subject to the following additional terms:
+<br />&nbsp;&nbsp;&nbsp;a. The duration of such License is limited to the period of one year commencing from Official Announcement Date; time
+being of the essence.
+<br />&nbsp;&nbsp;&nbsp;b. You (will obtain the Organiser’s approval for all uses of the Trade Marks and) will comply at all times with the reasonable
+instructions and the directions from the Organiser in relation to your use of the Trade Marks under License. The Trade
+Marks may only be used in the form, dimensions and graphic representation approved, in each instance, in writing by the
+Organiser at its sole discretion.
+<br />&nbsp;&nbsp;&nbsp;c. You may use the Trade Marks only on or in relation to the honoured Product and that Product alone. Unless otherwise
+approved in each instance by the Organiser You may not use the Trade Marks on packaging or advertising, which
+includes products other than the Honoured Product.
+<br />&nbsp;&nbsp;&nbsp;d. The Trade Marks may only be used in advertising aimed primarily within the assigned Territory and on products which
+are intended for sale within that territory.
+<br />&nbsp;&nbsp;&nbsp;e. The Trade Marks may only be used in relation to the Honoured Product in the same form and composition as the Product
+is presented in the Registration Form submitted in respect of it under Article 3.2.
+<br />&nbsp;&nbsp;&nbsp;f. Every use of the Trade Marks will be accompanied by a reference to the Programme Year (e.g 2014), ICT category (e.g.
+in the System Integrator category) for which the Product was honoured except on packaging where the space does not
+provide for all the information, the Trade Mark and the ICT category will suffice. (E.g.”Honoured: XYZ Category”) All
+creative material(s) for release must be approved by the Organiser for correctness of the honoured status reference.
+<br />&nbsp;&nbsp;&nbsp;g. The Organiser will have the right, at its absolute discretion, to permit the use of the Trade Marks for groupings of some or
+all of the honoured Products for the purpose of promotions directly or indirectly referring to “CIO HONOUR AWARD”,
+subject to Article 4.2e and 4.2f above.
+<br />&nbsp;&nbsp;&nbsp;h. The Trade Marks may be used by the honoured products to advertise their “CIO HONOUR AWARD” status but may not
+be used to make any reference to the other participants in any ICT category. If there is any breach of Article 4, then the
+Organiser would be entitled to deprive You of the “CIO HONOUR AWARD” status.<br/><br/>
+<label><strong>4.3 Termination of Use</strong></label><br/>
+You undertake to monitor the use of the Trade Marks under the License to ensure that it is no longer used on any product or
+advertising / marketing material after the License End Date, time being of the essence in particular, but without limitation. You
+will stop manufacturing or ordering Products and packaging incorporating the Trade mark sufficiently early so that all the
+Products and packaging incorporating the Trade Marks are reasonably likely to be sold before the expiry of the License.
+<br/><label><strong>4.4 Limitations on Use / Right to terminate</strong></label><br/><br/>
+Breach of Article 4 will give the Organiser, at its sole discretion, the right to terminate immediately and without notice the
+License granted to You under Article 4.2. Notwithstanding such termination, You shall remain liable to pay the Organiser the
+amount due under Article 5.<br/><br/><br/>
+<div><label><strong>Article 5</strong></label></div>
+<br/>
+<label><strong>Fees</strong></label><br/><br/>
+<label><strong>5.1 Registration Fee</strong></label><br/>
+You agree to pay the Registration Fee amount specified on the Registration Form or such other ordering document as
+otherwise agreed between You and the Organiser for participation of your Product in the Programme.<br/><br/>
+Unless otherwise provided in the Registration Form, all payments are due within ten (10) days from date of invoice. In the
+event that you fail to make the payment within the stipulated time, your entry may be withdrawn solely at the discretion of the
+organiser but the liability to pay once entered continues irrespective of the discretion exercised by the organiser. Should your
+Registration Fee remain outstanding at the time of the official announcement of results, your product may not be declared the
+Honoured product, even if so voted and the next high scoring product may be selected for Honour at the sole discretion of the
+Organiser.<br/><br/>
+<label><strong>5.2 License Fee</strong></label><br/><br/>
+You agree to pay the License Fee amount specified on the Registration Form or such other ordering document as otherwise
+agreed between You and the Organiser in respect of each Product submitted by You being selected for Honour by the
+Programme in consideration to the grant of the License under Article 4.1.<br/>
+Unless otherwise provided in the Registration Form, all payments are due within ten (10) days from date of invoice.You will not
+be allowed to make use of the Trade Mark prior to receipt of such payments. Failure to make such payments may at the
+discretion of the Organiser, result in all Your Products being disqualified from the Programme and, upon the Organiser giving
+You written notice, this agreement will being terminated immediately. Your liability to make any outstanding payment due will
+remain.<br/>
+The License Fee becomes payable upon your Product being selected for Honour by the Programme and has no bearing
+whatsoever to whether you choose to use the Trade Marks or not during the License Period and whether You continue to
+market/sell the honoured Product during the year or part thereof.<br/>
+<div><label><strong>Article 6</strong></label></div>
+<br/>
+<label><strong>6.1 Force majeure</strong></label><br/><br/>
+The Organiser will not be liable for failure to perform any obligation under these Terms to the extent that it is caused due to
+forces beyond its control.<br/>
+<label><strong>6.2 Acceptance of Terms</strong></label><br/><br/>
+Participation in the Programme involves full and entire acceptance of these Terms. You must accept these Terms by signing
+them personally or by having an authorized signatory sign them.<br/>
+<label><strong>6.3 Agreement to use of name</strong></label><br/><br/>
+If your Product(s) is / are selected for Honour, You permit the Organiser to give out Your name, address and a description of
+the honoured Product(s) together with a qualitative analysis of the results of the CIO voting survey conducted by or on behalf of
+the Organiser under Article 3.4.1 as part of the publication and promotion of the Programme.You will also permit the Organiser
+to share Your name and the honoured product name, with the Organiser’s media partners for the duration of the Programme
+Year.<br/>
+<label><strong>6.4 Interpretation by the Organiser</strong></label><br/><br/>
+TAny question regarding the interpretation or application of these Terms or any other questions relating to the Programme will be
+settled solely by the Organiser, in its discretion.<br/>
+<label><strong>6.5 Headings</strong></label><br/><br/>
+The headings in these Terms are for convenience only and are in no way intended to describe, interpret, define, or limit the
+scope, extent, or intent of these Terms or any of their provisions.<br/>
+<label><strong>6.6 Entire agreement</strong></label><br/><br/>
+These Terms and the documents referred to in them constitute the entire agreement between You and the Organiser and
+supersede all other agreements or arrangements, whether written or oral, express or implied, between You and the Organiser.<br/>
+<label><strong>6.7 Taxes and Duties</strong></label><br/><br/>
+All payments are to be made by You under these Terms are exclusive of all applicable taxes and duties, which will, where
+applicable, be paid in addition by You.<br/>
+<label><strong>6.8 Authority to execute</strong></label><br/><br/>
+The signatory executing these Terms on behalf of another person represents and warrants that he/ she is empowered to
+execute them and that all necessary action to authorise their execution has been taken.<br/>
+<label><strong>6.9 Governing law and jurisdiction</strong></label><br/><br/>
+This Agreement shall be governed, interpreted and enforced in accordance with the laws of Singapore without regard to conflict
+of law principles. The courts of Singapore will have sole and exclusive jurisdiction with respect to any disputes arising out of
+this Agreement.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+Place, Date Company Name
+<br/><br/><br/>
+Signature
+<br/><br/><br/>
+Name (BLOCK CAPITALS), Title, Company Seal<br/>
+This document must be signed only an Authorized representative of the company.
 ';
 	
 	
